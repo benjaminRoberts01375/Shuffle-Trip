@@ -120,6 +120,20 @@ def query_api(input_values):
             break
 
 
+def final_business(args):
+    parser = argparse.ArgumentParser()
+
+    for activity in args.activities:
+        if activity.term:
+            parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
+                            type=str, help='Search term (default: %(default)s)')
+        if activity.location:
+            parser.add_argument('-l', '--location', dest='location',
+                            default=DEFAULT_LOCATION, type=str,
+                            help='Search location (default: %(default)s)')
+
+
+
 def main():
     parser = argparse.ArgumentParser()
 
