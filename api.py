@@ -4,6 +4,7 @@ import argparse
 import json
 import pprint
 import requests
+import random
 import sys
 import urllib
 
@@ -33,7 +34,7 @@ DEFAULT_TERM = 'mountain hike'
 DEFAULT_LOCATION = 'Burlington, VT'
 SEARCH_LIMIT = 50
 DEFAULT_RADIUS = 40000
-DEFAULT_OFFSET = 50
+OFFSET_MULTIPLIER = 1000
 
 
 # Yelp API Example
@@ -120,17 +121,31 @@ def query_api(input_values):
             break
 
 
-def final_business(args):
-    parser = argparse.ArgumentParser()
 
-    for activity in args.activities:
-        if activity.term:
-            parser.add_argument('-q', '--term', dest='term', default=DEFAULT_TERM,
-                            type=str, help='Search term (default: %(default)s)')
-        if activity.location:
-            parser.add_argument('-l', '--location', dest='location',
-                            default=DEFAULT_LOCATION, type=str,
-                            help='Search location (default: %(default)s)')
+
+def final_businesses(args):
+    parser = argparse.ArgumentParser()
+    return_args = {
+        "activities": [],
+    }
+
+    for activity in args["activities"]:
+        parser.add_argument('-q', '--term',
+                            dest='term',
+                            default=activity["term"],
+                            type=str,
+                            help='Search term (default: %(default)s)')
+
+        input_values = parser.parse_args()
+        offset = random.random() * OFFSET_MULTIPLIER
+
+        url_params = {
+            'term': input_values.term.replace(' ', '+'),
+            'latitude': args["latitude"],
+            'radius': DEFAULT_RADIUS,
+            'offset': offset,
+            'limit': SEARCH_LIMIT
+        }
 
 
 
