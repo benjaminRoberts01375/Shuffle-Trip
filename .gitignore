@@ -132,10 +132,11 @@ dmypy.json
 ## User settings
 xcuserdata/
 
-## Xcode 8 and earlier
+## Xcode
 *.xcscmblueprint
 *.xccheckout
 *.xcuserstate
+*.pbxproj
 
 ## Mac files
 *.DS_Store

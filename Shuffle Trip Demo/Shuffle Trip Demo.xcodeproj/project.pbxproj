@@ -44,6 +44,7 @@
 		07151A1A2932CB2600D1352B /* Shuffle Trip DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle Trip DemoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07151A1E2932CB2600D1352B /* Shuffle_Trip_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_Trip_DemoUITests.swift; sourceTree = "<group>"; };
 		07151A202932CB2600D1352B /* Shuffle_Trip_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_Trip_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		079A6DCE293560E70062840E /* Shuffle-Trip-Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Demo-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +95,7 @@
 		07151A022932CB2300D1352B /* Shuffle Trip Demo */ = {
 			isa = PBXGroup;
 			children = (
+				079A6DCE293560E70062840E /* Shuffle-Trip-Demo-Info.plist */,
 				07151A032932CB2300D1352B /* Shuffle_Trip_DemoApp.swift */,
 				07151A052932CB2300D1352B /* ContentView.swift */,
 				07151A072932CB2600D1352B /* Assets.xcassets */,
@@ -420,6 +422,7 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Demo-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +452,7 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Demo-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
