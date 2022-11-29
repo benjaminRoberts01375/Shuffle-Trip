@@ -14,6 +14,7 @@
 		07151A152932CB2600D1352B /* Shuffle_Trip_DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07151A142932CB2600D1352B /* Shuffle_Trip_DemoTests.swift */; };
 		07151A1F2932CB2600D1352B /* Shuffle_Trip_DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07151A1E2932CB2600D1352B /* Shuffle_Trip_DemoUITests.swift */; };
 		07151A212932CB2600D1352B /* Shuffle_Trip_DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07151A202932CB2600D1352B /* Shuffle_Trip_DemoUITestsLaunchTests.swift */; };
+		894F9E972935D33F00F2FC37 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 894F9E962935D33F00F2FC37 /* ContentViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		07151A1E2932CB2600D1352B /* Shuffle_Trip_DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_Trip_DemoUITests.swift; sourceTree = "<group>"; };
 		07151A202932CB2600D1352B /* Shuffle_Trip_DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_Trip_DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		079A6DCE293560E70062840E /* Shuffle-Trip-Demo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Demo-Info.plist"; sourceTree = SOURCE_ROOT; };
+		894F9E962935D33F00F2FC37 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				07151A052932CB2300D1352B /* ContentView.swift */,
 				07151A072932CB2600D1352B /* Assets.xcassets */,
 				07151A092932CB2600D1352B /* Preview Content */,
+				894F9E962935D33F00F2FC37 /* ContentViewModel.swift */,
 			);
 			path = "Shuffle Trip Demo";
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 			files = (
 				07151A062932CB2300D1352B /* ContentView.swift in Sources */,
 				07151A042932CB2300D1352B /* Shuffle_Trip_DemoApp.swift in Sources */,
+				894F9E972935D33F00F2FC37 /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,7 +427,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shuffle-Trip-Demo-Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to display on map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to display on map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,7 +458,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shuffle-Trip-Demo-Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to display on map.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to display on map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
