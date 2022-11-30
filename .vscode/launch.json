@@ -8,12 +8,12 @@
             "name": "Python: Django",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}\\django-ios\\ShuffleTripIOSTest\\manage.py",
+            "program": "${workspaceFolder}/django-ios/ShuffleTripIOSTest/manage.py",
             "args": [
                 "runserver"
             ],
             "django": true,
             "justMyCode": true
-        }
+        },
     ]
 }
