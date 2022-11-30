@@ -13,8 +13,7 @@ class AccountViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated
     ]
     serializer_class = AccountSerializer
-
+        
 class APIData(APIView):
-    def get(self, request, format=None):
-        print(json.loads(request.body))
+    def post(self, request, format=None):
         return Response(request_businesses(json.loads(request.body)))
