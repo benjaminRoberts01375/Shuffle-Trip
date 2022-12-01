@@ -112,7 +112,11 @@ def request_businesses(args):
                 offset = random.random() * response['total']
                 url_params['offset'] = int(offset)
                 response = request(API_HOST, SEARCH_PATH, API_KEY, url_params=url_params)
-            return_args['activities'].append(response)
+            activity_data = {
+                "coordinates": response['businesses'][0]['coordinates'],
+                "name": response['businesses'][0]['name'],
+            }
+            return_args['activities'].append(activity_data)
         except HTTPError as error:
             return_args['errors'].append(error)
     
