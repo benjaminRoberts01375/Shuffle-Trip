@@ -40,9 +40,17 @@ struct ContentView: View {
                     annotationContent: { location in MapAnnotation(
                         coordinate: location.coordinate,
                         content: {
-                            Image(systemName: "pin.circle.fill").foregroundColor(.red)
+                            Image(systemName: "pin.fill")
+                                .foregroundColor(.red)
+                                .accentColor(.white)
+                                .frame(width: 40)
+                                .scaledToFit()
                             Text(location.name)
                                 .font(.system(size:10))
+                                .padding(.all, 4.0)
+                                .background(.white)
+                                .cornerRadius(5)
+                                .shadow(radius: 3)
                         }
                     )}
                     
