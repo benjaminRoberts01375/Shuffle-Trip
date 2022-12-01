@@ -15,51 +15,94 @@ import FoundationNetworking
 struct ContentView: View {
     
     @StateObject private var viewModel = ContentViewModel()
+    @State private var followUser: Bool = true
+    @State private var MapLocations: [MapLocation] = []
+    
+    struct MapLocation: Identifiable {
+        let id = UUID()
+        let name: String
+        let latitude: Double
+        let longitude: Double
+        var coordinate: CLLocationCoordinate2D {
+            CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+    }
     
     var body: some View {
         VStack {
-            Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-                .accentColor(Color(.systemBlue))
-                .ignoresSafeArea()
-                .onAppear {
-                    viewModel.checkIfLocationServicesIsEnabled()
+            ZStack {
+                Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: MapLocations, annotationContent: { location in MapMarker(coordinate: location.coordinate, tint: .red)})
+                    .accentColor(Color(.systemBlue))
+                    .ignoresSafeArea()
+                    .onAppear {
+                        viewModel.checkIfLocationServicesIsEnabled()
+                    }
+                Circle()
+                    .fill(.blue)
+                    .opacity(0.2)
+                    .frame(width: 200, height: 200)
+            }
+            HStack {
+                Button(action: {
+                    self.buttonTrigger(locationType: "Breakfast")
+                }) {
+                    Text("Breakfast")
                 }
-            Button(action: {
-                self.buttonTrigger()
-            }) {
-                Text("Test")
+                
+                Button(action: {
+                    self.buttonTrigger(locationType: "Lunch")
+                }) {
+                    Text("Lunch")
+                }
+                
+                Button(action: {
+                    self.buttonTrigger(locationType: "Dinner")
+                }) {
+                    Text("Dinner")
+                }
             }
         }
     }
     
-    func buttonTrigger() {
+    func buttonTrigger(locationType: String) {
         print("Function ran")
         struct TripSetupParams: Codable {
-            var latitude: Double
-            var longitude: Double
-            var activities: [term]
+            let latitude: Double
+            let longitude: Double
+            let activities: [term]
         }
         struct term: Codable {
-            var term: String
+            let term: String
         }
         
-        struct TripStop: Decodable {
-            var latitude: Double
-            var longitude: Double
-            var name: String
+        struct JSONTripStop: Decodable {
+            let status: Int
+            let message: String
+            let data: ActivityData
         }
         
-        let params = TripSetupParams(latitude: 44.475883, longitude: -73.212074, activities: [term(term: "lunch"), term(term: "museum"), term(term: "dinner")])
+        struct ActivityData: Decodable {
+            let activities: [Activities]
+            let errors: [Int]
+        }
+        
+        struct Activities: Decodable {
+            let coordinates: ActivityCoordinate
+            let name: String
+        }
+        
+        struct ActivityCoordinate: Decodable {
+            let latitude: Double
+            let longitude: Double
+        }
+        
+        
+        let parameters = TripSetupParams(latitude: viewModel.region.center.latitude, longitude: viewModel.region.center.longitude, activities: [term(term: locationType)])
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
-        let data = try? encoder.encode(params)
-        print(String(data: data!, encoding: .utf8)!)
-        
-        var semaphore = DispatchSemaphore (value: 0)
-
-        let parameters = "{\r\n\"activities\": [{\"term\": \"lunch\"},{\"term\": \"museum\"},{\"term\": \"dinner\"}],\r\n \"latitude\": 44.475883,\r\n \"longitude\": -73.212074\r\n}"
-        let postData = parameters.data(using: .utf8)
+        let data = (try? encoder.encode(parameters))!
+        let semaphore = DispatchSemaphore (value: 0)
 
         var request = URLRequest(url: URL(string: "http://127.0.0.1:8000/st/getdata/")!,timeoutInterval: Double.infinity)
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -67,7 +110,7 @@ struct ContentView: View {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
 
         request.httpMethod = "POST"
-        request.httpBody = postData
+        request.httpBody = data
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
           guard let data = data else {
@@ -75,8 +118,20 @@ struct ContentView: View {
             semaphore.signal()
             return
           }
-          print(String(data: data, encoding: .utf8)!)
-          semaphore.signal()
+            print("Pre-Decode:")
+            print(String(data: data, encoding: .utf8)!)
+            print("\n")
+            let tripStops: JSONTripStop = try! JSONDecoder().decode(JSONTripStop.self, from: data)
+            print("\n\n\n\n\n\nPost-Decode")
+//            print(String(data: tripStops, encoding: .utf8))
+
+            print("\n\n\n\n\n Data:")
+            print(tripStops.data)
+            
+            MapLocations.append(MapLocation(name: tripStops.data.activities[0].name, latitude: tripStops.data.activities[0].coordinates.latitude, longitude: tripStops.data.activities[0].coordinates.longitude))
+
+//            print(String(data: data, encoding: .utf8)!)
+            semaphore.signal()
         }
 
         task.resume()
