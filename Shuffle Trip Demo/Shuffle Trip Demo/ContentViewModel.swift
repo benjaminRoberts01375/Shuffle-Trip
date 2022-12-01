@@ -40,7 +40,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         case .denied:
             print("Location is required, please enable in settings")
         case .authorizedAlways, .authorizedWhenInUse: // Permission granted!
-            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)) // Update map region with current position coordinates
+            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)) // Update map region with current position coordinates
         @unknown default:
             break
         }

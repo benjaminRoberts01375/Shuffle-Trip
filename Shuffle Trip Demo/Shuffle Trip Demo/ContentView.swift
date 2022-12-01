@@ -31,17 +31,34 @@ struct ContentView: View {
     var body: some View {
         VStack {
             ZStack {
-                Map(coordinateRegion: $viewModel.region, showsUserLocation: true, annotationItems: MapLocations, annotationContent: { location in MapMarker(coordinate: location.coordinate, tint: .red)})
-                    .accentColor(Color(.systemBlue))
+                Map(
+                    coordinateRegion: $viewModel.region,
+                    interactionModes: [.pan], // Prevent zoom
+                    showsUserLocation: true,
+                    annotationItems: MapLocations,
+//                    annotationContent: { location in MapMarker(coordinate: location.coordinate, tint: .red)}
+                    annotationContent: { location in MapAnnotation(
+                        coordinate: location.coordinate,
+                        content: {
+                            Image(systemName: "pin.circle.fill").foregroundColor(.red)
+                            Text(location.name)
+                                .font(.system(size:10))
+                        }
+                    )}
+                    
+                )
+                    .accentColor(Color(.systemBlue)) // User location dot color
                     .ignoresSafeArea()
                     .onAppear {
                         viewModel.checkIfLocationServicesIsEnabled()
                     }
+                
                 Circle()
                     .fill(.blue)
                     .opacity(0.2)
-                    .frame(width: 200, height: 200)
+                    .frame(width: 300, height: 300)
             }
+            
             HStack {
                 Button(action: {
                     self.buttonTrigger(locationType: "Breakfast")
