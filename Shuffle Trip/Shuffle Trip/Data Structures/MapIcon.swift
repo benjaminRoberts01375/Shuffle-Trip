@@ -60,8 +60,8 @@ struct MapIcon: UIViewRepresentable, Identifiable {
                     annotationView?.annotation = annotation
                 }
 
-                // Set the image of the annotation view to the "scooter" image
-                annotationView?.glyphImage = pinImage
+                annotationView?.glyphImage = pinImage // Set the image of the annotation view to the "scooter" image
+                annotationView?.isEnabled = false // Prevent interactions with pin
                 return annotationView
             }
             return nil
