@@ -140,3 +140,6 @@ xcuserdata/
 
 ## Mac files
 *.DS_Store
+*.xcscheme
+*.xcworkspacedata
+Shuffle Trip Old/Shuffle Trip.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
