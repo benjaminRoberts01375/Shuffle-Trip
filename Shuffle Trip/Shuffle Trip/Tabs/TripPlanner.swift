@@ -10,7 +10,6 @@ struct TripPlanner: View {
         ZStack {
             RegionSelector(region: MapDetails.region1)
                 .edgesIgnoringSafeArea(.all)
-            BottomCard()
         }
     }
 }
