@@ -4,6 +4,7 @@
 import SwiftUI
 
 struct TabManager: View {
+    @Environment(\.colorScheme) var colorScheme
     @State public var needsSignIn = true
     
     var body: some View {
@@ -14,8 +15,7 @@ struct TabManager: View {
                     Image(systemName: "books.vertical")
                     Text("Browse")
                 }
-            
-            RegionSelector(region: MapDetails.region1)
+            TripPlanner()
                 .tabItem {
                     Image(systemName: "map")
                     Text("Create Trip")
@@ -26,12 +26,21 @@ struct TabManager: View {
                     Text("Settings")
                 }
         }
-        .fullScreenCover(isPresented: $needsSignIn, content: {
-            Text("Test")
-            Button("Sign in", action: {
-                needsSignIn = false
-            })
-        })
+        .tint(.blue)
+        .onAppear{
+            let appearance = UITabBarAppearance()
+            appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
+            appearance.backgroundColor = UIColor(colorScheme == .dark ? Color.black.opacity(0.3) : Color.white.opacity(0.3))
+            
+            // Use this appearance when scrolling behind the TabView:
+            UITabBar.appearance().standardAppearance = appearance
+            // Use this appearance when scrolled all the way up:
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
+        
+//        .fullScreenCover(isPresented: $needsSignIn, content: { // Show sign-in page
+//            Login(needsSignIn: $needsSignIn)
+//        })
     }
 }
 
