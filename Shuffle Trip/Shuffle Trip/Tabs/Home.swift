@@ -31,33 +31,49 @@ struct Home: View {
     
     var body: some View {
         NavigationStack {
-            VStack{
-                ScrollView (.horizontal, showsIndicators: false) {
+            ScrollView(.vertical, showsIndicators: true) {
+                VStack{
                     HStack {
-                        ForEach(pastLocations) {location in
-                            NavigationLink(destination: RegionSelector(region: location.region, pinImage: location.image, pinCoordinate: location.region.center), label: {
-                                MapIcon(region: location.region, pinImage: location.image!, title: location.name)
-                            })
-                            .frame(width: 250, height: 250)
-                            .edgesIgnoringSafeArea(.all)
-                            .cornerRadius(16)
-                            .shadow(radius: 5)
-                            .padding(.horizontal, 10)
-                            
-                            
+                        Text("Recommended Trips")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                            .multilineTextAlignment(.leading)
+                            .fontDesign(.rounded)
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    VStack {
+                        ScrollView (.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(pastLocations) {location in
+                                    NavigationLink(destination: RegionSelector(region: location.region,
+                                                                               pinImage: location.image,
+                                                                               pinCoordinate: location.region.center),
+                                                   label: {
+                                        MapIcon(region: location.region, pinImage: location.image!, title: location.name)
+                                    })
+                                    .frame(width: 250, height: 250)
+                                    .edgesIgnoringSafeArea(.all)
+                                    .cornerRadius(16)
+                                    .shadow(radius: 5)
+                                    .padding(.horizontal, 10)
+                                }
+                            }
+                            .padding(.horizontal, 50)
+                            .padding(.vertical, 10.0)
                         }
                     }
-                    .padding(.horizontal, 50)
-                    .padding(.vertical, 10.0)
                 }
                 .navigationTitle("Home")
             }
+            .edgesIgnoringSafeArea(.bottom)
         }
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        TabManager()
     }
 }
