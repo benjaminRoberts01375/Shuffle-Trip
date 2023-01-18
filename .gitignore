@@ -136,7 +136,6 @@ xcuserdata/
 *.xcscmblueprint
 *.xccheckout
 *.xcuserstate
-*.pbxproj
 
 ## Mac files
 *.DS_Store
