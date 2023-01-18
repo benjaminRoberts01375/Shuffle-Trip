@@ -31,7 +31,7 @@ struct MapIcon: UIViewRepresentable, Identifiable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        print("Here")
+//        print("Here")
     }
     
     func makeCoordinator() -> Coordinator {

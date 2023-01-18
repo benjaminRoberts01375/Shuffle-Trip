@@ -1,9 +1,5 @@
-//
-//  Shuffle_TripApp.swift
-//  Shuffle Trip
-//
-//  Created by Ben Roberts on 12/1/22.
-//
+// Dec 1, 2022
+// Ben Roberts
 
 import SwiftUI
 

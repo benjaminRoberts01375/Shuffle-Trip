@@ -60,7 +60,7 @@ struct RegionSelector: UIViewRepresentable {
     
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-        print("Updated UI View")
+//        print("Updated UI View")
     }
     
     /**
