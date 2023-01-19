@@ -30,19 +30,21 @@ struct TabManager: View {
         .onAppear{
             let appearance = UITabBarAppearance()
             appearance.backgroundEffect = UIBlurEffect(style: .systemUltraThinMaterial)
-            appearance.backgroundColor = UIColor(colorScheme == .dark ? Color.black.opacity(0.3) : Color.white.opacity(0.3))
+            appearance.backgroundColor = .systemBackground.withAlphaComponent(0.1)
             
             // Use this appearance when scrolling behind the TabView:
             UITabBar.appearance().standardAppearance = appearance
             // Use this appearance when scrolled all the way up:
             UITabBar.appearance().scrollEdgeAppearance = appearance
         }
-        
+
+    }
+}
 //        .fullScreenCover(isPresented: $needsSignIn, content: { // Show sign-in page
 //            Login(needsSignIn: $needsSignIn)
 //        })
-    }
-}
+//    }
+//}
 
 struct TabManager_Previews: PreviewProvider {
     static var previews: some View {
