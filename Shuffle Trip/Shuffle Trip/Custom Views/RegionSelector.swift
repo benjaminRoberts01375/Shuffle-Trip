@@ -5,6 +5,7 @@ import SwiftUI
 import MapKit
 
 struct RegionSelector: UIViewRepresentable {
+    var userLocation: UserLocation = UserLocation()
     let region: MKCoordinateRegion
     let pinImage: UIImage?
     let pinCoordinate: CLLocationCoordinate2D?
@@ -30,6 +31,9 @@ struct RegionSelector: UIViewRepresentable {
     
     
     func makeUIView(context: Context) -> some UIView {
+        // Check user location permissions
+        userLocation.checkIfLocationServicesIsEnabled()
+
         // Setup map
         let mapView = MKMapView()
         mapView.region = region // Set where map is centered and zoomed
@@ -38,6 +42,8 @@ struct RegionSelector: UIViewRepresentable {
         mapView.showsScale = true // Shows how far distance is
         mapView.showsCompass = true // Show where the user currently is if the permission allows
         mapView.delegate = context.coordinator // Setup coordinator for map interactions
+        mapView.showsUserLocation = true // Show where the user is on the map
+        
         
         // Setup long presses
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleLongPress(gestureRecognizer:)))
@@ -125,6 +131,11 @@ struct RegionSelector: UIViewRepresentable {
                     }
                 }
             }
+            
+            if let _ = annotation as? MKUserLocation { // Ensure that annotation that's found isn't the user's location
+                return nil
+            }
+            
             mapView.addOverlay(MKCircle(center: annotation.coordinate, radius: defaultRadius)) // If not found, make a new circle
             return nil
         }

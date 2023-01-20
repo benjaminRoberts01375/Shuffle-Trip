@@ -20,6 +20,7 @@
 		0702E2FC2978415200E63E3A /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0702E2F42978415200E63E3A /* RegionSelector.swift */; };
 		0702E2FD2978415200E63E3A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0702E2F52978415200E63E3A /* Assets.xcassets */; };
 		0702E2FE2978415200E63E3A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0702E2F72978415200E63E3A /* Preview Assets.xcassets */; };
+		07345454297A0BA1005A3C22 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07345453297A0BA1005A3C22 /* UserLocation.swift */; };
 		0791DA6F29784C5B00D23073 /* BottomDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0791DA6E29784C5B00D23073 /* BottomDrawer.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,8 @@
 		0702E2F42978415200E63E3A /* RegionSelector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		0702E2F52978415200E63E3A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0702E2F72978415200E63E3A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07345453297A0BA1005A3C22 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		07345456297A0C21005A3C22 /* Shuffle-Trip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Info.plist"; sourceTree = SOURCE_ROOT; };
 		0791DA6E29784C5B00D23073 /* BottomDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,11 +111,13 @@
 		0702E2BD2978408100E63E3A /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
+				07345456297A0C21005A3C22 /* Shuffle-Trip-Info.plist */,
 				0702E2E92978411E00E63E3A /* Shuffle_TripApp.swift */,
 				0702E2E82978411E00E63E3A /* Login.swift */,
 				0702E2EA2978411F00E63E3A /* TabManager.swift */,
 				0702E2EE2978415200E63E3A /* Tabs */,
 				0791DA702978983300D23073 /* Custom Views */,
+				07345455297A0BA9005A3C22 /* Data */,
 				0702E2F62978415200E63E3A /* Preview Content */,
 				0702E2F52978415200E63E3A /* Assets.xcassets */,
 			);
@@ -151,6 +156,14 @@
 				0702E2F72978415200E63E3A /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07345455297A0BA9005A3C22 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				07345453297A0BA1005A3C22 /* UserLocation.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		0791DA702978983300D23073 /* Custom Views */ = {
@@ -304,6 +317,7 @@
 				0702E2FA2978415200E63E3A /* MapIcon.swift in Sources */,
 				0702E2F92978415200E63E3A /* TripPlanner.swift in Sources */,
 				0702E2ED2978411F00E63E3A /* TabManager.swift in Sources */,
+				07345454297A0BA1005A3C22 /* UserLocation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +480,8 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to display your location on the map to help orient yourself. This is optional.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -497,6 +513,8 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to display your location on the map to help orient yourself. This is optional.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
