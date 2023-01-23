@@ -30,7 +30,9 @@ struct RegionSelector: UIViewRepresentable {
     }
     
     
-    func makeUIView(context: Context) -> some UIView {        
+    func makeUIView(context: Context) -> some UIView {
+        DispatchQueue.main.async { userLocation.checkIfLocationServicesIsEnabled() } // Check user location permissions async
+        
         // Setup map
         let mapView = MKMapView()
         mapView.region = region // Set where map is centered and zoomed
