@@ -30,10 +30,7 @@ struct RegionSelector: UIViewRepresentable {
     }
     
     
-    func makeUIView(context: Context) -> some UIView {
-        // Check user location permissions
-        userLocation.checkIfLocationServicesIsEnabled()
-
+    func makeUIView(context: Context) -> some UIView {        
         // Setup map
         let mapView = MKMapView()
         mapView.region = region // Set where map is centered and zoomed
@@ -41,9 +38,9 @@ struct RegionSelector: UIViewRepresentable {
         mapView.pointOfInterestFilter = MapDetails.defaultFilter // Don't show these kinds of places on map
         mapView.showsScale = true // Shows how far distance is
         mapView.showsCompass = true // Show where the user currently is if the permission allows
-        mapView.delegate = context.coordinator // Setup coordinator for map interactions
         mapView.showsUserLocation = true // Show where the user is on the map
         
+        mapView.delegate = context.coordinator // Setup coordinator for map interactions
         
         // Setup long presses
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleLongPress(gestureRecognizer:)))
@@ -54,19 +51,20 @@ struct RegionSelector: UIViewRepresentable {
         pinchGestureRecognizer.delegate = context.coordinator
         mapView.addGestureRecognizer(pinchGestureRecognizer)
         
-        if let pinCoordinate = pinCoordinate, let _ = pinImage { // Ensure both the coordinate and image are not nil
+        // Show pin and circle around that pin
+        if let pinCoordinate = pinCoordinate, let _ = pinImage {
             mapView.addOverlay(MKCircle(center: pinCoordinate, radius: defaultRadius)) // Add circle
             let annotation = MKPointAnnotation()
             annotation.coordinate = pinCoordinate
             mapView.addAnnotation(annotation) // Add pin
         }
-
+        
         return mapView
     }
     
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
-//        print("Updated UI View")
+        //        print("Updated UI View")
     }
     
     /**
@@ -106,8 +104,14 @@ struct RegionSelector: UIViewRepresentable {
             }
         }
         
+        /**
+         Called when annotation is tapped
+         1. Show icons in pins when applicable
+         2. Check existing circles to make sure there's no duplicates
+         3. Add circle to map when an annotation is selected
+         */
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            // Return nil if the annotation is not of type MKPointAnnotation (we only want to customize the appearance of MKPointAnnotation)
+            // If there's a pin, add an icon to it
             if let annotation = annotation as? MKPointAnnotation, let pinImage = pinImage {
                 var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "scooterAnnotationView") as? MKMarkerAnnotationView
                 
@@ -124,6 +128,7 @@ struct RegionSelector: UIViewRepresentable {
                 return annotationView
             }
             
+            // Check circles to ensure there are no existing circles at the tapped location
             for overlay in mapView.overlays {
                 if let circle = overlay as? MKCircle {
                     if (circle.coordinate.longitude == annotation.coordinate.longitude) && (circle.coordinate.latitude == annotation.coordinate.latitude) { // Check if circle already exists at annotation
@@ -132,10 +137,7 @@ struct RegionSelector: UIViewRepresentable {
                 }
             }
             
-            if let _ = annotation as? MKUserLocation { // Ensure that annotation that's found isn't the user's location
-                return nil
-            }
-            
+            // No circles found, add a new circle
             mapView.addOverlay(MKCircle(center: annotation.coordinate, radius: defaultRadius)) // If not found, make a new circle
             return nil
         }
@@ -144,12 +146,12 @@ struct RegionSelector: UIViewRepresentable {
             if gestureRecognizer.state != .began { // Short circuit
                 return
             }
-
+            
             let mapView = gestureRecognizer.view as! MKMapView
             let location = gestureRecognizer.location(in: mapView)
             let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)
             let MKTouchCoordinate = MKMapPoint(touchCoordinate)
-
+            
             for overlay in mapView.overlays.reversed() { // Always remove the top-most circle
                 if let circle = overlay as? MKCircle { // Convert generic overlay to MKCircle for access to circle specific functions
                     let distance = MKTouchCoordinate.distance(to: MKMapPoint(circle.coordinate)) // Determine distance between gesture and circle's center
@@ -159,10 +161,10 @@ struct RegionSelector: UIViewRepresentable {
                     }
                 }
             }
-
+            
             mapView.addOverlay(MKCircle(center: touchCoordinate, radius: defaultRadius)) // If not found, make a new circle
         }
-
+        
         
         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
             return true
@@ -176,7 +178,7 @@ struct RegionSelector: UIViewRepresentable {
             let location = gestureRecognizer.location(in: mapView)
             let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)
             let MKTouchCoordinate = MKMapPoint(touchCoordinate)
-
+            
             // Check each overlay for gesture being within circle's radius
             for overlay in mapView.overlays {
                 if let circle = overlay as? MKCircle { // Convert generic overlay to MKCircle for access to circle specific functions
