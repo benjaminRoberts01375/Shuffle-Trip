@@ -161,6 +161,7 @@
 		07345455297A0BA9005A3C22 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				0702E2F32978415200E63E3A /* Defaults.swift */,
 				07345453297A0BA1005A3C22 /* UserLocation.swift */,
 			);
 			path = Data;
@@ -170,7 +171,6 @@
 			isa = PBXGroup;
 			children = (
 				0702E2F22978415200E63E3A /* MapIcon.swift */,
-				0702E2F32978415200E63E3A /* Defaults.swift */,
 				0702E2F42978415200E63E3A /* RegionSelector.swift */,
 				0791DA6E29784C5B00D23073 /* BottomDrawer.swift */,
 			);

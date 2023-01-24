@@ -6,15 +6,17 @@ import MapKit
 final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     
-    func checkIfLocationServicesIsEnabled() {
+    func checkIfLocationServicesIsEnabled() -> Bool{
         if CLLocationManager.locationServicesEnabled() { // Are location services enabled in general
             locationManager = CLLocationManager()
             locationManager!.delegate = self
             locationManager?.desiredAccuracy = kCLLocationAccuracyBest
             print("Location services are enabled")
+            return true
         }
         else {
             print("Location services are currently disabled :(")
+            return false;
         }
     }
     
