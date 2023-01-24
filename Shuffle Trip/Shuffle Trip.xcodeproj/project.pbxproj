@@ -15,7 +15,10 @@
 		07402D762980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */; };
 		07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawer.swift */; };
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
-		07402D8A2980841500F1F046 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D892980841500F1F046 /* MainScreen.swift */; };
+		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
+		07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* MainScreenMV.swift */; };
+		07F71A3F29808980007C7AE6 /* Default_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* Default_Location.swift */; };
+		07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4029808A3F007C7AE6 /* UserLocation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +50,10 @@
 		07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		07402D832980833B00F1F046 /* BottomDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawer.swift; sourceTree = "<group>"; };
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
-		07402D892980841500F1F046 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
+		07F71A3A29808788007C7AE6 /* MainScreenMV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenMV.swift; sourceTree = "<group>"; };
+		07F71A3E29808980007C7AE6 /* Default_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default_Location.swift; sourceTree = "<group>"; };
+		07F71A4029808A3F007C7AE6 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +106,10 @@
 			isa = PBXGroup;
 			children = (
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
-				07402D892980841500F1F046 /* MainScreen.swift */,
+				07F71A3A29808788007C7AE6 /* MainScreenMV.swift */,
+				07F71A3829808773007C7AE6 /* RegionSelector.swift */,
 				07402D822980832C00F1F046 /* Custom Views */,
+				07F71A3C2980894B007C7AE6 /* Data */,
 				07402D5E2980817000F1F046 /* Preview Content */,
 			);
 			path = "Shuffle Trip";
@@ -139,6 +147,23 @@
 				07402D852980837A00F1F046 /* Blur.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		07F71A3C2980894B007C7AE6 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				07F71A3D29808961007C7AE6 /* Default Data */,
+				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		07F71A3D29808961007C7AE6 /* Default Data */ = {
+			isa = PBXGroup;
+			children = (
+				07F71A3E29808980007C7AE6 /* Default_Location.swift */,
+			);
+			path = "Default Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -271,9 +296,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07402D8A2980841500F1F046 /* MainScreen.swift in Sources */,
+				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
+				07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
+				07F71A3F29808980007C7AE6 /* Default_Location.swift in Sources */,
+				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
