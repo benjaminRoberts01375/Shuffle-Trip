@@ -38,7 +38,7 @@
 /* Begin PBXFileReference section */
 		07402D552980816E00F1F046 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07402D582980816E00F1F046 /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
-		07402D5C2980817000F1F046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07402D5C2980817000F1F046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Shuffle Trip/Assets.xcassets"; sourceTree = "<group>"; };
 		07402D5F2980817000F1F046 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07402D652980817000F1F046 /* Shuffle TripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07402D692980817000F1F046 /* Shuffle_TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripTests.swift; sourceTree = "<group>"; };
@@ -79,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				07402D572980816E00F1F046 /* Shuffle Trip */,
+				07402D5C2980817000F1F046 /* Assets.xcassets */,
 				07402D682980817000F1F046 /* Shuffle TripTests */,
 				07402D722980817000F1F046 /* Shuffle TripUITests */,
 				07402D562980816E00F1F046 /* Products */,
@@ -101,7 +102,6 @@
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
 				07402D892980841500F1F046 /* MainScreen.swift */,
 				07402D822980832C00F1F046 /* Custom Views */,
-				07402D5C2980817000F1F046 /* Assets.xcassets */,
 				07402D5E2980817000F1F046 /* Preview Content */,
 			);
 			path = "Shuffle Trip";
