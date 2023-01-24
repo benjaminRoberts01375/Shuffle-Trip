@@ -6,7 +6,7 @@ import MapKit
 
 struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation()
-    let region: MKCoordinateRegion
+    var region: MKCoordinateRegion
     let pinImage: UIImage?
     let pinCoordinate: CLLocationCoordinate2D?
     var defaultRadius: CLLocationDistance {
@@ -31,10 +31,20 @@ struct RegionSelector: UIViewRepresentable {
     
     
     func makeUIView(context: Context) -> some UIView {
-        DispatchQueue.main.async { userLocation.checkIfLocationServicesIsEnabled() } // Check user location permissions async
         
         // Setup map
         let mapView = MKMapView()
+        
+        DispatchQueue.main.async {
+            if userLocation.checkIfLocationServicesIsEnabled() {
+                mapView.region = MKCoordinateRegion(
+                    center: CLLocationCoordinate2D(latitude: userLocation.locationManager?.location?.coordinate.latitude ?? MapDetails.location1.latitude, longitude: userLocation.locationManager?.location?.coordinate.longitude ?? MapDetails.location1.longitude),
+                    latitudinalMeters: defaultRadius,
+                    longitudinalMeters: defaultRadius)
+            }
+            
+        } // Check user location permissions async
+        
         mapView.region = region // Set where map is centered and zoomed
         mapView.selectableMapFeatures = [.pointsOfInterest] // Allow selection of points of interest
         mapView.pointOfInterestFilter = MapDetails.defaultFilter // Don't show these kinds of places on map
@@ -137,6 +147,10 @@ struct RegionSelector: UIViewRepresentable {
                         return nil
                     }
                 }
+            }
+            
+            if let _ = annotation as? MKUserLocation {
+                return nil
             }
             
             // No circles found, add a new circle
