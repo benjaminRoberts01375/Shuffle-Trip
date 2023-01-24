@@ -75,7 +75,6 @@ struct BottomDrawer<Content: View>: View {
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(height: 200, snapPoints: [900, 700, 500, 300, 100], content: Text("Preview"))
-        
+        TripPlanner()
     }
 }
