@@ -7,61 +7,65 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07F71A0F29808563007C7AE6 /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A0E29808563007C7AE6 /* Shuffle_TripApp.swift */; };
-		07F71A1129808563007C7AE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A1029808563007C7AE6 /* ContentView.swift */; };
-		07F71A1329808564007C7AE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F71A1229808564007C7AE6 /* Assets.xcassets */; };
-		07F71A1629808564007C7AE6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07F71A1529808564007C7AE6 /* Preview Assets.xcassets */; };
-		07F71A2029808565007C7AE6 /* Shuffle_TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A1F29808565007C7AE6 /* Shuffle_TripTests.swift */; };
-		07F71A2A29808565007C7AE6 /* Shuffle_TripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A2929808565007C7AE6 /* Shuffle_TripUITests.swift */; };
-		07F71A2C29808565007C7AE6 /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A2B29808565007C7AE6 /* Shuffle_TripUITestsLaunchTests.swift */; };
+		07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D582980816E00F1F046 /* Shuffle_TripApp.swift */; };
+		07402D5D2980817000F1F046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5C2980817000F1F046 /* Assets.xcassets */; };
+		07402D602980817000F1F046 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5F2980817000F1F046 /* Preview Assets.xcassets */; };
+		07402D6A2980817000F1F046 /* Shuffle_TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D692980817000F1F046 /* Shuffle_TripTests.swift */; };
+		07402D742980817000F1F046 /* Shuffle_TripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D732980817000F1F046 /* Shuffle_TripUITests.swift */; };
+		07402D762980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */; };
+		07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawer.swift */; };
+		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
+		07402D8A2980841500F1F046 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D892980841500F1F046 /* MainScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		07F71A1C29808565007C7AE6 /* PBXContainerItemProxy */ = {
+		07402D662980817000F1F046 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07F71A0329808563007C7AE6 /* Project object */;
+			containerPortal = 07402D4D2980816E00F1F046 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 07F71A0A29808563007C7AE6;
+			remoteGlobalIDString = 07402D542980816E00F1F046;
 			remoteInfo = "Shuffle Trip";
 		};
-		07F71A2629808565007C7AE6 /* PBXContainerItemProxy */ = {
+		07402D702980817000F1F046 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 07F71A0329808563007C7AE6 /* Project object */;
+			containerPortal = 07402D4D2980816E00F1F046 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 07F71A0A29808563007C7AE6;
+			remoteGlobalIDString = 07402D542980816E00F1F046;
 			remoteInfo = "Shuffle Trip";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		07F71A0B29808563007C7AE6 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07F71A0E29808563007C7AE6 /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
-		07F71A1029808563007C7AE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		07F71A1229808564007C7AE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		07F71A1529808564007C7AE6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		07F71A1B29808565007C7AE6 /* Shuffle TripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07F71A1F29808565007C7AE6 /* Shuffle_TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripTests.swift; sourceTree = "<group>"; };
-		07F71A2529808565007C7AE6 /* Shuffle TripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07F71A2929808565007C7AE6 /* Shuffle_TripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITests.swift; sourceTree = "<group>"; };
-		07F71A2B29808565007C7AE6 /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		07402D552980816E00F1F046 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07402D582980816E00F1F046 /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
+		07402D5C2980817000F1F046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07402D5F2980817000F1F046 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07402D652980817000F1F046 /* Shuffle TripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07402D692980817000F1F046 /* Shuffle_TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripTests.swift; sourceTree = "<group>"; };
+		07402D6F2980817000F1F046 /* Shuffle TripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07402D732980817000F1F046 /* Shuffle_TripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITests.swift; sourceTree = "<group>"; };
+		07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		07402D832980833B00F1F046 /* BottomDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawer.swift; sourceTree = "<group>"; };
+		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		07402D892980841500F1F046 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		07F71A0829808563007C7AE6 /* Frameworks */ = {
+		07402D522980816E00F1F046 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A1829808565007C7AE6 /* Frameworks */ = {
+		07402D622980817000F1F046 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A2229808565007C7AE6 /* Frameworks */ = {
+		07402D6C2980817000F1F046 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,72 +75,82 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07F71A0229808563007C7AE6 = {
+		07402D4C2980816E00F1F046 = {
 			isa = PBXGroup;
 			children = (
-				07F71A0D29808563007C7AE6 /* Shuffle Trip */,
-				07F71A1E29808565007C7AE6 /* Shuffle TripTests */,
-				07F71A2829808565007C7AE6 /* Shuffle TripUITests */,
-				07F71A0C29808563007C7AE6 /* Products */,
+				07402D572980816E00F1F046 /* Shuffle Trip */,
+				07402D682980817000F1F046 /* Shuffle TripTests */,
+				07402D722980817000F1F046 /* Shuffle TripUITests */,
+				07402D562980816E00F1F046 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		07F71A0C29808563007C7AE6 /* Products */ = {
+		07402D562980816E00F1F046 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A0B29808563007C7AE6 /* Shuffle Trip.app */,
-				07F71A1B29808565007C7AE6 /* Shuffle TripTests.xctest */,
-				07F71A2529808565007C7AE6 /* Shuffle TripUITests.xctest */,
+				07402D552980816E00F1F046 /* Shuffle Trip.app */,
+				07402D652980817000F1F046 /* Shuffle TripTests.xctest */,
+				07402D6F2980817000F1F046 /* Shuffle TripUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		07F71A0D29808563007C7AE6 /* Shuffle Trip */ = {
+		07402D572980816E00F1F046 /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A0E29808563007C7AE6 /* Shuffle_TripApp.swift */,
-				07F71A1029808563007C7AE6 /* ContentView.swift */,
-				07F71A1229808564007C7AE6 /* Assets.xcassets */,
-				07F71A1429808564007C7AE6 /* Preview Content */,
+				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
+				07402D892980841500F1F046 /* MainScreen.swift */,
+				07402D822980832C00F1F046 /* Custom Views */,
+				07402D5C2980817000F1F046 /* Assets.xcassets */,
+				07402D5E2980817000F1F046 /* Preview Content */,
 			);
 			path = "Shuffle Trip";
 			sourceTree = "<group>";
 		};
-		07F71A1429808564007C7AE6 /* Preview Content */ = {
+		07402D5E2980817000F1F046 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A1529808564007C7AE6 /* Preview Assets.xcassets */,
+				07402D5F2980817000F1F046 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		07F71A1E29808565007C7AE6 /* Shuffle TripTests */ = {
+		07402D682980817000F1F046 /* Shuffle TripTests */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A1F29808565007C7AE6 /* Shuffle_TripTests.swift */,
+				07402D692980817000F1F046 /* Shuffle_TripTests.swift */,
 			);
 			path = "Shuffle TripTests";
 			sourceTree = "<group>";
 		};
-		07F71A2829808565007C7AE6 /* Shuffle TripUITests */ = {
+		07402D722980817000F1F046 /* Shuffle TripUITests */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A2929808565007C7AE6 /* Shuffle_TripUITests.swift */,
-				07F71A2B29808565007C7AE6 /* Shuffle_TripUITestsLaunchTests.swift */,
+				07402D732980817000F1F046 /* Shuffle_TripUITests.swift */,
+				07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */,
 			);
 			path = "Shuffle TripUITests";
+			sourceTree = "<group>";
+		};
+		07402D822980832C00F1F046 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				07402D832980833B00F1F046 /* BottomDrawer.swift */,
+				07402D852980837A00F1F046 /* Blur.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07F71A0A29808563007C7AE6 /* Shuffle Trip */ = {
+		07402D542980816E00F1F046 /* Shuffle Trip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07F71A2F29808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle Trip" */;
+			buildConfigurationList = 07402D792980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle Trip" */;
 			buildPhases = (
-				07F71A0729808563007C7AE6 /* Sources */,
-				07F71A0829808563007C7AE6 /* Frameworks */,
-				07F71A0929808563007C7AE6 /* Resources */,
+				07402D512980816E00F1F046 /* Sources */,
+				07402D522980816E00F1F046 /* Frameworks */,
+				07402D532980816E00F1F046 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -144,69 +158,69 @@
 			);
 			name = "Shuffle Trip";
 			productName = "Shuffle Trip";
-			productReference = 07F71A0B29808563007C7AE6 /* Shuffle Trip.app */;
+			productReference = 07402D552980816E00F1F046 /* Shuffle Trip.app */;
 			productType = "com.apple.product-type.application";
 		};
-		07F71A1A29808565007C7AE6 /* Shuffle TripTests */ = {
+		07402D642980817000F1F046 /* Shuffle TripTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07F71A3229808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */;
+			buildConfigurationList = 07402D7C2980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */;
 			buildPhases = (
-				07F71A1729808565007C7AE6 /* Sources */,
-				07F71A1829808565007C7AE6 /* Frameworks */,
-				07F71A1929808565007C7AE6 /* Resources */,
+				07402D612980817000F1F046 /* Sources */,
+				07402D622980817000F1F046 /* Frameworks */,
+				07402D632980817000F1F046 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				07F71A1D29808565007C7AE6 /* PBXTargetDependency */,
+				07402D672980817000F1F046 /* PBXTargetDependency */,
 			);
 			name = "Shuffle TripTests";
 			productName = "Shuffle TripTests";
-			productReference = 07F71A1B29808565007C7AE6 /* Shuffle TripTests.xctest */;
+			productReference = 07402D652980817000F1F046 /* Shuffle TripTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		07F71A2429808565007C7AE6 /* Shuffle TripUITests */ = {
+		07402D6E2980817000F1F046 /* Shuffle TripUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07F71A3529808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */;
+			buildConfigurationList = 07402D7F2980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */;
 			buildPhases = (
-				07F71A2129808565007C7AE6 /* Sources */,
-				07F71A2229808565007C7AE6 /* Frameworks */,
-				07F71A2329808565007C7AE6 /* Resources */,
+				07402D6B2980817000F1F046 /* Sources */,
+				07402D6C2980817000F1F046 /* Frameworks */,
+				07402D6D2980817000F1F046 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				07F71A2729808565007C7AE6 /* PBXTargetDependency */,
+				07402D712980817000F1F046 /* PBXTargetDependency */,
 			);
 			name = "Shuffle TripUITests";
 			productName = "Shuffle TripUITests";
-			productReference = 07F71A2529808565007C7AE6 /* Shuffle TripUITests.xctest */;
+			productReference = 07402D6F2980817000F1F046 /* Shuffle TripUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		07F71A0329808563007C7AE6 /* Project object */ = {
+		07402D4D2980816E00F1F046 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					07F71A0A29808563007C7AE6 = {
+					07402D542980816E00F1F046 = {
 						CreatedOnToolsVersion = 14.2;
 					};
-					07F71A1A29808565007C7AE6 = {
+					07402D642980817000F1F046 = {
 						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 07F71A0A29808563007C7AE6;
+						TestTargetID = 07402D542980816E00F1F046;
 					};
-					07F71A2429808565007C7AE6 = {
+					07402D6E2980817000F1F046 = {
 						CreatedOnToolsVersion = 14.2;
-						TestTargetID = 07F71A0A29808563007C7AE6;
+						TestTargetID = 07402D542980816E00F1F046;
 					};
 				};
 			};
-			buildConfigurationList = 07F71A0629808563007C7AE6 /* Build configuration list for PBXProject "Shuffle Trip" */;
+			buildConfigurationList = 07402D502980816E00F1F046 /* Build configuration list for PBXProject "Shuffle Trip" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -214,36 +228,36 @@
 				en,
 				Base,
 			);
-			mainGroup = 07F71A0229808563007C7AE6;
-			productRefGroup = 07F71A0C29808563007C7AE6 /* Products */;
+			mainGroup = 07402D4C2980816E00F1F046;
+			productRefGroup = 07402D562980816E00F1F046 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07F71A0A29808563007C7AE6 /* Shuffle Trip */,
-				07F71A1A29808565007C7AE6 /* Shuffle TripTests */,
-				07F71A2429808565007C7AE6 /* Shuffle TripUITests */,
+				07402D542980816E00F1F046 /* Shuffle Trip */,
+				07402D642980817000F1F046 /* Shuffle TripTests */,
+				07402D6E2980817000F1F046 /* Shuffle TripUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		07F71A0929808563007C7AE6 /* Resources */ = {
+		07402D532980816E00F1F046 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F71A1629808564007C7AE6 /* Preview Assets.xcassets in Resources */,
-				07F71A1329808564007C7AE6 /* Assets.xcassets in Resources */,
+				07402D602980817000F1F046 /* Preview Assets.xcassets in Resources */,
+				07402D5D2980817000F1F046 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A1929808565007C7AE6 /* Resources */ = {
+		07402D632980817000F1F046 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A2329808565007C7AE6 /* Resources */ = {
+		07402D6D2980817000F1F046 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -253,49 +267,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		07F71A0729808563007C7AE6 /* Sources */ = {
+		07402D512980816E00F1F046 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F71A1129808563007C7AE6 /* ContentView.swift in Sources */,
-				07F71A0F29808563007C7AE6 /* Shuffle_TripApp.swift in Sources */,
+				07402D8A2980841500F1F046 /* MainScreen.swift in Sources */,
+				07402D862980837A00F1F046 /* Blur.swift in Sources */,
+				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
+				07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A1729808565007C7AE6 /* Sources */ = {
+		07402D612980817000F1F046 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F71A2029808565007C7AE6 /* Shuffle_TripTests.swift in Sources */,
+				07402D6A2980817000F1F046 /* Shuffle_TripTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07F71A2129808565007C7AE6 /* Sources */ = {
+		07402D6B2980817000F1F046 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07F71A2A29808565007C7AE6 /* Shuffle_TripUITests.swift in Sources */,
-				07F71A2C29808565007C7AE6 /* Shuffle_TripUITestsLaunchTests.swift in Sources */,
+				07402D742980817000F1F046 /* Shuffle_TripUITests.swift in Sources */,
+				07402D762980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		07F71A1D29808565007C7AE6 /* PBXTargetDependency */ = {
+		07402D672980817000F1F046 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 07F71A0A29808563007C7AE6 /* Shuffle Trip */;
-			targetProxy = 07F71A1C29808565007C7AE6 /* PBXContainerItemProxy */;
+			target = 07402D542980816E00F1F046 /* Shuffle Trip */;
+			targetProxy = 07402D662980817000F1F046 /* PBXContainerItemProxy */;
 		};
-		07F71A2729808565007C7AE6 /* PBXTargetDependency */ = {
+		07402D712980817000F1F046 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 07F71A0A29808563007C7AE6 /* Shuffle Trip */;
-			targetProxy = 07F71A2629808565007C7AE6 /* PBXContainerItemProxy */;
+			target = 07402D542980816E00F1F046 /* Shuffle Trip */;
+			targetProxy = 07402D702980817000F1F046 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		07F71A2D29808565007C7AE6 /* Debug */ = {
+		07402D772980817000F1F046 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -355,7 +371,7 @@
 			};
 			name = Debug;
 		};
-		07F71A2E29808565007C7AE6 /* Release */ = {
+		07402D782980817000F1F046 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -409,7 +425,7 @@
 			};
 			name = Release;
 		};
-		07F71A3029808565007C7AE6 /* Debug */ = {
+		07402D7A2980817000F1F046 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -438,7 +454,7 @@
 			};
 			name = Debug;
 		};
-		07F71A3129808565007C7AE6 /* Release */ = {
+		07402D7B2980817000F1F046 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -467,7 +483,7 @@
 			};
 			name = Release;
 		};
-		07F71A3329808565007C7AE6 /* Debug */ = {
+		07402D7D2980817000F1F046 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -487,7 +503,7 @@
 			};
 			name = Debug;
 		};
-		07F71A3429808565007C7AE6 /* Release */ = {
+		07402D7E2980817000F1F046 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -507,7 +523,7 @@
 			};
 			name = Release;
 		};
-		07F71A3629808565007C7AE6 /* Debug */ = {
+		07402D802980817000F1F046 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -525,7 +541,7 @@
 			};
 			name = Debug;
 		};
-		07F71A3729808565007C7AE6 /* Release */ = {
+		07402D812980817000F1F046 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
@@ -546,43 +562,43 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07F71A0629808563007C7AE6 /* Build configuration list for PBXProject "Shuffle Trip" */ = {
+		07402D502980816E00F1F046 /* Build configuration list for PBXProject "Shuffle Trip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07F71A2D29808565007C7AE6 /* Debug */,
-				07F71A2E29808565007C7AE6 /* Release */,
+				07402D772980817000F1F046 /* Debug */,
+				07402D782980817000F1F046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07F71A2F29808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle Trip" */ = {
+		07402D792980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle Trip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07F71A3029808565007C7AE6 /* Debug */,
-				07F71A3129808565007C7AE6 /* Release */,
+				07402D7A2980817000F1F046 /* Debug */,
+				07402D7B2980817000F1F046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07F71A3229808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */ = {
+		07402D7C2980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07F71A3329808565007C7AE6 /* Debug */,
-				07F71A3429808565007C7AE6 /* Release */,
+				07402D7D2980817000F1F046 /* Debug */,
+				07402D7E2980817000F1F046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07F71A3529808565007C7AE6 /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */ = {
+		07402D7F2980817000F1F046 /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07F71A3629808565007C7AE6 /* Debug */,
-				07F71A3729808565007C7AE6 /* Release */,
+				07402D802980817000F1F046 /* Debug */,
+				07402D812980817000F1F046 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 07F71A0329808563007C7AE6 /* Project object */;
+	rootObject = 07402D4D2980816E00F1F046 /* Project object */;
 }
