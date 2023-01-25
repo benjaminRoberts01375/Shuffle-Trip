@@ -20,6 +20,17 @@ struct RegionSelector: UIViewRepresentable {
         mapView.showsScale = true                                   // Show scale when zooming
         mapView.showsCompass = true                                 // Show compass to reorient when not facing north
         
+        userLocation.setupLocationManager()                         // Get permission from user to show on map
+        
+        userLocation.onAuthorizationChanged = {                     // If user's preferences change, run this code to set map position accordingly
+            DispatchQueue.main.async { // Check user location permissions async
+                if userLocation.checkLocationAuthorization() {
+                    mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? MapDetails.location2, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true)
+                    print("Executed")
+                }
+            }
+        }
+        
         return mapView
     }
     
