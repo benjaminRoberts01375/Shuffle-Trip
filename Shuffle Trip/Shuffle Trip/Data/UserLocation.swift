@@ -5,42 +5,32 @@ import MapKit
 
 final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
+    var onAuthorizationChanged: (() -> Void)?
     
-    func checkIfLocationServicesIsEnabled() -> Bool{
-        if CLLocationManager.locationServicesEnabled() { // Are location services enabled in general
-            locationManager = CLLocationManager()
-            locationManager!.delegate = self
-            locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-            print("Location services are enabled")
-            return true
-        }
-        else {
-            print("Location services are currently disabled :(")
-            return false;
-        }
+    func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.desiredAccuracy = kCLLocationAccuracyBest
+        print("Location manager setup is complete")
     }
     
-    func checkLocationAuthorization() {
-        guard let locationManager = locationManager else {return}
+    func checkLocationAuthorization() -> Bool {
+        guard let locationManager = locationManager else {return false}
         
         switch locationManager.authorizationStatus {
-        case .notDetermined:
-            locationManager.requestWhenInUseAuthorization()
-        case .denied:
-            print("that's fine. no perms")
-        case .restricted: // Parental controls?
-            print("Location controls restricted")
-        case .authorizedAlways:
-            print("lots of location!")
-        case .authorizedWhenInUse:
-            print("Great! Here you are!")
+        case .notDetermined, .restricted, .denied:
+            return false                                        // Defintely not enabled
+        case .authorizedAlways, .authorizedWhenInUse:
+            return CLLocationManager.locationServicesEnabled()  // Final check for if location services are enabled
         @unknown default:
-            locationManager.requestWhenInUseAuthorization()
+            return false
         }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { // Permission changed or created
         print("Permission changed")
-        checkLocationAuthorization()
+        
+        guard let locationManager = locationManager else { return }
+        locationManager.authorizationStatus == .notDetermined ? locationManager.requestWhenInUseAuthorization() : onAuthorizationChanged?()
     }
 }
