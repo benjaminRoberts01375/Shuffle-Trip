@@ -26,7 +26,6 @@ struct RegionSelector: UIViewRepresentable {
             DispatchQueue.main.async { // Check user location permissions async
                 if userLocation.checkLocationAuthorization() {
                     mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? MapDetails.location2, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true)
-                    print("Executed")
                 }
             }
         }

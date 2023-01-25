@@ -11,7 +11,6 @@ final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate 
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-        print("Location manager setup is complete")
     }
     
     func checkLocationAuthorization() -> Bool {
@@ -28,8 +27,6 @@ final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate 
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { // Permission changed or created
-        print("Permission changed")
-        
         guard let locationManager = locationManager else { return }
         locationManager.authorizationStatus == .notDetermined ? locationManager.requestWhenInUseAuthorization() : onAuthorizationChanged?()
     }
