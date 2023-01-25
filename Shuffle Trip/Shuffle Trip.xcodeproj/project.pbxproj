@@ -17,7 +17,7 @@
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
 		07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* MainScreenMV.swift */; };
-		07F71A3F29808980007C7AE6 /* Default_Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* Default_Location.swift */; };
+		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
 		07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4029808A3F007C7AE6 /* UserLocation.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +52,9 @@
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		07F71A3A29808788007C7AE6 /* MainScreenMV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenMV.swift; sourceTree = "<group>"; };
-		07F71A3E29808980007C7AE6 /* Default_Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Default_Location.swift; sourceTree = "<group>"; };
+		07F71A3E29808980007C7AE6 /* MapDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetails.swift; sourceTree = "<group>"; };
 		07F71A4029808A3F007C7AE6 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +106,7 @@
 		07402D572980816E00F1F046 /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
+				07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */,
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
 				07F71A3A29808788007C7AE6 /* MainScreenMV.swift */,
 				07F71A3829808773007C7AE6 /* RegionSelector.swift */,
@@ -161,7 +163,7 @@
 		07F71A3D29808961007C7AE6 /* Default Data */ = {
 			isa = PBXGroup;
 			children = (
-				07F71A3E29808980007C7AE6 /* Default_Location.swift */,
+				07F71A3E29808980007C7AE6 /* MapDetails.swift */,
 			);
 			path = "Default Data";
 			sourceTree = "<group>";
@@ -300,7 +302,7 @@
 				07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
-				07F71A3F29808980007C7AE6 /* Default_Location.swift in Sources */,
+				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */,
 			);
@@ -464,6 +466,8 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to orient yourself on the map using your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -493,6 +497,8 @@
 				DEVELOPMENT_TEAM = 6US573XH9R;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Shuffle-Trip-Info.plist";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to orient yourself on the map using your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

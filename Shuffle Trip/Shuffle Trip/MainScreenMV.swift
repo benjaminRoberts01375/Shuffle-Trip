@@ -5,7 +5,8 @@ import SwiftUI
 
 struct MainScreenMV: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        RegionSelector()
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
