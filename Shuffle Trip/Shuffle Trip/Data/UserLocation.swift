@@ -6,24 +6,12 @@ import MapKit
 final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate {
     var locationManager: CLLocationManager?
     var onAuthorizationChanged: (() -> Void)?
+    var locationServicesEnabled: Bool = false
     
     func setupLocationManager() {
         locationManager = CLLocationManager()
         locationManager?.delegate = self
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
-    }
-    
-    func checkLocationAuthorization() -> Bool {
-        guard let locationManager = locationManager else {return false}
-        
-        switch locationManager.authorizationStatus {
-        case .notDetermined, .restricted, .denied:
-            return false                                        // Defintely not enabled
-        case .authorizedAlways, .authorizedWhenInUse:
-            return CLLocationManager.locationServicesEnabled()  // Final check for if location services are enabled
-        @unknown default:
-            return false
-        }
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { // Permission changed or created

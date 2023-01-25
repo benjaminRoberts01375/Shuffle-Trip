@@ -19,6 +19,7 @@ struct RegionSelector: UIViewRepresentable {
         mapView.showsUserLocation = true                            // Show user
         mapView.showsScale = true                                   // Show scale when zooming
         mapView.showsCompass = true                                 // Show compass to reorient when not facing north
+        mapView.region = MapDetails.region2                         // Default region
         
         // Setting up coordinator
         mapView.delegate = context.coordinator
@@ -26,11 +27,7 @@ struct RegionSelector: UIViewRepresentable {
         // Getting the user's location
         userLocation.setupLocationManager()                         // Get permission from user to show on map
         userLocation.onAuthorizationChanged = {
-            DispatchQueue.main.async { // Check user location permissions async
-                if userLocation.checkLocationAuthorization() {
-                    mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? MapDetails.location2, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true)
-                }
-            }
+            mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true)
         }                // If user's preferences change, run this code to set map position accordingly
         
         // Setup long presses
@@ -39,7 +36,7 @@ struct RegionSelector: UIViewRepresentable {
         
         return mapView
     }
-
+    
     func updateUIView(_ uiView: UIViewType, context: Context) {
         print("Hello world!")
     }

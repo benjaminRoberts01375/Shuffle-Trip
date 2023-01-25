@@ -40,6 +40,7 @@ class Coordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGP
         let location = gestureRecognizer.location(in: mapView)                          // Get the location on screen of the tap
         let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)      // Convert the screen location to the map location
         
+        // Add or remove trip locations
         if let circle = mapView.overlays.last(where: { overlay in                                               // Instead of iterating over each overlay, grab the one that meets this criteria. Use last to get highest/latest circle (expected behavior)
             guard let mkCircle = overlay as? MKCircle else { return false }                                     // Ensure that the circle is an MKCircle
             return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(mkCircle.coordinate)) <= mkCircle.radius // Return the condition of if the long press happened within the MKCircle
