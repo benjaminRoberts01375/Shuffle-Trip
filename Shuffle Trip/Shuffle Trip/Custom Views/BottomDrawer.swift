@@ -34,7 +34,7 @@ struct BottomDrawer<Content: View>: View {
                 .frame(width: geometry.size.width, height: geometry.size.height) // Fill the outer VStack
                 .background(BlurView(style: .systemUltraThinMaterial))
                 .cornerRadius(12)
-                .shadow(radius: 10)
+                .shadow(radius: 3)
                 .offset(y: max(geometry.size.height - self.offset, 0))
                 .gesture( // Drag controller
                     DragGesture()

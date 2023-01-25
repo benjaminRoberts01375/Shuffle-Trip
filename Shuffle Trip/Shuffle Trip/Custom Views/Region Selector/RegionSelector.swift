@@ -6,11 +6,13 @@ import MapKit
 
 struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
+    let logoPosition: CGFloat
     /**
      Initalize the map
      */
     func makeUIView(context: Context) -> some UIView {
         let mapView = MKMapView()
+        mapView.layoutMargins.bottom = logoPosition + 5
         
         // Configure map
         let mapConfig = MKStandardMapConfiguration()
@@ -50,7 +52,7 @@ struct RegionSelector: UIViewRepresentable {
 
 struct RegionSelector_Previews: PreviewProvider {
     static var previews: some View {
-        RegionSelector()
+        RegionSelector(logoPosition: 0)
             .edgesIgnoringSafeArea(.all)
     }
 }

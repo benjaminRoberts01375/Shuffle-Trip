@@ -5,8 +5,16 @@ import SwiftUI
 
 struct MainScreenMV: View {
     var body: some View {
-        RegionSelector()
-            .edgesIgnoringSafeArea(.all)
+        GeometryReader { geometry in
+            let cardSnapPositions: [CGFloat] = [90, geometry.size.height/4, geometry.size.height/3, geometry.size.height/2, geometry.size.height + geometry.safeAreaInsets.bottom]
+            
+            ZStack {
+                RegionSelector(logoPosition: cardSnapPositions[0] - geometry.safeAreaInsets.bottom)
+                    .edgesIgnoringSafeArea(.all)
+                BottomDrawer(height: cardSnapPositions[0], snapPoints: cardSnapPositions, content: Text(String(Double(geometry.safeAreaInsets.bottom))))
+            }
+            
+        }
     }
 }
 
