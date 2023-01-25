@@ -20,6 +20,7 @@
 		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
 		07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4029808A3F007C7AE6 /* UserLocation.swift */; };
 		07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */; };
+		07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4629810133007C7AE6 /* TripLocations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		07F71A4029808A3F007C7AE6 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Info.plist"; sourceTree = SOURCE_ROOT; };
 		07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectorCoordinator.swift; sourceTree = "<group>"; };
+		07F71A4629810133007C7AE6 /* TripLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			children = (
 				07F71A3D29808961007C7AE6 /* Default Data */,
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
+				07F71A4629810133007C7AE6 /* TripLocations.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
