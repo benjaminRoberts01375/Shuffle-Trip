@@ -33,6 +33,9 @@ struct RegionSelector: UIViewRepresentable {
             }
         }                // If user's preferences change, run this code to set map position accordingly
         
+        // Setup long presses
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(Coordinator.handleLongPress(gestureRecognizer:)))
+        mapView.addGestureRecognizer(longPressGestureRecognizer)
         
         return mapView
     }
