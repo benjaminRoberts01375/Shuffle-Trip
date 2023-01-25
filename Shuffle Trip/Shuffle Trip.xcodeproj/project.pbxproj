@@ -19,6 +19,7 @@
 		07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* MainScreenMV.swift */; };
 		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
 		07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4029808A3F007C7AE6 /* UserLocation.swift */; };
+		07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		07F71A3E29808980007C7AE6 /* MapDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetails.swift; sourceTree = "<group>"; };
 		07F71A4029808A3F007C7AE6 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Shuffle-Trip-Info.plist"; sourceTree = SOURCE_ROOT; };
+		07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectorCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +111,6 @@
 				07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */,
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
 				07F71A3A29808788007C7AE6 /* MainScreenMV.swift */,
-				07F71A3829808773007C7AE6 /* RegionSelector.swift */,
 				07402D822980832C00F1F046 /* Custom Views */,
 				07F71A3C2980894B007C7AE6 /* Data */,
 				07402D5E2980817000F1F046 /* Preview Content */,
@@ -145,6 +146,7 @@
 		07402D822980832C00F1F046 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				07F71A432980EABD007C7AE6 /* Region Selector */,
 				07402D832980833B00F1F046 /* BottomDrawer.swift */,
 				07402D852980837A00F1F046 /* Blur.swift */,
 			);
@@ -166,6 +168,15 @@
 				07F71A3E29808980007C7AE6 /* MapDetails.swift */,
 			);
 			path = "Default Data";
+			sourceTree = "<group>";
+		};
+		07F71A432980EABD007C7AE6 /* Region Selector */ = {
+			isa = PBXGroup;
+			children = (
+				07F71A3829808773007C7AE6 /* RegionSelector.swift */,
+				07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */,
+			);
+			path = "Region Selector";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +312,7 @@
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
+				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
