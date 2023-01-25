@@ -39,20 +39,15 @@ class Coordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGP
         let mapView = gestureRecognizer.view as! MKMapView                              // Get the mapView from the gestureRecognizer
         let location = gestureRecognizer.location(in: mapView)                          // Get the location on screen of the tap
         let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)      // Convert the screen location to the map location
-        let MKTouchCoordinate = MKMapPoint(touchCoordinate)                             // Convert the datatype to a MKMapPoint
         
-        // Remove a circle via long pressing on it
-        for overlay in mapView.overlays.reversed() {                                            // Reverse order to remove top most circle
-            if let circle = overlay as? MKCircle {                                              // Convert generic overlay to MKCircle for access to circle specific functions
-                let distance = MKTouchCoordinate.distance(to: MKMapPoint(circle.coordinate))    // Determine distance between gesture and circle's center
-                if distance <= circle.radius {
-                    mapView.removeOverlay(overlay)                                              // Remove the circle if the gesture's within the radius
-                    return                                                                      // Short circuit
-                }
-            }
+        if let circle = mapView.overlays.last(where: { overlay in                                               // Instead of iterating over each overlay, grab the one that meets this criteria. Use last to get highest/latest circle (expected behavior)
+            guard let mkCircle = overlay as? MKCircle else { return false }                                     // Ensure that the circle is an MKCircle
+            return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(mkCircle.coordinate)) <= mkCircle.radius // Return the condition of if the long press happened within the MKCircle
+        }) {
+            mapView.removeOverlay(circle)                                                                       // If the condition was true, remove the circle
         }
-        
-        // Add an MKCircle if we got this far
-        mapView.addOverlay(MKCircle(center: touchCoordinate, radius: MapDetails.defaultRadius))
+        else {
+            mapView.addOverlay(MKCircle(center: touchCoordinate, radius: MapDetails.defaultRadius))             // If the condition was false, add a circle
+        }
     }
 }
