@@ -13,12 +13,17 @@ struct SearchBar: UIViewRepresentable {
         searchBar.keyboardType = .asciiCapable
         searchBar.autocorrectionType = .no
         
+        searchBar.delegate = context.coordinator
         
         return searchBar
     }
     
     func updateUIView(_ searchBar: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
         print("Search update")
+    }
+    
+    func makeCoordinator() -> SearchCoordinator {
+        SearchCoordinator(self)
     }
 }
 
