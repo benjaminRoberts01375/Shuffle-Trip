@@ -8,17 +8,16 @@ struct BottomDrawer<Content: View>: View {
     @State var offset: CGFloat
     @State var offsetCache:CGFloat = 0
     @Binding var goFull: Bool
-    @State private var previousDrag: CGFloat
+    @State private var previousDrag: CGFloat = 0
     @Environment(\.colorScheme) var colorScheme
     @State var backgroundDim: Double = 0.0
     let snapPoints: [CGFloat]
     var content: Content
     
-    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat], content: Content) {
+    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat] = [500], content: Content) {
         self._goFull = goFull
-        self._offset = State(initialValue: offset) // Pre-set values since offset and some others are needed before they can be setup
-        self._previousDrag = State(initialValue: 0)
-        self.snapPoints = snapPoints
+        self._offset = State(initialValue: offset)                  // Pre-set values since offset and some others are needed before they can be setup
+        self.snapPoints = snapPoints.isEmpty ? [500] : snapPoints   // Ensure that there will always be a point in snapPoints
         self.content = content
     }
     
