@@ -5,16 +5,16 @@ import SwiftUI
 
 struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style
-    @Binding var opacity: Double
+    var opacity: CGFloat
     
     func makeUIView(context: Context) -> UIVisualEffectView {
         let view = UIVisualEffectView(effect: UIBlurEffect(style: style))
-        view.backgroundColor = .systemBackground.withAlphaComponent(CGFloat(opacity * 2))
+        view.backgroundColor = .systemBackground.withAlphaComponent(opacity)
         return view
     }
     
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {
         uiView.effect = UIBlurEffect(style: style)
-        uiView.backgroundColor = .systemBackground.withAlphaComponent(CGFloat(opacity * 2))
+        uiView.backgroundColor = .systemBackground.withAlphaComponent(opacity)
     }
 }

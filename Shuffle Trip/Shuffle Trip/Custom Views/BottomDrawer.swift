@@ -25,7 +25,7 @@ struct BottomDrawer<Content: View>: View {
         GeometryReader { geometry in
             ZStack {
                 Color.black
-                    .opacity(backgroundDim)
+                    .opacity(backgroundDim / 2)
                     .allowsHitTesting(false)
                 VStack {                                // The drawer itself
                     Capsule()                           // Grabber
@@ -37,7 +37,7 @@ struct BottomDrawer<Content: View>: View {
                     Spacer()                            // Shove all content to the top
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)    // Fill the outer VStack
-                .background(BlurView(style: .systemUltraThinMaterial, opacity: $backgroundDim))              // Set frosted background
+                .background(BlurView(style: .systemUltraThinMaterial, opacity: backgroundDim))              // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)
                 .offset(y: geometry.size.height - offset)                           // Lower offset = lower on screen
@@ -46,9 +46,11 @@ struct BottomDrawer<Content: View>: View {
                         if value {                                                  // If goFull, then bounce up to max size
                             offsetCache = offset
                             offset = snapPoints.max() ?? 500
+                            setBackgroundOpacity()
                             return
                         }
                         offset = offsetCache                                        // Otherwise, restore to previous position
+                        setBackgroundOpacity()
                     }
                 }
                 .gesture (                                                          // Drag controller
@@ -83,7 +85,7 @@ struct BottomDrawer<Content: View>: View {
     func setBackgroundOpacity() {
         let fadeAtPercent: CGFloat = 0.85
         let maxValue = snapPoints.max()!
-        backgroundDim = ((offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent) * 2))
+        backgroundDim = (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
     }
 }
 

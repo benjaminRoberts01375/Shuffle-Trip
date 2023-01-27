@@ -16,7 +16,7 @@ struct MainScreenMV: View {
                     .edgesIgnoringSafeArea(.all)
                 VStack {
                     Color.clear
-                        .background(BlurView(style: .systemUltraThinMaterial, opacity: .constant(0.0)))
+                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
                         .frame(height: geometry.safeAreaInsets.top)
                     Spacer()
                 }
