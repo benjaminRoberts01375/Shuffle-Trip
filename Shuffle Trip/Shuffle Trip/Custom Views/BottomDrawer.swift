@@ -23,7 +23,10 @@ struct BottomDrawer<Content: View>: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack {
+            ZStack {
+                Color.black
+                    .opacity(backgroundDim)
+                    .allowsHitTesting(false)
                 VStack {                                // The drawer itself
                     Capsule()                           // Grabber
                         .fill(Color.secondary)          // Dynamic color for dark/light mode
@@ -53,7 +56,6 @@ struct BottomDrawer<Content: View>: View {
                         .onChanged { value in
                             offset -= value.translation.height - previousDrag       // Inverted to allow for smaller values to be at bottom
                             previousDrag = value.translation.height                 // Save current drag distance to allow for relative positioning on the line above
-                            
                             setBackgroundOpacity()
                         }
                         .onEnded { value in
@@ -73,7 +75,7 @@ struct BottomDrawer<Content: View>: View {
                         }
                 )
             }
-            .background(.black.opacity(backgroundDim)) // Trying to change this value
+//            .background(.black.opacity(backgroundDim)) // Trying to change this value
         }
         .edgesIgnoringSafeArea(.all)
     }
