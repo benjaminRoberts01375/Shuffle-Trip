@@ -37,7 +37,7 @@ struct BottomDrawer<Content: View>: View {
                     Spacer()                            // Shove all content to the top
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height)    // Fill the outer VStack
-                .background(BlurView(style: .systemUltraThinMaterial))              // Set frosted background
+                .background(BlurView(style: .systemUltraThinMaterial, opacity: $backgroundDim))              // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)
                 .offset(y: geometry.size.height - offset)                           // Lower offset = lower on screen
