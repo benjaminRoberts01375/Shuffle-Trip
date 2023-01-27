@@ -14,6 +14,12 @@ struct MainScreenMV: View {
             ZStack {
                 RegionSelector(logoPosition: (cardSnapPositions.min() ?? 500) - geometry.safeAreaInsets.bottom)
                     .edgesIgnoringSafeArea(.all)
+                VStack {
+                    Color.clear
+                        .background(BlurView(style: .systemUltraThinMaterial))
+                        .frame(height: geometry.safeAreaInsets.top)
+                    Spacer()
+                }
                 .edgesIgnoringSafeArea(.all)
                 BottomDrawer(
                     goFull: $userIsSearching,
