@@ -5,6 +5,7 @@ import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
     @State var text: String = ""
+    @Binding var userIsSearching: Bool
     
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar: UISearchBar = UISearchBar()
@@ -23,12 +24,12 @@ struct SearchBar: UIViewRepresentable {
     }
     
     func makeCoordinator() -> SearchCoordinator {
-        SearchCoordinator(self)
+        SearchCoordinator(userIsSearching: $userIsSearching)
     }
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar()
+        SearchBar(userIsSearching: .constant(false))
     }
 }

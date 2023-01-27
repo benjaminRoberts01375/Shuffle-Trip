@@ -34,8 +34,8 @@ struct RegionSelector: UIViewRepresentable {
             mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true) }                // If user's preferences change, run this code to set map position accordingly
         
         // Setup long presses
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleLongPress(gestureRecognizer:)))  // Call function when long press happens
-        mapView.addGestureRecognizer(longPressGestureRecognizer)                                                                                                        // Let the map know about long presses
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleLongPress(gestureRecognizer:)))   // Call function when long press happens
+        mapView.addGestureRecognizer(longPressGestureRecognizer)                                                                                                            // Let the map know about long presses
         
         return mapView
     }
@@ -45,7 +45,7 @@ struct RegionSelector: UIViewRepresentable {
     }
     
     func makeCoordinator() -> MapCoordinator {
-        Coordinator(self)
+        MapCoordinator()
     }
 }
 

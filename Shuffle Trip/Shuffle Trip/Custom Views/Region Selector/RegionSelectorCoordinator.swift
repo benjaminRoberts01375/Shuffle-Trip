@@ -5,12 +5,6 @@ import SwiftUI
 import MapKit
 
 class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGPT, but *very* heavily modified
-    var parent: RegionSelector
-    
-    init(_ parent: RegionSelector) {
-        self.parent = parent
-    }
-    
     /**
      How to render MKCircles. This is usually called per overlay when that overlay is created.
      */
