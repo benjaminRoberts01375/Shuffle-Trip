@@ -10,6 +10,7 @@ struct BottomDrawer<Content: View>: View {
     @Binding var goFull: Bool
     @State private var previousDrag: CGFloat
     @Environment(\.colorScheme) var colorScheme
+    @State var backgroundDim: Double = 0.0
     let snapPoints: [CGFloat]
     var content: Content
     
@@ -53,25 +54,35 @@ struct BottomDrawer<Content: View>: View {
                         .onChanged { value in
                             offset -= value.translation.height - previousDrag       // Inverted to allow for smaller values to be at bottom
                             previousDrag = value.translation.height                 // Save current drag distance to allow for relative positioning on the line above
+                            
+                            setBackgroundOpacity()
                         }
                         .onEnded { value in
                             if snapPoints.count > 0 {
                                 withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
+                                    let distances = snapPoints.map{abs(offset - $0)}                      // Figure out how far away sheet is from provided heights
                                     if goFull {
-                                        offset = snapPoints.max() ?? 500
+                                        offset = snapPoints.max()!
                                     }
                                     else {
-                                        let distances = snapPoints.map{abs(offset - $0)}                            // Figure out how far away sheet is from provided heights
-                                        offset = snapPoints[distances.firstIndex(of: distances.min() ?? 500) ?? 0]  // Find closest height and set it
+                                        offset = snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
                                     }
+                                    setBackgroundOpacity()
                                 }
                             }
                             previousDrag = 0 // Reset dragging
                         }
                 )
             }
+            .background(.black.opacity(backgroundDim)) // Trying to change this value
         }
         .edgesIgnoringSafeArea(.all)
+    }
+    
+    func setBackgroundOpacity() {
+        let fadeAtPercent: CGFloat = 0.85
+        let maxValue = snapPoints.max()!
+        backgroundDim = ((offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent) * 2))
     }
 }
 
