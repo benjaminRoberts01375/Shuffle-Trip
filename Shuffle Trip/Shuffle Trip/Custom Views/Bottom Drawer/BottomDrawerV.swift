@@ -40,16 +40,19 @@ struct BottomDrawer<Content: View>: View {
                 .shadow(radius: 3)
                 .offset(y: geometry.size.height - offset)                                       // Lower offset = lower on screen
                 .onChange(of: viewModel.goFull) { value in                                      // Is only called when goFull changes
-                    withAnimation (.interactiveSpring(response: 0.3, dampingFraction: 0.75)) {
                         if value {                                  // If goFull, then bounce up to max size
-                            offsetCache = offset
-                            offset = viewModel.snapPoints.max()!
+                            withAnimation(.linear(duration: 0.2)) {
+                                offsetCache = offset
+                                offset = viewModel.snapPoints.max()!
+                                setBackgroundOpacity()
+                            }
                         }
                         else {
-                            offset = offsetCache                    // Otherwise, restore to previous position
+                            withAnimation (.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
+                                offset = offsetCache                    // Otherwise, restore to previous position
+                                setBackgroundOpacity()
+                            }
                         }
-                        setBackgroundOpacity()
-                    }
                 }
                 .gesture (                                                                                          // Drag controller
                     DragGesture()
