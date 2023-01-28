@@ -6,19 +6,17 @@ import SwiftUI
 // Content: Generic type that conforms to view
 struct BottomDrawer<Content: View>: View {
     @State var offset: CGFloat
-    @State var offsetCache:CGFloat = 0
-    @Binding var goFull: Bool
-    @State private var previousDrag: CGFloat = 0
+    @State var previousDrag: CGFloat = 0
+    @State var offsetCache: CGFloat = 0
     @Environment(\.colorScheme) var colorScheme
     @State var backgroundDim: Double = 0.0
-    let snapPoints: [CGFloat]
     var content: Content
+    var viewModel: BottomDrawerVM<Content>
     
-    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat] = [500], content: Content) {
-        self._goFull = goFull
-        self._offset = State(initialValue: offset)                  // Pre-set values since offset and some others are needed before they can be setup
-        self.snapPoints = snapPoints.isEmpty ? [500] : snapPoints   // Ensure that there will always be a point in snapPoints
-        self.content = content
+    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat], content: Content) {
+        self._offset = State(initialValue: offset)                              // Pre-set values since offset and some others are needed before they can be setup
+        self.content = content                                                  // Content to show on card
+        self.viewModel = BottomDrawerVM(goFull: goFull, snapPoints: snapPoints) // Initialize the view model
     }
     
     var body: some View {
@@ -41,15 +39,15 @@ struct BottomDrawer<Content: View>: View {
                 .cornerRadius(12)
                 .shadow(radius: 3)
                 .offset(y: geometry.size.height - offset)                           // Lower offset = lower on screen
-                .onChange(of: goFull) { value in                                    // Is only called when goFull changes
+                .onChange(of: viewModel.goFull) { value in                                    // Is only called when goFull changes
                     withAnimation (.interactiveSpring(response: 0.25, dampingFraction: 0.75)) {
                         if value {                                                  // If goFull, then bounce up to max size
                             offsetCache = offset
-                            offset = snapPoints.max() ?? 500
-                            setBackgroundOpacity()
-                            return
+                            offset = viewModel.snapPoints.max()!
                         }
-                        offset = offsetCache                                        // Otherwise, restore to previous position
+                        else {
+                            offset = offsetCache                                        // Otherwise, restore to previous position
+                        }
                         setBackgroundOpacity()
                     }
                 }
@@ -61,14 +59,14 @@ struct BottomDrawer<Content: View>: View {
                             setBackgroundOpacity()
                         }
                         .onEnded { value in
-                            if snapPoints.count > 0 {
+                            if viewModel.snapPoints.count > 0 {
                                 withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
-                                    let distances = snapPoints.map{abs(offset - $0)}                      // Figure out how far away sheet is from provided heights
-                                    if goFull {
-                                        offset = snapPoints.max()!
+                                    let distances = viewModel.snapPoints.map{abs(offset - $0)}                      // Figure out how far away sheet is from provided heights
+                                    if viewModel.goFull {
+                                        offset = viewModel.snapPoints.max()!
                                     }
                                     else {
-                                        offset = snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
+                                        offset = viewModel.snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
                                     }
                                     setBackgroundOpacity()
                                 }
@@ -77,14 +75,13 @@ struct BottomDrawer<Content: View>: View {
                         }
                 )
             }
-//            .background(.black.opacity(backgroundDim)) // Trying to change this value
         }
         .edgesIgnoringSafeArea(.all)
     }
     
     func setBackgroundOpacity() {
         let fadeAtPercent: CGFloat = 0.85
-        let maxValue = snapPoints.max()!
+        let maxValue = viewModel.snapPoints.max()!
         backgroundDim = (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
     }
 }

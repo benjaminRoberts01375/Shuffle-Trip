@@ -13,9 +13,10 @@
 		07402D6A2980817000F1F046 /* Shuffle_TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D692980817000F1F046 /* Shuffle_TripTests.swift */; };
 		07402D742980817000F1F046 /* Shuffle_TripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D732980817000F1F046 /* Shuffle_TripUITests.swift */; };
 		07402D762980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */; };
-		07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawer.swift */; };
+		07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawerV.swift */; };
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
+		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
 		07F71A3B29808788007C7AE6 /* MainScreenMV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* MainScreenMV.swift */; };
 		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
@@ -52,9 +53,10 @@
 		07402D6F2980817000F1F046 /* Shuffle TripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07402D732980817000F1F046 /* Shuffle_TripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITests.swift; sourceTree = "<group>"; };
 		07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		07402D832980833B00F1F046 /* BottomDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawer.swift; sourceTree = "<group>"; };
+		07402D832980833B00F1F046 /* BottomDrawerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerV.swift; sourceTree = "<group>"; };
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		07F71A3A29808788007C7AE6 /* MainScreenMV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenMV.swift; sourceTree = "<group>"; };
 		07F71A3E29808980007C7AE6 /* MapDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetails.swift; sourceTree = "<group>"; };
@@ -152,9 +154,9 @@
 		07402D822980832C00F1F046 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				07B38F482984707900EA765F /* Bottom Drawer */,
 				075C8FF62982109400BA3D12 /* Search Bar */,
 				07F71A432980EABD007C7AE6 /* Region Selector */,
-				07402D832980833B00F1F046 /* BottomDrawer.swift */,
 				07402D852980837A00F1F046 /* Blur.swift */,
 			);
 			path = "Custom Views";
@@ -167,6 +169,15 @@
 				07F83AC929821C1B004B86ED /* SearchBarCoordinator.swift */,
 			);
 			path = "Search Bar";
+			sourceTree = "<group>";
+		};
+		07B38F482984707900EA765F /* Bottom Drawer */ = {
+			isa = PBXGroup;
+			children = (
+				07B38F492984709D00EA765F /* BottomDrawerVM.swift */,
+				07402D832980833B00F1F046 /* BottomDrawerV.swift */,
+			);
+			path = "Bottom Drawer";
 			sourceTree = "<group>";
 		};
 		07F71A3C2980894B007C7AE6 /* Data */ = {
@@ -326,6 +337,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */,
 				07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
@@ -336,7 +348,7 @@
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
-				07402D842980833B00F1F046 /* BottomDrawer.swift in Sources */,
+				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

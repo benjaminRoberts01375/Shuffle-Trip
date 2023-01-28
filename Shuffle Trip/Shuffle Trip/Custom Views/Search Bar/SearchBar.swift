@@ -19,9 +19,7 @@ struct SearchBar: UIViewRepresentable {
         return searchBar
     }
     
-    func updateUIView(_ searchBar: UISearchBar, context: UIViewRepresentableContext<SearchBar>) {
-        print("Search update")
-    }
+    func updateUIView(_ searchBar: UISearchBar, context: UIViewRepresentableContext<SearchBar>) { }
     
     func makeCoordinator() -> SearchCoordinator {
         SearchCoordinator(userIsSearching: $userIsSearching)

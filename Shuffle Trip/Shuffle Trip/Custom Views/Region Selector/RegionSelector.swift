@@ -40,9 +40,7 @@ struct RegionSelector: UIViewRepresentable {
         return mapView
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        print("Hello world!")
-    }
+    func updateUIView(_ uiView: UIViewType, context: Context) { }
     
     func makeCoordinator() -> MapCoordinator {
         MapCoordinator()
