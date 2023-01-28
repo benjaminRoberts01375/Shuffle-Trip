@@ -34,28 +34,28 @@ struct BottomDrawer<Content: View>: View {
                     content                             // Content passed in to show
                     Spacer()                            // Shove all content to the top
                 }
-                .frame(width: geometry.size.width, height: geometry.size.height)    // Fill the outer VStack
-                .background(BlurView(style: .systemUltraThinMaterial, opacity: backgroundDim))              // Set frosted background
+                .frame(width: geometry.size.width, height: geometry.size.height)                // Fill the outer VStack
+                .background(BlurView(style: .systemUltraThinMaterial, opacity: backgroundDim))  // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)
-                .offset(y: geometry.size.height - offset)                           // Lower offset = lower on screen
-                .onChange(of: viewModel.goFull) { value in                                    // Is only called when goFull changes
-                    withAnimation (.interactiveSpring(response: 0.25, dampingFraction: 0.75)) {
-                        if value {                                                  // If goFull, then bounce up to max size
+                .offset(y: geometry.size.height - offset)                                       // Lower offset = lower on screen
+                .onChange(of: viewModel.goFull) { value in                                      // Is only called when goFull changes
+                    withAnimation (.interactiveSpring(response: 0.3, dampingFraction: 0.75)) {
+                        if value {                                  // If goFull, then bounce up to max size
                             offsetCache = offset
                             offset = viewModel.snapPoints.max()!
                         }
                         else {
-                            offset = offsetCache                                        // Otherwise, restore to previous position
+                            offset = offsetCache                    // Otherwise, restore to previous position
                         }
                         setBackgroundOpacity()
                     }
                 }
-                .gesture (                                                          // Drag controller
+                .gesture (                                                                                          // Drag controller
                     DragGesture()
                         .onChanged { value in
-                            offset -= value.translation.height - previousDrag       // Inverted to allow for smaller values to be at bottom
-                            previousDrag = value.translation.height                 // Save current drag distance to allow for relative positioning on the line above
+                            offset -= value.translation.height - previousDrag                                       // Inverted to allow for smaller values to be at bottom
+                            previousDrag = value.translation.height                                                 // Save current drag distance to allow for relative positioning on the line above
                             setBackgroundOpacity()
                         }
                         .onEnded { value in

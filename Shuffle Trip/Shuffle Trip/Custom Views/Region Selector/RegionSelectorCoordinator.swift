@@ -4,7 +4,7 @@
 import SwiftUI
 import MapKit
 
-class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGPT, but *very* heavily modified
+class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGPT, but *very* heavily modified and I'm not sure if this comment is even needed anymore
     /**
      How to render MKCircles. This is usually called per overlay when that overlay is created.
      */
@@ -12,12 +12,13 @@ class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by Cha
         // If the overlay in question is a MKCircle, unwrap it and assign it to circleOverlay
         if let circleOverlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-            circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3)
-            circleRenderer.strokeColor = .white
-            circleRenderer.lineWidth = 5
-            return circleRenderer
-        } else {
-            return MKOverlayRenderer(overlay: overlay)
+            circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3)   // Set MKCircle color to blue with 30% opacity
+            circleRenderer.strokeColor = .white                                     // Set MKCircle outline to white
+            circleRenderer.lineWidth = 5                                            // Set MKCircle outline width to 5pt
+            return circleRenderer                                                   // Return new appearance
+        }
+        else {
+            return MKOverlayRenderer(overlay: overlay)                              // Return default appearance
         }
     }
     

@@ -9,12 +9,12 @@ struct SearchBar: UIViewRepresentable {
     
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar: UISearchBar = UISearchBar()
-        searchBar.placeholder = "Find your next day trip..."
-        searchBar.searchBarStyle = .minimal
-        searchBar.keyboardType = .asciiCapable
-        searchBar.autocorrectionType = .no
+        searchBar.placeholder = "Find your next day trip..."    // Text when no user text is entered
+        searchBar.searchBarStyle = .minimal                     // Typical search bar appearance
+        searchBar.keyboardType = .asciiCapable                  // Show traditional keyboard minus emojis
+        searchBar.autocorrectionType = .no                      // Remove predictive text
         
-        searchBar.delegate = context.coordinator
+        searchBar.delegate = context.coordinator                // Assugn coordinator
         
         return searchBar
     }
