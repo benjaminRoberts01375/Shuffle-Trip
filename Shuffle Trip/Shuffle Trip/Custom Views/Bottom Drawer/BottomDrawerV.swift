@@ -12,14 +12,15 @@ struct BottomDrawer<Content: View>: View {
     @State var backgroundDim: Double = 0.0
     var content: Content
     var viewModel: BottomDrawerVM<Content>
-    @State var isShortCard: Bool = true
+    @State var isShortCard: Bool = false
     private let minimumMapSpace: CGFloat = 200
     private let minimumShortCardSize: CGFloat = 300
     
-    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat], content: Content) {
+    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat], screenSize: CGSize, content: Content) {
         self._offset = State(initialValue: offset)                              // Pre-set values since offset and some others are needed before they can be setup
         self.content = content                                                  // Content to show on card
         self.viewModel = BottomDrawerVM(goFull: goFull, snapPoints: snapPoints) // Initialize the view model
+        isShortCard(width: screenSize.width)
     }
     
     var body: some View {
@@ -28,6 +29,7 @@ struct BottomDrawer<Content: View>: View {
                 Color.black
                     .opacity(backgroundDim / 2)
                     .allowsHitTesting(false)
+                    .ignoresSafeArea(.all)
                     VStack {                                // The drawer itself
                         Capsule()                           // Grabber
                             .fill(Color.secondary)          // Dynamic color for dark/light mode
@@ -80,9 +82,17 @@ struct BottomDrawer<Content: View>: View {
                                 previousDrag = 0 // Reset dragging
                             }
                     )
-//                    .onAppear() {
-//                        isShortCard(width: geometry.size.width) // Is there enough space to show the map plus the card side-by-side?
-//                    }
+                    .onChange(of: viewModel.snapPoints) { value in
+                        isShortCard(width: geometry.size.width) // Is there enough space to show the map plus the card side-by-side?
+                        let distances = viewModel.snapPoints.map{abs(offset - $0)}
+                        offset = viewModel.snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
+                        withAnimation(.linear) {
+                            setBackgroundOpacity()
+                        }
+                    }
+                    .onAppear() {
+                        isShortCard(width: geometry.size.width) // Is there enough space to show the map plus the card side-by-side?
+                    }
             }
         }
         .edgesIgnoringSafeArea([.top, .bottom])
@@ -101,6 +111,6 @@ struct BottomDrawer<Content: View>: View {
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(goFull: .constant(false), height: 200, snapPoints: [200, 500, 800], content: Text("Hello World"))
+        BottomDrawer(goFull: .constant(false), height: 200, snapPoints: [200, 500, 800], screenSize: CGSize(width: 375, height: 724), content: Text("Hello World"))
     }
 }
