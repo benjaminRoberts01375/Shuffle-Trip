@@ -62,7 +62,19 @@ struct BottomDrawer<Content: View>: View {
                     .gesture (                                                                                          // Drag controller
                         DragGesture()
                             .onChanged { value in
-                                offset -= value.translation.height - previousDrag                                       // Inverted to allow for smaller values to be at bottom
+                                let distanceChanged = value.translation.height - previousDrag                           // Distance changed between this and last frame
+                                
+                                if offset > viewModel.snapPoints.max()! {                                               // If above bounds
+                                    let distanceAbove = offset - viewModel.snapPoints.max()!                            // Calculate how far above bounds
+                                    offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)                       // Slow down drag beyond bounds
+                                }
+                                else if offset < viewModel.snapPoints.min()! {                                          // If below bounds
+                                    let distanceBelow = viewModel.snapPoints.min()! - offset                            // Calculate how far below bounds
+                                    offset -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)                       // Slow down drag beyond bounds
+                                }
+                                else {
+                                    offset -= value.translation.height - previousDrag                                   // Inverted to allow for smaller values to be at bottom
+                                }
                                 previousDrag = value.translation.height                                                 // Save current drag distance to allow for relative positioning on the line above
                                 setBackgroundOpacity()
                             }
