@@ -41,8 +41,8 @@ struct BottomDrawer<Content: View>: View {
                                 controller.SnapToPoint()
                             }
                     )
-                    .onChange(of: controller.snapPoints[1]) { size in                                                  // Screen dimensions changed (rotated)
-                        controller.IsShortCard(width: geometry.size.width)
+                    .onChange(of: geometry.size) { size in                                                  // Screen dimensions changed (rotated)
+                        controller.IsShortCard(width: size.width)
                     }
             }
         }
@@ -50,8 +50,3 @@ struct BottomDrawer<Content: View>: View {
     }
 }
 
-struct BottomDrawer_Previews: PreviewProvider {
-    static var previews: some View {
-        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(userIsSearching: SearchTracker()), snapPoints: [150, 400, 800], goFull: SearchTracker()))
-    }
-}
