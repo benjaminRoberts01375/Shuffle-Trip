@@ -35,6 +35,7 @@ import SwiftUI
         }
     }
     
+    /// Toggle for forcing the card to be at max height and reverting to original height
     private func ToggleMaxOffset() {
         if goFull.isFull {
             offsetCache = offset
@@ -48,16 +49,22 @@ import SwiftUI
         }
     }
     
+    /// Sets the background opacity for when the card is approaching, or is at its max height.
+    /// The opacity's only changed when isShortCard is not enabled.
     private func SetBackgroundOpacity() {
         let fadeAtPercent: CGFloat = 0.75
         let maxValue = snapPoints.max()!
         fadePercent = isShortCard ? 0.0 : (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
     }
     
+    /// Used for calculating if the card should render as a "short card" or the full width of the screen.
+    /// - Parameter width: current width of the screen
     public func IsShortCard(width: CGFloat) {
         isShortCard = width - minimumShortCardSize >= minimumMapSpace
     }
     
+    /// Calculates the position of the card when dragging. When the user goes too far above or below the maximum or minimum snap point, the card becomes "sticky".
+    /// - Parameter value: The value calculated by a DragGesture.
     public func Drag(value: DragGesture.Value) {
         let distanceChanged = value.translation.height - previousDrag       // Distance changed between this and last frame
         
@@ -75,16 +82,18 @@ import SwiftUI
         previousDrag = value.translation.height                             // Save current drag distance to allow for relative positioning on the line above
     }
     
+    
+    /// Determines which snap point the card should snap to when the user finishes dragging
+    /// - Parameter value: The value calculated by a DragGesture
     public func FinishedDrag(value: DragGesture.Value) {
         withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
-            let distances = snapPoints.map{abs(offset - $0)}    // Figure out how far away sheet is from provided heights
-            if goFull.isFull {
-                offset = snapPoints.max()!
+            let distances = snapPoints.map{abs(offset - $0)}            // Figure out how far away sheet is from provided heights
+            if goFull.isFull {                                          // Check if the card is supposed to be at max height
+                offset = snapPoints.max()!                              // Set the offset
             }
-            else {
-                snapIndex = distances.firstIndex(of: distances.min()!)!
-                offset = snapPoints[snapIndex]
-                print("Snap index is \(snapIndex)")
+            else {                                                      // If able to be at any snap point, calculate where it should be
+                snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
+                offset = snapPoints[snapIndex]                          // Set the offset
             }
         }
         previousDrag = 0 // Reset dragging

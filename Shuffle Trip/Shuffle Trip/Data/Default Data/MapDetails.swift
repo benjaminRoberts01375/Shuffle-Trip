@@ -3,6 +3,7 @@
 
 import MapKit
 
+/// Default values for mapping
 enum MapDetails {
     static let defaultFilter: MKPointOfInterestFilter = MKPointOfInterestFilter(excluding: [.atm, .bank, .evCharger, .fireStation, .gasStation, .hospital, .fitnessCenter, .laundry, .parking, .pharmacy, .police, .postOffice])
     static var defaultRadius: CLLocationDistance {

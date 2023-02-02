@@ -4,12 +4,15 @@
 import SwiftUI
 import MapKit
 
+/// Renders a map and shows icons/annotations
 struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
     let logoPosition: CGFloat
-    /**
-     Initalize the map
-     */
+    
+    
+    /// Configure map
+    /// - Parameter context: Provided by system
+    /// - Returns: A fully configured map
     func makeUIView(context: Context) -> some UIView {
         let mapView = MKMapView()
         mapView.layoutMargins.bottom = logoPosition + 5
@@ -19,18 +22,17 @@ struct RegionSelector: UIViewRepresentable {
         mapConfig.pointOfInterestFilter = MapDetails.defaultFilter  // Remove items from map
         mapConfig.showsTraffic = false                              // Hide traffic
         mapView.preferredConfiguration = mapConfig
-        mapView.region = MapDetails.region2                         // Set default region
+        mapView.region = MapDetails.region1                         // Set default region
         mapView.showsUserLocation = true                            // Show user
         mapView.showsScale = true                                   // Show scale when zooming
         mapView.showsCompass = true                                 // Show compass to reorient when not facing north
-        mapView.region = MapDetails.region2                         // Default region
         
         // Setting up coordinator
-        mapView.delegate = context.coordinator
+        mapView.delegate = context.coordinator                      // Set the coordinator for the MapView
         
         // Getting the user's location
         userLocation.setupLocationManager()                         // Get permission from user to show on map
-        userLocation.onAuthorizationChanged = {
+        userLocation.onAuthorizationChanged = {                     // If authorization changed, try to get the user's location. If unable, use defaults.
             mapView.setRegion(MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius), animated: true)
         }                // If user's preferences change, run this code to set map position accordingly
         
@@ -41,8 +43,16 @@ struct RegionSelector: UIViewRepresentable {
         return mapView
     }
     
+    
+    /// Really doesn't get called except for when map is first made
+    /// - Parameters:
+    ///   - uiView: The map updated
+    ///   - context: Provided by the system
     func updateUIView(_ uiView: UIViewType, context: Context) { }
     
+    
+    /// Sets the coordinator for the Region Selector
+    /// - Returns: A new MapCoordinator
     func makeCoordinator() -> MapCoordinator {
         MapCoordinator()
     }

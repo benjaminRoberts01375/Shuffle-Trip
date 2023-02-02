@@ -11,7 +11,7 @@ struct BottomDrawer<Content: View>: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
-                Color.black
+                Color.black                                 // Background fade when card is brought up
                     .opacity(controller.fadePercent / 2)
                     .allowsHitTesting(false)
                     .ignoresSafeArea(.all)
@@ -20,27 +20,27 @@ struct BottomDrawer<Content: View>: View {
                             .fill(Color.secondary)          // Dynamic color for dark/light mode
                             .opacity(0.5)
                             .frame(width: 50, height: 5)    // Roughly the same size as most apps
-                            .padding(10)
+                            .padding(.top, 10)
                         controller.content                  // Content passed in to show
                         Spacer()                            // Shove all content to the top
                     }
                     .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height, idealHeight: geometry.size.height, maxHeight: geometry.size.height)
-                    .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent))  // Set frosted background
+                    .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
                     .cornerRadius(12)
                     .shadow(radius: 3)
-                    .offset(y: geometry.size.height - controller.offset)                             // Lower offset = lower on screen
-                    .gesture (                                                                                          // Drag controller
-                        DragGesture()
-                            .onChanged { value in
+                    .offset(y: geometry.size.height - controller.offset)                                    // Lower offset = lower on screen
+                    .onAppear() {
+                        controller.IsShortCard(width: geometry.size.width)                                  // Determine width of card
+                    }
+                    .gesture (
+                        DragGesture()                                   // Drag controller
+                        .onChanged { value in                           // User is dragging
                                 controller.Drag(value: value)
                             }
-                            .onEnded { value in
+                            .onEnded { value in                         // User finished dragging
                                 controller.FinishedDrag(value: value)
                             }
                     )
-                    .onAppear() {
-                        controller.IsShortCard(width: geometry.size.width)
-                    }
             }
         }
         .edgesIgnoringSafeArea([.top, .bottom])
@@ -49,6 +49,6 @@ struct BottomDrawer<Content: View>: View {
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(controller: BottomDrawerVM(content: Text("Hello World!"), snapPoints: [150, 400, 800], goFull: SearchTracker()))
+        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(userIsSearching: SearchTracker()), snapPoints: [150, 400, 800], goFull: SearchTracker()))
     }
 }

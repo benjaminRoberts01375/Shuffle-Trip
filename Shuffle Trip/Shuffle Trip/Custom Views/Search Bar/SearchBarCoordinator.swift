@@ -3,6 +3,8 @@
 
 import SwiftUI
 
+
+/// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
     @ObservedObject var userIsSearching: SearchTracker { didSet {print("Is full changed in Search Coordinator")}}
     
@@ -10,24 +12,26 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
         self.userIsSearching = userIsSearching
     }
     
-    /**
-     Ensure that the text currently saved by program is displayed to user to keep consistency
-     */
+    
+    /// Called every time the user types into the search bar
+    /// - Parameters:
+    ///   - searchBar: The search bar being updated
+    ///   - searchText: The text that the search bar is storing internally
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBar.text = searchText
     }
     
-    /**
-     Search bar was tapped on
-     */
+    
+    /// Called when the search bar is tapped on
+    /// - Parameter searchBar: Search bar that was tapped on
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)    // User tapped on search bar, so show the cancel button
         userIsSearching.isFull = true                           // Update parent view(s)
     }
     
-    /**
-     User hit the cancel button, so reset the search bar
-     */
+    
+    /// Called when the user presses on the search bar's cancel button
+    /// - Parameter searchBar: Search bar the was tapped on
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""                                     // Clear displayed text
         searchBar.setShowsCancelButton(false, animated: true)   // Hide the cancel button with an animation

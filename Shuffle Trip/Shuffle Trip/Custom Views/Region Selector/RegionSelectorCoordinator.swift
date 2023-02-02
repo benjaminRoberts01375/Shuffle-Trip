@@ -5,9 +5,13 @@ import SwiftUI
 import MapKit
 
 class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGPT, but *very* heavily modified and I'm not sure if this comment is even needed anymore
-    /**
-     How to render MKCircles. This is usually called per overlay when that overlay is created.
-     */
+    
+    
+    /// How to render MKCircles. This is usually called per overlay when that overlay is created.
+    /// - Parameters:
+    ///   - mapView: The MapView being updated
+    ///   - overlay: The overlay to change the rendering for
+    /// - Returns: Either the adjusted or original overlay
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         // If the overlay in question is a MKCircle, unwrap it and assign it to circleOverlay
         if let circleOverlay = overlay as? MKCircle {
@@ -22,9 +26,9 @@ class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by Cha
         }
     }
     
-    /**
-     Creation and deletion of circles on the map
-     */
+    
+    /// Called by a long press gesture, handles placing map locations
+    /// - Parameter gestureRecognizer: Context for the long press
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if gestureRecognizer.state != .began { // Short circuit
             return
