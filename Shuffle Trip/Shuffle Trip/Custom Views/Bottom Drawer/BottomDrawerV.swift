@@ -5,29 +5,14 @@ import SwiftUI
 
 // Content: Generic type that conforms to view
 struct BottomDrawer<Content: View>: View {
-    @State var offset: CGFloat
-    @State var previousDrag: CGFloat = 0
-    @State var offsetCache: CGFloat = 0
+    @StateObject var controller: BottomDrawerVM<Content>
     @Environment(\.colorScheme) var colorScheme
-    @State var backgroundDim: Double = 0.0
-    var content: Content
-    var viewModel: BottomDrawerVM<Content>
-    @State var isShortCard: Bool = false
-    private let minimumMapSpace: CGFloat = 200
-    private let minimumShortCardSize: CGFloat = 300
-    
-    init(goFull: Binding<Bool>, height offset: CGFloat, snapPoints: [CGFloat], screenSize: CGSize, content: Content) {
-        self._offset = State(initialValue: offset)                              // Pre-set values since offset and some others are needed before they can be setup
-        self.content = content                                                  // Content to show on card
-        self.viewModel = BottomDrawerVM(goFull: goFull, snapPoints: snapPoints) // Initialize the view model
-        isShortCard(width: screenSize.width)
-    }
     
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
                 Color.black
-                    .opacity(backgroundDim / 2)
+                    .opacity(controller.fadePercent / 2)
                     .allowsHitTesting(false)
                     .ignoresSafeArea(.all)
                     VStack {                                // The drawer itself
@@ -36,93 +21,34 @@ struct BottomDrawer<Content: View>: View {
                             .opacity(0.5)
                             .frame(width: 50, height: 5)    // Roughly the same size as most apps
                             .padding(10)
-                        content                             // Content passed in to show
+                        controller.content                  // Content passed in to show
                         Spacer()                            // Shove all content to the top
                     }
-                    .frame(maxWidth: isShortCard ? minimumShortCardSize : 1000, minHeight: geometry.size.height, idealHeight: geometry.size.height, maxHeight: geometry.size.height)
-                    .background(BlurView(style: .systemUltraThinMaterial, opacity: backgroundDim))  // Set frosted background
+                    .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height, idealHeight: geometry.size.height, maxHeight: geometry.size.height)
+                    .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent))  // Set frosted background
                     .cornerRadius(12)
                     .shadow(radius: 3)
-                    .offset(y: geometry.size.height - offset)                                       // Lower offset = lower on screen
-                    .onChange(of: viewModel.goFull) { value in                                      // Is only called when goFull changes
-                        if value {                                                                  // If goFull, then bounce up to max size
-                            withAnimation(.linear(duration: 0.2)) {
-                                offsetCache = offset                                                // Cache where card was previously placed
-                                offset = viewModel.snapPoints.max()!
-                                setBackgroundOpacity()
-                            }
-                        }
-                        else {
-                            withAnimation (.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
-                                offset = offsetCache                                                // Restore to previous position
-                                setBackgroundOpacity()
-                            }
-                        }
-                    }
+                    .offset(y: geometry.size.height - controller.offset)                             // Lower offset = lower on screen
                     .gesture (                                                                                          // Drag controller
                         DragGesture()
                             .onChanged { value in
-                                let distanceChanged = value.translation.height - previousDrag                           // Distance changed between this and last frame
-                                
-                                if offset > viewModel.snapPoints.max()! {                                               // If above bounds
-                                    let distanceAbove = offset - viewModel.snapPoints.max()!                            // Calculate how far above bounds
-                                    offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)                       // Slow down drag beyond bounds
-                                }
-                                else if offset < viewModel.snapPoints.min()! {                                          // If below bounds
-                                    let distanceBelow = viewModel.snapPoints.min()! - offset                            // Calculate how far below bounds
-                                    offset -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)                       // Slow down drag beyond bounds
-                                }
-                                else {
-                                    offset -= value.translation.height - previousDrag                                   // Inverted to allow for smaller values to be at bottom
-                                }
-                                previousDrag = value.translation.height                                                 // Save current drag distance to allow for relative positioning on the line above
-                                setBackgroundOpacity()
+                                controller.Drag(value: value)
                             }
                             .onEnded { value in
-                                if viewModel.snapPoints.count > 0 {
-                                    withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
-                                        let distances = viewModel.snapPoints.map{abs(offset - $0)}                      // Figure out how far away sheet is from provided heights
-                                        if viewModel.goFull {
-                                            offset = viewModel.snapPoints.max()!
-                                        }
-                                        else {
-                                            offset = viewModel.snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
-                                        }
-                                        setBackgroundOpacity()
-                                    }
-                                }
-                                previousDrag = 0 // Reset dragging
+                                controller.FinishedDrag(value: value)
                             }
                     )
-                    .onChange(of: viewModel.snapPoints) { value in
-                        isShortCard(width: geometry.size.width) // Is there enough space to show the map plus the card side-by-side?
-                        let distances = viewModel.snapPoints.map{abs(offset - $0)}
-                        offset = viewModel.snapPoints[distances.firstIndex(of: distances.min()!)!]  // Find closest height and set it
-                        withAnimation(.linear) {
-                            setBackgroundOpacity()
-                        }
-                    }
                     .onAppear() {
-                        isShortCard(width: geometry.size.width) // Is there enough space to show the map plus the card side-by-side?
+                        controller.IsShortCard(width: geometry.size.width)
                     }
             }
         }
         .edgesIgnoringSafeArea([.top, .bottom])
     }
-    
-    public func setBackgroundOpacity() {
-        let fadeAtPercent: CGFloat = 0.75
-        let maxValue = viewModel.snapPoints.max()!
-        backgroundDim = isShortCard ? 0.0 : (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
-    }
-    
-    func isShortCard(width: CGFloat) {
-        isShortCard  = width - minimumShortCardSize >= minimumMapSpace
-    }
 }
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(goFull: .constant(false), height: 200, snapPoints: [200, 500, 800], screenSize: CGSize(width: 375, height: 724), content: Text("Hello World"))
+        BottomDrawer(controller: BottomDrawerVM(content: Text("Hello World!"), snapPoints: [150, 400, 800], goFull: SearchTracker()))
     }
 }

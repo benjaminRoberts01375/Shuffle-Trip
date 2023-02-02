@@ -4,8 +4,7 @@
 import SwiftUI
 
 struct MainScreenV: View {
-    @State var search: String = ""
-    @State var userIsSearching: Bool = false
+    @StateObject var userIsSearching: SearchTracker = SearchTracker()
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,16 +20,14 @@ struct MainScreenV: View {
                     Spacer()
                 }
                 .edgesIgnoringSafeArea(.all)
-                BottomDrawer(
-                    goFull: $userIsSearching,
-                    height: cardSnapPositions[0],
-                    snapPoints: cardSnapPositions,
-                    screenSize: geometry.size,
+                BottomDrawer(controller: BottomDrawerVM(
                     content:
                         VStack {
-                            SearchBar(userIsSearching: $userIsSearching)
-                        }
-                )
+                            SearchBar(userIsSearching: userIsSearching)
+                        },
+                    snapPoints: cardSnapPositions,
+                    goFull: userIsSearching
+                ))
             }
         }
     }

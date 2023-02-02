@@ -3,16 +3,90 @@
 
 import SwiftUI
 
-class BottomDrawerVM<Content: View>: ObservableObject {
-    @Binding var goFull: Bool
+@MainActor class BottomDrawerVM<Content: View>: ObservableObject {
+    @ObservedObject var goFull: SearchTracker
+    @Published var isShortCard: Bool = false
     
-    private let snapPointsValue: [CGFloat]
-    public var snapPoints: [CGFloat] {  // Ensure snapPoints cannot be written to
-        return snapPointsValue
+    @Published var snapPoints: [CGFloat] { didSet {
+        if snapPoints.isEmpty {
+            snapPoints = [500]
+        }
+    }}
+    
+    @Published var snapIndex: Int = 0
+    @Published var offset: CGFloat { didSet { SetBackgroundOpacity() }}
+    private var offsetCache: CGFloat = 0
+    private var previousDrag: CGFloat = 0
+    @Published var fadePercent: Double = 0.0
+    
+    @Published var content: Content
+    
+    public let minimumShortCardSize: CGFloat = 300
+    public let minimumMapSpace: CGFloat = 200
+    
+    init(content: Content, snapPoints: [CGFloat], goFull: SearchTracker) {
+        let ensuredSnapPoints = snapPoints.isEmpty ? [500] : snapPoints
+        self.snapPoints = ensuredSnapPoints
+        self.offset = ensuredSnapPoints[0]
+        self.goFull = goFull
+        self.content = content
+        self.goFull.AddUserSearchingAction {
+            self.ToggleMaxOffset()
+        }
     }
     
-    init(goFull: Binding<Bool>, snapPoints: [CGFloat]) {
-        self._goFull = goFull
-        self.snapPointsValue = snapPoints.isEmpty ? [500] : snapPoints  // Ensure there's always some value in snapPoints
+    private func ToggleMaxOffset() {
+        if goFull.isFull {
+            offsetCache = offset
+            withAnimation(.linear(duration: 0.2)) {
+                offset = snapPoints.max()!
+            }
+            return
+        }
+        withAnimation (.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
+            offset = offsetCache
+        }
+    }
+    
+    private func SetBackgroundOpacity() {
+        let fadeAtPercent: CGFloat = 0.75
+        let maxValue = snapPoints.max()!
+        fadePercent = isShortCard ? 0.0 : (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
+    }
+    
+    public func IsShortCard(width: CGFloat) {
+        isShortCard = width - minimumShortCardSize >= minimumMapSpace
+    }
+    
+    public func Drag(value: DragGesture.Value) {
+        let distanceChanged = value.translation.height - previousDrag       // Distance changed between this and last frame
+        
+        if offset > snapPoints.max()! {                                     // If above bounds
+            let distanceAbove = offset - snapPoints.max()!                  // Calculate how far above bounds
+            offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
+        }
+        else if offset < snapPoints.min()! {                                // If below bounds
+            let distanceBelow = snapPoints.min()! - offset                  // Calculate how far below bounds
+            offset -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)   // Slow down drag beyond bounds
+        }
+        else {
+            offset -= value.translation.height - previousDrag               // Inverted to allow for smaller values to be at bottom
+        }
+        previousDrag = value.translation.height                             // Save current drag distance to allow for relative positioning on the line above
+    }
+    
+    public func FinishedDrag(value: DragGesture.Value) {
+        withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
+            let distances = snapPoints.map{abs(offset - $0)}    // Figure out how far away sheet is from provided heights
+            if goFull.isFull {
+                offset = snapPoints.max()!
+            }
+            else {
+                snapIndex = distances.firstIndex(of: distances.min()!)!
+                offset = snapPoints[snapIndex]
+                print("Snap index is \(snapIndex)")
+            }
+        }
+        previousDrag = 0 // Reset dragging
     }
 }

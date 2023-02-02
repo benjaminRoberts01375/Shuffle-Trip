@@ -4,10 +4,10 @@
 import SwiftUI
 
 class SearchCoordinator: NSObject, UISearchBarDelegate {
-    @Binding var userIsSearching: Bool
+    @ObservedObject var userIsSearching: SearchTracker { didSet {print("Is full changed in Search Coordinator")}}
     
-    init(userIsSearching: Binding<Bool>) {
-        self._userIsSearching = userIsSearching
+    init(userIsSearching: SearchTracker) {
+        self.userIsSearching = userIsSearching
     }
     
     /**
@@ -22,7 +22,7 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
      */
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)    // User tapped on search bar, so show the cancel button
-        userIsSearching = true                                  // Update parent view(s)
+        userIsSearching.isFull = true                           // Update parent view(s)
     }
     
     /**
@@ -31,7 +31,7 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""                                     // Clear displayed text
         searchBar.setShowsCancelButton(false, animated: true)   // Hide the cancel button with an animation
-        userIsSearching = false                                 // Update parent view(s)
+        userIsSearching.isFull = false                          // Update parent view(s)
         searchBar.endEditing(true)                              // Not sure if actually needed, just in case of weird future changes
     }
 }
