@@ -60,7 +60,8 @@ import SwiftUI
     /// Used for calculating if the card should render as a "short card" or the full width of the screen.
     /// - Parameter width: current width of the screen
     public func IsShortCard(width: CGFloat) {
-        isShortCard = width - minimumShortCardSize >= minimumMapSpace
+        isShortCard = width - minimumShortCardSize >= minimumMapSpace   // Calculate if the card is short or not
+        SnapToPoint()
     }
     
     /// Calculates the position of the card when dragging. When the user goes too far above or below the maximum or minimum snap point, the card becomes "sticky".
@@ -85,7 +86,7 @@ import SwiftUI
     
     /// Determines which snap point the card should snap to when the user finishes dragging
     /// - Parameter value: The value calculated by a DragGesture
-    public func FinishedDrag(value: DragGesture.Value) {
+    public func SnapToPoint() {
         withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
             let distances = snapPoints.map{abs(offset - $0)}            // Figure out how far away sheet is from provided heights
             if goFull.isFull {                                          // Check if the card is supposed to be at max height

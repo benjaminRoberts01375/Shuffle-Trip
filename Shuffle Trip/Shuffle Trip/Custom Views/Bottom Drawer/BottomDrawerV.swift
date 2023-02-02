@@ -38,9 +38,12 @@ struct BottomDrawer<Content: View>: View {
                                 controller.Drag(value: value)
                             }
                             .onEnded { value in                         // User finished dragging
-                                controller.FinishedDrag(value: value)
+                                controller.SnapToPoint()
                             }
                     )
+                    .onChange(of: controller.snapPoints[1]) { size in                                                  // Screen dimensions changed (rotated)
+                        controller.IsShortCard(width: geometry.size.width)
+                    }
             }
         }
         .edgesIgnoringSafeArea([.top, .bottom])
