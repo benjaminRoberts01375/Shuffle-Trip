@@ -30,7 +30,7 @@ struct BottomDrawer<Content: View>: View {
                     .shadow(radius: 3)
                     .offset(y: geometry.size.height - controller.offset)                                    // Lower offset = lower on screen
                     .onAppear() {
-                        controller.IsShortCard(width: geometry.size.width)                                  // Determine width of card
+                        controller.IsShortCard(dimensions: geometry.size)                                   // Determine width of card
                     }
                     .gesture (
                         DragGesture(minimumDistance: 25)                // Drag controller
@@ -42,7 +42,7 @@ struct BottomDrawer<Content: View>: View {
                             }
                     )
                     .onChange(of: geometry.size) { size in                                                  // Screen dimensions changed (rotated)
-                        controller.IsShortCard(width: size.width)
+                        controller.IsShortCard(dimensions: size)
                     }
             }
         }
@@ -50,3 +50,8 @@ struct BottomDrawer<Content: View>: View {
     }
 }
 
+struct BottomDrawer_Previews: PreviewProvider {
+    static var previews: some View {
+        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(userIsSearching: SearchTracker()), snapPoints: [150, 1/2, 0.925], goFull: SearchTracker()))
+    }
+}

@@ -6,13 +6,13 @@ import SwiftUI
 // View for the main screen
 struct MainScreenV: View {
     @StateObject var userIsSearching: SearchTracker = SearchTracker()
+    let cardMinimumHeight: CGFloat = 125
     
     var body: some View {
         GeometryReader { geometry in
-            let cardSnapPositions: [CGFloat] = [125, geometry.size.height/2, geometry.size.height + geometry.safeAreaInsets.bottom - 10]
-            
+            let cardSnapPositions: [CGFloat] = [cardMinimumHeight, 1/2, 0.925] 
             ZStack {                                                                                            // Main View
-                RegionSelector(logoPosition: (cardSnapPositions.min() ?? 500) - geometry.safeAreaInsets.bottom) // Map
+                RegionSelector(logoPosition: cardMinimumHeight - geometry.safeAreaInsets.bottom)                // Map
                     .edgesIgnoringSafeArea(.all)
                 VStack {                                                                                        // Top blur
                     Color.clear
