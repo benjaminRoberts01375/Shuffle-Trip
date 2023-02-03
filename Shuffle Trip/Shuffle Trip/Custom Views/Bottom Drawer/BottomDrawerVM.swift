@@ -79,6 +79,18 @@ import SwiftUI
         }
         else {
             offset -= value.translation.height - previousDrag               // Inverted to allow for smaller values to be at bottom
+        withAnimation(.linear) {
+            if offset > snapPoints.max()! {                                     // If above bounds
+                let distanceAbove = offset - snapPoints.max()!                  // Calculate how far above bounds
+                offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
+            }
+            else if offset < snapPoints.min()! {                                // If below bounds
+                let distanceBelow = snapPoints.min()! - offset                  // Calculate how far below bounds
+                offset -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)   // Slow down drag beyond bounds
+            }
+            else {
+                offset -= value.translation.height - previousDrag               // Inverted to allow for smaller values to be at bottom
+            }
         }
         previousDrag = value.translation.height                             // Save current drag distance to allow for relative positioning on the line above
     }
