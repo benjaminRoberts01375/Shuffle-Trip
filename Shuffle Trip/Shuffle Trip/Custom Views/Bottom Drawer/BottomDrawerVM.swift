@@ -80,6 +80,7 @@ import SwiftUI
     public func Drag(value: DragGesture.Value) {
         let distanceChanged = value.translation.height - previousDrag           // Distance changed between this and last frame
         withAnimation(.linear) {
+            SetBackgroundOpacity()
             if offset > snapPoints.max()! {                                     // If above bounds
                 let distanceAbove = offset - snapPoints.max()!                  // Calculate how far above bounds
                 offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
@@ -100,6 +101,7 @@ import SwiftUI
     public func SnapToPoint() {
         withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
             let distances = snapPoints.map{abs(offset - $0)}                // Figure out how far away sheet is from provided heights
+            SetBackgroundOpacity()
             if goFull.isFull {                                              // Check if the card is supposed to be at max height
                 offset = snapPoints.max()!                                  // Set the offset
             }
