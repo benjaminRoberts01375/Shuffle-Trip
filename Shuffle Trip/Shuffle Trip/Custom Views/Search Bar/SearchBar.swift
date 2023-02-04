@@ -7,7 +7,7 @@ struct SearchBar: UIViewRepresentable {
     @ObservedObject var userIsSearching: SearchTracker
     
     
-    /// Creates the search bar when ```SearchBar()``` is called.
+    /// Creates the search bar when `SearchBar()` is called.
     /// - Parameter context: Automatically filled
     /// - Returns: The completed search bar
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
