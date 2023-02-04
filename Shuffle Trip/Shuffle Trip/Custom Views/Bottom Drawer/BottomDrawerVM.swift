@@ -101,7 +101,6 @@ import SwiftUI
     public func SnapToPoint() {
         withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
             let distances = snapPoints.map{abs(offset - $0)}                // Figure out how far away sheet is from provided heights
-            SetBackgroundOpacity()
             if goFull.isFull {                                              // Check if the card is supposed to be at max height
                 offset = snapPoints.max()!                                  // Set the offset
             }
@@ -109,6 +108,7 @@ import SwiftUI
                 let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
                 offset = snapPoints[snapIndex]                              // Set the offset
             }
+            SetBackgroundOpacity()
         }
         previousDrag = 0                                                    // Reset dragging
     }

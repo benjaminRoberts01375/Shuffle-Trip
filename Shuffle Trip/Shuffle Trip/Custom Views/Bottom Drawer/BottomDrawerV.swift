@@ -11,7 +11,6 @@ struct BottomDrawer<Content: View>: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
-                Color.black                                 // Background fade when card is brought up
                 Color.black                             // Background fade when card is brought up
                     .opacity(controller.fadePercent / 2)
                     .allowsHitTesting(false)
@@ -47,7 +46,7 @@ struct BottomDrawer<Content: View>: View {
                 }
             }
         }
-        .edgesIgnoringSafeArea([.top, .bottom])
+        .edgesIgnoringSafeArea([.bottom])
     }
 }
 
