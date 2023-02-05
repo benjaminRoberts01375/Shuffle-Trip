@@ -35,7 +35,7 @@ struct BottomDrawer<Content: View>: View {
                     controller.IsShortCard(dimensions: geometry.size)                                   // Determine width of card
                 }
                 .gesture (
-                    DragGesture(minimumDistance: 25)                                                    // Drag controller
+                    DragGesture()                                                                       // Drag controller
                         .onChanged { value in                                                           // User is dragging
                             controller.Drag(value: value)
                         }

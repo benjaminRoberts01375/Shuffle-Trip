@@ -85,30 +85,49 @@ import SwiftUI
     /// Calculates the position of the card when dragging. When the user goes too far above or below the maximum or minimum snap point, the card becomes "sticky".
     /// - Parameter value: The value calculated by a DragGesture.
     public func Drag(value: DragGesture.Value) {
-        let distanceChanged = value.translation.height - previousDrag.height            // Distance changed between this and last frame
-        withAnimation(.linear) {
-            
-            // y component
-            SetBackgroundOpacity()
-            if offset.height > snapPointsY.max()! {                                     // If above bounds
-                let distanceAbove = offset.height - snapPointsY.max()!                  // Calculate how far above bounds
-                offset.height -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)    // Slow down drag beyond bounds
+        let distanceChangedY = value.translation.height - previousDrag.height       // Height distance changed between this and last frame
+        // y component
+        SetBackgroundOpacity()
+        if offset.height > snapPointsY.max()! {                                     // If above bounds
+            let distanceAbove = offset.height - snapPointsY.max()!                  // Calculate how far above bounds
+            offset.height -= distanceChangedY * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
+        }
+        else if offset.height < snapPointsY.min()! {                                // If below bounds
+            let distanceBelow = snapPointsY.min()! - offset.height                  // Calculate how far below bounds
+            offset.height -= distanceChangedY * pow((distanceBelow/10) + 1, -3/2)   // Slow down drag beyond bounds
+        }
+        else {
+            offset.height -= value.translation.height - previousDrag.height         // Inverted to allow for smaller values to be at bottom
+        }
+        
+        if isShortCard {
+            // x component
+            let distances = snapPointsX.map{abs(offset.width - $0)}                     // Figure out how far away sheet is from provided heights
+            let snapIndex = distances.firstIndex(of: distances.min()!)!                 // Get the index of the snap point with smallest value
+            let distanceChangedX = value.translation.width - previousDrag.width         // Width distance changed between this and last frame
+            if offset.width > snapPointsX[snapIndex] {
+                let distanceTrailing = offset.width - snapPointsX[snapIndex]
+                offset.width += distanceChangedX * pow((distanceTrailing/10 + 1), -3/2)
             }
-            else if offset.height < snapPointsY.min()! {                                // If below bounds
-                let distanceBelow = snapPointsY.min()! - offset.height                  // Calculate how far below bounds
-                offset.height -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)    // Slow down drag beyond bounds
+            else if offset.width < snapPointsX[snapIndex] {
+                let distanceLeading = snapPointsX[snapIndex] - offset.width
+                offset.width += distanceChangedX * pow((distanceLeading/10 + 1), -3/2)
             }
             else {
-                offset.height -= value.translation.height - previousDrag.height         // Inverted to allow for smaller values to be at bottom
-            }
-            
-            if isShortCard {
                 offset.width += value.translation.width - previousDrag.width
             }
             
-            // x component
+            if offset.width > snapPointsX.max()! {
+                offset.width = snapPointsX.max()!
+            }
+            else if offset.width < snapPointsX.min()! {
+                offset.width = snapPointsX.min()!
+            }
         }
-        previousDrag = value.translation                                                // Save current drag distance to allow for relative positioning on the line above
+        
+        
+        
+        previousDrag = value.translation                                            // Save current drag distance to allow for relative positioning on the line above
     }
     
     /// Determines which snap point the card should snap to when the user finishes dragging
@@ -125,7 +144,7 @@ import SwiftUI
                 offset.height = snapPointsY[snapIndex]                      // Set the offset.height
             }
             SetBackgroundOpacity()
-
+            
             // x component
             if goFull.isFull {
                 offset.width = 0
