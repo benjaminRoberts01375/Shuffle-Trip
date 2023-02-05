@@ -16,7 +16,7 @@ import SwiftUI
     
     @Published var offset: CGSize
     private var offsetCache: CGFloat = 0
-    private var previousDrag: CGFloat = 0
+    private var previousDrag: CGSize = CGSize(width: 0, height: 0)
     @Published var fadePercent: Double = 0.0
     
     @Published var content: Content
@@ -78,7 +78,7 @@ import SwiftUI
     /// Calculates the position of the card when dragging. When the user goes too far above or below the maximum or minimum snap point, the card becomes "sticky".
     /// - Parameter value: The value calculated by a DragGesture.
     public func Drag(value: DragGesture.Value) {
-        let distanceChanged = value.translation.height - previousDrag                   // Distance changed between this and last frame
+        let distanceChanged = value.translation.height - previousDrag.height            // Distance changed between this and last frame
         withAnimation(.linear) {
             SetBackgroundOpacity()
             if offset.height > snapPoints.max()! {                                      // If above bounds
@@ -90,10 +90,14 @@ import SwiftUI
                 offset.height -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)    // Slow down drag beyond bounds
             }
             else {
-                offset.height -= value.translation.height - previousDrag                // Inverted to allow for smaller values to be at bottom
+                offset.height -= value.translation.height - previousDrag.height         // Inverted to allow for smaller values to be at bottom
+            }
+            
+            if isShortCard {
+                offset.width += value.translation.width - previousDrag.width
             }
         }
-        previousDrag = value.translation.height                                         // Save current drag distance to allow for relative positioning on the line above
+        previousDrag = value.translation                                                // Save current drag distance to allow for relative positioning on the line above
     }
     
     /// Determines which snap point the card should snap to when the user finishes dragging
@@ -110,6 +114,6 @@ import SwiftUI
             }
             SetBackgroundOpacity()
         }
-        previousDrag = 0                                                    // Reset dragging
+        previousDrag = CGSize(width: 0, height: 0)                          // Reset dragging
     }
 }
