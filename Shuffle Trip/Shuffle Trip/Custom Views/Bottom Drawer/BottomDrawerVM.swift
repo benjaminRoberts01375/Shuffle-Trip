@@ -7,6 +7,11 @@ import SwiftUI
     @ObservedObject var goFull: SearchTracker
     @Published var isShortCard: Bool = false
     
+    @Published var snapPointsX: [CGFloat] { didSet {
+        if snapPointsX.isEmpty {
+            snapPointsX = [500]
+        }
+    }}
     private let rawSnapPointsY: [CGFloat]
     @Published var snapPointsY: [CGFloat] { didSet {
         if snapPointsY.isEmpty {
@@ -28,6 +33,7 @@ import SwiftUI
         let ensuredSnapPoints = snapPoints.isEmpty ? [500] : snapPoints
         self.snapPointsY = snapPoints.isEmpty ? [500] : snapPoints
         self.rawSnapPointsY = snapPoints
+        self.snapPointsX = [0]
         self.offset = CGSize(width: 0, height: ensuredSnapPoints[0])
         self.goFull = goFull
         self.content = content
@@ -41,6 +47,7 @@ import SwiftUI
     private func recalculateSnapPoints(dimensions: CGSize) {
         snapPointsY = rawSnapPointsY.map{$0 < 1 ? dimensions.height * $0 : $0}
         SnapToPoint(animation: Animation.linear)
+        snapPointsX = [0, -dimensions.width + minimumShortCardSize]
     }
     
     /// Toggle for forcing the card to be at max height and reverting to original height
@@ -108,15 +115,27 @@ import SwiftUI
     /// - Parameter value: The value calculated by a DragGesture
     public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
         withAnimation (animation) {
-            let distances = snapPointsY.map{abs(offset.height - $0)}        // Figure out how far away sheet is from provided heights
+            // y component
             if goFull.isFull {                                              // Check if the card is supposed to be at max height
                 offset.height = snapPointsY.max()!                          // Set the offset.height
             }
             else {                                                          // If able to be at any snap point, calculate where it should be
+                let distances = snapPointsY.map{abs(offset.height - $0)}    // Figure out how far away sheet is from provided heights
                 let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
                 offset.height = snapPointsY[snapIndex]                      // Set the offset.height
             }
             SetBackgroundOpacity()
+
+            // x component
+            if goFull.isFull {
+                offset.width = 0
+            }
+            else {
+                let distances = snapPointsX.map{abs(offset.width - $0)}     // Figure out how far away sheet is from provided heights
+                let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
+                offset.width = snapPointsX[snapIndex]                       // Set the offset.width
+            }
+            
         }
         previousDrag = CGSize(width: 0, height: 0)                          // Reset dragging
     }
