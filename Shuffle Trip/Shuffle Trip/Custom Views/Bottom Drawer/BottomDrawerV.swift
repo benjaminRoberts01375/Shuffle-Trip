@@ -28,7 +28,7 @@ struct BottomDrawer<Content: View>: View {
                 .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)
-                .offset(x: 0, y: geometry.size.height - controller.offset.height)                                    // Lower offset = lower on screen
+                .offset(x: 0, y: geometry.size.height - controller.offset.height)                       // Lower offset = lower on screen
                 .onAppear() {
                     controller.IsShortCard(dimensions: geometry.size)                                   // Determine width of card
                 }
