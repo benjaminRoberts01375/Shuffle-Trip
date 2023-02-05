@@ -14,7 +14,7 @@ import SwiftUI
         }
     }}
     
-    @Published var offset: CGFloat
+    @Published var offset: CGSize
     private var offsetCache: CGFloat = 0
     private var previousDrag: CGFloat = 0
     @Published var fadePercent: Double = 0.0
@@ -28,7 +28,7 @@ import SwiftUI
         let ensuredSnapPoints = snapPoints.isEmpty ? [500] : snapPoints
         self.snapPoints = snapPoints.isEmpty ? [500] : snapPoints
         self.rawSnapPoints = snapPoints
-        self.offset = ensuredSnapPoints[0]
+        self.offset = CGSize(width: 0, height: ensuredSnapPoints[0])
         self.goFull = goFull
         self.content = content
         self.goFull.AddUserSearchingAction {
@@ -40,21 +40,21 @@ import SwiftUI
     /// - Parameter dimensions: Dimensions of the screen, usually from a `GeometryReader.size`
     private func recalculateSnapPoints(dimensions: CGSize) {
         snapPoints = rawSnapPoints.map{$0 < 1 ? dimensions.height * $0 : $0}
-        SnapToPoint()
+        SnapToPoint(animation: Animation.linear)
     }
     
     /// Toggle for forcing the card to be at max height and reverting to original height
     private func ToggleMaxOffset() {
         if goFull.isFull {
-            offsetCache = offset
+            offsetCache = offset.height
             withAnimation(.linear(duration: 0.2)) {
-                offset = snapPoints.max()!
+                offset.height = snapPoints.max()!
                 SetBackgroundOpacity()
             }
             return
         }
         withAnimation (.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
-            offset = offsetCache
+            offset.height = offsetCache
             SetBackgroundOpacity()
         }
     }
@@ -64,7 +64,7 @@ import SwiftUI
     private func SetBackgroundOpacity() {
         let fadeAtPercent: CGFloat = 0.75
         let maxValue = snapPoints.max()!
-        fadePercent = isShortCard ? 0.0 : (offset - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
+        fadePercent = isShortCard ? 0.0 : (offset.height - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
     }
     
     /// Used for calculating if the card should render as a "short card" or the full width of the screen.
@@ -72,7 +72,7 @@ import SwiftUI
     public func IsShortCard(dimensions: CGSize) {
         recalculateSnapPoints(dimensions: dimensions)
         isShortCard = dimensions.width - minimumShortCardSize >= minimumMapSpace   // Calculate if the card is short or not
-        SnapToPoint()
+        SnapToPoint(animation: Animation.linear)
     }
     
     /// Calculates the position of the card when dragging. When the user goes too far above or below the maximum or minimum snap point, the card becomes "sticky".
@@ -81,16 +81,16 @@ import SwiftUI
         let distanceChanged = value.translation.height - previousDrag           // Distance changed between this and last frame
         withAnimation(.linear) {
             SetBackgroundOpacity()
-            if offset > snapPoints.max()! {                                     // If above bounds
-                let distanceAbove = offset - snapPoints.max()!                  // Calculate how far above bounds
-                offset -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
+            if offset.height > snapPoints.max()! {                                     // If above bounds
+                let distanceAbove = offset.height - snapPoints.max()!                  // Calculate how far above bounds
+                offset.height -= distanceChanged * pow((distanceAbove/10 + 1), -3/2)   // Slow down drag beyond bounds
             }
-            else if offset < snapPoints.min()! {                                // If below bounds
-                let distanceBelow = snapPoints.min()! - offset                  // Calculate how far below bounds
-                offset -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)   // Slow down drag beyond bounds
+            else if offset.height < snapPoints.min()! {                                // If below bounds
+                let distanceBelow = snapPoints.min()! - offset.height                  // Calculate how far below bounds
+                offset.height -= distanceChanged * pow((distanceBelow/10) + 1, -3/2)   // Slow down drag beyond bounds
             }
             else {
-                offset -= value.translation.height - previousDrag               // Inverted to allow for smaller values to be at bottom
+                offset.height -= value.translation.height - previousDrag               // Inverted to allow for smaller values to be at bottom
             }
         }
         previousDrag = value.translation.height                                 // Save current drag distance to allow for relative positioning on the line above
@@ -98,15 +98,15 @@ import SwiftUI
     
     /// Determines which snap point the card should snap to when the user finishes dragging
     /// - Parameter value: The value calculated by a DragGesture
-    public func SnapToPoint() {
-        withAnimation (.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
-            let distances = snapPoints.map{abs(offset - $0)}                // Figure out how far away sheet is from provided heights
+    public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1/2)) {
+        withAnimation (animation) {
+            let distances = snapPoints.map{abs(offset.height - $0)}                // Figure out how far away sheet is from provided heights
             if goFull.isFull {                                              // Check if the card is supposed to be at max height
-                offset = snapPoints.max()!                                  // Set the offset
+                offset.height = snapPoints.max()!                                  // Set the offset.height
             }
             else {                                                          // If able to be at any snap point, calculate where it should be
                 let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
-                offset = snapPoints[snapIndex]                              // Set the offset
+                offset.height = snapPoints[snapIndex]                              // Set the offset.height
             }
             SetBackgroundOpacity()
         }

@@ -24,11 +24,11 @@ struct BottomDrawer<Content: View>: View {
                     controller.content                  // Content passed in to show
                     Spacer()                            // Shove all content to the top
                 }
-                .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height)
+                .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height * 1.1)
                 .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)
-                .offset(y: geometry.size.height - controller.offset)                                    // Lower offset = lower on screen
+                .offset(x: 0, y: geometry.size.height - controller.offset.height)                                    // Lower offset = lower on screen
                 .onAppear() {
                     controller.IsShortCard(dimensions: geometry.size)                                   // Determine width of card
                 }

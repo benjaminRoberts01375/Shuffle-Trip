@@ -184,8 +184,8 @@
 		07B38F482984707900EA765F /* Bottom Drawer */ = {
 			isa = PBXGroup;
 			children = (
-				07B38F492984709D00EA765F /* BottomDrawerVM.swift */,
 				07402D832980833B00F1F046 /* BottomDrawerV.swift */,
+				07B38F492984709D00EA765F /* BottomDrawerVM.swift */,
 			);
 			path = "Bottom Drawer";
 			sourceTree = "<group>";
