@@ -10,7 +10,7 @@ struct BottomDrawer<Content: View>: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .center) {
+            ZStack(alignment: .trailing) {
                 Color.black                             // Background fade when card is brought up
                     .opacity(controller.fadePercent / 2)
                     .allowsHitTesting(false)
@@ -24,7 +24,7 @@ struct BottomDrawer<Content: View>: View {
                     controller.content                  // Content passed in to show
                     Spacer()                            // Shove all content to the top
                 }
-                .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height, idealHeight: geometry.size.height, maxHeight: geometry.size.height)
+                .frame(maxWidth: controller.isShortCard ? controller.minimumShortCardSize : 1000, minHeight: geometry.size.height)
                 .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
                 .cornerRadius(12)
                 .shadow(radius: 3)

@@ -6,12 +6,11 @@ import SwiftUI
 
 /// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
-    @ObservedObject var userIsSearching: SearchTracker { didSet {print("Is full changed in Search Coordinator")}}
+    @ObservedObject var userIsSearching: SearchTracker
     
     init(userIsSearching: SearchTracker) {
         self.userIsSearching = userIsSearching
     }
-    
     
     /// Called every time the user types into the search bar
     /// - Parameters:
