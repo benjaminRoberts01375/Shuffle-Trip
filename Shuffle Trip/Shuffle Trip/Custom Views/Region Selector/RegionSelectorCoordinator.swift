@@ -4,8 +4,13 @@
 import SwiftUI
 import MapKit
 
-class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by ChatGPT, but *very* heavily modified and I'm not sure if this comment is even needed anymore
+class MapCoordinator: NSObject, MKMapViewDelegate {
+    /// Current position and span of the map.
+    @Binding var region: MKCoordinateRegion
     
+    init(region: Binding<MKCoordinateRegion>) {
+        self._region = region
+    }
     
     /// How to render MKCircles. This is usually called per overlay when that overlay is created.
     /// - Parameters:
@@ -19,13 +24,13 @@ class MapCoordinator: NSObject, MKMapViewDelegate { // Base code inspired by Cha
             circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3)   // Set MKCircle color to blue with 30% opacity
             circleRenderer.strokeColor = .white                                     // Set MKCircle outline to white
             circleRenderer.lineWidth = 5                                            // Set MKCircle outline width to 5pt
+            mapView.setRegion(MKCoordinateRegion(center: circleOverlay.coordinate, latitudinalMeters: circleOverlay.radius * 2.2, longitudinalMeters: circleOverlay.radius * 2.2), animated: true)
             return circleRenderer                                                   // Return new appearance
         }
         else {
             return MKOverlayRenderer(overlay: overlay)                              // Return default appearance
         }
     }
-    
     
     /// Called by a long press gesture, handles placing map locations
     /// - Parameter gestureRecognizer: Context for the long press
