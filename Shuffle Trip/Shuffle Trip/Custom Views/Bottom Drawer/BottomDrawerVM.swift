@@ -46,6 +46,12 @@ import SwiftUI
     /// - Parameter dimensions: Dimensions of the screen, usually from a `GeometryReader.size`
     private func recalculateSnapPoints(dimensions: CGSize) {
         snapPointsY = rawSnapPointsY.map{$0 < 1 ? dimensions.height * $0 : $0}
+        for point in snapPointsY.dropFirst().dropLast() {                               // Loop for each snapPointY except for the first and last
+            if abs(point - snapPointsY[snapPointsY.firstIndex(of: point)! - 1]) < 100 { // If the current value is less than 100pt from the previous...
+                snapPointsY.remove(at: snapPointsY.firstIndex(of: point)!)              // ...remove it
+            }
+        }
+        
         SnapToPoint(animation: Animation.linear)
         snapPointsX = [0, -dimensions.width + minimumShortCardSize]
     }
