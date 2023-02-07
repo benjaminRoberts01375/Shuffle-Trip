@@ -41,6 +41,10 @@ struct RegionSelector: UIViewRepresentable {
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleLongPress(gestureRecognizer:)))   // Call function when long press happens
         mapView.addGestureRecognizer(longPressGestureRecognizer)                                                                                                            // Let the map know about long presses
         
+        // Setup single taps
+        let shortPressGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleTap(gestureRecognizer:)))
+        mapView.addGestureRecognizer(shortPressGestureRecognizer)
+        
         return mapView
     }
     

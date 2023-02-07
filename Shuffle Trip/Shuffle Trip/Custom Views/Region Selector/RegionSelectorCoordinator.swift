@@ -7,6 +7,7 @@ import MapKit
 class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Current position and span of the map.
     @Binding var region: MKCoordinateRegion
+    var selectedCircle: MKCircle?
     
     init(region: Binding<MKCoordinateRegion>) {
         self._region = region
@@ -40,9 +41,9 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
         
         // Getting the mapView and position of long press on map
-        let mapView = gestureRecognizer.view as! MKMapView                              // Get the mapView from the gestureRecognizer
-        let location = gestureRecognizer.location(in: mapView)                          // Get the location on screen of the tap
-        let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)      // Convert the screen location to the map location
+        let mapView = gestureRecognizer.view as! MKMapView                                                      // Get the mapView from the gestureRecognizer
+        let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
+        let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                              // Convert the screen location to the map location
         
         // Add or remove trip locations
         if let circle = mapView.overlays.last(where: { overlay in                                               // Instead of iterating over each overlay, grab the one that meets this criteria. Use last to get highest/latest circle (expected behavior)
@@ -50,9 +51,47 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(mkCircle.coordinate)) <= mkCircle.radius // Return the condition of if the long press happened within the MKCircle
         }) {
             mapView.removeOverlay(circle)                                                                       // If the condition was true, remove the circle
+            selectedCircle = nil
         }
         else {
-            mapView.addOverlay(MKCircle(center: touchCoordinate, radius: MapDetails.defaultRadius))             // If the condition was false, add a circle
+            let newCircle = MKCircle(center: touchCoordinate, radius: MapDetails.defaultRadius)
+            selectedCircle = newCircle
+            print(selectedCircle!)
+            mapView.addOverlay(newCircle)                                                                       // If the condition was false, add a circle
         }
+    }
+    
+    
+    /// Check for any trips being tapped on.
+    /// - Parameter gestureRecognizer: Handles tap coordinates
+    @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        let mapView = gestureRecognizer.view as! MKMapView                                                      // Get access to the mapView
+        let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
+        let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                              // Convert the screen location to the map location
+        
+        let testOverlays = mapView.overlays.filter({ overlay in                                                 // Create an array of overlays...
+            if let circle = overlay as? MKCircle {
+                if MKMapPoint(touchCoordinate).distance(to: MKMapPoint(circle.coordinate)) < circle.radius {    // ...that are known to conform to MKCircle and overlap with the user's tap
+                    return true
+                }
+            }
+            return false
+        })
+        
+        if testOverlays.isEmpty {                                                                               // No circle was tapped on
+            selectedCircle = nil
+            return
+        }
+        else if testOverlays.count == 1 {                                                                       // Only circle was tapped on
+            selectedCircle = testOverlays[0] as? MKCircle
+            return
+        }
+                                                                                                                // There are at least 2 circles tapped on
+        var index = testOverlays.lastIndex(where: { overlay in                                                  // Index of selectedCircle in the testOverlays array
+            return (overlay as? MKCircle) == selectedCircle
+        })!                                                                                                     // Always able to unwrap due to previous checks for 0 and 1 element(s)
+        
+        index = (index + 1) % testOverlays.count                                                                // Go to the next index, and loop when at end
+        selectedCircle = testOverlays[index] as? MKCircle
     }
 }
