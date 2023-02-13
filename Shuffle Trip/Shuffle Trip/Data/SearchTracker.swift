@@ -22,8 +22,7 @@ class SearchTracker: ObservableObject {
     init (cardState: Bool) {
         isFull = cardState
     }
-    
-    
+        
     /// Add code to be called when the user begins/finishes searching
     /// - Parameter action: Code that is called when the user begins/ finishes editing a search bar.
     public func AddUserSearchingAction(action: @escaping () -> Void) {
