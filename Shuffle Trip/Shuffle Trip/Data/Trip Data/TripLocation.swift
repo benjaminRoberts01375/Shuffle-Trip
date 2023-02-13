@@ -16,6 +16,8 @@ public class TripLocation {
     var isSelected: Bool = true
     /// An unique identifier for each trip
     let id = UUID()
+    /// ID for polygon
+    var polyID = 0
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
@@ -29,5 +31,11 @@ public class TripLocation {
         let end: DateComponents
         /// Where the activity is
         let location: CLLocationCoordinate2D
+    }
+}
+
+extension TripLocation: Equatable {
+    public static func == (lhs: TripLocation, rhs: TripLocation) -> Bool {
+        return lhs.id == rhs.id
     }
 }
