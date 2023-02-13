@@ -24,7 +24,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         if let circleOverlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: circleOverlay)
             let selectedIndex = tripLocations.tripLocations.firstIndex(where: { location in
-                location.isSelected
+                circleOverlay.hash == location.polyID
             }) ?? -1
             
             if selectedIndex != -1 && tripLocations.tripLocations[selectedIndex].isSelected {
@@ -66,19 +66,6 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         else {
             tripLocations.tripLocations.append(TripLocation(coordinate: touchCoordinate))
         }
-        
-        
-//        // Add or remove trip locations
-//        if let circle = mapView.overlays.last(where: { overlay in                                               // Instead of iterating over each overlay, grab the one that meets this criteria. Use last to get highest/latest circle (expected behavior)
-//            guard let mkCircle = overlay as? MKCircle else { return false }                                     // Ensure that the circle is an MKCircle
-//            return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(mkCircle.coordinate)) <= mkCircle.radius // Return the condition of if the long press happened within the MKCircle
-//        }) {
-//            mapView.removeOverlay(circle)                                                                       // If the condition was true, remove the circle
-//        }
-//        else {
-//            let newCircle = MKCircle(center: touchCoordinate, radius: MapDetails.defaultRadius)
-//            mapView.addOverlay(newCircle)                                                                       // If the condition was false, add a circle
-//        }
     }
     
     /// Check for any trips being tapped on.
@@ -88,31 +75,31 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
         let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                              // Convert the screen location to the map location
         
-//        let testOverlays = mapView.overlays.filter({ overlay in                                                 // Create an array of overlays...
-//            if let circle = overlay as? MKCircle {
-//                if MKMapPoint(touchCoordinate).distance(to: MKMapPoint(circle.coordinate)) < circle.radius {    // ...that are known to conform to MKCircle and overlap with the user's tap
-//                    return true
-//                }
-//            }
-//            return false
-//        })
+        if tripLocations.tripLocations.isEmpty {                            // There are no trips available to tap on, exit
+            tripLocations.SelectTrip()
+            return
+        }
         
-        print(mapView.overlays)
+        let tappedTrips = tripLocations.tripLocations.filter({ location in  // List of trips that were tapped on
+            return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(location.coordinate)) < location.radius
+        })
         
-//        if testOverlays.isEmpty {                                                                               // No circle was tapped on
-//            selectedCircle = nil
-//            return
-//        }
-//        else if testOverlays.count == 1 {                                                                       // Only circle was tapped on
-//            selectedCircle = testOverlays[0] as? MKCircle
-//            return
-//        }
-//                                                                                                                // There are at least 2 circles tapped on
-//        var index = testOverlays.lastIndex(where: { overlay in                                                  // Index of selectedCircle in the testOverlays array
-//            return (overlay as? MKCircle) == selectedCircle
-//        })!                                                                                                     // Always able to unwrap due to previous checks for 0 and 1 element(s)
-//
-//        index = (index + 1) % testOverlays.count                                                                // Go to the next index, and loop when at end
-//        selectedCircle = testOverlays[index] as? MKCircle
+                                                                            // Handle easy conditions first
+        if tappedTrips.isEmpty {                                            // No trips were tapped on
+            tripLocations.SelectTrip()
+            return
+        }
+        
+        if tappedTrips.count == 1 {                                         // Check if only one was tapped, and manually set it
+            tripLocations.SelectTrip(trip: tappedTrips[0])
+            return
+        }
+        
+        var index = tappedTrips.lastIndex(where: { trip in                  // Of the tapped on trips, find the index of the one that's already selected
+            return trip.isSelected
+        }) ?? 0
+        
+        index = (index + 1) % tappedTrips.count                             // Go to the next trip
+        tripLocations.SelectTrip(trip: tripLocations.tripLocations[index])  // Select the new trip
     }
 }

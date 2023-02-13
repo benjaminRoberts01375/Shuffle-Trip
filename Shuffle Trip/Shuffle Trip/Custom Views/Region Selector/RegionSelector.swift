@@ -70,17 +70,28 @@ struct RegionSelector: UIViewRepresentable {
         mapView.removeOverlays(mapView.overlays)                    // Clear all overlays
         for trip in tripLocations.tripLocations {                   // Add all non-selected trips to map
             if !trip.isSelected {
-                mapView.addOverlay(MKCircle(center: trip.coordinate, radius: trip.radius))
+                let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
+                trip.polyID = circle.hash
+                mapView.addOverlay(circle)
             }
         }
         for trip in tripLocations.tripLocations {                   // Add all selected trips to map to ensure selected one is on top
             if trip.isSelected {
-                mapView.addOverlay(MKCircle(center: trip.coordinate, radius: trip.radius))
+                let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
+                trip.polyID = circle.hash
+                mapView.addOverlay(circle)
             }
         }
         if !mapView.overlays.isEmpty {                              // Set the region to the last placed circle (likely the selected one)
             if let circle = mapView.overlays.last as? MKCircle {    // Ensure that last item is an MKCircle
-                mapView.setRegion(MKCoordinateRegion(center: circle.coordinate, latitudinalMeters: circle.radius * 2.2, longitudinalMeters: circle.radius * 2.2), animated: true)
+                
+                let selectedIndex = tripLocations.tripLocations.firstIndex(where: { location in
+                    circle.hash == location.polyID
+                }) ?? -1
+                
+                if selectedIndex != -1 && tripLocations.tripLocations[selectedIndex].isSelected {
+                    mapView.setRegion(MKCoordinateRegion(center: circle.coordinate, latitudinalMeters: circle.radius * 2.2, longitudinalMeters: circle.radius * 2.2), animated: true)
+                }
             }
         }
     }

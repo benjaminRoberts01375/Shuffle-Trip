@@ -9,18 +9,49 @@ final class TripLocations: ObservableObject {
     /// List of specified trip locations
     var tripLocations: [TripLocation] = []  {
         didSet {
-            for action in todoList {
-                action()
-            }
+            SendUpdates()
         }
     }
     
     /// List of closures to execute when the list of trips or activities are updated.
     private var todoList: [() -> Void] = []
     
+    /// Standardized method for updating any struct/class that have requested notifications for when this class changes
+    private func SendUpdates() {
+        for action in todoList {
+            action()
+        }
+    }
+    
+    /// Standardized method of setting the selected trip
+    /// - Parameter trip: Trip to set as selected
+    private func SetSelectedTrip(trip: TripLocation?) {
+        for tripLocation in tripLocations {
+            tripLocation.isSelected = tripLocation == trip
+        }
+        SendUpdates()
+    }
+    
     /// Add code to be called when the trip locations are updated. This can happenw when any of the available variables change.
     /// - Parameter action: Closure that is called when trip locations are added.
     public func AddTripLocationAcion(action: @escaping () -> Void) {
         todoList.append(action)
+    }
+    
+    /// Sets which trip should be selected to stand out from rest of trips.
+    /// - Parameter trip: Trip to be selected
+    public func SelectTrip(trip: TripLocation) {
+        SetSelectedTrip(trip: trip)
+    }
+    
+    /// Sets which trip should be selected to stand out from rest of trips.
+    /// - Parameter index: Index of the trip to set
+    public func SelectTrip(index: Int) {
+        SetSelectedTrip(trip: tripLocations[index])
+    }
+    
+    /// Set no trip to be selected.
+    public func SelectTrip() {
+        SetSelectedTrip(trip: nil)
     }
 }
