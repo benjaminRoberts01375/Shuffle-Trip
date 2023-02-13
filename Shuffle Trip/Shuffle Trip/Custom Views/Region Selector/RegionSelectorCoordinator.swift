@@ -59,12 +59,10 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         if let trip = tripLocations.tripLocations.last(where: { tripLocation in
             return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(tripLocation.coordinate)) < tripLocation.radius
         }) {
-            tripLocations.tripLocations.removeAll(where: { tripLocation in
-                return tripLocation.id == trip.id
-            })
+            tripLocations.RemoveTrip(trip: trip)
         }
         else {
-            tripLocations.tripLocations.append(TripLocation(coordinate: touchCoordinate))
+            tripLocations.AddTrip(trip: TripLocation(coordinate: touchCoordinate))
         }
     }
     

@@ -7,7 +7,7 @@ import MapKit
 /// Object for keeping track of trip locations and their status
 final class TripLocations: ObservableObject {
     /// List of specified trip locations
-    var tripLocations: [TripLocation] = []  {
+    private(set) var tripLocations: [TripLocation] = []  {
         didSet {
             SendUpdates()
         }
@@ -36,6 +36,22 @@ final class TripLocations: ObservableObject {
     /// - Parameter action: Closure that is called when trip locations are added.
     public func AddTripLocationAcion(action: @escaping () -> Void) {
         todoList.append(action)
+    }
+    
+    /// Adds a new trip location and selects it
+    /// - Parameter trip: Trip to add
+    public func AddTrip(trip: TripLocation) {
+        tripLocations.append(trip)
+        SelectTrip(trip: trip)
+        SendUpdates()
+    }
+    
+    /// Remove specified trip
+    /// - Parameter trip: Trip to remove
+    public func RemoveTrip(trip: TripLocation) {
+        tripLocations.removeAll(where: { tripLocation in
+            return tripLocation == trip
+        })
     }
     
     /// Sets which trip should be selected to stand out from rest of trips.
