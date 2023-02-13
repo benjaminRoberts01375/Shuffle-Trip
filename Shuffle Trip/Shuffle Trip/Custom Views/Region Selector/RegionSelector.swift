@@ -8,13 +8,14 @@ import MapKit
 struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
     let logoPosition: CGFloat
+    let mapView = MKMapView()
     @State var region: MKCoordinateRegion = MapDetails.region1
+    @ObservedObject var tripLocations: TripLocations
     
     /// Configure map
     /// - Parameter context: Provided by system
     /// - Returns: A fully configured map
     func makeUIView(context: Context) -> some UIView {
-        let mapView = MKMapView()
         mapView.layoutMargins.bottom = logoPosition + 5
         
         // Configure map
@@ -45,6 +46,10 @@ struct RegionSelector: UIViewRepresentable {
         let shortPressGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleTap(gestureRecognizer:)))
         mapView.addGestureRecognizer(shortPressGestureRecognizer)
         
+        tripLocations.AddTripLocationAcion {
+            RedrawLocations()
+        }
+        
         return mapView
     }
     
@@ -57,13 +62,33 @@ struct RegionSelector: UIViewRepresentable {
     /// Sets the coordinator for the Region Selector
     /// - Returns: A new MapCoordinator
     func makeCoordinator() -> MapCoordinator {
-        MapCoordinator(region: $region)
+        MapCoordinator(region: $region, tripLocations: tripLocations)
+    }
+    
+    /// Re-add all trips to map to avoid MapKit weirdness
+    func RedrawLocations() {
+        mapView.removeOverlays(mapView.overlays)                    // Clear all overlays
+        for trip in tripLocations.tripLocations {                   // Add all non-selected trips to map
+            if !trip.isSelected {
+                mapView.addOverlay(MKCircle(center: trip.coordinate, radius: trip.radius))
+            }
+        }
+        for trip in tripLocations.tripLocations {                   // Add all selected trips to map to ensure selected one is on top
+            if trip.isSelected {
+                mapView.addOverlay(MKCircle(center: trip.coordinate, radius: trip.radius))
+            }
+        }
+        if !mapView.overlays.isEmpty {                              // Set the region to the last placed circle (likely the selected one)
+            if let circle = mapView.overlays.last as? MKCircle {    // Ensure that last item is an MKCircle
+                mapView.setRegion(MKCoordinateRegion(center: circle.coordinate, latitudinalMeters: circle.radius * 2.2, longitudinalMeters: circle.radius * 2.2), animated: true)
+            }
+        }
     }
 }
 
 struct RegionSelector_Previews: PreviewProvider {
     static var previews: some View {
-        RegionSelector(logoPosition: 0)
+        RegionSelector(logoPosition: 0, tripLocations: TripLocations())
             .edgesIgnoringSafeArea(.all)
     }
 }

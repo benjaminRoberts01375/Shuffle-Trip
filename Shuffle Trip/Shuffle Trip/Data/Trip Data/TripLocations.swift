@@ -6,8 +6,6 @@ import MapKit
 
 /// Object for keeping track of trip locations and their status
 final class TripLocations: ObservableObject {
-    var test: Bool = false
-    
     /// List of specified trip locations
     var tripLocations: [TripLocation] = []  {
         didSet {
