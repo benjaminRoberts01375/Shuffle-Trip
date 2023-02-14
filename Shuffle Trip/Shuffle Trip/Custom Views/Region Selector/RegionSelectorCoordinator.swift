@@ -23,11 +23,9 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         // If the overlay in question is a MKCircle, unwrap it and assign it to circleOverlay
         if let circleOverlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: circleOverlay)
-            let selectedIndex = tripLocations.tripLocations.firstIndex(where: { location in
-                circleOverlay.hash == location.polyID
-            }) ?? -1
+            let selectedCircle = tripLocations.tripLocations.first(where: { $0.isSelected })
             
-            if selectedIndex != -1 && tripLocations.tripLocations[selectedIndex].isSelected {
+            if selectedCircle != nil && selectedCircle?.polyID == circleOverlay.hash {
                 circleRenderer.fillColor = UIColor.systemRed.withAlphaComponent(0.3)
                 circleRenderer.lineWidth = 5
             }
