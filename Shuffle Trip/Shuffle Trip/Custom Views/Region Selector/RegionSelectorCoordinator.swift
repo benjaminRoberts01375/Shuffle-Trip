@@ -4,6 +4,12 @@
 import SwiftUI
 import MapKit
 
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
 class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Current position and span of the map.
     @Binding var region: MKCoordinateRegion
@@ -25,7 +31,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             let circleRenderer = MKCircleRenderer(circle: circleOverlay)
             let selectedCircle = tripLocations.tripLocations.first(where: { $0.isSelected })
             
-            if selectedCircle != nil && selectedCircle?.polyID == circleOverlay.hash {
+            if selectedCircle != nil && selectedCircle?.coordinate == overlay.coordinate {
                 circleRenderer.fillColor = UIColor.systemRed.withAlphaComponent(0.3)
                 circleRenderer.lineWidth = 5
             }
@@ -64,38 +70,35 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
-    /// Check for any trips being tapped on.
+    /// Check for any trips being short tapped on.
     /// - Parameter gestureRecognizer: Handles tap coordinates
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
-        let mapView = gestureRecognizer.view as! MKMapView                                                      // Get access to the mapView
-        let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
-        let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                              // Convert the screen location to the map location
+        /// The mapView to interact with
+        let mapView = gestureRecognizer.view as! MKMapView                                                                                          // Get access to the mapView
+        /// Location in screen space that was tapped on
+        let location = gestureRecognizer.location(in: mapView)                                                                                      // Get the location on screen of the tap
+        /// Coordinate of where the user tapped mapped to coordinates on the mapView
+        let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                                                                  // Convert the screen location to the map location
         
-        if tripLocations.tripLocations.isEmpty {                            // There are no trips available to tap on, exit
+        if tripLocations.tripLocations.isEmpty {                                                                                                    // There are no trips available to tap on, exit
+            tripLocations.SelectTrip()
+            return
+        }
+        /// When trips are shown as circles, this list is a list of all the circles that were tapped on, useful if there are overlapping circles.
+        let tappedTrips = tripLocations.tripLocations.filter({ MKMapPoint(touchCoordinate).distance(to: MKMapPoint($0.coordinate)) < $0.radius })   // List of trips that were tapped on
+                                                                                                                                                    // Handle easy conditions first
+        if tappedTrips.isEmpty {                                                                                                                    // No trips were tapped on
             tripLocations.SelectTrip()
             return
         }
         
-        let tappedTrips = tripLocations.tripLocations.filter({ location in  // List of trips that were tapped on
-            return MKMapPoint(touchCoordinate).distance(to: MKMapPoint(location.coordinate)) < location.radius
-        })
-        
-                                                                            // Handle easy conditions first
-        if tappedTrips.isEmpty {                                            // No trips were tapped on
-            tripLocations.SelectTrip()
-            return
-        }
-        
-        if tappedTrips.count == 1 {                                         // Check if only one was tapped, and manually set it
+        if tappedTrips.count == 1 {                                                                                                                 // Check if only one was tapped, and manually set it
             tripLocations.SelectTrip(trip: tappedTrips[0])
             return
         }
         
-        var index = tappedTrips.lastIndex(where: { trip in                  // Of the tapped on trips, find the index of the one that's already selected
-            return trip.isSelected
-        }) ?? 0
-        
-        index = (index + 1) % tappedTrips.count                             // Go to the next trip
-        tripLocations.SelectTrip(trip: tripLocations.tripLocations[index])  // Select the new trip
+        var index: Int = tappedTrips.lastIndex(where: { $0.isSelected }) ?? 0                                                                       // Of the tapped on trips, find the index of the one that's already selected
+        index = (index + 1) % tappedTrips.count                                                                                                     // Go to the next trip
+        tripLocations.SelectTrip(trip: tappedTrips[index])                                                                                          // Select the new trip
     }
 }
