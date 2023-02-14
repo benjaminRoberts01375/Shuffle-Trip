@@ -4,12 +4,6 @@
 import SwiftUI
 import MapKit
 
-extension CLLocationCoordinate2D: Equatable {
-    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
-        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
-    }
-}
-
 class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Current position and span of the map.
     @Binding var region: MKCoordinateRegion
