@@ -35,10 +35,13 @@ final class TripLocations: ObservableObject {
     }
     
     /// Adds a new trip location and selects it
+    /// - Warning: Trips cannot have the same location, and duplicate locations will be discarded.
     /// - Parameter trip: Trip to add
     public func AddTrip(trip: TripLocation) {
-        tripLocations.append(trip)
-        SelectTrip(trip: trip)
+        if tripLocations.filter({ $0.coordinate == trip.coordinate }).isEmpty {
+            tripLocations.append(trip)
+            SelectTrip(trip: trip)
+        }
     }
     
     /// Remove specified trip
