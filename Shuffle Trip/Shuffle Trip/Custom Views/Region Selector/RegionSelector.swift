@@ -9,7 +9,7 @@ struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
     let logoPosition: CGFloat
     let mapView = MKMapView()
-    @State var region: MKCoordinateRegion = MapDetails.region1
+    @Binding var region: MKCoordinateRegion
     @ObservedObject var tripLocations: TripLocations
     
     /// Configure map
@@ -61,7 +61,9 @@ struct RegionSelector: UIViewRepresentable {
     /// - Parameters:
     ///   - uiView: The map updated
     ///   - context: Provided by the system
-    func updateUIView(_ uiView: UIViewType, context: Context) { }
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        mapView.setRegion(region, animated: true)
+    }
     
     /// Sets the coordinator for the Region Selector
     /// - Returns: A new MapCoordinator
@@ -108,10 +110,10 @@ struct RegionSelector: UIViewRepresentable {
         }
     }
 }
-
-struct RegionSelector_Previews: PreviewProvider {
-    static var previews: some View {
-        RegionSelector(logoPosition: 0, tripLocations: TripLocations())
-            .edgesIgnoringSafeArea(.all)
-    }
-}
+//
+//struct RegionSelector_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RegionSelector(logoPosition: 0, tripLocations: TripLocations())
+//            .edgesIgnoringSafeArea(.all)
+//    }
+//}

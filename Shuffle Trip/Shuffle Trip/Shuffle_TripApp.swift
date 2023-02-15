@@ -12,7 +12,7 @@ import SwiftUI
 struct ShuffleTripApp: App {
     var body: some Scene {
         WindowGroup {
-            MainScreenV()
+            ContentView()
         }
     }
 }

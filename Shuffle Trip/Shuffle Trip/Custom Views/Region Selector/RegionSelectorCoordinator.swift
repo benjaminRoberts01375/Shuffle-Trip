@@ -43,6 +43,10 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        region = mapView.region
+    }
+    
     /// Called by a long press gesture, handles placing map locations
     /// - Parameter gestureRecognizer: Context for the long press
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {

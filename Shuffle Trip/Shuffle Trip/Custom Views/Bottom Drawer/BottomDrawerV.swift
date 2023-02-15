@@ -37,6 +37,7 @@ struct BottomDrawer<Content: View>: View {
                         .frame(width: CapsuleProperties.width.rawValue, height: CapsuleProperties.height.rawValue)
                         .padding(.top, CapsuleProperties.topPadding.rawValue)
                     controller.content                  // Content passed in to show
+                        .padding(.horizontal, 7)
                     Spacer()                            // Shove all content to the top
                 }
                 .frame(
