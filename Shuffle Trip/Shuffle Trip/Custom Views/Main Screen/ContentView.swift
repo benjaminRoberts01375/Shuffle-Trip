@@ -6,20 +6,17 @@ import SwiftUI
 
 // View for the main screen
 struct ContentView: View {
+    @StateObject var controller: ContentViewModel = ContentViewModel()
     @StateObject var userIsSearching: SearchTracker = SearchTracker()
-    @StateObject var tripLocations: TripLocations = TripLocations()
-    @State var region: MKCoordinateRegion = MapDetails.region1
-    @State var allowNewTrip: Bool = true
-    let cardMinimumHeight: CGFloat = 125
     
     var body: some View {
         GeometryReader { geometry in
-            let cardSnapPositions: [CGFloat] = [cardMinimumHeight, 1 / 2, 0.97]
+            let cardSnapPositions: [CGFloat] = [controller.cardMinimumHeight, 1 / 2, 0.97]
             ZStack {                                                                            // Main View
                 RegionSelector(
-                    logoPosition: cardMinimumHeight - geometry.safeAreaInsets.bottom,
-                    region: $region,
-                    tripLocations: tripLocations
+                    logoPosition: controller.cardMinimumHeight - geometry.safeAreaInsets.bottom,
+                    region: $controller.region,
+                    tripLocations: controller.tripLocations
                 )                                                            // Map
                 .edgesIgnoringSafeArea(.all)
                 VStack {                                                                        // Top blur
@@ -32,12 +29,12 @@ struct ContentView: View {
                 BottomDrawer(
                     controller: BottomDrawerVM(                                                 // Bottom Drawer
                         content:
-                            VStack {
+                            VStack(alignment: .leading) {
                                 HStack {
                                     SearchBar(userIsSearching: userIsSearching)
                                     Button(
                                         action: {
-                                            tripLocations.AddTrip(trip: TripLocation(coordinate: region.center))
+                                            controller.TripButton()
                                         },
                                         label: {
                                             Image(systemName: "scope")
@@ -48,6 +45,11 @@ struct ContentView: View {
                                     )
                                     Spacer()
                                 }
+                                .padding(.bottom, 20)
+                                Text("Recommended Trips")
+                                    .font(Font.headline.weight(.regular))
+                                Text("Previous Trips")
+                                    .font(Font.headline.weight(.regular))
                             },
                         snapPoints: cardSnapPositions,
                         goFull: userIsSearching

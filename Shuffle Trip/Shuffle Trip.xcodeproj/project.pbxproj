@@ -17,6 +17,7 @@
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
+		0779C7D8299CAAEE00F2696F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */; };
 		078B71F8298C4E9E0044D957 /* SearchTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B71F7298C4E9E0044D957 /* SearchTracker.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
@@ -62,6 +63,7 @@
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
+		0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentViewModel.swift; path = "../../../../../../../.Trash/Shuffle Trip old/Shuffle Trip/Shuffle Trip/Custom Views/Main Screen/ContentViewModel.swift"; sourceTree = "<group>"; };
 		078B71F7298C4E9E0044D957 /* SearchTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTracker.swift; path = "Shuffle Trip/Data/SearchTracker.swift"; sourceTree = SOURCE_ROOT; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				07F71A3A29808788007C7AE6 /* ContentView.swift */,
+				0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -505,6 +508,7 @@
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
+				0779C7D8299CAAEE00F2696F /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

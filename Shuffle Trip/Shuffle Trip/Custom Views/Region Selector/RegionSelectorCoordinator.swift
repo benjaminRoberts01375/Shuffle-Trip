@@ -43,7 +43,11 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+    /// Update the region state whenever the user moves the map
+    /// - Parameters:
+    ///   - mapView: map view that was scrolled on
+    ///   - animated: If the change in region was animated or not
+    internal func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
         region = mapView.region
     }
     
