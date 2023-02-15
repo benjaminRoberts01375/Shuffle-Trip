@@ -7,7 +7,6 @@ import SwiftUI
 // View for the main screen
 struct ContentView: View {
     @StateObject var controller: ContentViewModel = ContentViewModel()
-    @StateObject var userIsSearching: SearchTracker = SearchTracker()
     
     var body: some View {
         GeometryReader { geometry in
@@ -31,7 +30,7 @@ struct ContentView: View {
                         content:
                             VStack(alignment: .leading) {
                                 HStack {
-                                    SearchBar(userIsSearching: userIsSearching)
+                                    SearchBar(userIsSearching: controller.userIsSearching)
                                     Button(
                                         action: {
                                             controller.TripButton()
@@ -52,7 +51,7 @@ struct ContentView: View {
                                     .font(Font.headline.weight(.regular))
                             },
                         snapPoints: cardSnapPositions,
-                        goFull: userIsSearching
+                        goFull: controller.userIsSearching
                     )
                 )
             }
