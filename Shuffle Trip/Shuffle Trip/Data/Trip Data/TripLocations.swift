@@ -50,6 +50,7 @@ final class TripLocations: ObservableObject {
         tripLocations.removeAll(where: { tripLocation in
             return tripLocation == trip
         })
+        SendUpdates()
     }
     
     /// Sets which trip should be selected to stand out from rest of trips.

@@ -9,7 +9,7 @@ struct MainScreenMV: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let cardSnapPositions: [CGFloat] = [150, geometry.size.height/2, geometry.size.height + geometry.safeAreaInsets.bottom - 10]
+            let cardSnapPositions: [CGFloat] = [150, geometry.size.height / 2, geometry.size.height + geometry.safeAreaInsets.bottom - 10]
             
             ZStack {
                 RegionSelector(logoPosition: (cardSnapPositions.min() ?? 500) - geometry.safeAreaInsets.bottom)

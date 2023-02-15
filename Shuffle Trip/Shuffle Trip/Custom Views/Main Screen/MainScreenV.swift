@@ -11,7 +11,7 @@ struct MainScreenV: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let cardSnapPositions: [CGFloat] = [cardMinimumHeight, 1/2, 0.97]
+            let cardSnapPositions: [CGFloat] = [cardMinimumHeight, 1 / 2, 0.97]
             ZStack {                                                                                            // Main View
                 RegionSelector(logoPosition: cardMinimumHeight - geometry.safeAreaInsets.bottom, tripLocations: tripLocations)                // Map
                     .edgesIgnoringSafeArea(.all)

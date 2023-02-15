@@ -94,7 +94,7 @@ import SwiftUI
     /// - Parameter value: The value calculated by a DragGesture.
     public func Drag(value: DragGesture.Value) {
         let dampening = { (dragAmount: CGFloat, distancePast: CGFloat) -> CGFloat in                // Handle dampening when user drags drawer out of bounds
-            return dragAmount * pow((distancePast/10 + 1), -3/2)
+            return dragAmount * pow((distancePast / 10 + 1), -3 / 2)
         }
         
         // Y component
@@ -114,7 +114,7 @@ import SwiftUI
         
         if isShortCard {                                                                            // X component only with short card
             let cDistances = snapPointsX.map { abs(offset.width - $0) }
-            let gDistances = snapPointsX.map { abs(value.location.x - minimumShortCardSize/2 - $0) }// Figure out how far away sheet is from provided heights
+            let gDistances = snapPointsX.map { abs(value.location.x - minimumShortCardSize / 2 - $0) }// Figure out how far away sheet is from provided heights
             let snapIndex = gDistances.firstIndex(of: gDistances.min()!)!                           // Get the index of the snap point with smallest value
             let distanceChangedX = value.translation.width - previousDrag.width                     // Width distance changed between this and last frame
             
