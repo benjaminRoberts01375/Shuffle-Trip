@@ -22,7 +22,7 @@ struct MainScreenV: View {
                     Spacer()
                 }
                 .edgesIgnoringSafeArea(.all)
-                BottomDrawer(controller: BottomDrawerVM (                                                       // Bottom Drawer
+                BottomDrawer(controller: BottomDrawerVM(                                                       // Bottom Drawer
                     content:
                         VStack {
                             SearchBar(userIsSearching: userIsSearching)

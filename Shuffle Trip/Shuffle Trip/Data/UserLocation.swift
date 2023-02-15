@@ -17,7 +17,6 @@ final class UserLocation: NSObject, ObservableObject, CLLocationManagerDelegate 
         locationManager?.desiredAccuracy = kCLLocationAccuracyBest
     }
     
-    
     /// Fires when the user changes the app's ability to see the current location
     /// - Parameter manager: Handles delegating location permission information
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) { // Permission changed or created

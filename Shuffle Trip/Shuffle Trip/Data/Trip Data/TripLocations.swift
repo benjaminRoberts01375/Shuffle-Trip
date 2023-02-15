@@ -1,8 +1,8 @@
 // Jan 25, 2023
 // Ben Roberts
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 /// Object for keeping track of trip locations and their status
 final class TripLocations: ObservableObject {
@@ -38,7 +38,7 @@ final class TripLocations: ObservableObject {
     /// - Warning: Trips cannot have the same location, and duplicate locations will be discarded.
     /// - Parameter trip: Trip to add
     public func AddTrip(trip: TripLocation) {
-        if tripLocations.filter({ $0.coordinate == trip.coordinate }).isEmpty {
+        if !tripLocations.contains(where: { $0.coordinate == trip.coordinate }) {
             tripLocations.append(trip)
             SelectTrip(trip: trip)
         }

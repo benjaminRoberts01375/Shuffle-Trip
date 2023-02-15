@@ -1,8 +1,8 @@
 // Jan 24, 2023
 // Ben Roberts
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 /// Renders a map and shows icons/annotations
 struct RegionSelector: UIViewRepresentable {
@@ -34,7 +34,11 @@ struct RegionSelector: UIViewRepresentable {
         // Getting the user's location
         userLocation.setupLocationManager()                         // Get permission from user to show on map
         userLocation.onAuthorizationChanged = {                     // If authorization changed, try to get the user's location. If unable, use defaults.
-            region = MKCoordinateRegion(center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate, latitudinalMeters: MapDetails.defaultRadius, longitudinalMeters: MapDetails.defaultRadius) // Get the user's region, and if unavailable, fallback to the current one
+            region = MKCoordinateRegion(
+                center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate,
+                latitudinalMeters: MapDetails.defaultRadius,
+                longitudinalMeters: MapDetails.defaultRadius
+            )                       // Get the user's region, and if unavailable, fallback to the current one
             mapView.setRegion(region, animated: true)
         }                // If user's preferences change, run this code to set map position accordingly
         
@@ -67,30 +71,38 @@ struct RegionSelector: UIViewRepresentable {
     
     /// Re-add all trips to map to avoid MapKit weirdness
     func RedrawLocations() {
-        mapView.removeOverlays(mapView.overlays)                    // Clear all overlays
-        for trip in tripLocations.tripLocations {                   // Add all non-selected trips to map
-            if !trip.isSelected {
-                let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
-                trip.polyID = circle.hash
-                mapView.addOverlay(circle)
-            }
+        // Clear all overlays
+        mapView.removeOverlays(mapView.overlays)
+        
+        for trip in tripLocations.tripLocations where !trip.isSelected {            // Add all non-selected trips to map
+            let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
+            trip.polyID = circle.hash
+            mapView.addOverlay(circle)
         }
-        for trip in tripLocations.tripLocations {                   // Add all selected trips to map to ensure selected one is on top
-            if trip.isSelected {
-                let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
-                trip.polyID = circle.hash
-                mapView.addOverlay(circle)
-            }
+        
+        for trip in tripLocations.tripLocations where trip.isSelected {             // Add all selected trips to map to ensure selected one is on top
+            let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
+            trip.polyID = circle.hash
+            mapView.addOverlay(circle)
         }
-        if !mapView.overlays.isEmpty {                              // Set the region to the last placed circle (likely the selected one)
-            if let circle = mapView.overlays.last as? MKCircle {    // Ensure that last item is an MKCircle
+        
+        if !mapView.overlays.isEmpty {                                              // Set the region to the last placed circle (likely the selected one)
+            if let circle = mapView.overlays.last as? MKCircle {                    // Ensure that last item is an MKCircle
                 
                 let selectedIndex = tripLocations.tripLocations.firstIndex(where: { location in
                     circle.hash == location.polyID
                 }) ?? -1
                 
                 if selectedIndex != -1 && tripLocations.tripLocations[selectedIndex].isSelected {
-                    mapView.setRegion(MKCoordinateRegion(center: circle.coordinate, latitudinalMeters: circle.radius * 2.2, longitudinalMeters: circle.radius * 2.2), animated: true)
+                    let zoomOutMultiplier = 2.2
+                    mapView.setRegion(
+                        MKCoordinateRegion(
+                            center: circle.coordinate,
+                            latitudinalMeters: circle.radius * zoomOutMultiplier,
+                            longitudinalMeters: circle.radius * zoomOutMultiplier
+                        ),
+                        animated: true
+                    )
                 }
             }
         }

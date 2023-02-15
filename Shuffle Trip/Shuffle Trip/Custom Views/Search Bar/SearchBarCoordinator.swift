@@ -3,7 +3,6 @@
 
 import SwiftUI
 
-
 /// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
     @ObservedObject var userIsSearching: SearchTracker
@@ -20,14 +19,12 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
         searchBar.text = searchText
     }
     
-    
     /// Called when the search bar is tapped on
     /// - Parameter searchBar: Search bar that was tapped on
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)    // User tapped on search bar, so show the cancel button
         userIsSearching.isFull = true                           // Update parent view(s)
     }
-    
     
     /// Called when the user presses on the search bar's cancel button
     /// - Parameter searchBar: Search bar the was tapped on

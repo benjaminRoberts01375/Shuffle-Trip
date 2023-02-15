@@ -7,15 +7,16 @@ import SwiftUI
     @ObservedObject var goFull: SearchTracker
     @Published var isShortCard: Bool = false
     
+    private let defaultCardSize: CGFloat = 500
     @Published var snapPointsX: [CGFloat] { didSet {
         if snapPointsX.isEmpty {
-            snapPointsX = [500]
+            snapPointsX = [defaultCardSize]
         }
     }}
     private let rawSnapPointsY: [CGFloat]
     @Published var snapPointsY: [CGFloat] { didSet {
         if snapPointsY.isEmpty {
-            snapPointsY = [500]
+            snapPointsY = [defaultCardSize]
         }
     }}
     
@@ -30,8 +31,8 @@ import SwiftUI
     public let minimumMapSpace: CGFloat = 200
     
     init(content: Content, snapPoints: [CGFloat], goFull: SearchTracker) {
-        let ensuredSnapPoints = snapPoints.isEmpty ? [500] : snapPoints
-        self.snapPointsY = snapPoints.isEmpty ? [500] : snapPoints
+        let ensuredSnapPoints = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
+        self.snapPointsY = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.rawSnapPointsY = snapPoints
         self.snapPointsX = [0]
         self.offset = CGSize(width: 0, height: ensuredSnapPoints[0])
@@ -45,11 +46,12 @@ import SwiftUI
     /// Recalculates the snap points based on height of the screen, and snaps the drawer.
     /// - Parameter dimensions: Dimensions of the screen, usually from a `GeometryReader.size`
     private func recalculateSnapPoints(dimensions: CGSize) {
-        snapPointsY = rawSnapPointsY.map{$0 < 1 ? dimensions.height * $0 : $0}
-        for point in snapPointsY.dropFirst().dropLast() {                               // Loop for each snapPointY except for the first and last
-            if abs(point - snapPointsY[snapPointsY.firstIndex(of: point)! - 1]) < 100 { // If the current value is less than 100pt from the previous...
-                snapPointsY.remove(at: snapPointsY.firstIndex(of: point)!)              // ...remove it
-            }
+        let minimumSnapDistance: CGFloat = 100
+        snapPointsY = rawSnapPointsY.map { $0 < 1 ? dimensions.height * $0 : $0 }
+        
+        // Remove any snap point that is not one of the ends, and is within 100pt of another snap point
+        for point in snapPointsY.dropFirst().dropLast() where abs(point - snapPointsY[snapPointsY.firstIndex(of: point)! - 1]) < minimumSnapDistance {
+            snapPointsY.remove(at: snapPointsY.firstIndex(of: point)!)
         }
         
         SnapToPoint(animation: Animation.linear)
@@ -59,15 +61,15 @@ import SwiftUI
     /// Toggle for forcing the card to be at max height and reverting to original height
     private func ToggleMaxOffset() {
         if goFull.isFull {
-            offsetCache = offset.height
+            offsetCache = offset.height             // Save current height for eventually returning to it
             withAnimation(.linear(duration: 0.2)) {
-                offset.height = snapPointsY.max()!
+                offset.height = snapPointsY.max()!  // Snap to max height
                 SetBackgroundOpacity()
             }
             return
         }
-        withAnimation (.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
-            offset.height = offsetCache
+        withAnimation(.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
+            offset.height = offsetCache             // Restore previous height
             SetBackgroundOpacity()
         }
     }
@@ -111,8 +113,8 @@ import SwiftUI
         }
         
         if isShortCard {                                                                            // X component only with short card
-            let cDistances = snapPointsX.map{abs(offset.width - $0)}
-            let gDistances = snapPointsX.map{abs(value.location.x - minimumShortCardSize/2 - $0)}   // Figure out how far away sheet is from provided heights
+            let cDistances = snapPointsX.map { abs(offset.width - $0) }
+            let gDistances = snapPointsX.map { abs(value.location.x - minimumShortCardSize/2 - $0) }// Figure out how far away sheet is from provided heights
             let snapIndex = gDistances.firstIndex(of: gDistances.min()!)!                           // Get the index of the snap point with smallest value
             let distanceChangedX = value.translation.width - previousDrag.width                     // Width distance changed between this and last frame
             
@@ -144,13 +146,13 @@ import SwiftUI
     /// Determines which snap point the card should snap to when the user finishes dragging
     /// - Parameter value: The value calculated by a DragGesture
     public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
-        withAnimation (animation) {
+        withAnimation(animation) {
             // y component
             if goFull.isFull {                                              // Check if the card is supposed to be at max height
                 offset.height = snapPointsY.max()!                          // Set the offset.height
             }
             else {                                                          // If able to be at any snap point, calculate where it should be
-                let distances = snapPointsY.map{abs(offset.height - $0)}    // Figure out how far away sheet is from provided heights
+                let distances = snapPointsY.map { abs(offset.height - $0) } // Figure out how far away sheet is from provided heights
                 let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
                 offset.height = snapPointsY[snapIndex]                      // Set the offset.height
             }
@@ -161,7 +163,7 @@ import SwiftUI
                 offset.width = 0
             }
             else {
-                let distances = snapPointsX.map{abs(offset.width - $0)}     // Figure out how far away sheet is from provided heights
+                let distances = snapPointsX.map { abs(offset.width - $0) }     // Figure out how far away sheet is from provided heights
                 let snapIndex = distances.firstIndex(of: distances.min()!)! // Get the index of the snap point with smallest value
                 offset.width = snapPointsX[snapIndex]                       // Set the offset.width
             }

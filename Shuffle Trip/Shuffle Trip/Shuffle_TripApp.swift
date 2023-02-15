@@ -5,11 +5,11 @@
 //  Created by Ben Roberts on 1/24/23.
 //
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 @main
-struct Shuffle_TripApp: App {
+struct ShuffleTripApp: App {
     var body: some Scene {
         WindowGroup {
             MainScreenV()

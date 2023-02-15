@@ -1,8 +1,8 @@
 // Feb 12, 2022
 // Ben Roberts
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 /// Class defining where a trip takes place, as well as its details
 public class TripLocation {
@@ -11,7 +11,7 @@ public class TripLocation {
     /// How far fro the location does teh trip span
     var radius: CGFloat = MapDetails.defaultRadius
     /// Activities to be had at the trip
-    var activityLocations: [Activity] = [] // TODO: Call to server to generate activites
+    var activityLocations: [Activity] = [] // TODO: [2/20/2023] Call to server to generate activites
     /// User has selected this trip for editing/viewing
     var isSelected: Bool = true
     /// An unique identifier for each trip

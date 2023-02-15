@@ -8,7 +8,6 @@ struct BlurView: UIViewRepresentable {
     let style: UIBlurEffect.Style   // The type of blur effect
     var opacity: CGFloat            // How much of the blur is shown
     
-    
     /// Initial blur appearance
     /// - Parameter context: Provided by system
     /// - Returns: The newly blured background
@@ -17,7 +16,6 @@ struct BlurView: UIViewRepresentable {
         view.backgroundColor = .systemBackground.withAlphaComponent(opacity)
         return view
     }
-    
     
     /// Adjusted blur appearance
     /// - Parameters:

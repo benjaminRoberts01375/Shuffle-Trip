@@ -7,8 +7,7 @@ import SwiftUI
 class SearchTracker: ObservableObject {
     private var todoList: [() -> Void] = []
     
-    @Published var isFull: Bool
-    {
+    @Published var isFull: Bool {
         didSet {
             for action in todoList {
                 action()

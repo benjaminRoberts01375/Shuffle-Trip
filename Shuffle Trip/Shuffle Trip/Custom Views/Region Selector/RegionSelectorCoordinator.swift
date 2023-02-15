@@ -1,8 +1,8 @@
 // Jan 24, 2023
 // Ben Roberts
 
-import SwiftUI
 import MapKit
+import SwiftUI
 
 class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Current position and span of the map.
@@ -19,18 +19,19 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     ///   - mapView: The MapView being updated
     ///   - overlay: The overlay to change the rendering for
     /// - Returns: Either the adjusted or original overlay
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    internal func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         // If the overlay in question is a MKCircle, unwrap it and assign it to circleOverlay
         if let circleOverlay = overlay as? MKCircle {
             let circleRenderer = MKCircleRenderer(circle: circleOverlay)
             let selectedCircle = tripLocations.tripLocations.first(where: { $0.isSelected })
+            let circleOpacity = 0.3
             
             if selectedCircle != nil && selectedCircle?.coordinate == overlay.coordinate {
-                circleRenderer.fillColor = UIColor.systemRed.withAlphaComponent(0.3)
+                circleRenderer.fillColor = UIColor.systemRed.withAlphaComponent(circleOpacity)
                 circleRenderer.lineWidth = 5
             }
             else {
-                circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(0.3)   // Set MKCircle color to blue with 30% opacity
+                circleRenderer.fillColor = UIColor.systemBlue.withAlphaComponent(circleOpacity)
                 circleRenderer.lineWidth = 3
             }
             circleRenderer.strokeColor = .white                                         // Set MKCircle outline to white
@@ -50,7 +51,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
         
         // Getting the mapView and position of long press on map
-        let mapView = gestureRecognizer.view as! MKMapView                                                      // Get the mapView from the gestureRecognizer
+        guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                // Get the mapView from the gestureRecognizer
         let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
         let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                              // Convert the screen location to the map location
         
@@ -68,7 +69,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     /// - Parameter gestureRecognizer: Handles tap coordinates
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
         /// The mapView to interact with
-        let mapView = gestureRecognizer.view as! MKMapView                                                                                          // Get access to the mapView
+        guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                                                    // Get access to the mapView
         /// Location in screen space that was tapped on
         let location = gestureRecognizer.location(in: mapView)                                                                                      // Get the location on screen of the tap
         /// Coordinate of where the user tapped mapped to coordinates on the mapView
@@ -80,7 +81,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
         /// When trips are shown as circles, this list is a list of all the circles that were tapped on, useful if there are overlapping circles.
         let tappedTrips = tripLocations.tripLocations.filter({ MKMapPoint(touchCoordinate).distance(to: MKMapPoint($0.coordinate)) < $0.radius })   // List of trips that were tapped on
-                                                                                                                                                    // Handle easy conditions first
+
         if tappedTrips.isEmpty {                                                                                                                    // No trips were tapped on
             tripLocations.SelectTrip()
             return
