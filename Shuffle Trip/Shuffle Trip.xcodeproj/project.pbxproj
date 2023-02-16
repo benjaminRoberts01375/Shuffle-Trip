@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		073C5A04299DD82200C65BFD /* HomeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A03299DD82200C65BFD /* HomeV.swift */; };
+		073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A05299DD9BE00C65BFD /* HomeVM.swift */; };
 		07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D582980816E00F1F046 /* Shuffle_TripApp.swift */; };
 		07402D5D2980817000F1F046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5C2980817000F1F046 /* Assets.xcassets */; };
 		07402D602980817000F1F046 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5F2980817000F1F046 /* Preview Assets.xcassets */; };
@@ -17,9 +19,9 @@
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
-		0779C7D8299CAAEE00F2696F /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */; };
 		078B71F8298C4E9E0044D957 /* SearchTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B71F7298C4E9E0044D957 /* SearchTracker.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
+		07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
 		07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* ContentView.swift */; };
 		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		073C5A03299DD82200C65BFD /* HomeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeV.swift; sourceTree = "<group>"; };
+		073C5A05299DD9BE00C65BFD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		07402D552980816E00F1F046 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07402D582980816E00F1F046 /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
 		07402D5C2980817000F1F046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Shuffle Trip/Assets.xcassets"; sourceTree = "<group>"; };
@@ -63,9 +67,9 @@
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
-		0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContentViewModel.swift; path = "../../../../../../../.Trash/Shuffle Trip old/Shuffle Trip/Shuffle Trip/Custom Views/Main Screen/ContentViewModel.swift"; sourceTree = "<group>"; };
 		078B71F7298C4E9E0044D957 /* SearchTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTracker.swift; path = "Shuffle Trip/Data/SearchTracker.swift"; sourceTree = SOURCE_ROOT; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
+		07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		07F71A3A29808788007C7AE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07F71A3E29808980007C7AE6 /* MapDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetails.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		073C5A02299DD81400C65BFD /* Drawers */ = {
+			isa = PBXGroup;
+			children = (
+				073C5A03299DD82200C65BFD /* HomeV.swift */,
+				073C5A05299DD9BE00C65BFD /* HomeVM.swift */,
+			);
+			path = Drawers;
+			sourceTree = "<group>";
+		};
 		07402D4C2980816E00F1F046 = {
 			isa = PBXGroup;
 			children = (
@@ -206,8 +219,9 @@
 		077C16EF2988B84F005993A8 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				073C5A02299DD81400C65BFD /* Drawers */,
 				07F71A3A29808788007C7AE6 /* ContentView.swift */,
-				0779C7D7299CAAEE00F2696F /* ContentViewModel.swift */,
+				07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -497,8 +511,10 @@
 				07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */,
 				078B71F8298C4E9E0044D957 /* SearchTracker.swift in Sources */,
 				07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */,
+				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
+				073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,
 				075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */,
 				07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */,
@@ -508,7 +524,7 @@
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
-				0779C7D8299CAAEE00F2696F /* ContentViewModel.swift in Sources */,
+				073C5A04299DD82200C65BFD /* HomeV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

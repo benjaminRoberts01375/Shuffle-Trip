@@ -29,26 +29,14 @@ struct ContentView: View {
                     controller: BottomDrawerVM(                                                 // Bottom Drawer
                         content:
                             VStack(alignment: .leading) {
-                                HStack {
-                                    SearchBar(userIsSearching: controller.userIsSearching)
-                                    Button(
-                                        action: {
-                                            controller.TripButton()
-                                        },
-                                        label: {
-                                            Image(systemName: "scope")
-                                                .font(Font.title2.weight(.regular))
-                                                .cornerRadius(5)
-                                                .padding(.leading, -10)
-                                        }
-                                    )
-                                    Spacer()
-                                }
-                                .padding(.bottom, 20)
-                                Text("Recommended Trips")
-                                    .font(Font.headline.weight(.regular))
-                                Text("Previous Trips")
-                                    .font(Font.headline.weight(.regular))
+                                Home(
+                                    controller:
+                                        HomeVM(
+                                            userIsSearching: $controller.userIsSearching,
+                                            tripLocations: $controller.tripLocations,
+                                            region: $controller.region
+                                        )
+                                )
                             },
                         snapPoints: cardSnapPositions,
                         goFull: controller.userIsSearching
