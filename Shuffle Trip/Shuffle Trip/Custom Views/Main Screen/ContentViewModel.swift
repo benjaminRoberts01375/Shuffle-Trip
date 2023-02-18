@@ -20,11 +20,9 @@ class ContentViewModel: ObservableObject {
         
         tripLocations.AddTripLocationAcion {
             var isASelectedTrip: Bool = false
-            for trip in self.tripLocations.tripLocations {
-                if trip.isSelected {
-                    isASelectedTrip = true
-                    break
-                }
+            for trip in self.tripLocations.tripLocations where trip.isSelected {
+                isASelectedTrip = true
+                break
             }
             self.tripDrawerController.isPresented = isASelectedTrip
         }

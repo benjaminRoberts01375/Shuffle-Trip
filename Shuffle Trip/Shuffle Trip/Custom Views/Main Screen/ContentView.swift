@@ -43,9 +43,11 @@ struct ContentView: View {
                 BottomDrawer(
                     controller: BottomDrawerVM(
                         content:
-                            VStack {
-                                Text("Temp text")
-                            },
+                            SelectedTripV(
+                                controller: SelectedTripVM(
+                                    tripLocations: controller.tripLocations
+                                )
+                            ),
                         snapPoints: cardSnapPositions,
                         controller: controller.tripDrawerController
                     )
