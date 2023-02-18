@@ -44,6 +44,7 @@ import SwiftUI
         self.controller.AddPresentedAction {        // Add observer
             self.TogglePresented()
         }
+        self.TogglePresented()
     }
     
     /// Recalculates the snap points based on height of the screen, and snaps the drawer.
@@ -170,43 +171,47 @@ import SwiftUI
         let dampening = { (dragAmount: CGFloat, distancePast: CGFloat) -> CGFloat in                        // Handle dampening when user drags drawer out of bounds
             return dragAmount * pow((distancePast / 10 + 1), -3 / 2)
         }
-        DragY(value: value, dampening: dampening)
-        if isShortCard {
-            DragX(value: value, dampening: dampening)
+        if controller.isPresented {
+            DragY(value: value, dampening: dampening)
+            if isShortCard {
+                DragX(value: value, dampening: dampening)
+            }
+            
+            previousDrag = value.translation                                                                    // Save current drag distance to allow for relative positioning on the line above
         }
-        
-        previousDrag = value.translation                                                                    // Save current drag distance to allow for relative positioning on the line above
     }
     
     /// Determines which snap point the card should snap to when the user finishes dragging
     /// - Parameter value: The value calculated by a DragGesture
     public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
-        withAnimation(animation) {
-            // y component
-            if controller.isFull {                                                              // Check if the card is supposed to be at max height
-                guard let maxSnapPoint = snapPointsY.max() else { return }
-                offset.height = maxSnapPoint                                                // Set the offset.height
+        if controller.isPresented {
+            withAnimation(animation) {
+                // y component
+                if controller.isFull {                                                              // Check if the card is supposed to be at max height
+                    guard let maxSnapPoint = snapPointsY.max() else { return }
+                    offset.height = maxSnapPoint                                                // Set the offset.height
+                }
+                else {                                                                          // If able to be at any snap point, calculate where it should be
+                    let distances = snapPointsY.map { abs(offset.height - $0) }                 // Figure out how far away sheet is from provided heights
+                    guard let minDistance = distances.min() else { return }
+                    guard let snapIndex = distances.firstIndex(of: minDistance) else { return } // Get the index of the snap point with smallest value
+                    offset.height = snapPointsY[snapIndex]                                      // Set the offset.height
+                }
+                SetBackgroundOpacity()
+                
+                // x component
+                if controller.isFull {
+                    offset.width = 0
+                }
+                else {
+                    let distances = snapPointsX.map { abs(offset.width - $0) }                  // Figure out how far away sheet is from provided heights
+                    guard let minDistance = distances.min() else { return }
+                    guard let snapIndex = distances.firstIndex(of: minDistance) else { return } // Get the index of the snap point with smallest value
+                    offset.width = snapPointsX[snapIndex]                                       // Set the offset.width
+                }
+                
             }
-            else {                                                                          // If able to be at any snap point, calculate where it should be
-                let distances = snapPointsY.map { abs(offset.height - $0) }                 // Figure out how far away sheet is from provided heights
-                guard let minDistance = distances.min() else { return }
-                guard let snapIndex = distances.firstIndex(of: minDistance) else { return } // Get the index of the snap point with smallest value
-                offset.height = snapPointsY[snapIndex]                                      // Set the offset.height
-            }
-            SetBackgroundOpacity()
-            
-            // x component
-            if controller.isFull {
-                offset.width = 0
-            }
-            else {
-                let distances = snapPointsX.map { abs(offset.width - $0) }                  // Figure out how far away sheet is from provided heights
-                guard let minDistance = distances.min() else { return }
-                guard let snapIndex = distances.firstIndex(of: minDistance) else { return } // Get the index of the snap point with smallest value
-                offset.width = snapPointsX[snapIndex]                                       // Set the offset.width
-            }
-            
+            previousDrag = CGSize(width: 0, height: 0)                                          // Reset dragging
         }
-        previousDrag = CGSize(width: 0, height: 0)                                          // Reset dragging
     }
 }
