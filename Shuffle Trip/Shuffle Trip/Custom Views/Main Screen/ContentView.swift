@@ -28,16 +28,14 @@ struct ContentView: View {
                 BottomDrawer(
                     controller: BottomDrawerVM(                                                 // Bottom Drawer
                         content:
-                            VStack(alignment: .leading) {
-                                Home(
-                                    controller:
-                                        HomeVM(
-                                            userIsSearching: $controller.homeDrawerController,
-                                            tripLocations: $controller.tripLocations,
-                                            region: $controller.region
-                                        )
-                                )
-                            },
+                            Home(
+                                controller:
+                                    HomeVM(
+                                        userIsSearching: $controller.homeDrawerController,
+                                        tripLocations: $controller.tripLocations,
+                                        region: $controller.region
+                                    )
+                            ),
                         snapPoints: cardSnapPositions,
                         controller: controller.homeDrawerController
                                               )
@@ -46,8 +44,8 @@ struct ContentView: View {
                     controller: BottomDrawerVM(
                         content:
                             VStack {
-                            Text("Temp text")
-                        },
+                                Text("Temp text")
+                            },
                         snapPoints: cardSnapPositions,
                         controller: controller.tripDrawerController
                     )
