@@ -11,7 +11,7 @@ public class TripLocation {
     /// How far fro the location does teh trip span
     var radius: CGFloat
     /// Activities to be had at the trip
-    var activityLocations: [Businesses]
+    var activityLocations: [Activities]
     /// User has selected this trip for editing/viewing
     var isSelected: Bool
     /// An unique identifier for each trip
@@ -26,7 +26,6 @@ public class TripLocation {
         self.isSelected = true
         self.id = UUID()
         self.polyID = 0
-        print("Starting...")
         GenerateActivities()
     }
     
@@ -39,8 +38,8 @@ public class TripLocation {
 //        /// Where the activity is
 //        let location: CLLocationCoordinate2D
 //    }
-    
-    struct Businesses: Decodable {
+    // swiftlint:disable nesting
+    struct Activities: Decodable {
         let businesses: [Business]
         let total: Int
         let region: Region
@@ -119,6 +118,7 @@ public class TripLocation {
             case displayAddress = "display_address"
         }
     }
+    // swiftlint:enable nesting
 
     struct Region: Decodable {
         let center: Center
@@ -134,7 +134,7 @@ public class TripLocation {
             do {
                 let data = try Data(contentsOf: fileUrl)
                 let decoder = JSONDecoder()
-                activityLocations = try decoder.decode([Businesses].self, from: data)
+                activityLocations = try decoder.decode([Activities].self, from: data)
                 print(activityLocations)
             } catch {
                 print("Error reading JSON file: \(error)")
