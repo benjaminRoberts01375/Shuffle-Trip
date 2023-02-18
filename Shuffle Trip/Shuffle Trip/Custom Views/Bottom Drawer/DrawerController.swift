@@ -4,7 +4,7 @@
 import SwiftUI
 
 /// Tracks information about the user searching
-class SearchTracker: ObservableObject {
+class DrawerController: ObservableObject {
     private var todoList: [() -> Void] = []
     
     @Published var isFull: Bool {

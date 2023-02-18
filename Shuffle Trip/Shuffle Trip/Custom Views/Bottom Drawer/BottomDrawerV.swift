@@ -74,6 +74,6 @@ struct BottomDrawer<Content: View>: View {
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(userIsSearching: SearchTracker()), snapPoints: [150, 1 / 2, 0.925], goFull: SearchTracker()))
+        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(userIsSearching: DrawerController()), snapPoints: [150, 1 / 2, 0.925], goFull: DrawerController()))
     }
 }

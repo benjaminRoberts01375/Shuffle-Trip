@@ -5,9 +5,9 @@ import SwiftUI
 
 /// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
-    @ObservedObject var userIsSearching: SearchTracker
+    @ObservedObject var userIsSearching: DrawerController
     
-    init(userIsSearching: SearchTracker) {
+    init(userIsSearching: DrawerController) {
         self.userIsSearching = userIsSearching
     }
     

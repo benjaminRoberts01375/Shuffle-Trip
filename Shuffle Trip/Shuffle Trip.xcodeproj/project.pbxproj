@@ -19,7 +19,7 @@
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
-		078B71F8298C4E9E0044D957 /* SearchTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B71F7298C4E9E0044D957 /* SearchTracker.swift */; };
+		078B71F8298C4E9E0044D957 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B71F7298C4E9E0044D957 /* DrawerController.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
@@ -67,7 +67,7 @@
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
-		078B71F7298C4E9E0044D957 /* SearchTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SearchTracker.swift; path = "Shuffle Trip/Data/SearchTracker.swift"; sourceTree = SOURCE_ROOT; };
+		078B71F7298C4E9E0044D957 /* DrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrawerController.swift; path = "Shuffle Trip/Custom Views/Bottom Drawer/DrawerController.swift"; sourceTree = SOURCE_ROOT; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
@@ -231,6 +231,7 @@
 			children = (
 				07402D832980833B00F1F046 /* BottomDrawerV.swift */,
 				07B38F492984709D00EA765F /* BottomDrawerVM.swift */,
+				078B71F7298C4E9E0044D957 /* DrawerController.swift */,
 			);
 			path = "Bottom Drawer";
 			sourceTree = "<group>";
@@ -240,7 +241,6 @@
 			children = (
 				07F71A3D29808961007C7AE6 /* Default Data */,
 				07612C9F2999760C00C5CE6B /* Trip Data */,
-				078B71F7298C4E9E0044D957 /* SearchTracker.swift */,
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
 			);
 			path = Data;
@@ -509,7 +509,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */,
-				078B71F8298C4E9E0044D957 /* SearchTracker.swift in Sources */,
+				078B71F8298C4E9E0044D957 /* DrawerController.swift in Sources */,
 				07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */,
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,

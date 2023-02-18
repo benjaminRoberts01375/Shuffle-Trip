@@ -4,7 +4,7 @@
 import SwiftUI
 
 @MainActor class BottomDrawerVM<Content: View>: ObservableObject {
-    @ObservedObject var goFull: SearchTracker
+    @ObservedObject var goFull: DrawerController
     @Published var isShortCard: Bool = false
     
     private let defaultCardSize: CGFloat = 500
@@ -30,7 +30,7 @@ import SwiftUI
     public let minimumShortCardSize: CGFloat = 275
     public let minimumMapSpace: CGFloat = 200
     
-    init(content: Content, snapPoints: [CGFloat], goFull: SearchTracker) {
+    init(content: Content, snapPoints: [CGFloat], goFull: DrawerController) {
         let ensuredSnapPoints = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.snapPointsY = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.rawSnapPointsY = snapPoints
