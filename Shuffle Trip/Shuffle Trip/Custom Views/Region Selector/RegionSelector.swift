@@ -112,6 +112,8 @@ struct RegionSelector: UIViewRepresentable {
         }
     }
     
+    /// Places pins at every location provided by a trip
+    /// - Parameter trip: Trip to place pins at
     private func PlaceTripPins(trip: TripLocation) {
         for activity in trip.activityLocations {
             let annotation = MKPointAnnotation()
