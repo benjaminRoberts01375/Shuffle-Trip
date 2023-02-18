@@ -39,7 +39,7 @@ struct ContentView: View {
                                 )
                             },
                         snapPoints: cardSnapPositions,
-                        goFull: controller.userIsSearching
+                        controller: controller.userIsSearching
                     )
                 )
             }

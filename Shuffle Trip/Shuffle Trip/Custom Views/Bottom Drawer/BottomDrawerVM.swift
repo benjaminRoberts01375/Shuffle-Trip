@@ -4,7 +4,7 @@
 import SwiftUI
 
 @MainActor class BottomDrawerVM<Content: View>: ObservableObject {
-    @ObservedObject var goFull: DrawerController
+    @ObservedObject var controller: DrawerController
     @Published var isShortCard: Bool = false
     
     private let defaultCardSize: CGFloat = 500
@@ -30,16 +30,19 @@ import SwiftUI
     public let minimumShortCardSize: CGFloat = 275
     public let minimumMapSpace: CGFloat = 200
     
-    init(content: Content, snapPoints: [CGFloat], goFull: DrawerController) {
+    init(content: Content, snapPoints: [CGFloat], controller: DrawerController) {
         let ensuredSnapPoints = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.snapPointsY = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.rawSnapPointsY = snapPoints
         self.snapPointsX = [0]
         self.offset = CGSize(width: 0, height: ensuredSnapPoints[0])
-        self.goFull = goFull
+        self.controller = controller
         self.content = content
-        self.goFull.AddUserSearchingAction {
+        self.controller.AddUserSearchingAction {    // Add observer
             self.ToggleMaxOffset()
+        }
+        self.controller.AddPresentedAction {        // Add observer
+            self.TogglePresented()
         }
     }
     
@@ -61,20 +64,38 @@ import SwiftUI
         snapPointsX = [0, -dimensions.width + minimumShortCardSize]
     }
     
+    /// Toggle showing the card on screen
+    private func TogglePresented() {
+        if controller.isPresented && offset.height < 0 {
+            withAnimation(.linear(duration: 0.2)) {
+                offset.height = offsetCache
+            }
+        }
+        else if !controller.isPresented {
+            offsetCache = offset.height
+            withAnimation(.easeIn(duration: 0.2)) {
+                offset.height = -20
+                SetBackgroundOpacity()
+            }
+        }
+    }
+    
     /// Toggle for forcing the card to be at max height and reverting to original height
     private func ToggleMaxOffset() {
-        if goFull.isFull {
-            offsetCache = offset.height             // Save current height for eventually returning to it
+        if controller.isFull && controller.isPresented {
+            offsetCache = offset.height         // Save current height for eventually returning to it
             withAnimation(.linear(duration: 0.2)) {
                 guard let maxSnapPoint = snapPointsY.max() else { return }
-                offset.height = maxSnapPoint        // Snap to max height
+                offset.height = maxSnapPoint    // Snap to max height
                 SetBackgroundOpacity()
             }
             return
         }
-        withAnimation(.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
-            offset.height = offsetCache             // Restore previous height
-            SetBackgroundOpacity()
+        else if controller.isPresented {
+            withAnimation(.interactiveSpring(response: 0.35, dampingFraction: 0.75)) {
+                offset.height = offsetCache     // Restore previous height
+                SetBackgroundOpacity()
+            }
         }
     }
     
@@ -162,7 +183,7 @@ import SwiftUI
     public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
         withAnimation(animation) {
             // y component
-            if goFull.isFull {                                                              // Check if the card is supposed to be at max height
+            if controller.isFull {                                                              // Check if the card is supposed to be at max height
                 guard let maxSnapPoint = snapPointsY.max() else { return }
                 offset.height = maxSnapPoint                                                // Set the offset.height
             }
@@ -175,7 +196,7 @@ import SwiftUI
             SetBackgroundOpacity()
             
             // x component
-            if goFull.isFull {
+            if controller.isFull {
                 offset.width = 0
             }
             else {
