@@ -8,7 +8,7 @@ struct Home: View {
     
     var body: some View {
         HStack {
-            SearchBar(userIsSearching: controller.userIsSearching)
+            SearchBar(drawerController: controller.drawerController)
             Button(
                 action: {
                     controller.TripButton()

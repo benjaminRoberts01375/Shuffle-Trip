@@ -5,12 +5,12 @@ import MapKit
 import SwiftUI
 
 class HomeVM: ObservableObject {
-    @Binding var userIsSearching: DrawerController
+    @Binding var drawerController: DrawerController
     @Binding var tripLocations: TripLocations
     @Binding var region: MKCoordinateRegion
     
     init(userIsSearching: Binding<DrawerController>, tripLocations: Binding<TripLocations>, region: Binding<MKCoordinateRegion>) {
-        self._userIsSearching = userIsSearching
+        self._drawerController = userIsSearching
         self._tripLocations = tripLocations
         self._region = region
     }
