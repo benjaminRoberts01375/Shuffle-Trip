@@ -39,10 +39,19 @@ public class TripLocation {
 //        let location: CLLocationCoordinate2D
 //    }
     // swiftlint:disable nesting
-    struct Activities: Decodable {
+    struct Activities: Decodable, Hashable {
+        static func == (lhs: TripLocation.Activities, rhs: TripLocation.Activities) -> Bool {
+            return lhs.id == rhs.id
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+        
         let businesses: [Business]
         let total: Int
         let region: Region
+        let id = UUID()
 
         enum CodingKeys: String, CodingKey {
             case businesses
