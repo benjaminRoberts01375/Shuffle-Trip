@@ -75,6 +75,7 @@ struct RegionSelector: UIViewRepresentable {
     func RedrawLocations() {
         // Clear all overlays
         mapView.removeOverlays(mapView.overlays)
+        mapView.removeAnnotations(mapView.annotations)
         
         for trip in tripLocations.tripLocations where !trip.isSelected {            // Add all non-selected trips to map
             let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
@@ -86,6 +87,7 @@ struct RegionSelector: UIViewRepresentable {
             let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
             trip.polyID = circle.hash
             mapView.addOverlay(circle)
+            PlaceTripPins(trip: trip)
         }
         
         if !mapView.overlays.isEmpty {                                              // Set the region to the last placed circle (likely the selected one)
@@ -107,6 +109,14 @@ struct RegionSelector: UIViewRepresentable {
                     )
                 }
             }
+        }
+    }
+    
+    private func PlaceTripPins(trip: TripLocation) {
+        for activity in trip.activityLocations {
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = CLLocationCoordinate2D(latitude: activity.businesses[0].coordinates.latitude, longitude: activity.businesses[0].coordinates.longitude)
+            mapView.addAnnotation(annotation)
         }
     }
 }
