@@ -18,6 +18,8 @@ public class TripLocation {
     let id: UUID
     /// ID for polygon
     var polyID: Int
+    /// Name of the trip to be displayed to the user
+    var name: String
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
@@ -26,6 +28,7 @@ public class TripLocation {
         self.isSelected = true
         self.id = UUID()
         self.polyID = 0
+        self.name = "Your New Trip"
         GenerateActivities()
     }
     

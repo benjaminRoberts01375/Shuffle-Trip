@@ -5,20 +5,31 @@ import SwiftUI
 
 struct SelectedTripV: View {
     @StateObject var controller: SelectedTripVM
-    
-    enum EmptyTrip: String {
-        case title = "No trip selected."
-    }
-    let colors: [Color] = [.red, .green, .blue]
-    
+    @State private var selectedItem: TripLocation.Activities?
+    @State private var isExpanded = false
+    @State var tripName: String = ""
     var body: some View {
-        VStack {
-            Text("Name: \(controller.selectedTrip?.activityLocations[0].businesses[0].name ?? EmptyTrip.title.rawValue)")
+        VStack(alignment: .leading) {
             if controller.selectedTrip != nil {
-                ForEach ( controller.selectedTrip!.activityLocations, id: \.self) { activity in
-                    Text(activity.businesses[0].name)
+                TextField("Name of trip", text: $tripName)
+                    .onAppear {
+                        tripName = controller.selectedTrip!.name
+                    }
+                    .onSubmit {
+                        controller.selectedTrip?.name = tripName
+                    }
+                    .font(Font.title.weight(.bold))
+                ForEach(controller.selectedTrip!.activityLocations, id: \.self) { item in
+                    DisclosureGroup(
+                        content: {
+                            Text(item.businesses[0].location.address1)
+                        }, label: {
+                            Text(item.businesses[0].name)
+                        }
+                    )
                 }
             }
         }
+        .padding(.horizontal, 5)
     }
 }

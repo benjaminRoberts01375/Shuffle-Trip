@@ -16,8 +16,4 @@ import SwiftUI
             }
         }
     }
-    
-    private func DetermineSelectedTrip() {
-        
-    }
 }
