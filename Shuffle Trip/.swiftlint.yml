@@ -33,7 +33,6 @@ opt_in_rules:
   - force_unwrapping
   - identical_operands
   - implicitly_unwrapped_optional
-  - indentation_width
   - inert_defer
   - last_where
   - line_length
@@ -48,7 +47,6 @@ opt_in_rules:
   - nimble_operator
   - operator_usage_whitespace
   - optional_enum_case_matching
-  - period_spacing
   - sorted_imports
   - static_operator
   - toggle_bool
