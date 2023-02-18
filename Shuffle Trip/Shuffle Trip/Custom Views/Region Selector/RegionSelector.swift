@@ -110,10 +110,10 @@ struct RegionSelector: UIViewRepresentable {
         }
     }
 }
-//
-//struct RegionSelector_Previews: PreviewProvider {
-//    static var previews: some View {
-//        RegionSelector(logoPosition: 0, tripLocations: TripLocations())
-//            .edgesIgnoringSafeArea(.all)
-//    }
-//}
+
+struct RegionSelector_Previews: PreviewProvider {
+    static var previews: some View {
+        RegionSelector(logoPosition: 0, region: .constant(MapDetails.region1), tripLocations: TripLocations())
+            .edgesIgnoringSafeArea(.all)
+    }
+}
