@@ -5,39 +5,69 @@ import SwiftUI
 
 struct SelectedTripV: View {
     @StateObject var controller: SelectedTripVM
-    @State private var selectedItem: TripLocation.Activities?
-    @State private var isExpanded = false
-    @State var tripName: String = ""
-    @State var isEditingTrip: Bool = false
     var body: some View {
         VStack(alignment: .leading) {
             if controller.selectedTrip != nil {
                 HStack {
-                    TextField("Name of trip", text: $tripName)
-                        .disabled(!isEditingTrip)
+                    TextField("Name of trip", text: $controller.tripName)
+                        .font(Font.title.weight(.bold))
+                        .disabled(!controller.isEditingTrip)
                     Spacer()
                     
-                    if isEditingTrip {
+                    if controller.isEditingTrip {
                         HStack {
                             Button(action: {                            // Editing - check mark
                                 withAnimation {
-                                    isEditingTrip = false
+                                    controller.isEditingTrip = false
                                 }
                             }, label: {
                                 Image(systemName: "checkmark.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(Color.green)
+                                    .font(Font.title.weight(.bold))
                             })
                             Button(action: {                            // Editing - x mark
                                 withAnimation {
-                                    isEditingTrip = false
+                                    controller.isEditingTrip = false
                                 }
                             }, label: {
                                 Image(systemName: "xmark.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(Color.red)
+                                    .font(Font.title.weight(.bold))
                             })
                         }
+                        .transition(.opacity)
+                    }
+                    else if controller.shuffleConfirmation {
+                        HStack {
+                            Text("Confirm")
+                                .font(Font.headline.weight(.bold))
+                            Button(action: {                            // Confirm shuffle - No
+                                withAnimation {
+                                    controller.shuffleConfirmation = false
+                                }
+                            }, label: {
+                                Image(systemName: "arrow.uturn.backward.circle.fill")
+                                    .symbolRenderingMode(.hierarchical)
+                                    .foregroundStyle(Color.green)
+                                    .font(Font.title.weight(.bold))
+                            })
+                            Button(action: {                            // Confirm shuffle - Yes
+                                controller.selectedTrip!.ShuffleTrip()
+                                withAnimation {
+                                    controller.shuffleConfirmation = false
+                                }
+                            }, label: {
+                                Image(systemName: "shuffle.circle.fill")
+                                    .symbolRenderingMode(.hierarchical)
+                                    .foregroundStyle(Color.red)
+                                    .font(Font.title.weight(.bold))
+                            })
+                        }
+                        .padding(5)
+                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
+                        .cornerRadius(40)
                         .transition(.opacity)
                     }
                     else {
@@ -47,44 +77,55 @@ struct SelectedTripV: View {
                                 Image(systemName: "square.and.arrow.up.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(Color.primary)
+                                    .font(Font.title.weight(.bold))
                             })
-//                            Button(action: {                            // Edit trip
-//                                withAnimation {
-//                                    isEditingTrip = true
-//                                }
-//                            }, label: {
-//                                Image(systemName: "pencil.circle.fill")
-//                                    .symbolRenderingMode(.hierarchical)
-//                                    .foregroundStyle(Color.primary)
-//                            })
-                            Button(action: {
+                            //                            Button(action: {                            // Edit trip
+                            //                                withAnimation {
+                            //                                    isEditingTrip = true
+                            //                                }
+                            //                            }, label: {
+                            //                                Image(systemName: "pencil.circle.fill")
+                            //                                    .symbolRenderingMode(.hierarchical)
+                            //                                    .foregroundStyle(Color.primary)
+                            //                            })
+                            
+                            Button(action: {                            // Shuffle
+                                withAnimation {
+                                    controller.shuffleConfirmation = true
+                                }
                             }, label: {
                                 Image(systemName: "shuffle.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(Color.primary)
+                                    .font(Font.title.weight(.bold))
                             })
+                            
                             Button(action: {                            // Close card button
                                 controller.tripLocations.SelectTrip()
                             }, label: {
                                 Image(systemName: "chevron.down.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
                                     .foregroundStyle(Color.primary)
+                                    .font(Font.title.weight(.bold))
                             })
                         }
                         .transition(.opacity)
                     }
                 }
                 .onAppear {
-                    tripName = controller.selectedTrip!.name
+                    controller.tripName = controller.selectedTrip!.name
                 }
                 .onSubmit {
-                    controller.selectedTrip?.name = tripName
-                    isEditingTrip = false
+                    controller.selectedTrip?.name = controller.tripName
+                    withAnimation {
+                        controller.isEditingTrip = false
+                    }
                 }
                 .onTapGesture {
-                    isEditingTrip = true
+                    withAnimation {
+                        controller.isEditingTrip = true
+                    }
                 }
-                .font(Font.title.weight(.bold))
                 .shadow(color: .black.opacity(0.25), radius: 2)
                 .cornerRadius(6)
                 Divider()
