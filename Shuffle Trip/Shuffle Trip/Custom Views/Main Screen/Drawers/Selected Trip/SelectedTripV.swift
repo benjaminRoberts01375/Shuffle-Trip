@@ -76,7 +76,7 @@ struct SelectedTripV: View {
                             }, label: {
                                 Image(systemName: "square.and.arrow.up.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
-                                    .foregroundStyle(Color.primary)
+                                    .foregroundStyle(Color.secondary)
                                     .font(Font.title.weight(.bold))
                             })
                             //                            Button(action: {                            // Edit trip
@@ -86,7 +86,7 @@ struct SelectedTripV: View {
                             //                            }, label: {
                             //                                Image(systemName: "pencil.circle.fill")
                             //                                    .symbolRenderingMode(.hierarchical)
-                            //                                    .foregroundStyle(Color.primary)
+                            //                                    .foregroundStyle(Color.secondary)
                             //                            })
                             
                             Button(action: {                            // Shuffle
@@ -96,7 +96,7 @@ struct SelectedTripV: View {
                             }, label: {
                                 Image(systemName: "shuffle.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
-                                    .foregroundStyle(Color.primary)
+                                    .foregroundStyle(Color.secondary)
                                     .font(Font.title.weight(.bold))
                             })
                             
@@ -105,7 +105,7 @@ struct SelectedTripV: View {
                             }, label: {
                                 Image(systemName: "chevron.down.circle.fill")
                                     .symbolRenderingMode(.hierarchical)
-                                    .foregroundStyle(Color.primary)
+                                    .foregroundStyle(Color.secondary)
                                     .font(Font.title.weight(.bold))
                             })
                         }
@@ -156,33 +156,34 @@ struct SelectedTripV: View {
                                             .padding(10)
                                             .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
                                             .cornerRadius(10)
-                                            VStack(alignment: .leading) {
-                                                Text("Ratings")
-                                                    .font(.caption)
-                                                    .fontWeight(.light)
-                                                    .foregroundColor(Color.secondary)
-                                                HStack {
-                                                    Image(systemName: "star.fill")
-                                                        .symbolRenderingMode(.hierarchical)
-                                                        .foregroundStyle(Color.secondary)
-                                                        .font(.caption)
-                                                        .fontWeight(.ultraLight)
-                                                    Text("\(activity.businesses[0].rating)")
-                                                        .font(.body)
-                                                        .fontWeight(.regular)
-                                                        .foregroundColor(Color.primary)
-                                                    Text("/10")
+                                                VStack(alignment: .leading) {
+                                                    Text("Ratings")
                                                         .font(.caption)
                                                         .fontWeight(.light)
                                                         .foregroundColor(Color.secondary)
+                                                    HStack {
+                                                        Image(systemName: "star.fill")
+                                                            .symbolRenderingMode(.hierarchical)
+                                                            .foregroundStyle(Color.secondary)
+                                                            .font(.caption)
+                                                            .fontWeight(.ultraLight)
+                                                        Text("\(activity.businesses[0].rating)")
+                                                            .font(.body)
+                                                            .fontWeight(.regular)
+                                                            .foregroundColor(Color.primary)
+                                                        Text("/10")
+                                                            .font(.caption)
+                                                            .fontWeight(.light)
+                                                            .foregroundColor(Color.secondary)
+                                                    }
+                                                    Text("\(activity.businesses[0].reviewCount) \(activity.businesses[0].reviewCount == 1 ? "review" : "reviews")")
                                                 }
-                                                Text("\(activity.businesses[0].reviewCount) \(activity.businesses[0].reviewCount == 1 ? "review" : "reviews")")
-                                            }
-                                            .padding(10)
-                                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
-                                            .cornerRadius(10)
+                                                .padding(10)
+                                                .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                                                .cornerRadius(10)
                                         }
-                                        Spacer()
+                                        AsyncImage(url: URL(string: controller.selectedTrip?.activityLocations[index].businesses[0].imageUrl ?? ""), scale: 5)
+                                            .cornerRadius(10)
                                     }
                                 }, label: {
                                     HStack {
