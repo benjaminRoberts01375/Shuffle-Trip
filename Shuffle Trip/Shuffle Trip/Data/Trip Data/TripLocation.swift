@@ -147,11 +147,15 @@ public class TripLocation {
                 let data = try Data(contentsOf: fileUrl)
                 let decoder = JSONDecoder()
                 activityLocations = try decoder.decode([Activities].self, from: data)
-                print(activityLocations)
             } catch {
                 print("Error reading JSON file: \(error)")
             }
         }
+    }
+    
+    public func ShuffleTrip() {
+        print("Shuffling...")
+        GenerateActivities()
     }
 }
 

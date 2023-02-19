@@ -26,7 +26,7 @@ struct ContentView: View {
                 }
                 .edgesIgnoringSafeArea(.all)
                 BottomDrawer(
-                    controller: BottomDrawerVM(                                                 // Bottom Drawer
+                    controller: BottomDrawerVM(                                                 // Home Drawer
                         content:
                             Home(
                                 controller:
@@ -40,7 +40,7 @@ struct ContentView: View {
                         controller: controller.homeDrawerController
                                               )
                 )
-                BottomDrawer(
+                BottomDrawer(                                                                   // Trip Drawer
                     controller: BottomDrawerVM(
                         content:
                             SelectedTripV(

@@ -4,7 +4,7 @@
 import SwiftUI
 
 @MainActor class SelectedTripVM: ObservableObject {
-    @Published var tripLocations: TripLocations
+    @ObservedObject var tripLocations: TripLocations
     @Published var selectedTrip: TripLocation?
     
     init(tripLocations: TripLocations) {
