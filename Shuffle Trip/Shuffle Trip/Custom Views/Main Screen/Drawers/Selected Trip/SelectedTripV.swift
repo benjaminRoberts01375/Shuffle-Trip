@@ -131,12 +131,18 @@ struct SelectedTripV: View {
                 Divider()
                 List {
                     Section("Activities") {
-                        ForEach(controller.selectedTrip!.activityLocations, id: \.self) { item in
+                        ForEach(Array(controller.selectedTrip!.activityLocations.enumerated()), id: \.1.self) { index, activity in
                             DisclosureGroup(
                                 content: {
-                                    Text(item.businesses[0].location.address1)
+                                    Text(activity.businesses[0].location.address1)
                                 }, label: {
-                                    Text(item.businesses[0].name)
+                                    HStack {
+                                        Image(systemName: "\(index + 1).circle.fill")
+                                            .symbolRenderingMode(.hierarchical)
+                                            .foregroundStyle(Color.secondary)
+                                            .font(Font.title2.weight(.regular))
+                                        Text(activity.businesses[0].name)
+                                    }
                                 }
                             )
                             .listRowBackground(BlurView(style: .systemMaterial, opacity: 0))
