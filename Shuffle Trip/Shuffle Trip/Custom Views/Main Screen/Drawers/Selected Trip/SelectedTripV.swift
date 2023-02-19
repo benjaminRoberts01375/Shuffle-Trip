@@ -133,29 +133,32 @@ struct SelectedTripV: View {
                         VStack(alignment: .leading) {
                             DisclosureGroup(
                                 content: {
-                                    HStack {
-                                        VStack(alignment: .leading) {
+                                    VStack {
+                                        HStack {
                                             VStack(alignment: .leading) {
-                                                Text("Address")
-                                                    .font(.caption)
-                                                    .fontWeight(.light)
-                                                    .foregroundColor(Color.secondary)
-                                                Text("\(activity.businesses[0].location.address1) \(activity.businesses[0].location.address2 ?? "") \(activity.businesses[0].location.address3 ?? "")")
-                                                    .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.primary)
-                                                Text("\(activity.businesses[0].location.city), \(activity.businesses[0].location.state) \(activity.businesses[0].location.zipCode)")
-                                                    .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.primary)
-                                                Text("\(activity.businesses[0].location.country)")
-                                                    .font(.body)
-                                                    .fontWeight(.regular)
-                                                    .foregroundColor(Color.primary)
-                                            }
-                                            .padding(10)
-                                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
-                                            .cornerRadius(10)
+                                                VStack(alignment: .leading) {
+                                                    Text("Address")
+                                                        .font(.caption)
+                                                        .fontWeight(.light)
+                                                        .foregroundColor(Color.secondary)
+                                                    Text("\(activity.businesses[0].location.address1) \(activity.businesses[0].location.address2 ?? "") \(activity.businesses[0].location.address3 ?? "")")
+                                                        .font(.body)
+                                                        .fontWeight(.regular)
+                                                        .foregroundColor(Color.primary)
+                                                    Text("\(activity.businesses[0].location.city), \(activity.businesses[0].location.state) \(activity.businesses[0].location.zipCode)")
+                                                        .font(.body)
+                                                        .fontWeight(.regular)
+                                                        .foregroundColor(Color.primary)
+                                                    Text("\(activity.businesses[0].location.country)")
+                                                        .font(.body)
+                                                        .fontWeight(.regular)
+                                                        .foregroundColor(Color.primary)
+                                                }
+                                                .padding(10)
+                                                .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                                                .cornerRadius(10)
+                                                .shadow(radius: 1)
+                                                .padding(.horizontal, 3)
                                                 VStack(alignment: .leading) {
                                                     Text("Ratings")
                                                         .font(.caption)
@@ -167,11 +170,11 @@ struct SelectedTripV: View {
                                                             .foregroundStyle(Color.secondary)
                                                             .font(.caption)
                                                             .fontWeight(.ultraLight)
-                                                        Text("\(activity.businesses[0].rating)")
+                                                        Text(String(format: "%.1f", activity.businesses[0].rating))
                                                             .font(.body)
                                                             .fontWeight(.regular)
                                                             .foregroundColor(Color.primary)
-                                                        Text("/10")
+                                                        Text("/5")
                                                             .font(.caption)
                                                             .fontWeight(.light)
                                                             .foregroundColor(Color.secondary)
@@ -181,6 +184,10 @@ struct SelectedTripV: View {
                                                 .padding(10)
                                                 .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
                                                 .cornerRadius(10)
+                                                .shadow(radius: 1)
+                                                .padding(5)
+                                            }
+                                            Spacer()
                                         }
                                         AsyncImage(url: URL(string: controller.selectedTrip?.activityLocations[index].businesses[0].imageUrl ?? ""), scale: 5)
                                             .cornerRadius(10)
