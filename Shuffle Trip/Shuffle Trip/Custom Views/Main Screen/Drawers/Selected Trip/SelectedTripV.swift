@@ -126,15 +126,64 @@ struct SelectedTripV: View {
                         controller.isEditingTrip = true
                     }
                 }
-                .shadow(color: .black.opacity(0.25), radius: 2)
                 .cornerRadius(6)
                 Divider()
-                List {
-                    Section("Activities") {
-                        ForEach(Array(controller.selectedTrip!.activityLocations.enumerated()), id: \.1.self) { index, activity in
+                ScrollView {
+                    ForEach(Array(controller.selectedTrip!.activityLocations.enumerated()), id: \.1.self) { index, activity in
+                        VStack(alignment: .leading) {
                             DisclosureGroup(
                                 content: {
-                                    Text(activity.businesses[0].location.address1)
+                                    HStack {
+                                        VStack(alignment: .leading) {
+                                            VStack(alignment: .leading) {
+                                                Text("Address")
+                                                    .font(.caption)
+                                                    .fontWeight(.light)
+                                                    .foregroundColor(Color.secondary)
+                                                Text("\(activity.businesses[0].location.address1) \(activity.businesses[0].location.address2 ?? "") \(activity.businesses[0].location.address3 ?? "")")
+                                                    .font(.body)
+                                                    .fontWeight(.regular)
+                                                    .foregroundColor(Color.primary)
+                                                Text("\(activity.businesses[0].location.city), \(activity.businesses[0].location.state) \(activity.businesses[0].location.zipCode)")
+                                                    .font(.body)
+                                                    .fontWeight(.regular)
+                                                    .foregroundColor(Color.primary)
+                                                Text("\(activity.businesses[0].location.country)")
+                                                    .font(.body)
+                                                    .fontWeight(.regular)
+                                                    .foregroundColor(Color.primary)
+                                            }
+                                            .padding(10)
+                                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                                            .cornerRadius(10)
+                                            VStack(alignment: .leading) {
+                                                Text("Ratings")
+                                                    .font(.caption)
+                                                    .fontWeight(.light)
+                                                    .foregroundColor(Color.secondary)
+                                                HStack {
+                                                    Image(systemName: "star.fill")
+                                                        .symbolRenderingMode(.hierarchical)
+                                                        .foregroundStyle(Color.secondary)
+                                                        .font(.caption)
+                                                        .fontWeight(.ultraLight)
+                                                    Text("\(activity.businesses[0].rating)")
+                                                        .font(.body)
+                                                        .fontWeight(.regular)
+                                                        .foregroundColor(Color.primary)
+                                                    Text("/10")
+                                                        .font(.caption)
+                                                        .fontWeight(.light)
+                                                        .foregroundColor(Color.secondary)
+                                                }
+                                                Text("\(activity.businesses[0].reviewCount) \(activity.businesses[0].reviewCount == 1 ? "review" : "reviews")")
+                                            }
+                                            .padding(10)
+                                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                                            .cornerRadius(10)
+                                        }
+                                        Spacer()
+                                    }
                                 }, label: {
                                     HStack {
                                         Image(systemName: "\(index + 1).circle.fill")
@@ -142,15 +191,17 @@ struct SelectedTripV: View {
                                             .foregroundStyle(Color.secondary)
                                             .font(Font.title2.weight(.regular))
                                         Text(activity.businesses[0].name)
+                                            .foregroundColor(Color.primary)
                                     }
                                 }
                             )
-                            .listRowBackground(BlurView(style: .systemMaterial, opacity: 0))
+                            .padding(.horizontal, 10)
+                            .padding(.vertical, 5)
+                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                            .cornerRadius(10)
                         }
                     }
                 }
-                .scrollContentBackground(.hidden)
-                .background(.clear)
             }
         }
     }
