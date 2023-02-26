@@ -12,6 +12,7 @@ struct SelectedTripV: View {
     
     var body: some View {
         VStack(alignment: .leading) {
+            Text("Trip details")
             if controller.selectedTrip != nil {
                 HStack {
                     TextField("Name of trip", text: $controller.tripName)

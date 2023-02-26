@@ -188,8 +188,6 @@ public class TripLocation {
                 let decoder = JSONDecoder()
                 let activities = try decoder.decode([Activities].self, from: data)
                 self.activityLocations = activities
-                // Do something with the decoded activities
-                print("Decoded activities: \(activities)")
             } catch {
                 print("Error decoding response data: \(error)")
             }
@@ -200,7 +198,6 @@ public class TripLocation {
     /// Function for regenerating trips
     /// - Parameter activityTypes: List of activities to go on
     public func ShuffleTrip() {
-        print("Shuffling...")
         generateActivities(params: categories)
     }
 }

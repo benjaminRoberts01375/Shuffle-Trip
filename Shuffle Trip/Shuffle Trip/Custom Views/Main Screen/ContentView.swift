@@ -25,16 +25,27 @@ struct ContentView: View {
                     Spacer()
                 }
                 .edgesIgnoringSafeArea(.all)
-                BottomDrawer(                                                                       // Home drawer
-                    content: HomeV(drawerController: controller.homeDrawerController, tripLocations: controller.tripLocations, region: $controller.region),
-                    snapPoints: cardSnapPositions,
-                    controller: controller.homeDrawerController
-                )
-                BottomDrawer(                                                                       // Selected trip drawer
-                    content: SelectedTripV(tripLocations: controller.tripLocations),
-                    snapPoints: cardSnapPositions,
-                    controller: controller.tripDrawerController
-                )
+                
+                if controller.interactionPhase == .start {
+                    BottomDrawer(                                                                   // Home drawer
+                        content: HomeV(drawerController: controller.homeDrawerController, tripLocations: controller.tripLocations, region: $controller.region),
+                        snapPoints: cardSnapPositions,
+                        controller: controller.homeDrawerController
+                    )
+                    .transition(
+                        .asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom))
+                    )
+                }
+                else if controller.interactionPhase == .selectedTrip {
+                    BottomDrawer(                                                                   // Selected trip drawer
+                        content: SelectedTripV(tripLocations: controller.tripLocations),
+                        snapPoints: cardSnapPositions,
+                        controller: controller.tripDrawerController
+                    )
+                    .transition(
+                        .asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom))
+                    )
+                }
             }
         }
     }

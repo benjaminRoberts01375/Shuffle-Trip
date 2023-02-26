@@ -15,7 +15,7 @@ import SwiftUI
     init(tripLocations: TripLocations) {
         self.tripLocations = tripLocations
         
-        tripLocations.AddTripLocationAcion {
+        tripLocations.AddTripUpdateAction {
             for trip in tripLocations.tripLocations where trip.isSelected {
                 self.selectedTrip = trip
                 self.isEditingTrip = false

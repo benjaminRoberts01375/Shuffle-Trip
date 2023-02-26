@@ -30,7 +30,7 @@ final class TripLocations: ObservableObject {
     
     /// Add code to be called when the trip locations are updated. This can happenw when any of the available variables change.
     /// - Parameter action: Closure that is called when trip locations are added.
-    public func AddTripLocationAcion(action: @escaping () -> Void) {
+    public func AddTripUpdateAction(action: @escaping () -> Void) {
         todoList.append(action)
     }
     

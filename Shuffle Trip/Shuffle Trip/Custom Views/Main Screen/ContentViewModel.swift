@@ -9,7 +9,13 @@ class ContentViewModel: ObservableObject {
     @Published var tripDrawerController: DrawerController
     @Published var tripLocations: TripLocations
     @Published var region: MKCoordinateRegion
+    @Published var interactionPhase: InteractionPhase
     public let cardMinimumHeight: CGFloat
+    
+    enum InteractionPhase {
+        case start
+        case selectedTrip
+    }
     
     init() {
         self.homeDrawerController = DrawerController()
@@ -17,14 +23,17 @@ class ContentViewModel: ObservableObject {
         self.tripLocations = TripLocations()
         self.region = MapDetails.region2
         self.cardMinimumHeight = 100
+        self.interactionPhase = InteractionPhase.start
         
-        tripLocations.AddTripLocationAcion {
-            var isASelectedTrip: Bool = false
-            for trip in self.tripLocations.tripLocations where trip.isSelected {
-                isASelectedTrip = true
-                break
+        self.tripLocations.AddTripUpdateAction {
+            withAnimation {
+                if self.tripLocations.tripLocations.contains(where: { $0.isSelected }) {
+                    self.interactionPhase = .selectedTrip
+                }
+                else {
+                    self.interactionPhase = .start
+                }
             }
-            self.tripDrawerController.isPresented = isASelectedTrip
         }
     }
 }
