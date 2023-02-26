@@ -8,6 +8,10 @@ struct BottomDrawer<Content: View>: View {
     @StateObject var controller: BottomDrawerVM<Content>
     @Environment(\.colorScheme) var colorScheme
     
+    init(content: Content, snapPoints: [CGFloat], controller: DrawerController) {
+        self._controller = StateObject(wrappedValue: BottomDrawerVM(content: content, snapPoints: snapPoints, controller: controller))
+    }
+    
     /// Default values for the capsule shown at the top of the drawer
     enum CapsuleProperties: Double {
         case opacity = 0.5
@@ -74,6 +78,6 @@ struct BottomDrawer<Content: View>: View {
 
 struct BottomDrawer_Previews: PreviewProvider {
     static var previews: some View {
-        BottomDrawer(controller: BottomDrawerVM(content: SearchBar(drawerController: DrawerController()), snapPoints: [150, 1 / 2, 0.925], controller: DrawerController()))
+        BottomDrawer(content: SearchBar(drawerController: DrawerController()), snapPoints: [150, 1 / 2, 0.925], controller: DrawerController())
     }
 }

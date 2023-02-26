@@ -5,6 +5,11 @@ import SwiftUI
 
 struct SelectedTripV: View {
     @StateObject var controller: SelectedTripVM
+    
+    init(tripLocations: TripLocations) {
+        self._controller = StateObject(wrappedValue: SelectedTripVM(tripLocations: tripLocations))
+    }
+    
     var body: some View {
         VStack(alignment: .leading) {
             if controller.selectedTrip != nil {
