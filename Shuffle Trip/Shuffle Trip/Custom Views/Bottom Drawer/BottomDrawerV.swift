@@ -19,7 +19,7 @@ struct BottomDrawer<Content: View>: View {
         case height = 5
         case topPadding = 10
     }
-    
+    /// Default values for the drawer itself
     enum DrawerProperties: Double {
         case cornerRadius = 12
         case shadowDistance = 3
@@ -29,24 +29,26 @@ struct BottomDrawer<Content: View>: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack(alignment: .trailing) {
+            ZStack(alignment: .topTrailing) {
                 Color.black                                                                             // Background fade when card is brought up
                     .opacity(controller.fadePercent * DrawerProperties.backgroundFadeAmount.rawValue)
                     .allowsHitTesting(false)
                     .ignoresSafeArea(.all)
-                VStack {                                // The drawer itself
-                    Capsule()                           // Grabber
-                        .fill(Color.secondary)          // Dynamic color for dark/light mode
+                VStack {                                                                                // The drawer itself
+                    Capsule()                                                                           // Grabber
+                        .fill(Color.secondary)                                                          // Dynamic color for dark/light mode
                         .opacity(CapsuleProperties.opacity.rawValue)
                         .frame(width: CapsuleProperties.width.rawValue, height: CapsuleProperties.height.rawValue)
                         .padding(.top, CapsuleProperties.topPadding.rawValue)
-                    controller.content                  // Content passed in to show
-                        .padding(.horizontal, 7)
-                    Spacer()                            // Shove all content to the top
+                    
+                    ScrollView {
+                        controller.content                                                              // Content passed in to show
+                            .padding(.horizontal, 7)
+                    }
+                    .scrollDisabled(controller.offset.height < geometry.size.height / 4)
+                    
                 }
                 .frame(
-                    maxWidth: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width,
-                    minHeight: geometry.size.height * DrawerProperties.heightMultiplierBuffer.rawValue
                     width: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width,
                     height: controller.offset.height
                 )
