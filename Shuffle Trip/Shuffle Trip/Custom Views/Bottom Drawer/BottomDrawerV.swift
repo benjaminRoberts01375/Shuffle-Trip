@@ -47,6 +47,8 @@ struct BottomDrawer<Content: View>: View {
                 .frame(
                     maxWidth: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width,
                     minHeight: geometry.size.height * DrawerProperties.heightMultiplierBuffer.rawValue
+                    width: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width,
+                    height: controller.offset.height
                 )
                 .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
                 .cornerRadius(DrawerProperties.cornerRadius.rawValue)
