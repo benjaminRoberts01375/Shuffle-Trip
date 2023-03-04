@@ -18,12 +18,14 @@ struct ContentView: View {
                     tripLocations: controller.tripLocations
                 )
                 .edgesIgnoringSafeArea(.all)
+                .zIndex(1)
                 VStack {                                                                            // Top blur
                     Color.clear
                         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
                         .frame(height: geometry.safeAreaInsets.top)
                     Spacer()
                 }
+                .zIndex(2)
                 .edgesIgnoringSafeArea(.all)
                 
                 if controller.interactionPhase == .start {
@@ -32,9 +34,8 @@ struct ContentView: View {
                         snapPoints: cardSnapPositions,
                         controller: controller.homeDrawerController
                     )
-                    .transition(
-                        .asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom))
-                    )
+                    .transition(.move(edge: .bottom))
+                    .zIndex(100)
                 }
                 else if controller.interactionPhase == .selectedTrip {
                     BottomDrawer(                                                                   // Selected trip drawer
@@ -42,9 +43,8 @@ struct ContentView: View {
                         snapPoints: cardSnapPositions,
                         controller: controller.tripDrawerController
                     )
-                    .transition(
-                        .asymmetric(insertion: .move(edge: .bottom), removal: .move(edge: .bottom))
-                    )
+                    .transition(.move(edge: .bottom))
+                    .zIndex(200)
                 }
             }
         }
