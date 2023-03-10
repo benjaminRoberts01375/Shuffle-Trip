@@ -15,7 +15,7 @@ struct RegionSelector: UIViewRepresentable {
     /// Configure map
     /// - Parameter context: Provided by system
     /// - Returns: A fully configured map
-    func makeUIView(context: Context) -> some UIView {
+    func makeUIView(context: Context) -> MKMapView {
         mapView.layoutMargins.bottom = logoPosition + 5
         
         // Configure map
@@ -61,8 +61,8 @@ struct RegionSelector: UIViewRepresentable {
     /// - Parameters:
     ///   - uiView: The map updated
     ///   - context: Provided by the system
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        mapView.setRegion(region, animated: true)
+    func updateUIView(_ uiView: MKMapView, context: Context) {
+        RedrawLocations(uiView)
     }
     
     /// Sets the coordinator for the Region Selector
@@ -72,7 +72,7 @@ struct RegionSelector: UIViewRepresentable {
     }
     
     /// Re-add all trips to map to avoid MapKit weirdness
-    func RedrawLocations() {
+    func RedrawLocations(_ mapView: MKMapView) {
         // Clear all overlays
         mapView.removeOverlays(mapView.overlays)
         mapView.removeAnnotations(mapView.annotations)
@@ -107,6 +107,7 @@ struct RegionSelector: UIViewRepresentable {
                         ),
                         animated: true
                     )
+                    return
                 }
             }
         }
