@@ -5,7 +5,6 @@ import MapKit
 import SwiftUI
 
 /// Object for keeping track of trip locations and their status
-final class TripLocations: ObservableObject {
     /// List of specified trip locations
     private(set) var tripLocations: [TripLocation] = []
     
@@ -17,6 +16,9 @@ final class TripLocations: ObservableObject {
         for action in todoList {
             action()
         }
+final class TripLocations: ObservableObject, Equatable {
+    static func == (lhs: TripLocations, rhs: TripLocations) -> Bool {
+        return lhs.tripLocations == rhs.tripLocations
     }
     
     /// Standardized method of setting the selected trip
