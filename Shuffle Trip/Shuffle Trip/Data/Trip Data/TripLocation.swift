@@ -8,7 +8,7 @@ import FoundationNetworking
 #endif
 
 /// Class defining where a trip takes place, as well as its details
-public class TripLocation {
+public class TripLocation: ObservableObject, Identifiable {
     /// Location of the trip
     var coordinate: CLLocationCoordinate2D
     /// How far fro the location does teh trip span
@@ -18,7 +18,7 @@ public class TripLocation {
     /// User has selected this trip for editing/viewing
     var isSelected: Bool
     /// An unique identifier for each trip
-    let id: UUID
+    public let id: UUID
     /// ID for polygon
     var polyID: Int
     /// Name of the trip to be displayed to the user
