@@ -176,9 +176,16 @@ public class TripLocation {
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, _, error in
             if let error = error {
-                print("Error sending POST request: \(error)")
-                return
+                let nsError = error as NSError
+                if nsError.code == NSURLErrorCannotConnectToHost {
+                    print("Error: cannot connect to host")
+                    return
+                } else {
+                    print("Error sending POST request: \(error)")
+                    return
+                }
             }
+
             guard let data = data else {
                 print("Error: empty response")
                 return
