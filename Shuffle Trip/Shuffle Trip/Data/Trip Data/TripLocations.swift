@@ -1,39 +1,27 @@
 // Jan 25, 2023
 // Ben Roberts
 
+import Combine
 import MapKit
 import SwiftUI
 
 /// Object for keeping track of trip locations and their status
-    /// List of specified trip locations
-    private(set) var tripLocations: [TripLocation] = []
-    
-    /// List of closures to execute when the list of trips or activities are updated.
-    private var todoList: [() -> Void] = []
-    
-    /// Standardized method for updating any struct/class that have requested notifications for when this class changes
-    private func SendUpdates() {
-        for action in todoList {
-            action()
-        }
 final class TripLocations: ObservableObject, Equatable {
     static func == (lhs: TripLocations, rhs: TripLocations) -> Bool {
         return lhs.tripLocations == rhs.tripLocations
     }
     
+    /// List of all current trip locations
+    @Published private(set) var tripLocations: [TripLocation] = []
+    /// For dealing with observers
+    private var cancellables = Set<AnyCancellable>()
+    
     /// Standardized method of setting the selected trip
     /// - Parameter trip: Trip to set as selected
     private func SetSelectedTrip(trip: TripLocation?) {
         for tripLocation in tripLocations {
-            tripLocation.isSelected = tripLocation == trip
+            tripLocation.selectTrip(tripLocation == trip)
         }
-        SendUpdates()
-    }
-    
-    /// Add code to be called when the trip locations are updated. This can happenw when any of the available variables change.
-    /// - Parameter action: Closure that is called when trip locations are added.
-    public func AddTripUpdateAction(action: @escaping () -> Void) {
-        todoList.append(action)
     }
     
     /// Adds a new trip location and selects it
@@ -43,6 +31,10 @@ final class TripLocations: ObservableObject, Equatable {
         if !tripLocations.contains(where: { $0.coordinate == trip.coordinate }) {
             tripLocations.append(trip)
             SelectTrip(trip: trip)
+            trip.objectWillChange.sink { _ in
+                self.objectWillChange.send()
+            }
+            .store(in: &cancellables)
         }
     }
     
@@ -52,7 +44,6 @@ final class TripLocations: ObservableObject, Equatable {
         tripLocations.removeAll(where: { tripLocation in
             return tripLocation == trip
         })
-        SendUpdates()
     }
     
     /// Sets which trip should be selected to stand out from rest of trips.

@@ -1,6 +1,7 @@
 // Feb 15, 2023
 // Ben Roberts
 
+import Combine
 import MapKit
 import SwiftUI
 
@@ -11,6 +12,8 @@ class ContentViewModel: ObservableObject {
     @Published var region: RegionDetails
     @Published var interactionPhase: InteractionPhase
     public let cardMinimumHeight: CGFloat
+    /// For dealing with observers
+    private var cancellables = Set<AnyCancellable>()
     
     enum InteractionPhase {
         case start
@@ -24,15 +27,15 @@ class ContentViewModel: ObservableObject {
         self.region = RegionDetails()
         self.cardMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
-        
-        self.tripLocations.AddTripUpdateAction {
-            withAnimation {
-                if self.tripLocations.tripLocations.contains(where: { $0.isSelected }) {
-                    self.interactionPhase = .selectedTrip
-                }
-                else {
-                    self.interactionPhase = .start
-                }
+    }
+    
+    internal func updateInteractionPhase() {
+        withAnimation {
+            if tripLocations.tripLocations.contains(where: { $0.isSelected }) {
+                interactionPhase = .selectedTrip
+            }
+            else {
+                interactionPhase = .start
             }
         }
     }

@@ -50,10 +50,6 @@ struct RegionSelector: UIViewRepresentable {
         let shortPressGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleTap(gestureRecognizer:)))
         mapView.addGestureRecognizer(shortPressGestureRecognizer)
         
-        tripLocations.AddTripUpdateAction {
-            RedrawLocations()
-        }
-        
         return mapView
     }
     

@@ -16,7 +16,11 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Activities to be had at the trip
     var activityLocations: [Activities]
     /// User has selected this trip for editing/viewing
-    var isSelected: Bool
+    @Published private(set) var isSelected: Bool {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     /// An unique identifier for each trip
     public let id: UUID
     /// ID for polygon
@@ -36,6 +40,10 @@ public class TripLocation: ObservableObject, Identifiable {
         self.name = "Your New Trip"
         self.categories = ["Breakfast", "Lunch", "Dinner", "Education", "Automotive", "Arts", "Active", "Active"]
         generateActivities(params: self.categories)
+    }
+    
+    func selectTrip(_ selected: Bool) {
+        isSelected = selected
     }
     
     // swiftlint:disable nesting
