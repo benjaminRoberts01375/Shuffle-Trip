@@ -38,15 +38,6 @@ public class TripLocation {
         generateActivities(params: self.categories)
     }
     
-    //    /// Something for the user to do during their trip
-    //    struct Activity {
-    //        /// Start date and time
-    //        let start: DateComponents
-    //        /// End date and time
-    //        let end: DateComponents
-    //        /// Where the activity is
-    //        let location: CLLocationCoordinate2D
-    //    }
     // swiftlint:disable nesting
     struct Activities: Decodable, Hashable {
         static func == (lhs: TripLocation.Activities, rhs: TripLocation.Activities) -> Bool {
