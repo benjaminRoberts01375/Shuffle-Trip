@@ -96,7 +96,12 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
         
         if tappedTrips.count == 1 {                                                                                                                 // Check if only one was tapped, and manually set it
-            tripLocations.SelectTrip(trip: tappedTrips[0])
+            if tappedTrips[0].isSelected {
+                tripLocations.SelectTrip()
+            }
+            else {
+                tripLocations.SelectTrip(trip: tappedTrips[0])                
+            }
             return
         }
         
