@@ -7,7 +7,7 @@ import SwiftUI
 struct HomeV: View {
     @StateObject var controller: HomeVM
     
-    init(drawerController: DrawerController, tripLocations: TripLocations, region: Binding<MKCoordinateRegion>) {
+    init(drawerController: DrawerController, tripLocations: TripLocations, region: RegionDetails) {
         self._controller = StateObject(wrappedValue: HomeVM(userIsSearching: drawerController, tripLocations: tripLocations, region: region))
     }
     

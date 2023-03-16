@@ -8,7 +8,7 @@ class ContentViewModel: ObservableObject {
     @Published var homeDrawerController: DrawerController
     @Published var tripDrawerController: DrawerController
     @Published var tripLocations: TripLocations
-    @Published var region: MKCoordinateRegion
+    @Published var region: RegionDetails
     @Published var interactionPhase: InteractionPhase
     public let cardMinimumHeight: CGFloat
     
@@ -21,7 +21,7 @@ class ContentViewModel: ObservableObject {
         self.homeDrawerController = DrawerController()
         self.tripDrawerController = DrawerController(isFull: false, isPresented: false)
         self.tripLocations = TripLocations()
-        self.region = MapDetails.region2
+        self.region = RegionDetails()
         self.cardMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
         

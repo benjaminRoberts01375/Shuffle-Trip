@@ -14,11 +14,12 @@ struct ContentView: View {
             ZStack {                                                                                // Main View
                 RegionSelector(                                                                     // Map
                     logoPosition: controller.cardMinimumHeight - geometry.safeAreaInsets.bottom,
-                    region: $controller.region,
+                    region: controller.region,
                     tripLocations: controller.tripLocations
                 )
                 .edgesIgnoringSafeArea(.all)
                 .zIndex(1)
+                
                 VStack {                                                                            // Top blur
                     Color.clear
                         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
@@ -30,7 +31,7 @@ struct ContentView: View {
                 
                 if controller.interactionPhase == .start {
                     BottomDrawer(                                                                   // Home drawer
-                        content: HomeV(drawerController: controller.homeDrawerController, tripLocations: controller.tripLocations, region: $controller.region),
+                        content: HomeV(drawerController: controller.homeDrawerController, tripLocations: controller.tripLocations, region: controller.region),
                         snapPoints: cardSnapPositions,
                         controller: controller.homeDrawerController
                     )
@@ -46,6 +47,9 @@ struct ContentView: View {
                     .transition(.move(edge: .bottom))
                     .zIndex(200)
                 }
+            }
+            .onReceive(controller.tripLocations.objectWillChange) { _ in
+                controller.updateInteractionPhase()
             }
         }
     }

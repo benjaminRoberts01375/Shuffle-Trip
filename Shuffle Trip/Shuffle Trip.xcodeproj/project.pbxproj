@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725951D29BBCECB00AACAAA /* RegionDetails.swift */; };
 		073C5A04299DD82200C65BFD /* HomeV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A03299DD82200C65BFD /* HomeV.swift */; };
 		073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A05299DD9BE00C65BFD /* HomeVM.swift */; };
 		07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D582980816E00F1F046 /* Shuffle_TripApp.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0725951D29BBCECB00AACAAA /* RegionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetails.swift; sourceTree = "<group>"; };
 		073C5A03299DD82200C65BFD /* HomeV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeV.swift; sourceTree = "<group>"; };
 		073C5A05299DD9BE00C65BFD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		07402D552980816E00F1F046 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +289,7 @@
 			children = (
 				07F71A3829808773007C7AE6 /* RegionSelector.swift */,
 				07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */,
+				0725951D29BBCECB00AACAAA /* RegionDetails.swift */,
 			);
 			path = "Region Selector";
 			sourceTree = "<group>";
@@ -543,6 +546,7 @@
 				07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */,
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
+				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,

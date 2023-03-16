@@ -6,11 +6,11 @@ import SwiftUI
 
 class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Current position and span of the map.
-    @Binding var region: MKCoordinateRegion
+    var region: RegionDetails
     @ObservedObject var tripLocations: TripLocations
     
-    init(region: Binding<MKCoordinateRegion>, tripLocations: TripLocations) {
-        self._region = region
+    init(region: RegionDetails, tripLocations: TripLocations) {
+        self.region = region
         self.tripLocations = tripLocations
     }
     
@@ -48,7 +48,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     ///   - mapView: map view that was scrolled on
     ///   - animated: If the change in region was animated or not
     internal func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        region = mapView.region
+        region.region = mapView.region
     }
     
     /// Called by a long press gesture, handles placing map locations

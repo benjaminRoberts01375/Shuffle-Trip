@@ -7,22 +7,22 @@ import SwiftUI
 class HomeVM: ObservableObject {
     @Published var drawerController: DrawerController
     @Published var tripLocations: TripLocations
-    @Binding var region: MKCoordinateRegion
+    var region: RegionDetails
     
-    init(userIsSearching: DrawerController, tripLocations: TripLocations, region: Binding<MKCoordinateRegion>) {
+    init(userIsSearching: DrawerController, tripLocations: TripLocations, region: RegionDetails) {
         self.drawerController = userIsSearching
         self.tripLocations = tripLocations
-        self._region = region
+        self.region = region
     }
     
     /// Handles logic for the add/remove trip button that is on the bottom drawer
     public func TripButton() {
-        guard let trip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { tripLocations.AddTrip(trip: TripLocation(coordinate: region.center)); return }
-        if trip.coordinate == region.center {
+        guard let trip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { tripLocations.AddTrip(trip: TripLocation(coordinate: region.region.center)); return }
+        if trip.coordinate == region.region.center {
             tripLocations.RemoveTrip(trip: trip)
         }
         else {
-            tripLocations.AddTrip(trip: TripLocation(coordinate: region.center))
+            tripLocations.AddTrip(trip: TripLocation(coordinate: region.region.center))
         }
     }
 }

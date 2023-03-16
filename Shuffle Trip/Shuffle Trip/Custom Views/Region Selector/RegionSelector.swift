@@ -9,7 +9,7 @@ struct RegionSelector: UIViewRepresentable {
     var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
     let logoPosition: CGFloat
     let mapView = MKMapView()
-    @Binding var region: MKCoordinateRegion
+    var region: RegionDetails
     @ObservedObject var tripLocations: TripLocations
     
     /// Configure map
@@ -23,7 +23,7 @@ struct RegionSelector: UIViewRepresentable {
         mapConfig.pointOfInterestFilter = MapDetails.defaultFilter  // Remove items from map
         mapConfig.showsTraffic = false                              // Hide traffic
         mapView.preferredConfiguration = mapConfig
-        mapView.region = region                                     // Set default region
+        mapView.region = region.region                              // Set default region
         mapView.showsUserLocation = true                            // Show user
         mapView.showsScale = true                                   // Show scale when zooming
         mapView.showsCompass = true                                 // Show compass to reorient when not facing north
@@ -34,12 +34,12 @@ struct RegionSelector: UIViewRepresentable {
         // Getting the user's location
         userLocation.setupLocationManager()                         // Get permission from user to show on map
         userLocation.onAuthorizationChanged = {                     // If authorization changed, try to get the user's location. If unable, use defaults.
-            region = MKCoordinateRegion(
+            region.region = MKCoordinateRegion(
                 center: userLocation.locationManager?.location?.coordinate ?? mapView.centerCoordinate,
                 latitudinalMeters: MapDetails.defaultRadius,
                 longitudinalMeters: MapDetails.defaultRadius
             )                       // Get the user's region, and if unavailable, fallback to the current one
-            mapView.setRegion(region, animated: true)
+            mapView.setRegion(region.region, animated: true)
         }                // If user's preferences change, run this code to set map position accordingly
         
         // Setup long presses
@@ -68,7 +68,7 @@ struct RegionSelector: UIViewRepresentable {
     /// Sets the coordinator for the Region Selector
     /// - Returns: A new MapCoordinator
     func makeCoordinator() -> MapCoordinator {
-        MapCoordinator(region: $region, tripLocations: tripLocations)
+        MapCoordinator(region: region, tripLocations: tripLocations)
     }
     
     /// Re-add all trips to map to avoid MapKit weirdness
@@ -126,7 +126,7 @@ struct RegionSelector: UIViewRepresentable {
 
 struct RegionSelector_Previews: PreviewProvider {
     static var previews: some View {
-        RegionSelector(logoPosition: 0, region: .constant(MapDetails.region1), tripLocations: TripLocations())
+        RegionSelector(logoPosition: 0, region: RegionDetails(), tripLocations: TripLocations())
             .edgesIgnoringSafeArea(.all)
     }
 }
