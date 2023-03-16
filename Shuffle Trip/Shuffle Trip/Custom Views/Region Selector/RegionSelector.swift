@@ -42,12 +42,14 @@ struct RegionSelector: UIViewRepresentable {
             mapView.setRegion(region.region, animated: true)
         }                // If user's preferences change, run this code to set map position accordingly
         
-        // Setup long presses
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleLongPress(gestureRecognizer:)))   // Call function when long press happens
-        mapView.addGestureRecognizer(longPressGestureRecognizer)                                                                                                            // Let the map know about long presses
+        // Call function when long press happens
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleLongPress(gestureRecognizer:)))
+        // Let the map know about long presses
+        mapView.addGestureRecognizer(longPressGestureRecognizer)
         
-        // Setup single taps
+        // Call function when short press happens
         let shortPressGestureRecognizer = UITapGestureRecognizer(target: context.coordinator, action: #selector(MapCoordinator.handleTap(gestureRecognizer:)))
+        // Let the map know about short presses
         mapView.addGestureRecognizer(shortPressGestureRecognizer)
         
         return mapView
