@@ -7,13 +7,13 @@ import SwiftUI
 struct HomeV: DrawerView {
     @StateObject var controller: HomeVM
     
-    init(drawerController: DrawerController, tripLocations: TripLocations, region: RegionDetails) {
-        self._controller = StateObject(wrappedValue: HomeVM(userIsSearching: drawerController, tripLocations: tripLocations, region: region))
+    init(tripLocations: TripLocations, region: RegionDetails) {
+        self._controller = StateObject(wrappedValue: HomeVM(tripLocations: tripLocations, region: region))
     }
     
     var header: some View {
         HStack {
-            SearchBar(drawerController: controller.drawerController)
+            SearchBar()
             Button(
                 action: {
                     controller.TripButton()

@@ -5,12 +5,6 @@ import SwiftUI
 
 /// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
-    @ObservedObject var drawerController: DrawerController
-    
-    init(drawerController: DrawerController) {
-        self.drawerController = drawerController
-    }
-    
     /// Called every time the user types into the search bar
     /// - Parameters:
     ///   - searchBar: The search bar being updated
@@ -23,7 +17,6 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
     /// - Parameter searchBar: Search bar that was tapped on
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         searchBar.setShowsCancelButton(true, animated: true)    // User tapped on search bar, so show the cancel button
-        drawerController.isFull = true                          // Update parent view(s)
     }
     
     /// Called when the user presses on the search bar's cancel button
@@ -31,7 +24,6 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""                                     // Clear displayed text
         searchBar.setShowsCancelButton(false, animated: true)   // Hide the cancel button with an animation
-        drawerController.isFull = false                         // Update parent view(s)
         searchBar.endEditing(true)                              // Not sure if actually needed, just in case of weird future changes
     }
 }

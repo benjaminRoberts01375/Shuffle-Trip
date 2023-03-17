@@ -4,8 +4,6 @@
 import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
-    @ObservedObject var drawerController: DrawerController
-    
     /// Creates the search bar when `SearchBar()` is called.
     /// - Parameter context: Automatically filled
     /// - Returns: The completed search bar
@@ -26,12 +24,12 @@ struct SearchBar: UIViewRepresentable {
     /// Assigns coordinator for the SearchBar, allowing for communication with the search bar
     /// - Returns: A usable coordinator
     func makeCoordinator() -> SearchCoordinator {
-        SearchCoordinator(drawerController: drawerController)
+        SearchCoordinator()
     }
 }
 
 struct SearchBar_Previews: PreviewProvider {
     static var previews: some View {
-        SearchBar(drawerController: DrawerController())
+        SearchBar()
     }
 }

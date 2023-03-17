@@ -4,7 +4,6 @@
 import SwiftUI
 
 @MainActor class BottomDrawerVM<Content: DrawerView>: ObservableObject {
-    @ObservedObject var controller: DrawerController
     @Published var isShortCard: Bool = false
     
     private let defaultCardSize: CGFloat = 500
@@ -24,23 +23,20 @@ import SwiftUI
     private var offsetCache: CGFloat = 0
     private var previousDrag: CGSize = CGSize(width: 0, height: 0)
     @Published var fadePercent: Double = 0.0
+    var isFull: Bool = false
     
     @Published var content: Content
     
     public let minimumShortCardSize: CGFloat = 275
     public let minimumMapSpace: CGFloat = 200
     
-    init(content: Content, snapPoints: [CGFloat], controller: DrawerController) {
+    init(content: Content, snapPoints: [CGFloat]) {
         let ensuredSnapPoints = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.snapPointsY = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.rawSnapPointsY = snapPoints
         self.snapPointsX = [0]
         self.offset = CGSize(width: 0, height: ensuredSnapPoints[0])
-        self.controller = controller
         self.content = content
-        self.controller.AddUserSearchingAction {    // Add observer
-            self.ToggleMaxOffset()
-        }
     }
     
     /// Recalculates the snap points based on height of the screen, and snaps the drawer.
@@ -63,7 +59,7 @@ import SwiftUI
     
     /// Toggle for forcing the card to be at max height and reverting to original height
     private func ToggleMaxOffset() {
-        if controller.isFull {
+        if isFull {
             offsetCache = offset.height         // Save current height for eventually returning to it
             withAnimation(.linear(duration: 0.2)) {
                 guard let maxSnapPoint = snapPointsY.max() else { return }
@@ -157,7 +153,7 @@ import SwiftUI
     public func SnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
         withAnimation(animation) {
             // y component
-            if controller.isFull {                                                              // Check if the card is supposed to be at max height
+            if isFull {                                                              // Check if the card is supposed to be at max height
                 guard let maxSnapPoint = snapPointsY.max() else { return }
                 offset.height = maxSnapPoint                                                // Set the offset.height
             }
@@ -170,7 +166,7 @@ import SwiftUI
             SetBackgroundOpacity()
             
             // x component
-            if controller.isFull {
+            if isFull {
                 offset.width = 0
             }
             else {

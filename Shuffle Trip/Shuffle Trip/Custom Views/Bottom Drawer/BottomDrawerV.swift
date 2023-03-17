@@ -87,7 +87,7 @@ struct BottomDrawer_Previews: PreviewProvider {
     struct Preview: DrawerView {
         var header: some View {
             VStack {
-                SearchBar(drawerController: DrawerController())
+                SearchBar()
             }
         }
         
@@ -108,8 +108,7 @@ struct BottomDrawer_Previews: PreviewProvider {
             
             BottomDrawer(                       // Drawer
                 content: Preview(),
-                snapPoints: [150, 1 / 2, 0.925],
-                controller: DrawerController()
+                snapPoints: [150, 1 / 2, 0.925]
             )
         }
         .ignoresSafeArea()

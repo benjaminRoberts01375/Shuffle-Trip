@@ -21,7 +21,6 @@
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
-		078B71F8298C4E9E0044D957 /* DrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078B71F7298C4E9E0044D957 /* DrawerController.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */; };
 		07E3D74329A0A7D600168218 /* Trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 07E3D74229A0A7D600168218 /* Trip.json */; };
@@ -75,7 +74,6 @@
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
-		078B71F7298C4E9E0044D957 /* DrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DrawerController.swift; path = "Shuffle Trip/Custom Views/Bottom Drawer/DrawerController.swift"; sourceTree = SOURCE_ROOT; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		07E3D74229A0A7D600168218 /* Trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Trip.json; sourceTree = "<group>"; };
@@ -245,7 +243,6 @@
 			children = (
 				07402D832980833B00F1F046 /* BottomDrawerV.swift */,
 				07B38F492984709D00EA765F /* BottomDrawerVM.swift */,
-				078B71F7298C4E9E0044D957 /* DrawerController.swift */,
 			);
 			path = "Bottom Drawer";
 			sourceTree = "<group>";
@@ -544,7 +541,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */,
-				078B71F8298C4E9E0044D957 /* DrawerController.swift in Sources */,
 				07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */,
 				07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */,
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,

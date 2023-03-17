@@ -6,8 +6,6 @@ import MapKit
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
-    @Published var homeDrawerController: DrawerController
-    @Published var tripDrawerController: DrawerController
     @Published var tripLocations: TripLocations
     @Published var region: RegionDetails
     @Published var interactionPhase: InteractionPhase
@@ -21,8 +19,6 @@ class ContentViewModel: ObservableObject {
     }
     
     init() {
-        self.homeDrawerController = DrawerController()
-        self.tripDrawerController = DrawerController(isFull: false, isPresented: false)
         self.tripLocations = TripLocations()
         self.region = RegionDetails()
         self.cardMinimumHeight = 100
