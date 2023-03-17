@@ -23,7 +23,7 @@ import SwiftUI
     private var offsetCache: CGFloat = 0
     private var previousDrag: CGSize = CGSize(width: 0, height: 0)
     @Published var fadePercent: Double = 0.0
-    var isFull: Bool = false
+    private var isFull: Bool = false
     
     @Published var content: Content
     
@@ -58,12 +58,17 @@ import SwiftUI
     }
     
     /// Toggle for forcing the card to be at max height and reverting to original height
-    private func ToggleMaxOffset() {
-        if isFull {
-            offsetCache = offset.height         // Save current height for eventually returning to it
-            withAnimation(.linear(duration: 0.2)) {
+    public func ToggleMaxOffset(isFull: Bool) {
+        self.isFull = isFull
+        withAnimation(.interactiveSpring(response: 0.3, dampingFraction: 1, blendDuration: 0.2)) {
+            if isFull {
+                offsetCache = offset.height         // Save current height for eventually returning to it
                 guard let maxSnapPoint = snapPointsY.max() else { return }
                 offset.height = maxSnapPoint    // Snap to max height
+                SetBackgroundOpacity()
+            }
+            else {
+                offset.height = offsetCache
                 SetBackgroundOpacity()
             }
         }

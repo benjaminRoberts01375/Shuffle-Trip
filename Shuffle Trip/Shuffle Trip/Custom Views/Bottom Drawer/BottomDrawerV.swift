@@ -76,6 +76,12 @@ struct BottomDrawer<Content: DrawerView>: View {
                 .onChange(of: geometry.size) { size in                                                  // Screen dimensions changed (rotated)
                     controller.IsShortCard(dimensions: size)
                 }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+                    controller.ToggleMaxOffset(isFull: true)
+                }
+                .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+                    controller.ToggleMaxOffset(isFull: false)
+                }
             }
         }
         .edgesIgnoringSafeArea([.bottom])
