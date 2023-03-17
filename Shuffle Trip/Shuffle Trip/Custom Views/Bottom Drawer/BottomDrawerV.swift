@@ -8,8 +8,8 @@ struct BottomDrawer<Content: DrawerView>: View {
     @StateObject var controller: BottomDrawerVM<Content>
     @Environment(\.colorScheme) var colorScheme
     
-    init(content: Content, snapPoints: [CGFloat], controller: DrawerController) {
-        self._controller = StateObject(wrappedValue: BottomDrawerVM(content: content, snapPoints: snapPoints, controller: controller))
+    init(content: Content, snapPoints: [CGFloat]) {
+        self._controller = StateObject(wrappedValue: BottomDrawerVM(content: content, snapPoints: snapPoints))
     }
     
     /// Default values for the capsule shown at the top of the drawer
@@ -30,19 +30,21 @@ struct BottomDrawer<Content: DrawerView>: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .topTrailing) {
-                Color.black                                                                             // Background fade when card is brought up
+                Color.black                                                                                 // Background fade when card is brought up
                     .opacity(controller.fadePercent * DrawerProperties.backgroundFadeAmount.rawValue)
                     .allowsHitTesting(false)
                     .ignoresSafeArea(.all)
-                VStack {                                                                                // The drawer itself
-                    Capsule()                                                                           // Grabber
-                        .fill(Color.secondary)                                                          // Dynamic color for dark/light mode
+                VStack {                                                                                    // The drawer itself
+                    Capsule()                                                                               // Grabber
+                        .fill(Color.secondary)                                                              // Dynamic color for dark/light mode
                         .opacity(CapsuleProperties.opacity.rawValue)
                         .frame(width: CapsuleProperties.width.rawValue, height: CapsuleProperties.height.rawValue)
                         .padding(.top, CapsuleProperties.topPadding.rawValue)
                     
+                    controller.content.header                                                               // Header Content
+                    
                     ScrollView {
-                        controller.content.body                                                              // Content passed in to show
+                        controller.content.body                                                             // Content passed in to show
                             .padding(.horizontal, 7)
                     }
                     .scrollDisabled(controller.offset.height < geometry.size.height / 4)
