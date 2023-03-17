@@ -4,8 +4,9 @@
 import SwiftUI
 
 protocol DrawerView {
-    associatedtype Content: View
+    associatedtype Header: View
+    associatedtype Body: View
     
-    var header: Content { get }
-    var body: Content { get }
+    var header: Header { get }
+    var body: Body { get }
 }
