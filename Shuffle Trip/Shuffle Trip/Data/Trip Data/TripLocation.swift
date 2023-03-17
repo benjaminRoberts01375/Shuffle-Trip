@@ -29,6 +29,8 @@ public class TripLocation: ObservableObject, Identifiable {
     var name: String
     /// Categories to shuffle from
     var categories: [String]
+    /// Status of the trip being downloaded
+    var status: Status
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
@@ -39,11 +41,18 @@ public class TripLocation: ObservableObject, Identifiable {
         self.polyID = 0
         self.name = "Your New Trip"
         self.categories = ["Breakfast", "Lunch", "Dinner", "Education", "Automotive", "Arts", "Active", "Active"]
+        self.status = .generating
         generateActivities(params: self.categories)
     }
     
     func selectTrip(_ selected: Bool) {
         isSelected = selected
+    }
+    
+    public enum Status {
+        case generating
+        case successful
+        case error
     }
     
     // swiftlint:disable nesting
@@ -155,6 +164,7 @@ public class TripLocation: ObservableObject, Identifiable {
     
     private func generateActivities(params: [String]) {
         // Encode the TripRequest instance into JSON data
+        status = .generating
         let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius))
         guard let jsonData = try? JSONEncoder().encode(tripRequest) else {
             print("Error encoding TripRequest")
@@ -178,15 +188,18 @@ public class TripLocation: ObservableObject, Identifiable {
                 let nsError = error as NSError
                 if nsError.code == NSURLErrorCannotConnectToHost {
                     print("Error: cannot connect to host")
+                    self.status = .error
                     return
                 } else {
                     print("Error sending POST request: \(error)")
+                    self.status = .error
                     return
                 }
             }
 
             guard let data = data else {
                 print("Error: empty response")
+                self.status = .error
                 return
             }
             
@@ -194,8 +207,10 @@ public class TripLocation: ObservableObject, Identifiable {
                 let decoder = JSONDecoder()
                 let activities = try decoder.decode([Activities].self, from: data)
                 self.activityLocations = activities
+                self.status = .successful
             } catch {
                 print("Error decoding response data: \(error)")
+                self.status = .error
             }
         }
         task.resume()
