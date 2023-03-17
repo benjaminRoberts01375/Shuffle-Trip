@@ -3,11 +3,17 @@
 
 import SwiftUI
 
-struct SelectedTripV: View {
+struct SelectedTripV: DrawerView {
     @StateObject var controller: SelectedTripVM
     
     init(tripLocations: TripLocations) {
         self._controller = StateObject(wrappedValue: SelectedTripVM(tripLocations: tripLocations))
+    }
+    
+    var header: some View {
+        VStack(alignment: .leading) {
+            Text("Selected trip header")
+        }
     }
     
     var body: some View {
