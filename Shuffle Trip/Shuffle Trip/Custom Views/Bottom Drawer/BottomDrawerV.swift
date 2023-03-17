@@ -81,7 +81,35 @@ struct BottomDrawer<Content: DrawerView>: View {
 }
 
 struct BottomDrawer_Previews: PreviewProvider {
+    
+    struct Preview: DrawerView {
+        var header: some View {
+            VStack {
+                SearchBar(drawerController: DrawerController())
+            }
+        }
+        
+        var body: some View {
+            VStack {
+                Text("Body")
+            }
+        }
+    }
+    
     static var previews: some View {
-        BottomDrawer(content: SearchBar(drawerController: DrawerController()), snapPoints: [150, 1 / 2, 0.925], controller: DrawerController())
+        ZStack {
+            RegionSelector(                     // Map
+                logoPosition: 125,
+                region: RegionDetails(),
+                tripLocations: TripLocations()
+            )
+            
+            BottomDrawer(                       // Drawer
+                content: Preview(),
+                snapPoints: [150, 1 / 2, 0.925],
+                controller: DrawerController()
+            )
+        }
+        .ignoresSafeArea()
     }
 }
