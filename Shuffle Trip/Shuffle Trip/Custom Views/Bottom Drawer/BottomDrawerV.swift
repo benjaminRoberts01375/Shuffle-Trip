@@ -4,7 +4,7 @@
 import SwiftUI
 
 // Content: Generic type that conforms to view
-struct BottomDrawer<Content: View>: View {
+struct BottomDrawer<Content: DrawerView>: View {
     @StateObject var controller: BottomDrawerVM<Content>
     @Environment(\.colorScheme) var colorScheme
     
@@ -42,7 +42,7 @@ struct BottomDrawer<Content: View>: View {
                         .padding(.top, CapsuleProperties.topPadding.rawValue)
                     
                     ScrollView {
-                        controller.content                                                              // Content passed in to show
+                        controller.content.body                                                              // Content passed in to show
                             .padding(.horizontal, 7)
                     }
                     .scrollDisabled(controller.offset.height < geometry.size.height / 4)

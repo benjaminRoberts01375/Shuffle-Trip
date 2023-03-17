@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-@MainActor class BottomDrawerVM<Content: View>: ObservableObject {
+@MainActor class BottomDrawerVM<Content: DrawerView>: ObservableObject {
     @ObservedObject var controller: DrawerController
     @Published var isShortCard: Bool = false
     
