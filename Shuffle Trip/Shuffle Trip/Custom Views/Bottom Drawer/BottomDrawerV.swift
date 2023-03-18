@@ -42,6 +42,7 @@ struct BottomDrawer<Content: DrawerView>: View {
                         .padding(.top, CapsuleProperties.topPadding.rawValue)
                     
                     controller.content.header                                                               // Header Content
+                        .padding(.horizontal, 7)
                     
                     ScrollView {
                         controller.content.body                                                             // Content passed in to show
