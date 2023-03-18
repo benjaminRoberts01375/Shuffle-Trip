@@ -11,14 +11,18 @@ struct SelectedTripV: DrawerView {
     }
     
     var header: some View {
-        VStack(alignment: .leading) {
-            Text("Selected trip header")
+        VStack {
+            if controller.selectedTrip != nil {
+                EmptyView()
+                
+            }
+            EmptyView()
         }
     }
     
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Selected trip here")
+            
         }
     }
 }
