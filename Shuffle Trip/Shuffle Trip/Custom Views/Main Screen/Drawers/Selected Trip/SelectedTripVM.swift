@@ -6,8 +6,6 @@ import SwiftUI
 @MainActor class SelectedTripVM: ObservableObject {
     @ObservedObject var tripLocations: TripLocations
     @Published var selectedTrip: TripLocation?
-    @Published var selectedItem: TripLocation.Activities?
-    @Published var tripName: String = ""
     @Published var shuffleConfirmation: Bool = false
     
     init(tripLocations: TripLocations) {
