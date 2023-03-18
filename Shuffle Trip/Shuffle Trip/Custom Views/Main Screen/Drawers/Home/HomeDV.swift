@@ -4,7 +4,7 @@
 import MapKit
 import SwiftUI
 
-struct HomeV: DrawerView {
+struct HomeDV: DrawerView {
     @StateObject var controller: HomeVM
     
     init(tripLocations: TripLocations, region: RegionDetails) {

@@ -31,7 +31,7 @@ struct ContentView: View {
                 
                 if controller.interactionPhase == .start {
                     BottomDrawer(                                                                   // Home drawer
-                        content: HomeV(tripLocations: controller.tripLocations, region: controller.region),
+                        content: HomeDV(tripLocations: controller.tripLocations, region: controller.region),
                         snapPoints: cardSnapPositions
                     )
                     .transition(.move(edge: .bottom))
@@ -39,7 +39,7 @@ struct ContentView: View {
                 }
                 else if controller.interactionPhase == .selectedTrip {
                     BottomDrawer(                                                                   // Selected trip drawer
-                        content: SelectedTripV(tripLocations: controller.tripLocations),
+                        content: SelectedTripDV(tripLocations: controller.tripLocations),
                         snapPoints: cardSnapPositions
                     )
                     .transition(.move(edge: .bottom))

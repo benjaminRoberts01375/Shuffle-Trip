@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-struct SelectedTripV: DrawerView {
+struct SelectedTripDV: DrawerView {
     @StateObject var controller: SelectedTripVM
     
     init(tripLocations: TripLocations) {
