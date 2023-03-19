@@ -30,7 +30,11 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Categories to shuffle from
     var categories: [String]
     /// Status of the trip being downloaded
-    var status: Status
+    var status: Status {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
