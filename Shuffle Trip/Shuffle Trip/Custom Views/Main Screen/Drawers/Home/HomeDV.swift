@@ -5,10 +5,10 @@ import MapKit
 import SwiftUI
 
 struct HomeDV: DrawerView {
-    @StateObject var controller: HomeVM
+    @ObservedObject var controller: HomeVM
     
     init(tripLocations: TripLocations, region: RegionDetails) {
-        self._controller = StateObject(wrappedValue: HomeVM(tripLocations: tripLocations, region: region))
+        self._controller = ObservedObject(wrappedValue: HomeVM(tripLocations: tripLocations, region: region))
     }
     
     var header: some View {
@@ -30,7 +30,7 @@ struct HomeDV: DrawerView {
     
     var body: some View {
         VStack {
-            Text("Body")
+            Text("\(controller.tripLocations.tripLocations.count)")
         }
     }
 }
