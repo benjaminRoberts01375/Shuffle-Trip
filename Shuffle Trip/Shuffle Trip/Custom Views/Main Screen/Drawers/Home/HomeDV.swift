@@ -29,8 +29,6 @@ struct HomeDV: DrawerView {
     }
     
     var body: some View {
-        VStack {
-            Text("\(controller.tripLocations.tripLocations.count)")
-        }
+        EmptyView()
     }
 }

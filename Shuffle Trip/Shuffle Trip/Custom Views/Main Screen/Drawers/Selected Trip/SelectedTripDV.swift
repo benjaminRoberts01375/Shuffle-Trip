@@ -23,11 +23,10 @@ struct SelectedTripDV: DrawerView {
                 }
             }
             else {
-                Text("Nil")
+                EmptyView()
             }
         }
         .onReceive(controller.tripLocations.objectWillChange) { _ in
-            print("Update from tripLocations")
             controller.setDisplayPhase()
         }
         .onAppear {
@@ -48,7 +47,7 @@ struct SelectedTripDV: DrawerView {
                 }
             }
             else {
-                Text("Nil")
+                EmptyView()
             }
         }
     }
