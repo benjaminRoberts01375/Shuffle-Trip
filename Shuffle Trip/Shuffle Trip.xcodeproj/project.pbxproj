@@ -37,6 +37,7 @@
 		07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */; };
 		07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A4629810133007C7AE6 /* TripLocations.swift */; };
 		07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F83AC929821C1B004B86ED /* SearchBarCoordinator.swift */; };
+		07F9D05829C95BC700D9791A /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F9D05729C95BC700D9791A /* Activity.swift */; };
 		2FE1DE9AAEA9C720DECB3697 /* Pods_Shuffle_Trip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCAF5C322DE425916C5FBE8 /* Pods_Shuffle_Trip.framework */; };
 		31C640E273DE9B72D428A695 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F408DEE5225C040D8FD9140 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework */; };
 		54CF7950409FBF3B0F20EE65 /* Pods_Shuffle_TripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D86BA779505ECA81D4D98A /* Pods_Shuffle_TripTests.framework */; };
@@ -94,6 +95,7 @@
 		07F71A442980EAE0007C7AE6 /* RegionSelectorCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelectorCoordinator.swift; sourceTree = "<group>"; };
 		07F71A4629810133007C7AE6 /* TripLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocations.swift; sourceTree = "<group>"; };
 		07F83AC929821C1B004B86ED /* SearchBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarCoordinator.swift; sourceTree = "<group>"; };
+		07F9D05729C95BC700D9791A /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		2BCAF5C322DE425916C5FBE8 /* Pods_Shuffle_Trip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shuffle_Trip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		568A11EFBE9407F27FC8B5A9 /* Pods-Shuffle TripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.release.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E3DD6E0B66F2AEFC005DE64 /* Pods-Shuffle TripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.debug.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 			children = (
 				07F71A4629810133007C7AE6 /* TripLocations.swift */,
 				07612C9D299974FA00C5CE6B /* TripLocation.swift */,
+				07F9D05729C95BC700D9791A /* Activity.swift */,
 			);
 			path = "Trip Data";
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
+				07F9D05829C95BC700D9791A /* Activity.swift in Sources */,
 				0715071229C3BD0800AA0959 /* DrawerViewP.swift in Sources */,
 				073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */,
 			);
