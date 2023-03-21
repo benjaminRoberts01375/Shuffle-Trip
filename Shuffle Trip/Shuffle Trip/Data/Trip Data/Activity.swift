@@ -60,7 +60,7 @@ struct Business: Decodable {
     }
 }
 
-struct Category: Decodable {
+struct Category: Decodable, Hashable {
     let alias: String
     let title: String
 }
