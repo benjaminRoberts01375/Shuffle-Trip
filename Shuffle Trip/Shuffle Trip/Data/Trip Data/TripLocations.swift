@@ -32,7 +32,9 @@ final class TripLocations: ObservableObject, Equatable {
             tripLocations.append(trip)
             SelectTrip(trip: trip)
             trip.objectWillChange.sink { _ in
-                self.objectWillChange.send()
+                DispatchQueue.main.async {
+                    self.objectWillChange.send()
+                }
             }
             .store(in: &cancellables)
         }
