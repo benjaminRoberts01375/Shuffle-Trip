@@ -39,7 +39,11 @@ struct SelectedTripDV: DrawerView {
             if controller.selectedTrip != nil {
                 switch controller.displayPhase {
                 case .info:
-                    Text("Info phase")
+                    VStack {
+                        ForEach(controller.selectedTrip!.activityLocations, id: \.self) { activity in
+                            ActivityPaneV(activity: activity)
+                        }
+                    }
                 case .loading:
                     LoadingTripDV().body
                 case .error:
