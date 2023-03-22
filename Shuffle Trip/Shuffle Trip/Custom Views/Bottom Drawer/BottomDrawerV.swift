@@ -44,11 +44,16 @@ struct BottomDrawer<Content: DrawerView>: View {
                     controller.content.header                                                               // Header Content
                         .padding(.horizontal, 7)
                     
-                    ScrollView {
-                        controller.content.body                                                             // Content passed in to show
-                            .padding(.horizontal, 7)
+                    VStack {
+                        ScrollView {
+                            controller.content.body                                                         // Content passed in to show
+                                .padding(.horizontal, 7)
+                        }
                     }
                     .scrollDisabled(controller.offset.height < geometry.size.height / 4)
+                    .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
+                    .cornerRadius(18)
+                    .shadow(radius: 2)
                     
                 }
                 .frame(
