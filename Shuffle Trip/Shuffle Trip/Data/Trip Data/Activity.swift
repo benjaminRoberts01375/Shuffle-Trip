@@ -36,10 +36,11 @@ struct Business: Decodable {
     let rating: Double
     let coordinates: Coordinates
     let transactions: [String]
+    let price: String?
     let location: Location
     let phone: String
     let displayPhone: String
-    let distance: Double
+    let distance: Double?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -53,6 +54,7 @@ struct Business: Decodable {
         case rating
         case coordinates
         case transactions
+        case price
         case location
         case phone
         case displayPhone = "display_phone"
@@ -71,14 +73,15 @@ struct Coordinates: Decodable {
 }
 
 struct Location: Decodable {
-    let address1: String
+    let address1: String?
     let address2: String?
     let address3: String?
-    let city: String
-    let zipCode: String
-    let country: String
-    let state: String
+    let city: String?
+    let zipCode: String?
+    let country: String?
+    let state: String?
     let displayAddress: [String]
+    let crossStreets: String?
     
     enum CodingKeys: String, CodingKey {
         case address1
@@ -89,6 +92,7 @@ struct Location: Decodable {
         case country
         case state
         case displayAddress = "display_address"
+        case crossStreets = "cross_streets"
     }
 }
 
