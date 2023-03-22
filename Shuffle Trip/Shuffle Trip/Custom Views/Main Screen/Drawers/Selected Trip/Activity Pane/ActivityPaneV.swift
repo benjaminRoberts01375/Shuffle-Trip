@@ -12,36 +12,49 @@ struct ActivityPaneV: View {
     }
     
     var body: some View {
-        DisclosureGroup(content: {
-            VStack {
-                HStack {
-                    BigButton(
-                        action: {  },
-                        image: Image(systemName: "map.fill"),
-                        label: "Navigate",
-                        highlighted: true
-                    )
-                    BigButton(
-                        action: {  },
-                        image: Image(systemName: "shuffle"),
-                        label: "Shuffle",
-                        highlighted: false
-                    )
-                    BigButton(
-                        action: {  },
-                        image: Image(systemName: "trash.fill"),
-                        label: "Remove",
-                        highlighted: false
-                    )
+        VStack {
+            DisclosureGroup(content: {
+                VStack {
+                    Divider()
+                    HStack {
+                        Spacer()
+                        Spacer()
+                        BigButton(
+                            action: {  },
+                            image: Image(systemName: "map.fill"),
+                            label: "Navigate",
+                            highlighted: true
+                        )
+                        Spacer()
+                        BigButton(
+                            action: {  },
+                            image: Image(systemName: "shuffle"),
+                            label: "Shuffle",
+                            highlighted: false
+                        )
+                        Spacer()
+                        BigButton(
+                            action: {  },
+                            image: Image(systemName: "trash.fill"),
+                            label: "Remove",
+                            highlighted: false
+                        )
+                        Spacer()
+                        Spacer()
+                    }
+                    Divider()
+                        .padding(.top, 18)
                 }
-            }
-        }, label: {
-            HStack {
-                Image(systemName: "\(controller.index).circle.fill")
-                Text("\(controller.activity.businesses[0].name)")
-            }
-            .foregroundColor(.primary)
-        })
+            }, label: {
+                HStack {
+                    Image(systemName: "\(controller.index).circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                    Text("\(controller.activity.businesses[0].name)")
+                }
+                .foregroundColor(.primary)
+                .padding(.vertical, 6)
+            })
+        }
     }
     
     struct BigButton: View {
