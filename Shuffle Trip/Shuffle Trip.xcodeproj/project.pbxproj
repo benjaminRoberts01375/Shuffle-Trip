@@ -12,6 +12,8 @@
 		073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A03299DD82200C65BFD /* HomeDV.swift */; };
 		073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A05299DD9BE00C65BFD /* HomeVM.swift */; };
 		073CB9B129C51921008259A8 /* LoadingTripDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073CB9B029C51921008259A8 /* LoadingTripDV.swift */; };
+		073F9C5629CB9C7A001305D3 /* TermPickerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073F9C5529CB9C7A001305D3 /* TermPickerM.swift */; };
+		073F9C5929CBAA31001305D3 /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 073F9C5829CBAA31001305D3 /* Categories.json */; };
 		07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D582980816E00F1F046 /* Shuffle_TripApp.swift */; };
 		07402D5D2980817000F1F046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5C2980817000F1F046 /* Assets.xcassets */; };
 		07402D602980817000F1F046 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07402D5F2980817000F1F046 /* Preview Assets.xcassets */; };
@@ -68,6 +70,8 @@
 		073C5A03299DD82200C65BFD /* HomeDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDV.swift; sourceTree = "<group>"; };
 		073C5A05299DD9BE00C65BFD /* HomeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVM.swift; sourceTree = "<group>"; };
 		073CB9B029C51921008259A8 /* LoadingTripDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingTripDV.swift; sourceTree = "<group>"; };
+		073F9C5529CB9C7A001305D3 /* TermPickerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermPickerM.swift; sourceTree = "<group>"; };
+		073F9C5829CBAA31001305D3 /* Categories.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
 		07402D552980816E00F1F046 /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07402D582980816E00F1F046 /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
 		07402D5C2980817000F1F046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "Shuffle Trip/Assets.xcassets"; sourceTree = "<group>"; };
@@ -147,6 +151,15 @@
 				07E3D74529A0BB8F00168218 /* Selected Trip */,
 			);
 			path = Drawers;
+			sourceTree = "<group>";
+		};
+		073F9C5729CB9C7F001305D3 /* Term Picker */ = {
+			isa = PBXGroup;
+			children = (
+				073F9C5829CBAA31001305D3 /* Categories.json */,
+				073F9C5529CB9C7A001305D3 /* TermPickerM.swift */,
+			);
+			path = "Term Picker";
 			sourceTree = "<group>";
 		};
 		07402D4C2980816E00F1F046 = {
@@ -246,6 +259,7 @@
 				07F71A3A29808788007C7AE6 /* ContentView.swift */,
 				07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */,
 				07E3D74A29A1713F00168218 /* test.swift */,
+				073F9C5729CB9C7F001305D3 /* Term Picker */,
 				073C5A02299DD81400C65BFD /* Drawers */,
 			);
 			path = "Main Screen";
@@ -460,6 +474,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07E3D74329A0A7D600168218 /* Trip.json in Resources */,
+				073F9C5929CBAA31001305D3 /* Categories.json in Resources */,
 				07402D602980817000F1F046 /* Preview Assets.xcassets in Resources */,
 				07402D5D2980817000F1F046 /* Assets.xcassets in Resources */,
 			);
@@ -582,6 +597,7 @@
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				073CB9B129C51921008259A8 /* LoadingTripDV.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
+				073F9C5629CB9C7A001305D3 /* TermPickerM.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				07F9D05D29C95CA200D9791A /* ActivityPaneV.swift in Sources */,
