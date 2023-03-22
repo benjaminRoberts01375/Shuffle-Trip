@@ -76,7 +76,7 @@ public class TripLocation: ObservableObject, Identifiable {
         }
         
         // Create a URLRequest with the URL, HTTP method, and HTTP headers for the POST request
-        guard let url = URL(string: "http://localhost:9000/api") else {
+        guard let url = URL(string: "https://shuffle-trip-backend.herokuapp.com/api") else {
             print("Error: cannot create URL")
             return
         }
