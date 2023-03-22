@@ -53,11 +53,11 @@ struct ActivityPaneV: View {
             }, label: {
                 VStack {
                     image
-                        .font(.title)
+                        .font(.title3)
                     Text(label)
-                        .font(.caption)
+                        .font(.caption2)
                 }
-                .frame(width: 75, height: 60)
+                .frame(width: 75, height: 55)
                 .foregroundColor(.white)
                 .background(highlighted ? .blue : Color.secondary)
                 .cornerRadius(10)
