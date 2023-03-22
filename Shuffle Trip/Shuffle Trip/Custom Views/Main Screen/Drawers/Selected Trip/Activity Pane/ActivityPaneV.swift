@@ -7,8 +7,8 @@ struct ActivityPaneV: View {
     
     @StateObject var controller: ActivityPaneVM
     
-    init(activity: Activity) {
-        self._controller = StateObject(wrappedValue: ActivityPaneVM(activity: activity))
+    init(activity: Activity, index: Int) {
+        self._controller = StateObject(wrappedValue: ActivityPaneVM(activity: activity, index: index))
     }
     
     var body: some View {
@@ -17,7 +17,11 @@ struct ActivityPaneV: View {
                 EmptyView()
             }
         }, label: {
-            Text("\(controller.activity.businesses[0].name)")
+            HStack {
+                Image(systemName: "\(controller.index).circle.fill")
+                Text("\(controller.activity.businesses[0].name)")
+            }
+            .foregroundColor(.primary)
         })
     }
 }
