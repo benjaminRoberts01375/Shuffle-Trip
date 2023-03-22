@@ -14,37 +14,11 @@ struct ActivityPaneV: View {
     var body: some View {
         VStack {
             DisclosureGroup(content: {
-                VStack {
-                    Divider()
-                    HStack {
-                        Spacer()
-                        Spacer()
-                        BigButton(
-                            action: {  },
-                            image: Image(systemName: "map.fill"),
-                            label: "Navigate",
-                            highlighted: true
-                        )
-                        Spacer()
-                        BigButton(
-                            action: {  },
-                            image: Image(systemName: "shuffle"),
-                            label: "Shuffle",
-                            highlighted: false
-                        )
-                        Spacer()
-                        BigButton(
-                            action: {  },
-                            image: Image(systemName: "trash.fill"),
-                            label: "Remove",
-                            highlighted: false
-                        )
-                        Spacer()
-                        Spacer()
-                    }
-                    Divider()
-                        .padding(.top, 18)
                 }
+                Divider()
+                BigButtonList()
+                Divider()
+                    .padding(.top, 18)
             }, label: {
                 HStack {
                     Image(systemName: "\(controller.index).circle.fill")
@@ -54,6 +28,7 @@ struct ActivityPaneV: View {
                 }
                 .foregroundColor(.primary)
                 .padding(.vertical, 6)
+                .padding(.top, 12)
             })
         }
     }
@@ -79,6 +54,37 @@ struct ActivityPaneV: View {
                 .background(highlighted ? .blue : Color.secondary)
                 .cornerRadius(10)
             })
+        }
+    }
+    
+    struct BigButtonList: View {
+        var body: some View {
+            HStack {
+                Spacer()
+                Spacer()
+                BigButton(
+                    action: {  },
+                    image: Image(systemName: "map.fill"),
+                    label: "Navigate",
+                    highlighted: true
+                )
+                Spacer()
+                BigButton(
+                    action: {  },
+                    image: Image(systemName: "shuffle"),
+                    label: "Shuffle",
+                    highlighted: false
+                )
+                Spacer()
+                BigButton(
+                    action: {  },
+                    image: Image(systemName: "trash.fill"),
+                    label: "Remove",
+                    highlighted: false
+                )
+                Spacer()
+                Spacer()
+            }
         }
     }
 }
