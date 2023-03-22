@@ -7,7 +7,7 @@ import SwiftUI
     @ObservedObject var tripLocations: TripLocations
     @Published var displayPhase: DisplayPhase = .info
     
-    @Published var selectedTrip: TripLocation?
+    @Published var selectedTrip: TripLocation!
     @Published var shuffleConfirmation: Bool = false
     
     enum DisplayPhase {

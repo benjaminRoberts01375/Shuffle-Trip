@@ -40,7 +40,7 @@ struct SelectedTripDV: DrawerView {
                 switch controller.displayPhase {
                 case .info:
                     VStack {
-                        ForEach(Array(controller.selectedTrip!.activityLocations.enumerated()), id: \.1.self) { index, activity in
+                        ForEach(Array(controller.selectedTrip.activityLocations.enumerated()), id: \.1.self) { index, activity in
                             ActivityPaneV(activity: activity, index: index + 1)
                         }
                     }
