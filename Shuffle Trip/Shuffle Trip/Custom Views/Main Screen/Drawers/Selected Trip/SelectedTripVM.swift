@@ -5,10 +5,9 @@ import SwiftUI
 
 @MainActor class SelectedTripVM: ObservableObject {
     @ObservedObject var tripLocations: TripLocations
-    @Published var displayPhase: DisplayPhase = .info
-    
+    @Published var displayPhase: DisplayPhase
     @Published var selectedTrip: TripLocation!
-    @Published var shuffleConfirmation: Bool = false
+    @Published var shuffleConfirmation: Bool
     
     enum DisplayPhase {
         case info
@@ -18,6 +17,8 @@ import SwiftUI
     
     init(tripLocations: TripLocations) {
         self.tripLocations = tripLocations
+        self.shuffleConfirmation = false
+        self.displayPhase = .info
     }
     
     internal func setSelectedTrip() {
