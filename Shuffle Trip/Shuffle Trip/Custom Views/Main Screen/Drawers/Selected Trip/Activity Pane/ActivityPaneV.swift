@@ -14,6 +14,15 @@ struct ActivityPaneV: View {
     var body: some View {
         VStack {
             DisclosureGroup(content: {
+                HStack {
+                    Image(systemName: "\(controller.index).circle.fill")
+                        .opacity(0)
+                        .disabled(true)
+                        .allowsHitTesting(false)
+                    Text("\(controller.activity.businesses[0].location.city), \(controller.activity.businesses[0].location.state)")
+                        .font(.caption)
+                        .padding(0)
+                    Spacer()
                 }
                 Divider()
                 BigButtonList()
@@ -27,7 +36,6 @@ struct ActivityPaneV: View {
                         .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
-                .padding(.vertical, 6)
                 .padding(.top, 12)
             })
         }
