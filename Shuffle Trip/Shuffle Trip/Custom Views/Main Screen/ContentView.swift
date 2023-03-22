@@ -20,10 +20,28 @@ struct ContentView: View {
                 .edgesIgnoringSafeArea(.all)
                 .zIndex(1)
                 
-                VStack {                                                                            // Top blur
+                VStack(alignment: .trailing) {                                                      // Top blur
                     Color.clear
                         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
                         .frame(height: geometry.safeAreaInsets.top)
+                    Button(action: {
+                        
+                    }, label: {
+                        ZStack {
+//                            BlurView(style: .systemUltraThinMaterial, opacity: 0)
+//                            Color.red
+                            Image(systemName: "tag")
+                                .resizable(resizingMode: .stretch)
+                                .symbolRenderingMode(.hierarchical)
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color.secondary)
+                                .padding(8)
+                                .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                                .cornerRadius(5)
+                                .padding(.horizontal)
+                                .shadow(color: .primary.opacity(0.1), radius: 8)
+                        }
+                    })
                     Spacer()
                 }
                 .zIndex(2)
