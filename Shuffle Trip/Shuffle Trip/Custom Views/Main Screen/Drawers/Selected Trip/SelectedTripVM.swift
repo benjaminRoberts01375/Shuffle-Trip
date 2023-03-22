@@ -8,6 +8,7 @@ import SwiftUI
     @Published var displayPhase: DisplayPhase
     @Published var selectedTrip: TripLocation!
     @Published var shuffleConfirmation: DisplayButtons
+    @Published var disableCloseButton: Bool
     
     enum DisplayPhase {
         case info
@@ -24,6 +25,7 @@ import SwiftUI
         self.tripLocations = tripLocations
         self.shuffleConfirmation = .normal
         self.displayPhase = .info
+        self.disableCloseButton = false
         print("reset from init")
     }
     

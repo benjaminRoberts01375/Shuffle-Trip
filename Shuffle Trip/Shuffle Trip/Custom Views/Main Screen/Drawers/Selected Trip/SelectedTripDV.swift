@@ -49,6 +49,8 @@ struct SelectedTripDV: DrawerView {
                                             .foregroundStyle(Color.secondary)
                                             .font(Font.title.weight(.bold))
                                     })
+                                    .disabled(controller.disableCloseButton)
+                                    .opacity(controller.disableCloseButton ? 0.5 : 1.0)
                                 }
                             case .confirmShuffle:
                                 HStack {
@@ -99,12 +101,14 @@ struct SelectedTripDV: DrawerView {
         .onAppear {
             controller.setDisplayPhase()
         }
-        .onChange(of: controller.shuffleConfirmation) { _ in
-            if controller.shuffleConfirmation == .normal {
-                print("Normal buttons")
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillShowNotification)) { _ in
+            withAnimation {
+                controller.disableCloseButton = true
             }
-            else {
-                print("Confirm buttons")
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardWillHideNotification)) { _ in
+            withAnimation {
+                controller.disableCloseButton = false
             }
         }
     }
