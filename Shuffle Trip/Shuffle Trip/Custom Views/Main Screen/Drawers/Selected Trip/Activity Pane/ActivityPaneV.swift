@@ -19,7 +19,7 @@ struct ActivityPaneV: View {
                         .opacity(0)
                         .disabled(true)
                         .allowsHitTesting(false)
-                    Text("\(controller.activity.businesses[0].location.city), \(controller.activity.businesses[0].location.state)")
+                    Text("\(controller.activity.businesses[0].location.city ?? ""), \(controller.activity.businesses[0].location.state ?? "")")
                         .font(.caption)
                         .padding(0)
                     Spacer()
