@@ -13,16 +13,18 @@ import SwiftUI
         }
     }}
     private let rawSnapPointsY: [CGFloat]
-    @Published var snapPointsY: [CGFloat] { didSet {
-        if snapPointsY.isEmpty {
-            snapPointsY = [defaultCardSize]
-        }
-    }}
+    @Published var snapPointsY: [CGFloat] {
+        didSet {
+            if snapPointsY.isEmpty {
+                snapPointsY = [defaultCardSize]
+            }
+        }}
     
     @Published var offset: CGSize
     private var offsetCache: CGFloat = 0
     private var previousDrag: CGSize = CGSize(width: 0, height: 0)
-    @Published var fadePercent: Double = 0.0
+    @Published var backgroundFadePercent: Double = 0.0
+    @Published var foregroundFadePercent: Double = 0.0
     private var isFull: Bool = false
     
     @Published var content: Content
@@ -65,13 +67,18 @@ import SwiftUI
                 offsetCache = offset.height         // Save current height for eventually returning to it
                 guard let maxSnapPoint = snapPointsY.max() else { return }
                 offset.height = maxSnapPoint    // Snap to max height
-                SetBackgroundOpacity()
+                SetOpacities()
             }
             else {
                 offset.height = offsetCache
-                SetBackgroundOpacity()
+                SetOpacities()
             }
         }
+    }
+    
+    private func SetOpacities() {
+        SetBackgroundOpacity()
+        SetForegroundOpacity()
     }
     
     /// Sets the background opacity for when the card is approaching, or is at its max height.
@@ -79,7 +86,13 @@ import SwiftUI
     private func SetBackgroundOpacity() {
         let fadeAtPercent: CGFloat = 0.75
         guard let maxValue = snapPointsY.max() else { return }
-        fadePercent = isShortCard ? 0.0 : (offset.height - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
+        backgroundFadePercent = isShortCard ? 0.0 : (offset.height - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
+    }
+    
+    private func SetForegroundOpacity() {
+        let finishAtPercent: CGFloat = 0.2
+        guard let minValue = snapPointsY.min() else { return }
+        foregroundFadePercent = isShortCard ? 1.0 : ((offset.height / minValue) - 1) * (1 / finishAtPercent)
     }
     
     /// Used for calculating if the card should render as a "short card" or the full width of the screen.
@@ -125,7 +138,7 @@ import SwiftUI
         guard let maxSnapPointY = snapPointsY.max(),
               let minSnapPointY = snapPointsY.min() else { return }
         
-        SetBackgroundOpacity()
+        SetOpacities()
         if offset.height > maxSnapPointY {                                                                  // If above bounds
             let distanceAbove = offset.height - maxSnapPointY                                               // Calculate how far above bounds
             offset.height -= dampening(distanceChangedY, distanceAbove)                                     // Slow down drag beyond bounds
@@ -168,7 +181,7 @@ import SwiftUI
                 guard let snapIndex = distances.firstIndex(of: minDistance) else { return } // Get the index of the snap point with smallest value
                 offset.height = snapPointsY[snapIndex]                                      // Set the offset.height
             }
-            SetBackgroundOpacity()
+            SetOpacities()
             
             // x component
             if isFull {

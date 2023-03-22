@@ -31,7 +31,7 @@ struct BottomDrawer<Content: DrawerView>: View {
         GeometryReader { geometry in
             ZStack(alignment: .topTrailing) {
                 Color.black                                                                                 // Background fade when card is brought up
-                    .opacity(controller.fadePercent * DrawerProperties.backgroundFadeAmount.rawValue)
+                    .opacity(controller.backgroundFadePercent * DrawerProperties.backgroundFadeAmount.rawValue)
                     .allowsHitTesting(false)
                     .ignoresSafeArea(.all)
                 VStack {                                                                                    // The drawer itself
@@ -48,19 +48,21 @@ struct BottomDrawer<Content: DrawerView>: View {
                         ScrollView {
                             controller.content.body                                                         // Content passed in to show
                                 .padding(.horizontal, 7)
+                                .frame(width: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width)
                         }
                     }
                     .scrollDisabled(controller.offset.height < geometry.size.height / 4)
                     .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
                     .cornerRadius(18)
                     .shadow(radius: 2)
+                    .opacity(controller.foregroundFadePercent)
                     
                 }
                 .frame(
                     width: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width,
                     height: controller.offset.height
                 )
-                .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.fadePercent)) // Set frosted background
+                .background(BlurView(style: .systemUltraThinMaterial, opacity: controller.backgroundFadePercent)) // Set frosted background
                 .cornerRadius(DrawerProperties.cornerRadius.rawValue)
                 .shadow(radius: DrawerProperties.shadowDistance.rawValue)
                 .offset(
