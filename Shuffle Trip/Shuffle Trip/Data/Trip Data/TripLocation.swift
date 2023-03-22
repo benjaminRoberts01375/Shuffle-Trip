@@ -21,6 +21,12 @@ public class TripLocation: ObservableObject, Identifiable {
             objectWillChange.send()
         }
     }
+    /// Marks the trip as being visible with friends
+    @Published public var isShared: Bool {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     /// An unique identifier for each trip
     public let id: UUID
     /// ID for polygon
@@ -41,6 +47,7 @@ public class TripLocation: ObservableObject, Identifiable {
         self.radius = MapDetails.defaultRadius
         self.activityLocations = []
         self.isSelected = true
+        self.isShared = false
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"

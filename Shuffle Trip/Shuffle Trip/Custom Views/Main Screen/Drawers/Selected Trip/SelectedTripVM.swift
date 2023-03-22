@@ -7,7 +7,7 @@ import SwiftUI
     @ObservedObject var tripLocations: TripLocations
     @Published var displayPhase: DisplayPhase
     @Published var selectedTrip: TripLocation!
-    @Published var shuffleConfirmation: Bool
+    @Published var shuffleConfirmation: DisplayButtons
     
     enum DisplayPhase {
         case info
@@ -15,16 +15,23 @@ import SwiftUI
         case error
     }
     
+    enum DisplayButtons {
+        case confirmShuffle
+        case normal
+    }
+    
     init(tripLocations: TripLocations) {
         self.tripLocations = tripLocations
-        self.shuffleConfirmation = false
+        self.shuffleConfirmation = .normal
         self.displayPhase = .info
+        print("reset from init")
     }
     
     internal func setSelectedTrip() {
         for trip in tripLocations.tripLocations where trip.isSelected {
             selectedTrip = trip
-            shuffleConfirmation = false
+            shuffleConfirmation = .normal
+            print("reset from set selected trip")
             return
         }
     }
