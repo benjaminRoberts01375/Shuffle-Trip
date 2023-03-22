@@ -14,7 +14,26 @@ struct ActivityPaneV: View {
     var body: some View {
         DisclosureGroup(content: {
             VStack {
-                EmptyView()
+                HStack {
+                    BigButton(
+                        action: {  },
+                        image: Image(systemName: "map.fill"),
+                        label: "Navigate",
+                        highlighted: true
+                    )
+                    BigButton(
+                        action: {  },
+                        image: Image(systemName: "shuffle"),
+                        label: "Shuffle",
+                        highlighted: false
+                    )
+                    BigButton(
+                        action: {  },
+                        image: Image(systemName: "trash.fill"),
+                        label: "Remove",
+                        highlighted: false
+                    )
+                }
             }
         }, label: {
             HStack {
@@ -23,5 +42,35 @@ struct ActivityPaneV: View {
             }
             .foregroundColor(.primary)
         })
+    }
+    
+    struct BigButton: View {
+        var action: () -> Void
+        var image: Image
+        var label: String
+        var highlighted: Bool
+        
+        var body: some View {
+            Button(action: {
+                action()
+            }, label: {
+                VStack {
+                    image
+                        .font(.title)
+                    Text(label)
+                        .font(.caption)
+                }
+                .frame(width: 75, height: 60)
+                .foregroundColor(.white)
+                .background(highlighted ? .blue : Color.secondary)
+                .cornerRadius(10)
+            })
+        }
+    }
+}
+
+struct ActivityPaneV_Previews: PreviewProvider {
+    static var previews: some View {
+        EmptyView()
     }
 }
