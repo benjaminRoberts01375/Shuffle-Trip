@@ -50,6 +50,7 @@ struct ActivityPaneV: View {
                     Image(systemName: "\(controller.index).circle.fill")
                         .symbolRenderingMode(.hierarchical)
                     Text("\(controller.activity.businesses[0].name)")
+                        .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
                 .padding(.vertical, 6)
