@@ -92,7 +92,6 @@ final class CategoryDataM: ObservableObject {
     /// - Returns: Bool of if the category is selected within the specified topic.
     public func CategoryIsSelected(topic: String, category: String) -> Bool {
         guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return false }
-        print("Item is \(topic.selected.contains(category))")
         return topic.selected.contains(category)
     }
     
