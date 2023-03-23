@@ -11,16 +11,16 @@ struct Categories: View {
             List {
                 ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in            // List all major categories and sort alphabetically
                     lhs.topic < rhs.topic
-                }), id: \.topic) { majorCategory in
+                }), id: \.topic) { topic in
                     Section {                                                               // Devide the major categories
                         HStack {
-                            Text(majorCategory.topic)
+                            Text(topic.topic)
                                 .font(.title2.bold())
-                            Image(systemName: majorCategory.symbol)
+                            Image(systemName: topic.symbol)
                         }
 
-                        ForEach(majorCategory.categories.sorted(), id: \.self) { minorCategory in // List all minor categories and sort alphabetically
-                            Text(minorCategory)
+                        ForEach(topic.categories.sorted(), id: \.self) { category in // List all minor categories and sort alphabetically
+                            Text(category)
                         }
                     }
                 }
