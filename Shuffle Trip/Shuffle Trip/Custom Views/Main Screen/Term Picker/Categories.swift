@@ -59,7 +59,7 @@ struct Categories: View {
     func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
         Overview(proxy: proxy, topics: topics)
             .frame(maxWidth: .infinity, alignment: .trailing)
-            .padding()
+            .padding(.horizontal)
     }
 }
 
