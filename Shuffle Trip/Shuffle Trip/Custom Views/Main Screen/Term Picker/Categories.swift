@@ -30,7 +30,6 @@ struct Categories: View {
                             }
                         })
                         .padding(.vertical, 5)
-                        .listRowBackground(BlurView(style: .prominent, opacity: 1))
                         
                         ForEach(topic.categories.sorted(), id: \.self) { category in // List all categories and sort alphabetically
                             HStack {
