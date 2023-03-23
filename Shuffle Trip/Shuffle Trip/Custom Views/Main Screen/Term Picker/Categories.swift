@@ -63,13 +63,17 @@ struct Categories: View {
     }
 }
 
+/// A view that controls the scroll view of a list, and provides a summary overlay for it
+/// Tutorial by https://www.fivestars.blog/articles/section-title-index-swiftui/ with small adjustments
 struct Overview: View {
+    /// Proxy from a ScrollViewReader
     let proxy: ScrollViewProxy
+    /// Topics that able to be browsed through
     let topics: CategoryDataM
+    /// Handle getting finger's position
     @GestureState private var dragLocation: CGPoint = .zero
     
     var body: some View {
-        EmptyView()
         VStack(alignment: .trailing) {
             ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in    // List all topics as icons and sort alphabetically
                 lhs.topic < rhs.topic
@@ -77,31 +81,39 @@ struct Overview: View {
                 Color.clear
                     .frame(width: 30, height: 20)
                     .overlay(
-                        Image(systemName: topic.symbol)
+                        Image(systemName: topic.symbol)                 // Show each of the topic's symbols
                             .foregroundColor(.blue)
                             .opacity(0.75)
                             .background(dragObserver(title: topic.topic))
                     )
             }
         }
-        .gesture(
+        .gesture(                                                       // Apply gesture to the overview
             DragGesture(coordinateSpace: .global)
                 .updating($dragLocation) { value, state, _ in
-                    state = value.location
+                    state = value.location                              // Set drag location to the current finger location
                 }
         )
     }
     
+    /// Allow putting a geometry reader behind the entire overview
+    /// - Parameter title: Title of the topic
+    /// - Returns: The geometry reader
     func dragObserver(title: String) -> some View {
             GeometryReader { geometry in
                 dragObserver(geometry: geometry, title: title)
             }
         }
     
+    /// Handels setting the proxy to a symbol's location
+    /// - Parameters:
+    ///   - geometry: Geometry from a geometry reader
+    ///   - title: Name of the topic
+    /// - Returns: A near empty view
     func dragObserver(geometry: GeometryProxy, title: String) -> some View {
         if geometry.frame(in: .global).contains(dragLocation) {
             DispatchQueue.main.async {
-                proxy.scrollTo(title, anchor: .center)
+                proxy.scrollTo(title, anchor: .center)  // Set proxy location to symbol's
             }
         }
         return Rectangle().fill(Color.clear)
