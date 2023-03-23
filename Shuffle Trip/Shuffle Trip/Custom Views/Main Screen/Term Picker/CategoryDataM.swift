@@ -23,7 +23,7 @@ final class CategoryDataM: ObservableObject {
         enum CodingKeys: String, CodingKey {
             case symbol
             case categories = "data"
-            case topic = "catagory"
+            case topic = "category"
         }
     }
     // swiftlint:enable nesting
