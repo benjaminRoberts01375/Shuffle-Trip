@@ -9,17 +9,18 @@ struct Categories: View {
     var body: some View {
         ScrollViewReader { _ in
             List {
-                ForEach(categories.categories.sorted(by: { (lhs, rhs) -> Bool in
+                ForEach(categories.categories.sorted(by: { (lhs, rhs) -> Bool in            // List all major categories and sort alphabetically
                     lhs.category < rhs.category
-                }), id: \.category) { test in
-                    Section {
-                        Text(test.category)
-                            .font(.title3.bold())
-                        
-                        ForEach(test.data.sorted(by: { (lhs, rhs) -> Bool in
-                            lhs < rhs
-                        }), id: \.self) { point in
-                            Text(point)
+                }), id: \.category) { majorCategory in
+                    Section {                                                               // Devide the major categories
+                        HStack {
+                            Text(majorCategory.category)
+                                .font(.title2.bold())
+                            Image(systemName: majorCategory.symbol)
+                        }
+
+                        ForEach(majorCategory.data.sorted(), id: \.self) { minorCategory in // List all minor categories and sort alphabetically
+                            Text(minorCategory)
                         }
                     }
                 }
