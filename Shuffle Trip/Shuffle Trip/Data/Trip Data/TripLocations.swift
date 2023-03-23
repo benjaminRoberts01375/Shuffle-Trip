@@ -12,13 +12,18 @@ final class TripLocations: ObservableObject, Equatable {
     }
     
     /// List of all current trip locations
-    @Published private(set) var tripLocations: [TripLocation] = [] {
+    @Published private(set) var tripLocations: [TripLocation] {
         didSet {
             objectWillChange.send()
         }
     }
     /// For dealing with observers
-    private var cancellables = Set<AnyCancellable>()
+    private var cancellables: Set<AnyCancellable>
+    
+    init(tripLocations: [TripLocation] = [], cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
+        self.tripLocations = tripLocations
+        self.cancellables = cancellables
+    }
     
     /// Standardized method of setting the selected trip
     /// - Parameter trip: Trip to set as selected
