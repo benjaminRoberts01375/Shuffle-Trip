@@ -95,4 +95,29 @@ final class CategoryDataM: ObservableObject {
         print("Item is \(topic.selected.contains(category))")
         return topic.selected.contains(category)
     }
+    
+    /// Selects all categories in a topic
+    /// - Parameter topic: Topic to select
+    public func SelectTopic(topic: String) {
+        guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
+        topic.selected = topic.categories
+    }
+    
+    /// Deselects all categories in a topic
+    /// - Parameter topic: Topic to deselect
+    public func DeselectTopic(topic: String) {
+        guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
+        topic.selected = []
+    }
+    
+    /// Checks to see if all categories within a topic are selected
+    /// - Parameter topic: Topic to check
+    /// - Returns: Bool of if the topic is selected or not
+    public func CheckTopicSelection(topic: String) -> Bool {
+        guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return false }
+        if topic.categories == topic.selected {
+            return true
+        }
+        return false
+    }
 }

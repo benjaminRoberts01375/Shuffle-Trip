@@ -13,11 +13,22 @@ struct Categories: View {
                     lhs.topic < rhs.topic
                 }), id: \.topic) { topic in
                     Section {                                                       // Devide the topics
-                        HStack {
-                            Text(topic.topic)
-                                .font(.title2.bold())
-                            Image(systemName: topic.symbol)
-                        }
+                        Button(action: {
+                            if topics.CheckTopicSelection(topic: topic.topic) {
+                                topics.DeselectTopic(topic: topic.topic)
+                            }
+                            else {
+                                topics.SelectTopic(topic: topic.topic)
+                            }
+                        }, label: {
+                            HStack {
+                                Text(topic.topic)
+                                    .font(.title2.bold())
+                                    .foregroundColor(Color.primary)
+                                Image(systemName: topic.symbol)
+                                    .foregroundColor(topics.CheckTopicSelection(topic: topic.topic) ? .blue : .primary)
+                            }
+                        })
                         
                         ForEach(topic.categories.sorted(), id: \.self) { category in // List all categories and sort alphabetically
                             HStack {
