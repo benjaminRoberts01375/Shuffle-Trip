@@ -62,7 +62,7 @@ struct ContentView: View {
             }
             .sheet(
                 isPresented: $controller.categorySheet,
-                content: { Categories(categories: controller.categories) }
+                content: { Categories(topics: controller.topics) }
             )
             .onReceive(controller.tripLocations.objectWillChange) { _ in
                 controller.updateInteractionPhase()

@@ -10,7 +10,7 @@ class ContentViewModel: ObservableObject {
     @Published var region: RegionDetails
     @Published var interactionPhase: InteractionPhase
     @Published var categorySheet: Bool
-    public var categories: CategoryDataM
+    public var topics: CategoryDataM
     public let cardMinimumHeight: CGFloat
     /// For dealing with observers
     private var cancellables = Set<AnyCancellable>()
@@ -22,7 +22,7 @@ class ContentViewModel: ObservableObject {
     
     init() {
         self.tripLocations = TripLocations()
-        self.categories = CategoryDataM()
+        self.topics = CategoryDataM()
         self.region = RegionDetails()
         self.cardMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start

@@ -6,18 +6,26 @@ import SwiftUI
 
 final class CategoryDataM: ObservableObject {
     /// A list of all categories available to Shuffle Trip
-    @Published var categories: [Category]
+    @Published private(set) var topics: [Topic]
     
     init() {
-        self.categories = []
+        self.topics = []
         LoadData()
     }
     
-    public struct Category: Codable {
+    // swiftlint:disable nesting
+    public struct Topic: Codable {
         let symbol: String
-        let data: [String]
-        let category: String
+        let catagories: [String]
+        let topic: String
+        
+        enum CodingKeys: String, CodingKey {
+            case symbol
+            case catagories = "data"
+            case topic = "catagory"
+        }
     }
+    // swiftlint:enable nesting
     
     /// Load category data into memory
     private func LoadData() {
@@ -29,23 +37,22 @@ final class CategoryDataM: ObservableObject {
         do {
             let data = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
-            self.categories = try decoder.decode([Category].self, from: data)
-            print(categories.count)
-            for category in categories {
-                print(category.category)
+            self.topics = try decoder.decode([Topic].self, from: data)
+            print(topics.count)
+            for category in topics {
+                print(category.topic)
             }
         } catch {
             fatalError("Unable to parse data.json: \(error)")
         }
         
         do {
-            let data = try Data(contentsOf: fileURL)                        // Raw JSON data
-            let decoder = JSONDecoder()                                     // Decoder for JSON to structs
-            categories = try decoder.decode([Category].self, from: data)    // Decode JSON to structs
+            let data = try Data(contentsOf: fileURL)                 // Raw JSON data
+            let decoder = JSONDecoder()                              // Decoder for JSON to structs
+            topics = try decoder.decode([Topic].self, from: data)    // Decode JSON to structs
         }
         catch {
             print("Could not decode >:(")
         }
     }
-    
 }
