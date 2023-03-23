@@ -34,7 +34,7 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Name of the trip to be displayed to the user
     var name: String
     /// Categories to shuffle from
-    var categories: [String]
+    @ObservedObject var categories: CategoryDataM
     /// Status of the trip being downloaded
     var status: Status {
         didSet {
@@ -42,7 +42,7 @@ public class TripLocation: ObservableObject, Identifiable {
         }
     }
     
-    init(coordinate: CLLocationCoordinate2D) {
+    init(coordinate: CLLocationCoordinate2D, categories: CategoryDataM) {
         self.coordinate = coordinate
         self.radius = MapDetails.defaultRadius
         self.activityLocations = []
@@ -51,9 +51,9 @@ public class TripLocation: ObservableObject, Identifiable {
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"
-        self.categories = ["Breakfast", "Lunch", "Dinner", "Education", "Automotive", "Arts", "Active", "Active"]
+        self._categories = ObservedObject(initialValue: categories)
         self.status = .generating
-        generateActivities(params: self.categories)
+        generateActivities()
     }
     
     func selectTrip(_ selected: Bool) {
@@ -66,7 +66,16 @@ public class TripLocation: ObservableObject, Identifiable {
         case error
     }
     
-    private func generateActivities(params: [String]) {
+    private func generateActivities() {
+        var params: [String] = []
+        for topic in categories.topics {
+            for category in topic.selected {
+                params.append(category)
+            }
+        }
+        
+        print("Params: \(params)")
+        
         // Encode the TripRequest instance into JSON data
         status = .generating
         let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius))
@@ -123,7 +132,7 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Function for regenerating trips
     /// - Parameter activityTypes: List of activities to go on
     public func ShuffleTrip() {
-        generateActivities(params: categories)
+        generateActivities()
     }
 }
 

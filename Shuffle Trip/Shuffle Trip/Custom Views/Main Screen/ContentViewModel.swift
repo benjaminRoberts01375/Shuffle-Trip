@@ -21,8 +21,8 @@ class ContentViewModel: ObservableObject {
     }
     
     init() {
-        self.tripLocations = TripLocations()
         self.topics = CategoryDataM()
+        self.tripLocations = TripLocations(categories: topics)
         self.region = RegionDetails()
         self.cardMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start

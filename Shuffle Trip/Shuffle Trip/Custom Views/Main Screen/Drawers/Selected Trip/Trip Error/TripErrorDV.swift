@@ -57,11 +57,11 @@ struct TripErrorDV_Previews: PreviewProvider {
             RegionSelector(                     // Map
                 logoPosition: 125,
                 region: RegionDetails(),
-                tripLocations: TripLocations()
+                tripLocations: TripLocations(categories: CategoryDataM())
             )
             
             BottomDrawer(                       // Drawer
-                content: TripErrorDV(tripLocations: TripLocations()),
+                content: TripErrorDV(tripLocations: TripLocations(categories: CategoryDataM())),
                 snapPoints: [150, 1 / 2, 0.925]
             )
         }

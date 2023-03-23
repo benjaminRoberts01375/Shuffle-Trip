@@ -121,10 +121,3 @@ struct RegionSelector: UIViewRepresentable {
         }
     }
 }
-
-struct RegionSelector_Previews: PreviewProvider {
-    static var previews: some View {
-        RegionSelector(logoPosition: 0, region: RegionDetails(), tripLocations: TripLocations())
-            .edgesIgnoringSafeArea(.all)
-    }
-}

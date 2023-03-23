@@ -117,7 +117,7 @@ struct BottomDrawer_Previews: PreviewProvider {
             RegionSelector(                     // Map
                 logoPosition: 125,
                 region: RegionDetails(),
-                tripLocations: TripLocations()
+                tripLocations: TripLocations(categories: CategoryDataM())
             )
             
             BottomDrawer(                       // Drawer
