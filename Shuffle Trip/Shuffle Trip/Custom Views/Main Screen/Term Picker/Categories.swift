@@ -5,6 +5,7 @@ import SwiftUI
 
 struct Categories: View {
     @StateObject var topics: CategoryDataM
+    @State var text: String = ""
     
     var body: some View {
         NavigationStack {
@@ -33,21 +34,24 @@ struct Categories: View {
                             .padding(.vertical, 5)
                             
                             ForEach(topic.categories.sorted(), id: \.self) { category in // List all categories and sort alphabetically
-                                HStack {
-                                    Image(systemName: "checkmark")
-                                        .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category) ? 1 : 0)
-                                        .foregroundColor(.blue)
-                                    Button(action: {
-                                        if topics.CategoryIsSelected(topic: topic.topic, category: category) {
-                                            topics.DeselectCategory(topic: topic.topic, category: category)
-                                        }
-                                        else {
-                                            topics.SelectCategory(topic: topic.topic, category: category)
-                                        }
-                                    }, label: {
-                                        Text(category)
-                                            .foregroundColor(Color.primary)
-                                    })
+                                
+                                if text == "" || category.contains(text) {
+                                    HStack {
+                                        Image(systemName: "checkmark")
+                                            .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category) ? 1 : 0)
+                                            .foregroundColor(.blue)
+                                        Button(action: {
+                                            if topics.CategoryIsSelected(topic: topic.topic, category: category) {
+                                                topics.DeselectCategory(topic: topic.topic, category: category)
+                                            }
+                                            else {
+                                                topics.SelectCategory(topic: topic.topic, category: category)
+                                            }
+                                        }, label: {
+                                            Text(category)
+                                                .foregroundColor(Color.primary)
+                                        })
+                                    }
                                 }
                             }
                         }
@@ -56,6 +60,7 @@ struct Categories: View {
                 .overlay(sectionIndexTitles(proxy: proxy))
             }
             .navigationBarTitle("Categories")
+            .searchable(text: $text)
         }
     }
     
