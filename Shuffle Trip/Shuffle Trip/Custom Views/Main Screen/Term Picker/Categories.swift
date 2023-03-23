@@ -7,7 +7,7 @@ struct Categories: View {
     @StateObject var topics: CategoryDataM
     
     var body: some View {
-        ScrollViewReader { _ in
+        ScrollViewReader { proxy in
             List {
                 ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in            // List all topics and sort alphabetically
                     lhs.topic < rhs.topic
@@ -51,6 +51,32 @@ struct Categories: View {
                         }
                     }
                 }
+            }
+            .overlay(sectionIndexTitles(proxy: proxy))
+        }
+    }
+    
+    func sectionIndexTitles(proxy: ScrollViewProxy) -> some View {
+        Overview(proxy: proxy, topics: topics)
+            .frame(maxWidth: .infinity, alignment: .trailing)
+            .padding()
+    }
+}
+
+struct Overview: View {
+    let proxy: ScrollViewProxy
+    let topics: CategoryDataM
+    
+    var body: some View {
+        EmptyView()
+        VStack {
+            ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in            // List all topics as icons and sort alphabetically
+                lhs.topic < rhs.topic
+            }), id: \.topic) { topic in
+                Image(systemName: topic.symbol)
+                    .padding(.vertical, 2)
+                    .foregroundColor(.blue)
+                    .opacity(0.75)
             }
         }
     }
