@@ -18,6 +18,7 @@ final class CategoryDataM: ObservableObject {
         let symbol: String
         let categories: [String]
         let topic: String
+        var selected: [String] = []
         
         enum CodingKeys: String, CodingKey {
             case symbol
@@ -54,5 +55,25 @@ final class CategoryDataM: ObservableObject {
         catch {
             print("Could not decode >:(")
         }
+    }
+    
+    /// Allows for keeping track of which category the user selected. This will not duplicate a selection.
+    /// - Parameters:
+    ///   - topic: Topic that the category is a part of
+    ///   - category: Category to select
+    public func SelectCategory(topic: String, category: String) {
+        guard var topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
+        if !topic.selected.contains(category) && topic.categories.contains(category) {
+            topic.selected.append(category)
+        }
+    }
+    
+    /// Deselect a selected category. This will remove any and all duplicates of this category.
+    /// - Parameters:
+    ///   - topic: Topic that the category is a part of
+    ///   - category: Category to deselect
+    public func DeselectCategory(topic: String, category: String) {
+        guard var topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
+        topic.selected.removeAll(where: { $0 == category })
     }
 }
