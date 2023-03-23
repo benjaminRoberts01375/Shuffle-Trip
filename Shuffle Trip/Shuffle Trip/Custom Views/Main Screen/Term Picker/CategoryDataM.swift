@@ -72,4 +72,14 @@ final class CategoryDataM: ObservableObject {
         guard var topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
         topic.selected.removeAll(where: { $0 == category })
     }
+    
+    /// Checks to see if a category within a topic is selected.
+    /// - Parameters:
+    ///   - topic: Topic that the category is a part of.
+    ///   - category: Category to check.
+    /// - Returns: Bool of if the category is selected within the specified topic.
+    public func CategoryIsSelected(topic: String, category: String) -> Bool {
+        guard var topic: Topic = topics.first(where: { $0.topic == topic }) else { return false }
+        return topic.selected.contains(category)
+    }
 }
