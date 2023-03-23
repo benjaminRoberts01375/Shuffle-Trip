@@ -19,7 +19,7 @@ struct Categories: View {
                             Image(systemName: majorCategory.symbol)
                         }
 
-                        ForEach(majorCategory.catagories.sorted(), id: \.self) { minorCategory in // List all minor categories and sort alphabetically
+                        ForEach(majorCategory.categories.sorted(), id: \.self) { minorCategory in // List all minor categories and sort alphabetically
                             Text(minorCategory)
                         }
                     }

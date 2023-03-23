@@ -16,12 +16,12 @@ final class CategoryDataM: ObservableObject {
     // swiftlint:disable nesting
     public struct Topic: Codable {
         let symbol: String
-        let catagories: [String]
+        let categories: [String]
         let topic: String
         
         enum CodingKeys: String, CodingKey {
             case symbol
-            case catagories = "data"
+            case categories = "data"
             case topic = "catagory"
         }
     }
