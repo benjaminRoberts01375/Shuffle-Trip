@@ -66,19 +66,45 @@ struct Categories: View {
 struct Overview: View {
     let proxy: ScrollViewProxy
     let topics: CategoryDataM
+    @GestureState private var dragLocation: CGPoint = .zero
     
     var body: some View {
         EmptyView()
-        VStack {
-            ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in            // List all topics as icons and sort alphabetically
+        VStack(alignment: .trailing) {
+            ForEach(topics.topics.sorted(by: { (lhs, rhs) -> Bool in    // List all topics as icons and sort alphabetically
                 lhs.topic < rhs.topic
             }), id: \.topic) { topic in
-                Image(systemName: topic.symbol)
-                    .padding(.vertical, 2)
-                    .foregroundColor(.blue)
-                    .opacity(0.75)
+                Color.clear
+                    .frame(width: 30, height: 20)
+                    .overlay(
+                        Image(systemName: topic.symbol)
+                            .foregroundColor(.blue)
+                            .opacity(0.75)
+                            .background(dragObserver(title: topic.topic))
+                    )
             }
         }
+        .gesture(
+            DragGesture(coordinateSpace: .global)
+                .updating($dragLocation) { value, state, _ in
+                    state = value.location
+                }
+        )
+    }
+    
+    func dragObserver(title: String) -> some View {
+            GeometryReader { geometry in
+                dragObserver(geometry: geometry, title: title)
+            }
+        }
+    
+    func dragObserver(geometry: GeometryProxy, title: String) -> some View {
+        if geometry.frame(in: .global).contains(dragLocation) {
+            DispatchQueue.main.async {
+                proxy.scrollTo(title, anchor: .center)
+            }
+        }
+        return Rectangle().fill(Color.clear)
     }
 }
 
