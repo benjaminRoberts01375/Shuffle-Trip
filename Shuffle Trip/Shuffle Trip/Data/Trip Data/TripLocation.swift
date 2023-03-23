@@ -78,7 +78,7 @@ public class TripLocation: ObservableObject, Identifiable {
         
         // Encode the TripRequest instance into JSON data
         status = .generating
-        let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius))
+        let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: Int(3))
         guard let jsonData = try? JSONEncoder().encode(tripRequest) else {
             print("Error encoding TripRequest")
             return

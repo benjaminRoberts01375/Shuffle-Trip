@@ -110,4 +110,5 @@ struct TripRequest: Encodable {
     let latitude: Double
     let longitude: Double
     let radius: Int
+    let count: Int
 }
