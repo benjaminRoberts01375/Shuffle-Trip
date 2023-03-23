@@ -39,10 +39,6 @@ final class CategoryDataM: ObservableObject {
             let data = try Data(contentsOf: fileURL)
             let decoder = JSONDecoder()
             self.topics = try decoder.decode([Topic].self, from: data)
-            print(topics.count)
-            for category in topics {
-                print(category.topic)
-            }
         } catch {
             fatalError("Unable to parse data.json: \(error)")
         }
