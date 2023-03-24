@@ -7,6 +7,7 @@ import SwiftUI
 
 class ContentViewModel: ObservableObject {
     @Published var tripLocations: TripLocations
+    @Published var friendTripLocations: FriendTripProfiles
     @Published var region: RegionDetails
     @Published var interactionPhase: InteractionPhase
     @Published var categorySheet: Bool
@@ -23,6 +24,7 @@ class ContentViewModel: ObservableObject {
     init() {
         self.topics = CategoryDataM()
         self.tripLocations = TripLocations(categories: topics)
+        self.friendTripLocations = FriendTripProfiles()
         self.region = RegionDetails()
         self.cardMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
