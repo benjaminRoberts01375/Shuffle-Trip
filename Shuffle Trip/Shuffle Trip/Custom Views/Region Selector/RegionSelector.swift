@@ -85,7 +85,15 @@ struct RegionSelector: UIViewRepresentable {
             let circle = MKCircle(center: trip.coordinate, radius: trip.radius)
             trip.polyID = circle.hash
             mapView.addOverlay(circle)
-            PlaceTripPins(trip: trip)
+            
+            var index = 0
+            for activity in trip.activityLocations {
+                index += 1
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = CLLocationCoordinate2D(latitude: activity.businesses[0].coordinates.latitude, longitude: activity.businesses[0].coordinates.longitude)
+                annotation.title = "\(activity.businesses[0].name)"
+                mapView.addAnnotation(annotation)
+            }
         }
         
         if !mapView.overlays.isEmpty {                                              // Set the region to the last placed circle (likely the selected one)
@@ -108,16 +116,6 @@ struct RegionSelector: UIViewRepresentable {
                     return
                 }
             }
-        }
-    }
-    
-    /// Places pins at every location provided by a trip
-    /// - Parameter trip: Trip to place pins at
-    private func PlaceTripPins(trip: TripLocation) {
-        for activity in trip.activityLocations {
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = CLLocationCoordinate2D(latitude: activity.businesses[0].coordinates.latitude, longitude: activity.businesses[0].coordinates.longitude)
-            mapView.addAnnotation(annotation)
         }
     }
 }
