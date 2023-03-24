@@ -119,4 +119,17 @@ final class CategoryDataM: ObservableObject {
         }
         return false
     }
+    
+    public func CheckEnoughSelected() -> Bool {
+        let min: Int = 3
+        var count: Int = 0
+        
+        for topic in topics {
+            count += topic.selected.count
+        }
+        if count >= min {
+            return true
+        }
+        return false
+    }
 }

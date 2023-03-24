@@ -27,11 +27,11 @@ struct ContentView: View {
                     Button(action: {
                         controller.categorySheet = true
                     }, label: {
-                        Image(systemName: "tag")
+                        Image(systemName: controller.topics.CheckEnoughSelected() ? "tag.fill" : "tag")
                             .resizable(resizingMode: .stretch)
                             .symbolRenderingMode(.hierarchical)
                             .frame(width: 25, height: 25)
-                            .foregroundColor(Color.secondary)
+                            .foregroundColor(controller.topics.CheckEnoughSelected() ? .blue : Color.secondary)
                             .padding(8)
                             .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
                             .cornerRadius(5)
