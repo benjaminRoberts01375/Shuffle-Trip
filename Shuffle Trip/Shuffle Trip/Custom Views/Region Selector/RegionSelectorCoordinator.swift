@@ -43,6 +43,22 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
+    internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard let selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { return nil }
+        var index: Int = 0
+        for location in selectedTrip.activityLocations {
+            index += 1
+            if location.businesses[0].name == annotation.title {
+                let annotationView = MKMarkerAnnotationView()
+                annotationView.glyphText = "\(index)"
+                annotationView.markerTintColor = .systemBlue
+                return annotationView
+            }
+        }
+        print("falling back")
+        return nil
+    }
+    
     /// Update the region state whenever the user moves the map
     /// - Parameters:
     ///   - mapView: map view that was scrolled on
@@ -89,7 +105,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
         /// When trips are shown as circles, this list is a list of all the circles that were tapped on, useful if there are overlapping circles.
         let tappedTrips = tripLocations.tripLocations.filter({ MKMapPoint(touchCoordinate).distance(to: MKMapPoint($0.coordinate)) < $0.radius })   // List of trips that were tapped on
-
+        
         if tappedTrips.isEmpty {                                                                                                                    // No trips were tapped on
             tripLocations.SelectTrip()
             return
@@ -100,7 +116,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
                 tripLocations.SelectTrip()
             }
             else {
-                tripLocations.SelectTrip(trip: tappedTrips[0])                
+                tripLocations.SelectTrip(trip: tappedTrips[0])
             }
             return
         }
