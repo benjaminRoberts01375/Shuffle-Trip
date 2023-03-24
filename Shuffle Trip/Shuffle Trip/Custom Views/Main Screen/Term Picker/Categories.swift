@@ -35,7 +35,7 @@ struct Categories: View {
                             
                             ForEach(topic.categories.sorted(), id: \.self) { category in // List all categories and sort alphabetically
                                 
-                                if text == "" || category.contains(text) {
+                                if text == "" || category.contains(text) || topic.topic.contains(text) {
                                     HStack {
                                         Image(systemName: "checkmark")
                                             .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category) ? 1 : 0)
@@ -108,10 +108,10 @@ struct Overview: View {
     /// - Parameter title: Title of the topic
     /// - Returns: The geometry reader
     func dragObserver(title: String) -> some View {
-            GeometryReader { geometry in
-                dragObserver(geometry: geometry, title: title)
-            }
+        GeometryReader { geometry in
+            dragObserver(geometry: geometry, title: title)
         }
+    }
     
     /// Handels setting the proxy to a symbol's location
     /// - Parameters:
