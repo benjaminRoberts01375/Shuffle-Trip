@@ -57,8 +57,6 @@ final class FriendTripProfiles: ObservableObject {
                 return
             }
             
-            print(String(decoding: data, as: UTF8.self))
-            
             do {
                 let decoder = JSONDecoder()
                 let friends = try decoder.decode([User].self, from: data)
