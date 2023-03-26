@@ -24,6 +24,7 @@ public struct Activity: Decodable, Hashable {
     }
 }
 
+// swiftlint:disable discouraged_optional_boolean
 struct Business: Decodable {
     let alias: String
     let categories: [Category]
@@ -33,14 +34,14 @@ struct Business: Decodable {
     let hours: [Hour]?
     let id: String
     let imageUrl: String
-    let isClaimed: Bool
+    let isClaimed: Bool?
     let isClosed: Bool
     let location: Location
     let messaging: Messaging?
     let name: String
     let phone: String
     let price: String?
-    let photos: [String]
+    let photos: [String]?
     let rating: Double
     let reviewCount: Int
     let transactions: [String]
