@@ -61,17 +61,15 @@ final class FriendTripProfiles: ObservableObject {
             
             do {
                 let decoder = JSONDecoder()
-                let newFriends = try decoder.decode(User.self, from: data)
-                self.friends.append(newFriends)
+                let friends = try decoder.decode([User].self, from: data)
+                self.friends = friends
                 self.status = .successful
-                print("WE DID IT!")
             } catch {
                 print("Error decoding response data: \(error)")
                 self.status = .error
             }
         }
         task.resume()
-
     }
     
     enum Status {
@@ -80,26 +78,14 @@ final class FriendTripProfiles: ObservableObject {
         case successful
     }
 
-    struct Category: Decodable {
-        let alias: String
-        let title: String
-    }
-
-    struct Location: Decodable {
-        let address1: String
-        let address2: String?
-        let address3: String?
-        let city: String
-        let zipCode: String
-        let country: String
-        let state: String
-        let displayAddress: [String]
-        let crossStreets: String?
-    }
-
-    struct Coordinates: Codable {
-        let latitude: Double
-        let longitude: Double
+    struct User: Decodable {
+        let username: String
+        let trips: [Trip]
+        
+        enum CodingKeys: String, CodingKey {
+            case username
+            case trips
+        }
     }
 
     struct Trip: Decodable {
@@ -107,14 +93,17 @@ final class FriendTripProfiles: ObservableObject {
         let rating: String
         let owner: String
         let description: String
-        let activities: [Activity]
+        let activities: [Business]
+        
+        enum CodingKeys: String, CodingKey {
+            case name
+            case rating
+            case owner
+            case description
+            case activities
+        }
     }
-
-    struct User: Decodable {
-        let username: String
-        let trips: [Trip]
-    }
-
+    
     struct FriendTripRequest: Encodable {
         let username: String
     }

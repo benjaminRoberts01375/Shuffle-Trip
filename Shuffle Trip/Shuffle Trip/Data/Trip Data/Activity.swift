@@ -25,40 +25,48 @@ public struct Activity: Decodable, Hashable {
 }
 
 struct Business: Decodable {
-    let id: String
     let alias: String
-    let name: String
-    let imageUrl: String
-    let isClosed: Bool
-    let url: String
-    let reviewCount: Int
     let categories: [Category]
-    let rating: Double
     let coordinates: Coordinates
-    let transactions: [String]
-    let price: String?
-    let location: Location
-    let phone: String
     let displayPhone: String
     let distance: Double?
+    let hours: [Hour]?
+    let id: String
+    let imageUrl: String
+    let isClaimed: Bool
+    let isClosed: Bool
+    let location: Location
+    let messaging: Messaging?
+    let name: String
+    let phone: String
+    let price: String?
+    let photos: [String]
+    let rating: Double
+    let reviewCount: Int
+    let transactions: [String]
+    let url: String
     
     enum CodingKeys: String, CodingKey {
-        case id
         case alias
-        case name
-        case imageUrl = "image_url"
-        case isClosed = "is_closed"
-        case url
-        case reviewCount = "review_count"
         case categories
-        case rating
         case coordinates
-        case transactions
-        case price
-        case location
-        case phone
         case displayPhone = "display_phone"
         case distance
+        case hours
+        case id
+        case imageUrl = "image_url"
+        case isClaimed = "is_claimed"
+        case isClosed = "is_closed"
+        case location
+        case messaging
+        case name
+        case phone
+        case photos
+        case price
+        case rating
+        case reviewCount = "review_count"
+        case transactions
+        case url
     }
 }
 
@@ -77,22 +85,22 @@ struct Location: Decodable {
     let address2: String?
     let address3: String?
     let city: String?
-    let zipCode: String?
     let country: String?
-    let state: String?
-    let displayAddress: [String]
     let crossStreets: String?
+    let displayAddress: [String]
+    let state: String?
+    let zipCode: String?
     
     enum CodingKeys: String, CodingKey {
         case address1
         case address2
         case address3
         case city
-        case zipCode = "zip_code"
         case country
-        case state
-        case displayAddress = "display_address"
         case crossStreets = "cross_streets"
+        case displayAddress = "display_address"
+        case state
+        case zipCode = "zip_code"
     }
 }
 
@@ -101,8 +109,49 @@ struct Region: Decodable {
 }
 
 struct Center: Decodable {
-    let longitude: Double
     let latitude: Double
+    let longitude: Double
+    
+    enum CodingKeys: String, CodingKey {
+        case latitude
+        case longitude
+    }
+}
+
+struct Hour: Codable {
+    let isOpenNow: Bool
+    let hoursType: String
+    let open: [Open]
+    
+    enum CodingKeys: String, CodingKey {
+        case isOpenNow = "is_open_now"
+        case hoursType = "hours_type"
+        case open
+    }
+}
+
+struct Open: Codable {
+    let end: String
+    let day: Int
+    let isOvernight: Bool
+    let start: String
+    
+    enum CodingKeys: String, CodingKey {
+        case end
+        case day
+        case isOvernight = "is_overnight"
+        case start
+    }
+}
+
+struct Messaging: Codable {
+    let useCaseText: String
+    let url: String
+    
+    enum CodingKeys: String, CodingKey {
+        case useCaseText = "use_case_text"
+        case url
+    }
 }
 
 struct TripRequest: Encodable {
