@@ -117,7 +117,7 @@ final class CategoryDataM: ObservableObject {
     /// - Parameter topic: Topic to select
     public func SelectTopic(topic: String) {
         guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
-        for i in 0...topic.categories.count {
+        for i in 0...(topic.categories.count - 1) {
             topic.categories[i].selected = true
         }
     }
@@ -126,7 +126,7 @@ final class CategoryDataM: ObservableObject {
     /// - Parameter topic: Topic to deselect
     public func DeselectTopic(topic: String) {
         guard let topic: Topic = topics.first(where: { $0.topic == topic }) else { return }
-        for i in 0...topic.categories.count {
+        for i in 0...(topic.categories.count - 1) {
             topic.categories[i].selected = false
         }
     }
