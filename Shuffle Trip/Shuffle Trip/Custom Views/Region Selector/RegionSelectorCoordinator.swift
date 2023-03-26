@@ -43,20 +43,24 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         }
     }
     
+    /// Handles rendering pins
+    /// - Parameters:
+    ///   - mapView: Map to render pins on
+    ///   - annotation: Annotation to render
+    /// - Returns: Renderer
     internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard let selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { return nil }
+        guard let selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { return nil }    // Get selected trip
         var index: Int = 0
-        for location in selectedTrip.activityLocations {
+        for location in selectedTrip.activityLocations {                                                            // For all activities in trip
             index += 1
-            if location.businesses[0].name == annotation.title {
+            if location.businesses[0].name == annotation.title {                                                    // Check the pin's name
                 let annotationView = MKMarkerAnnotationView()
-                annotationView.glyphText = "\(index)"
-                annotationView.markerTintColor = .systemBlue
-                return annotationView
+                annotationView.glyphText = "\(index)"                                                               // Set the pin number
+                annotationView.markerTintColor = .systemBlue                                                        // Set the pin color
+                return annotationView                                                                               // Set the renderer
             }
         }
-        print("falling back")
-        return nil
+        return nil                                                                                                  // Use default rendering
     }
     
     /// Update the region state whenever the user moves the map
