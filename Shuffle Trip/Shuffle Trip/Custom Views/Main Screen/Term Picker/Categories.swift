@@ -33,22 +33,23 @@ struct Categories: View {
                             })
                             .padding(.vertical, 5)
                             
-                            ForEach(topic.categories.sorted(), id: \.self) { category in // List all categories and sort alphabetically
-                                
-                                if text == "" || category.contains(text) || topic.topic.contains(text) {
+                            ForEach(topic.categories.sorted(by: { (lhs, rhs) -> Bool in            // List all topics and sort alphabetically
+                                lhs.name < rhs.name
+                            }), id: \.name) { category in
+                                if text == "" || category.name.contains(text) || topic.topic.contains(text) {
                                     HStack {
                                         Image(systemName: "checkmark")
-                                            .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category) ? 1 : 0)
+                                            .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category.name) ? 1 : 0)
                                             .foregroundColor(.blue)
                                         Button(action: {
-                                            if topics.CategoryIsSelected(topic: topic.topic, category: category) {
-                                                topics.DeselectCategory(topic: topic.topic, category: category)
+                                            if topics.CategoryIsSelected(topic: topic.topic, category: category.name) {
+                                                topics.DeselectCategory(topic: topic.topic, category: category.name)
                                             }
                                             else {
-                                                topics.SelectCategory(topic: topic.topic, category: category)
+                                                topics.SelectCategory(topic: topic.topic, category: category.name)
                                             }
                                         }, label: {
-                                            Text(category)
+                                            Text(category.name)
                                                 .foregroundColor(Color.primary)
                                         })
                                     }
