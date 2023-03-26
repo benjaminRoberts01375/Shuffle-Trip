@@ -57,6 +57,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
                 let annotationView = MKMarkerAnnotationView()
                 annotationView.glyphText = "\(index)"                                                               // Set the pin number
                 annotationView.markerTintColor = .systemBlue                                                        // Set the pin color
+                annotationView.animatesWhenAdded = true
                 return annotationView                                                                               // Set the renderer
             }
         }
