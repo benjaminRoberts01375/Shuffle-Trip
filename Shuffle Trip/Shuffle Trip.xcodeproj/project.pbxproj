@@ -29,6 +29,7 @@
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */; };
+		07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07DC16E029D16A52003BFF26 /* API Handler.swift */; };
 		07E3D74329A0A7D600168218 /* Trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 07E3D74229A0A7D600168218 /* Trip.json */; };
 		07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74629A0BC0900168218 /* SelectedTripDV.swift */; };
 		07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */; };
@@ -92,6 +93,7 @@
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		07DC16E029D16A52003BFF26 /* API Handler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API Handler.swift"; sourceTree = "<group>"; };
 		07E3D74229A0A7D600168218 /* Trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Trip.json; sourceTree = "<group>"; };
 		07E3D74629A0BC0900168218 /* SelectedTripDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripDV.swift; sourceTree = "<group>"; };
 		07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripVM.swift; sourceTree = "<group>"; };
@@ -313,6 +315,7 @@
 		07F71A3C2980894B007C7AE6 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				07DC16E029D16A52003BFF26 /* API Handler.swift */,
 				07F71A3D29808961007C7AE6 /* Default Data */,
 				07612C9F2999760C00C5CE6B /* Trip Data */,
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
@@ -603,6 +606,7 @@
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				073CB9B129C51921008259A8 /* LoadingTripDV.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
+				07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */,
 				073F9C5629CB9C7A001305D3 /* CategoryDataM.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
