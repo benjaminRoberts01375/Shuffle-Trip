@@ -35,6 +35,7 @@ final class FriendTripProfiles: ObservableObject {
         case successful
     }
 
+    // swiftlint:disable nesting
     struct User: Decodable {
         let username: String
         let trips: [Trip]
