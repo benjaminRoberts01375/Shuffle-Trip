@@ -81,54 +81,13 @@ public class TripLocation: ObservableObject, Identifiable {
         // Encode the TripRequest instance into JSON data
         status = .generating
         let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: Int(3))
-        guard let jsonData = try? JSONEncoder().encode(tripRequest) else {
-            print("Error encoding TripRequest")
-            return
-        }
-        
-        // Create a URLRequest with the URL, HTTP method, and HTTP headers for the POST request
-        guard let url = URL(string: "https://shuffle-trip-backend.herokuapp.com/filteredApi") else {
-            print("Error: cannot create URL")
-            return
-        }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = jsonData
-        
-        // Send the POST request using URLSession
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, _, error in
-            if let error = error {
-                let nsError = error as NSError
-                if nsError.code == NSURLErrorCannotConnectToHost {
-                    print("Error: cannot connect to host")
-                    self.status = .error
-                    return
-                } else {
-                    print("Error sending POST request: \(error)")
-                    self.status = .error
-                    return
-                }
-            }
-
-            guard let data = data else {
-                print("Error: empty response")
-                self.status = .error
-                return
-            }
-            
+        Task {
             do {
-                let decoder = JSONDecoder()
-                let activities = try decoder.decode([Activity].self, from: data)
-                self.activityLocations = activities
+                self.activityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
                 self.status = .successful
-            } catch {
-                print("Error decoding response data: \(error)")
-                self.status = .error
             }
+            catch { self.status = .error }
         }
-        task.resume()
     }
     
     /// Function for regenerating trips
