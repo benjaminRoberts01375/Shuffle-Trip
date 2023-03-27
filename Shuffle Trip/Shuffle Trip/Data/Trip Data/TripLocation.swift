@@ -69,10 +69,8 @@ public class TripLocation: ObservableObject, Identifiable {
     private func generateActivities() {
         var params: [String] = []
         for topic in categories.topics {
-            for category in topic.categories {
-                if category.selected {
-                    params.append(category.name)
-                }
+            for category in topic.categories where category.selected {
+                params.append(category.name)
             }
         }
         
