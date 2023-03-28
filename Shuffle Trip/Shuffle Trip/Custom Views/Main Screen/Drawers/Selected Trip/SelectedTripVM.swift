@@ -26,16 +26,11 @@ import SwiftUI
         self.shuffleConfirmation = .normal
         self.displayPhase = .info
         self.disableCloseButton = false
-        print("reset from init")
     }
     
+    /// Sets the cache for the selected trip based on what trip is found to be selected in TripLocations
     internal func setSelectedTrip() {
-        for trip in tripLocations.tripLocations where trip.isSelected {
-            selectedTrip = trip
-            shuffleConfirmation = .normal
-            print("reset from set selected trip")
-            return
-        }
+        selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) ?? selectedTrip
     }
     
     internal func setDisplayPhase() {
