@@ -142,32 +142,7 @@ xcuserdata/
 *.xcscheme
 *.xcworkspacedata
 Shuffle Trip Old/Shuffle Trip.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
-Shuffle Trip/Pods/Target Support Files/SwiftLint/SwiftLint.release.xcconfig
-Shuffle Trip/Pods/Target Support Files/SwiftLint/SwiftLint.debug.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.release.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.modulemap
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.debug.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests-umbrella.h
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests-Info.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests-dummy.m
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests-acknowledgements.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests-acknowledgements.markdown
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip.release.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip.modulemap
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip.debug.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-umbrella.h
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-Info.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-dummy.m
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-acknowledgements.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-acknowledgements.markdown
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests.release.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests.modulemap
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests.debug.xcconfig
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-umbrella.h
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-Info.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-dummy.m
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-acknowledgements.plist
-Shuffle Trip/Pods/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-acknowledgements.markdown
+Pods/*
 Shuffle Trip/Pods/SwiftLint/swiftlint
 Shuffle Trip/Pods/SwiftLint/LICENSE
 Shuffle Trip/Shuffle Trip.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
