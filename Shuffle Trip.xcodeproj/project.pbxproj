@@ -23,9 +23,14 @@
 		07402D762980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */; };
 		07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawerV.swift */; };
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
+		0758377729E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377629E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift */; };
+		0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377829E08C710030ECC3 /* TripInteractionButtonsV.swift */; };
+		0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
 		076FC70B29CC330200648BB7 /* FriendTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FC70A29CC330200648BB7 /* FriendTrips.swift */; };
+		077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */; };
+		07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */; };
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */; };
@@ -33,7 +38,6 @@
 		07E3D74329A0A7D600168218 /* Trip.json in Resources */ = {isa = PBXBuildFile; fileRef = 07E3D74229A0A7D600168218 /* Trip.json */; };
 		07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74629A0BC0900168218 /* SelectedTripDV.swift */; };
 		07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */; };
-		07E3D74B29A1713F00168218 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74A29A1713F00168218 /* test.swift */; };
 		07EB143929C51D1E00A81847 /* TripErrorDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EB143829C51D1E00A81847 /* TripErrorDV.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
 		07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* ContentView.swift */; };
@@ -87,9 +91,14 @@
 		07402D752980817000F1F046 /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		07402D832980833B00F1F046 /* BottomDrawerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerV.swift; sourceTree = "<group>"; };
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
+		0758377629E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsV.swift; sourceTree = "<group>"; };
+		0758377829E08C710030ECC3 /* TripInteractionButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInteractionButtonsV.swift; sourceTree = "<group>"; };
+		0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInteractionButtonsVM.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
 		076FC70A29CC330200648BB7 /* FriendTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTrips.swift; path = "Shuffle Trip/Data/Trip Data/FriendTrips.swift"; sourceTree = SOURCE_ROOT; };
+		077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripButtonsV.swift; sourceTree = "<group>"; };
+		07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsVM.swift; sourceTree = "<group>"; };
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -97,7 +106,6 @@
 		07E3D74229A0A7D600168218 /* Trip.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Trip.json; sourceTree = "<group>"; };
 		07E3D74629A0BC0900168218 /* SelectedTripDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripDV.swift; sourceTree = "<group>"; };
 		07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripVM.swift; sourceTree = "<group>"; };
-		07E3D74A29A1713F00168218 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = test.swift; path = "Shuffle Trip/Custom Views/Main Screen/test.swift"; sourceTree = SOURCE_ROOT; };
 		07EB143829C51D1E00A81847 /* TripErrorDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorDV.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		07F71A3A29808788007C7AE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -241,6 +249,17 @@
 			path = "Custom Views";
 			sourceTree = "<group>";
 		};
+		0758377529E08AA30030ECC3 /* Header Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				0758377629E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift */,
+				07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */,
+				0758377829E08C710030ECC3 /* TripInteractionButtonsV.swift */,
+				0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */,
+			);
+			path = "Header Buttons";
+			sourceTree = "<group>";
+		};
 		075C8FF62982109400BA3D12 /* Search Bar */ = {
 			isa = PBXGroup;
 			children = (
@@ -266,7 +285,6 @@
 			children = (
 				07F71A3A29808788007C7AE6 /* ContentView.swift */,
 				07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */,
-				07E3D74A29A1713F00168218 /* test.swift */,
 				073F9C5729CB9C7F001305D3 /* Term Picker */,
 				073C5A02299DD81400C65BFD /* Drawers */,
 			);
@@ -305,6 +323,8 @@
 			children = (
 				07E3D74629A0BC0900168218 /* SelectedTripDV.swift */,
 				07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */,
+				077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */,
+				0758377529E08AA30030ECC3 /* Header Buttons */,
 				07F9D05929C95CA200D9791A /* Activity Pane */,
 				073CB9B029C51921008259A8 /* LoadingTripDV.swift */,
 				078558DB29C6255D00650C1F /* Trip Error */,
@@ -599,6 +619,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */,
+				0758377729E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift in Sources */,
 				07EB143929C51D1E00A81847 /* TripErrorDV.swift in Sources */,
 				07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */,
 				07F83ACA29821C1B004B86ED /* SearchBarCoordinator.swift in Sources */,
@@ -618,9 +639,12 @@
 				075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */,
 				07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */,
 				07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */,
+				0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
-				07E3D74B29A1713F00168218 /* test.swift in Sources */,
+				07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */,
+				0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */,
 				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
+				077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
