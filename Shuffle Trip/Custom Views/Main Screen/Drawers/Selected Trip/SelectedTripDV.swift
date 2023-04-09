@@ -12,51 +12,47 @@ struct SelectedTripDV: DrawerView {
     
     var header: some View {
         VStack {
-            if controller.selectedTrip != nil {
-                switch controller.displayPhase {
-                case .info:
+            if controller.selectedTrip != nil {                                         // If there's a selected trip...
+                switch controller.displayPhase {                                            // Switch between 3 different screens
+                case .info:                                                                     // info screen
                     HStack {
                         TextField("Name of trip", text: $controller.selectedTrip.name)
                             .font(.title2.weight(.bold))
                         Spacer()
                         SelectedTripButtonsV(tripLocations: controller.tripLocations)
                     }
-                case .loading:
+                case .loading:                                                                  // loading screen
                     LoadingTripDV().header
-                case .error:
+                case .error:                                                                    // error screen
                     TripErrorDV(tripLocations: controller.tripLocations).header
                 }
             }
-            else {
-                EmptyView()
+            else {                                                                      // Otherwise...
+                EmptyView()                                                                 // Show nothing
             }
         }
-        .onReceive(controller.tripLocations.objectWillChange) { _ in
-            controller.setDisplayPhase()
+        .onReceive(controller.tripLocations.objectWillChange) { _ in                    // When there's an update to the trip locations...
+            controller.setDisplayPhase()                                                    // Determine which screen to show
         }
-        .onAppear {
-            controller.setDisplayPhase()
+        .onAppear {                                                                     // When the view loads...
+            controller.setDisplayPhase()                                                    // Determine which screen to show
         }
     }
     
     var body: some View {
         VStack {
-            if controller.selectedTrip != nil {
-                switch controller.displayPhase {
-                case .info:
-                    VStack {
-                        ForEach(Array(controller.selectedTrip.activityLocations.enumerated()), id: \.1.self) { index, activity in
-                            ActivityPaneV(activity: activity, index: index + 1)
-                        }
+            if controller.selectedTrip != nil && controller.displayPhase == .info {     // If there's a selected trip...
+                VStack {
+                    ForEach(
+                        Array(controller.selectedTrip.activityLocations.enumerated()),      // Loop through each of the selected trip's activities
+                        id: \.1.self
+                    ) { index, activity in
+                        ActivityPaneV(activity: activity, index: index + 1)                     // Show each activity in an Activity Panel view
                     }
-                case .loading:
-                    LoadingTripDV().body
-                case .error:
-                    TripErrorDV(tripLocations: controller.tripLocations).body
                 }
             }
-            else {
-                EmptyView()
+            else {                                                                      // Otherwise
+                EmptyView()                                                                 // Show nothing
             }
         }
     }
