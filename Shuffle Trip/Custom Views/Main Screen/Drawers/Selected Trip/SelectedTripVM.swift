@@ -29,10 +29,11 @@ import SwiftUI
     }
     
     /// Sets the cache for the selected trip based on what trip is found to be selected in TripLocations
-    internal func setSelectedTrip() {
+    private func setSelectedTrip() {
         selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) ?? selectedTrip
     }
     
+    /// Determines how a given trip is configured, and sets the display phase
     internal func setDisplayPhase() {
         setSelectedTrip()
         if selectedTrip != nil {
