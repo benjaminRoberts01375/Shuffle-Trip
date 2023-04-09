@@ -4,9 +4,13 @@
 import SwiftUI
 
 struct ActivityPaneV: View {
-    
+    /// Controller for the activity pane
     @StateObject var controller: ActivityPaneVM
     
+    /// Initializer for the Activity pane
+    /// - Parameters:
+    ///   - activity: Activity to display information for
+    ///   - index: Index of the activity within the trip
     init(activity: Activity, index: Int) {
         self._controller = StateObject(wrappedValue: ActivityPaneVM(activity: activity, index: index))
     }
@@ -15,24 +19,24 @@ struct ActivityPaneV: View {
         VStack {
             DisclosureGroup(content: {
                 HStack {
-                    Image(systemName: "\(controller.index).circle.fill")
+                    Image(systemName: "\(controller.index).circle.fill")            // Using an invisible index bubble as a spacer
                         .opacity(0)
                         .disabled(true)
                         .allowsHitTesting(false)
-                    Text("\(controller.activity.businesses[0].location.city ?? ""), \(controller.activity.businesses[0].location.state ?? "")")
+                    Text("\(controller.activity.businesses[0].location.city ?? ""), \(controller.activity.businesses[0].location.state ?? "")") // Show city and state of activity
                         .font(.caption)
                         .padding(0)
                     Spacer()
                 }
                 Divider()
-                BigButtonList()
+                BigButtonList()                                                     // Large buttons for almost any activity
                 Divider()
                     .padding(.top, 18)
             }, label: {
                 HStack {
-                    Image(systemName: "\(controller.index).circle.fill")
+                    Image(systemName: "\(controller.index).circle.fill")            // Index of the activity
                         .symbolRenderingMode(.hierarchical)
-                    Text("\(controller.activity.businesses[0].name)")
+                    Text("\(controller.activity.businesses[0].name)")               // Name of the business
                         .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
@@ -65,26 +69,27 @@ struct ActivityPaneV: View {
         }
     }
     
+    /// A list of large buttons shared between activities
     struct BigButtonList: View {
         var body: some View {
             HStack {
                 Spacer()
                 Spacer()
-                BigButton(
+                BigButton(                                  // Navigate button
                     action: {  },
                     image: Image(systemName: "map.fill"),
                     label: "Navigate",
                     highlighted: true
                 )
                 Spacer()
-                BigButton(
+                BigButton(                                  // Shuffle activity button
                     action: {  },
                     image: Image(systemName: "shuffle"),
                     label: "Shuffle",
                     highlighted: false
                 )
                 Spacer()
-                BigButton(
+                BigButton(                                  // Remove activity button
                     action: {  },
                     image: Image(systemName: "trash.fill"),
                     label: "Remove",
