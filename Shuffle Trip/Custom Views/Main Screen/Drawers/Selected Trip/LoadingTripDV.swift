@@ -14,9 +14,6 @@ struct LoadingTripDV: DrawerView {
                 .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                 .textCase(.uppercase)
         }
-        .onAppear {
-            print("Loaded")
-        }
     }
     
     var body: some View {
