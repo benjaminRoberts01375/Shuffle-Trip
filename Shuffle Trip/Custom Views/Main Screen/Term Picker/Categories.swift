@@ -36,7 +36,7 @@ struct Categories: View {
                             ForEach(topic.categories.sorted(by: { (lhs, rhs) -> Bool in            // List all topics and sort alphabetically
                                 lhs.name < rhs.name
                             }), id: \.name) { category in
-                                if text == "" || category.name.contains(text) || topic.topic.contains(text) {
+                                if text == "" || category.name.lowercased().contains(text.lowercased()) || topic.topic.lowercased().contains(text.lowercased()) {
                                     HStack {
                                         Image(systemName: "checkmark")
                                             .opacity(topics.CategoryIsSelected(topic: topic.topic, category: category.name) ? 1 : 0)
