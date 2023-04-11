@@ -29,17 +29,14 @@ import SwiftUI
     /// Determines how a given trip is configured, and sets the display phase
     internal func setDisplayPhase() {
         setSelectedTrip()
-        if selectedTrip != nil {
-            switch selectedTrip?.status {
-            case .successful:
-                displayPhase = .info
-            case .error:
-                displayPhase = .error
-            case .generating:
-                displayPhase = .loading
-            default:
-                displayPhase = .info
-            }
+        guard selectedTrip != nil else { return }
+        switch selectedTrip.status {
+        case .successful:
+            displayPhase = .info
+        case .error:
+            displayPhase = .error
+        case .generating:
+            displayPhase = .loading
         }
     }
 }
