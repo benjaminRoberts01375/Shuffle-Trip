@@ -21,6 +21,7 @@
 		07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D832980833B00F1F046 /* BottomDrawerV.swift */; };
 		07402D862980837A00F1F046 /* Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07402D852980837A00F1F046 /* Blur.swift */; };
 		074947B829E502C40024630D /* Categories Grouped.json in Resources */ = {isa = PBXBuildFile; fileRef = 074947B729E502C40024630D /* Categories Grouped.json */; };
+		074947C229E522400024630D /* Term Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074947C129E522400024630D /* Term Data.swift */; };
 		0758377729E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377629E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift */; };
 		0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377829E08C710030ECC3 /* TripInteractionButtonsV.swift */; };
 		0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */; };
@@ -87,6 +88,7 @@
 		07402D832980833B00F1F046 /* BottomDrawerV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerV.swift; sourceTree = "<group>"; };
 		07402D852980837A00F1F046 /* Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blur.swift; sourceTree = "<group>"; };
 		074947B729E502C40024630D /* Categories Grouped.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "Categories Grouped.json"; sourceTree = "<group>"; };
+		074947C129E522400024630D /* Term Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Term Data.swift"; path = "Shuffle Trip/Data/Trip Data/Term Data.swift"; sourceTree = SOURCE_ROOT; };
 		0758377629E08B6B0030ECC3 /* ConfirmShuffleButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsV.swift; sourceTree = "<group>"; };
 		0758377829E08C710030ECC3 /* TripInteractionButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInteractionButtonsV.swift; sourceTree = "<group>"; };
 		0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInteractionButtonsVM.swift; sourceTree = "<group>"; };
@@ -342,6 +344,7 @@
 				07F71A3E29808980007C7AE6 /* MapDetails.swift */,
 				074947B729E502C40024630D /* Categories Grouped.json */,
 				07E3D74229A0A7D600168218 /* Trip.json */,
+				074947C129E522400024630D /* Term Data.swift */,
 			);
 			path = "Default Data";
 			sourceTree = "<group>";
@@ -643,6 +646,7 @@
 				07F9D05C29C95CA200D9791A /* ActivityPaneVM.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
 				07F9D05829C95BC700D9791A /* Activity.swift in Sources */,
+				074947C229E522400024630D /* Term Data.swift in Sources */,
 				0715071229C3BD0800AA0959 /* DrawerViewP.swift in Sources */,
 				073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */,
 			);
