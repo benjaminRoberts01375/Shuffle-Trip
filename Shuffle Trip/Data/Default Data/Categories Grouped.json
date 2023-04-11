@@ -1556,7 +1556,7 @@
   },
   {
     "name":"Shops",
-    "symbols":"bag.fill.badge.plus",
+    "symbol":"bag.fill.badge.plus",
     "color":"green",
     "topics":[
       {
@@ -1733,7 +1733,7 @@
   },
   {
     "name":"Education",
-    "symbols":"graduationcap.fill",
+    "symbol":"graduationcap.fill",
     "color":"brown",
     "topics":[
       {
