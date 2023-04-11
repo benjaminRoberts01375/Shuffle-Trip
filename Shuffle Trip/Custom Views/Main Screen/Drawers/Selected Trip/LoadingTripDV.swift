@@ -27,7 +27,7 @@ struct LoadingTripV_Previews: PreviewProvider {
             RegionSelector(                     // Map
                 logoPosition: 125,
                 region: RegionDetails(),
-                tripLocations: TripLocations(categories: CategoryDataM())
+                tripLocations: TripLocations()
             )
             
             BottomDrawer(                       // Drawer

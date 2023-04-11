@@ -33,8 +33,6 @@ public class TripLocation: ObservableObject, Identifiable {
     var polyID: Int
     /// Name of the trip to be displayed to the user
     var name: String
-    /// Categories to shuffle from
-    @ObservedObject var categories: CategoryDataM
     /// Status of the trip being downloaded
     var status: Status {
         didSet {
@@ -42,7 +40,7 @@ public class TripLocation: ObservableObject, Identifiable {
         }
     }
     
-    init(coordinate: CLLocationCoordinate2D, categories: CategoryDataM) {
+    init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
         self.radius = MapDetails.defaultRadius
         self.activityLocations = []
@@ -51,7 +49,6 @@ public class TripLocation: ObservableObject, Identifiable {
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"
-        self._categories = ObservedObject(initialValue: categories)
         self.status = .generating
         generateActivities()
     }
@@ -67,13 +64,7 @@ public class TripLocation: ObservableObject, Identifiable {
     }
     
     private func generateActivities() {
-        var params: [String] = []
-        for topic in categories.topics {
-            for category in topic.categories where category.selected {
-                params.append(category.name)
-            }
-        }
-        
+        var params: [String] = ["Breakfast", "Lunch", "Dinner"]
         print("Params: \(params)")
         
         // Encode the TripRequest instance into JSON data

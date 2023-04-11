@@ -90,7 +90,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             tripLocations.RemoveTrip(trip: trip)
         }
         else {
-            tripLocations.AddTrip(trip: TripLocation(coordinate: touchCoordinate, categories: tripLocations.categories))
+            tripLocations.AddTrip(trip: TripLocation(coordinate: touchCoordinate))
         }
     }
     

@@ -24,20 +24,6 @@ struct ContentView: View {
                     Color.clear
                         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.0))
                         .frame(height: geometry.safeAreaInsets.top)
-                    Button(action: {
-                        controller.categorySheet = true
-                    }, label: {
-                        Image(systemName: controller.topics.CheckEnoughSelected() ? "tag.fill" : "tag")
-                            .resizable(resizingMode: .stretch)
-                            .symbolRenderingMode(.hierarchical)
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(controller.topics.CheckEnoughSelected() ? .blue : Color.secondary)
-                            .padding(8)
-                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
-                            .cornerRadius(5)
-                            .padding(.horizontal)
-                            .shadow(color: .primary.opacity(0.1), radius: 8)
-                    })
                     Spacer()
                 }
                 .zIndex(2)
@@ -60,10 +46,6 @@ struct ContentView: View {
                     .zIndex(200)
                 }
             }
-            .sheet(
-                isPresented: $controller.categorySheet,
-                content: { Categories(topics: controller.topics) }
-            )
             .onReceive(controller.tripLocations.objectWillChange) { _ in
                 controller.updateInteractionPhase()
             }

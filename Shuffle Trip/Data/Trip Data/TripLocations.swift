@@ -21,10 +21,9 @@ final class TripLocations: ObservableObject, Equatable {
     private var cancellables: Set<AnyCancellable>
     
     /// Categories for trips as specified by the user
-    @ObservedObject var categories: CategoryDataM
+    var categories: [String] = []
     
-    init(categories: CategoryDataM, tripLocations: [TripLocation] = [], cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
-        self._categories = ObservedObject(initialValue: categories)
+    init(tripLocations: [TripLocation] = [], cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
         self.tripLocations = tripLocations
         self.cancellables = cancellables
     }
