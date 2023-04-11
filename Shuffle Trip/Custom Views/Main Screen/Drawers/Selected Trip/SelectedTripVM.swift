@@ -10,6 +10,7 @@ import SwiftUI
     @Published var disableCloseButton: Bool
     
     enum DisplayPhase {
+        case termSelection
         case info
         case loading
         case error
@@ -37,6 +38,8 @@ import SwiftUI
             displayPhase = .error
         case .generating:
             displayPhase = .loading
+        case .unconfigured:
+            displayPhase = .termSelection
         }
     }
 }

@@ -14,7 +14,7 @@ public class TripLocation: ObservableObject, Identifiable {
     /// How far fro the location does teh trip span
     var radius: CGFloat
     /// Activities to be had at the trip
-    var activityLocations: [Activity]
+    var activityLocations: [Activity]?
     /// User has selected this trip for editing/viewing
     @Published private(set) var isSelected: Bool {
         didSet {
@@ -49,8 +49,7 @@ public class TripLocation: ObservableObject, Identifiable {
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"
-        self.status = .generating
-        generateActivities()
+        self.status = .unconfigured
     }
     
     func selectTrip(_ selected: Bool) {
@@ -58,6 +57,7 @@ public class TripLocation: ObservableObject, Identifiable {
     }
     
     public enum Status {
+        case unconfigured
         case generating
         case successful
         case error
