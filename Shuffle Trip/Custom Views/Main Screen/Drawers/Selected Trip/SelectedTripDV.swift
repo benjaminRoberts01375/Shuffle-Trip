@@ -25,6 +25,8 @@ struct SelectedTripDV: DrawerView {
                     LoadingTripDV().header
                 case .error:                                                                    // error screen
                     TripErrorDV(tripLocations: controller.tripLocations).header
+                case .termSelection:
+                    TripConfiguratorV(tripLocation: controller.selectedTrip)
                 }
             }
             else {                                                                      // Otherwise...
@@ -44,7 +46,7 @@ struct SelectedTripDV: DrawerView {
             if controller.selectedTrip != nil && controller.displayPhase == .info {     // If there's a selected trip...
                 VStack {
                     ForEach(
-                        Array(controller.selectedTrip.activityLocations.enumerated()),      // Loop through each of the selected trip's activities
+                        Array(controller.selectedTrip.activityLocations?.enumerated() ?? [].enumerated()),      // Loop through each of the selected trip's activities
                         id: \.1.self
                     ) { index, activity in
                         ActivityPaneV(activity: activity, index: index + 1)                     // Show each activity in an Activity Panel view

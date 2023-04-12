@@ -51,7 +51,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     internal func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard let selectedTrip = tripLocations.tripLocations.first(where: { $0.isSelected }) else { return nil }    // Get selected trip
         var index: Int = 0
-        for location in selectedTrip.activityLocations {                                                            // For all activities in trip
+        for location in selectedTrip.activityLocations ?? [] {                                                          // For all activities in trip
             index += 1
             if location.businesses[0].name == annotation.title {                                                    // Check the pin's name
                 let annotationView = MKMarkerAnnotationView()

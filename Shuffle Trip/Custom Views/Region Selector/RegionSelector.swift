@@ -87,7 +87,7 @@ struct RegionSelector: UIViewRepresentable {
             mapView.addOverlay(circle)
             
             var index = 0
-            for activity in trip.activityLocations {
+            for activity in trip.activityLocations ?? [] {
                 index += 1
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = CLLocationCoordinate2D(latitude: activity.businesses[0].coordinates.latitude, longitude: activity.businesses[0].coordinates.longitude)
