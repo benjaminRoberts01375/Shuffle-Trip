@@ -47,5 +47,13 @@ final class TripConfiguratorVM: ObservableObject {
         let unitVal = curvePercent * (sliderMax - sliderMin) + sliderMin    // Find the curved slider value in the min-max difference, then re-add the min. Note, this is in km or mi, not m
         return Measurement(value: unitVal, unit: isMetric ? UnitLength.kilometers : UnitLength.miles).converted(to: UnitLength.meters).value
     }
+    
+    /// Convert meters to an internal slider value
+    /// - Parameter meters: Meters to convert
+    /// - Returns: Value of the slider (0 to 100)
+    internal func metersToSliderVal(_ meters: Double) -> Double {
+        // The original equation is (x^2)/100, so undo it
+        return round(pow(meters, 0.5) * 10) / 10  // Undoes the original equation and rounds it to one decimal place
+    }
     }
 }
