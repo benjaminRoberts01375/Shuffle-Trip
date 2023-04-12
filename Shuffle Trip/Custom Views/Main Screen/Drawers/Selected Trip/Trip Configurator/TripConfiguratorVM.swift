@@ -39,5 +39,13 @@ final class TripConfiguratorVM: ObservableObject {
     
     internal func updateTripRadius() {
         tripLocation.radius = distanceSlider * 1000 * (isMetric ? 1.61 : 1)
+    /// Convert the value of the slider to meters based on a curve
+    /// - Returns: Meters
+    internal func sliderValToMeters() -> Double {
+        let curve = pow(distanceSlider, 2) / 100                            // Curve the linear slider value
+        let curvePercent = curve / 100                                      // Make value a percentage
+        let unitVal = curvePercent * (sliderMax - sliderMin) + sliderMin    // Find the curved slider value in the min-max difference, then re-add the min. Note, this is in km or mi, not m
+        return Measurement(value: unitVal, unit: isMetric ? UnitLength.kilometers : UnitLength.miles).converted(to: UnitLength.meters).value
+    }
     }
 }
