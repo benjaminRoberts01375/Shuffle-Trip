@@ -41,6 +41,7 @@
 		07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74629A0BC0900168218 /* SelectedTripDV.swift */; };
 		07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */; };
 		07EB143929C51D1E00A81847 /* TripErrorDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EB143829C51D1E00A81847 /* TripErrorDV.swift */; };
+		07EBE63729E687C6007A6235 /* SelectedTripContentV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
 		07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3A29808788007C7AE6 /* ContentView.swift */; };
 		07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3E29808980007C7AE6 /* MapDetails.swift */; };
@@ -111,6 +112,7 @@
 		07E3D74629A0BC0900168218 /* SelectedTripDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripDV.swift; sourceTree = "<group>"; };
 		07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripVM.swift; sourceTree = "<group>"; };
 		07EB143829C51D1E00A81847 /* TripErrorDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorDV.swift; sourceTree = "<group>"; };
+		07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripContentV.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
 		07F71A3A29808788007C7AE6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07F71A3E29808980007C7AE6 /* MapDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDetails.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */,
 				07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */,
 				0758377529E08AA30030ECC3 /* Header Buttons */,
+				07EBE63829E688B0007A6235 /* Body Content */,
 				07F9D05929C95CA200D9791A /* Activity Pane */,
 				073CB9B029C51921008259A8 /* LoadingTripDV.swift */,
 				078558DB29C6255D00650C1F /* Trip Error */,
@@ -649,6 +652,7 @@
 				07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */,
 				07C0D2CE299DDF7A00E001A8 /* ContentViewModel.swift in Sources */,
 				073CB9B129C51921008259A8 /* LoadingTripDV.swift in Sources */,
+				07EBE63729E687C6007A6235 /* SelectedTripContentV.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
