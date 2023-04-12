@@ -26,19 +26,6 @@ struct TripConfiguratorV: View {
                     }
                 })
             }
-//            VStack {
-//                Text("Test")
-//                Picker(selection: $selection, label: Text("label")) {
-//                    ForEach(Array(stride(from: 0, to: 100, by: 10)), id: \.self) { i in
-//                        Text(String(i)).tag(i)
-//                    }
-//                }
-//                .pickerStyle(.inline)
-//                .frame(width: 100, height: 80)
-//                .onChange(of: selection) { new in
-//                    print("Changed to \(new)")
-//                }
-//            }
         }
     }
 }
