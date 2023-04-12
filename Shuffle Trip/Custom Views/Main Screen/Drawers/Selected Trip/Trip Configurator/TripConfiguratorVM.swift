@@ -27,18 +27,21 @@ final class TripConfiguratorVM: ObservableObject {
             self.sliderMax = 40
             self.unitLabel = "km"
             self.isMetric = true
-            self.distanceSlider = tripLocation.radius / 1000
         default:                                        // Anyone else uses imperial, I decided
             self.sliderMin = 1.3                            // Approx. 2 kilometers
             self.sliderMax = 24
             self.unitLabel = "mi"
             self.isMetric = false
-            self.distanceSlider = tripLocation.radius * 1.62 / 1000
         }
+        self.distanceSlider = 0
+        self.distanceSlider = metersToSliderVal(tripLocation.radius)
     }
     
+    /// Set the trip's radius based on the slider's value
     internal func updateTripRadius() {
-        tripLocation.radius = distanceSlider * 1000 * (isMetric ? 1.61 : 1)
+        tripLocation.radius = sliderValToMeters()
+    }
+    
     /// Convert the value of the slider to meters based on a curve
     /// - Returns: Meters
     internal func sliderValToMeters() -> Double {
