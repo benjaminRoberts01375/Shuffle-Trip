@@ -12,7 +12,11 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Location of the trip
     var coordinate: CLLocationCoordinate2D
     /// How far fro the location does teh trip span
-    var radius: CGFloat
+    @Published var radius: Double {
+        didSet {
+            objectWillChange.send()
+        }
+    }
     /// Activities to be had at the trip
     var activityLocations: [Activity]?
     /// User has selected this trip for editing/viewing
