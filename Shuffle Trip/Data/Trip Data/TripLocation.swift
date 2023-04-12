@@ -18,7 +18,7 @@ public class TripLocation: ObservableObject, Identifiable {
         }
     }
     /// Activities to be had at the trip
-    var activityLocations: [Activity]?
+    var activityLocations: [Activity]
     /// User has selected this trip for editing/viewing
     @Published private(set) var isSelected: Bool {
         didSet {
