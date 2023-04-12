@@ -55,5 +55,16 @@ final class TripConfiguratorVM: ObservableObject {
         // The original equation is (x^2)/100, so undo it
         return round(pow(meters, 0.5) * 10) / 10  // Undoes the original equation and rounds it to one decimal place
     }
+    
+    /// Converts meters to either imperial or metric units based on the "isMetric" variable
+    /// - Parameter meters: Meters to convert
+    /// - Returns: The converted meters
+    internal func metersToUnit(_ meters: Double) -> Double {
+        return round(Measurement(                                                   // Round a measurement...
+            value: meters,
+            unit: UnitLength.meters                                                     // ...That's in meters
+        )
+            .converted(to: isMetric ? UnitLength.kilometers : UnitLength.miles)         // Convert it to either mi or km
+            .value * 10) / 10                                                       // ...to the nearest decimal
     }
 }
