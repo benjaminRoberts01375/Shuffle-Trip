@@ -5,8 +5,6 @@ import SwiftUI
 
 struct TripConfiguratorV: View {
     @StateObject var controller: TripConfiguratorVM
-    @State var selection: Int = 0
-    @State var options = 0...10
     
     init(tripLocation: TripLocation) {
         self._controller = StateObject(wrappedValue: TripConfiguratorVM(tripLocation: tripLocation))
@@ -17,10 +15,10 @@ struct TripConfiguratorV: View {
             TextField("Name of trip", text: $controller.tripLocation.name)
             
             HStack {
-                Text("Radius: \(String(format: "%g", controller.distanceSlider)) \(controller.unitLabel)")
-                    .frame(minWidth: 150, alignment: .leading)
+                Text("Radius: \(String(format: "%g", controller.metersToUnit(controller.sliderValToMeters()))) \(controller.unitLabel)")
+                    .frame(minWidth: 125, alignment: .leading)
                 Spacer()
-                Slider(value: $controller.distanceSlider, in: controller.sliderMin...controller.sliderMax, step: 0.1, onEditingChanged: { started in
+                Slider(value: $controller.distanceSlider, in: 0...100, step: 0.1, onEditingChanged: { started in
                     if !started {
                         controller.updateTripRadius()
                     }
