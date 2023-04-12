@@ -29,7 +29,7 @@ final class TripConfiguratorVM: ObservableObject {
             self.isMetric = true
             self.distanceSlider = tripLocation.radius / 1000
         default:                                        // Anyone else uses imperial, I decided
-            self.sliderMin = 1.25                           // Approx. 2 kilometers
+            self.sliderMin = 1.3                            // Approx. 2 kilometers
             self.sliderMax = 24
             self.unitLabel = "mi"
             self.isMetric = false
