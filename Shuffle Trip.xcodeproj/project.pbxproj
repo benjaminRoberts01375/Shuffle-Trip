@@ -335,13 +335,21 @@
 				07E3D74629A0BC0900168218 /* SelectedTripDV.swift */,
 				07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */,
 				077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */,
+				07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */,
 				0758377529E08AA30030ECC3 /* Header Buttons */,
-				074947C329E52A730024630D /* Trip Configurator */,
 				07F9D05929C95CA200D9791A /* Activity Pane */,
 				073CB9B029C51921008259A8 /* LoadingTripDV.swift */,
 				078558DB29C6255D00650C1F /* Trip Error */,
 			);
 			path = "Selected Trip";
+			sourceTree = "<group>";
+		};
+		07EBE63829E688B0007A6235 /* Body Content */ = {
+			isa = PBXGroup;
+			children = (
+				074947C329E52A730024630D /* Trip Configurator */,
+			);
+			path = "Body Content";
 			sourceTree = "<group>";
 		};
 		07F71A3C2980894B007C7AE6 /* Data */ = {
