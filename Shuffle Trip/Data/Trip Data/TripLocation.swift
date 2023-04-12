@@ -53,7 +53,7 @@ public class TripLocation: ObservableObject, Identifiable {
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"
-        self.status = .unconfigured
+        self.status = .unknown
     }
     
     func selectTrip(_ selected: Bool) {
@@ -61,7 +61,7 @@ public class TripLocation: ObservableObject, Identifiable {
     }
     
     public enum Status {
-        case unconfigured
+        case unknown
         case generating
         case successful
         case error

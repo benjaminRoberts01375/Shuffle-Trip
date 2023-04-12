@@ -10,7 +10,6 @@ import SwiftUI
     @Published var disableCloseButton: Bool
     
     enum DisplayPhase {
-        case termSelection
         case info
         case loading
         case error
@@ -32,14 +31,12 @@ import SwiftUI
         setSelectedTrip()
         guard selectedTrip != nil else { return }
         switch selectedTrip.status {
-        case .successful:
+        case .successful, .unknown:
             displayPhase = .info
         case .error:
             displayPhase = .error
         case .generating:
             displayPhase = .loading
-        case .unconfigured:
-            displayPhase = .termSelection
         }
     }
 }

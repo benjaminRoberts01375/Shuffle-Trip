@@ -25,8 +25,6 @@ struct SelectedTripDV: DrawerView {
                     LoadingTripDV().header
                 case .error:                                                                    // error screen
                     TripErrorDV(tripLocations: controller.tripLocations).header
-                case .termSelection:
-                    TripConfiguratorV(tripLocation: controller.selectedTrip)
                 }
             }
             else {                                                                      // Otherwise...
