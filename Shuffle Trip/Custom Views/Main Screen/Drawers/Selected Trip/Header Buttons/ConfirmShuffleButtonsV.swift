@@ -25,7 +25,7 @@ struct ConfirmShuffleButtonsV: View {
                     .font(Font.title.weight(.bold))
             })
             Button(action: {                            // Confirm shuffle - Yes
-                controller.tripLocations.tripLocations.first(where: { $0.isSelected })?.ShuffleTrip()
+                controller.tripLocations.getSelectedTrip()?.ShuffleTrip()
                 withAnimation {
                     controller.buttonState = .normal
                 }
