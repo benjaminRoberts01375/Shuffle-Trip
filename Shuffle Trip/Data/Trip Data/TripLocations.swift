@@ -76,4 +76,10 @@ final class TripLocations: ObservableObject, Equatable {
     public func SelectTrip() {
         SetSelectedTrip(trip: nil)
     }
+    
+    /// Determins the selected trip if any are selected
+    /// - Returns: The selected trip. Nil if no trip is found.
+    public func getSelectedTrip() -> TripLocation? {
+        return tripLocations.first(where: { $0.isSelected })
+    }
 }
