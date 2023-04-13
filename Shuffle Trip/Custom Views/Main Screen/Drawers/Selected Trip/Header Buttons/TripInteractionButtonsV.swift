@@ -22,6 +22,8 @@ struct TripInteractionButtonsV: View {
                     .foregroundStyle(Color.secondary)
                     .font(Font.title.weight(.bold))
             })
+            .disabled(controller.tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true)
+            .opacity((controller.tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true) ? 0.5 : 1.0)
             Button(action: {                            // Close card button
                 controller.tripLocations.SelectTrip()
             }, label: {
