@@ -31,17 +31,22 @@ struct SelectedTripContentV: View {
     }
     
     var body: some View {
-        VStack {
-            switch contentType {
-            case .info:
-                EmptyView()
-            case .settings:
-                TripConfiguratorV(tripLocations: tripLocations)
+        if selectedTrip != nil {
+            VStack {
+                switch contentType {
+                case .info:
+                    EmptyView()
+                case .settings:
+                    TripConfiguratorV(tripLocations: tripLocations)
+                }
+            }
+            .onReceive(tripLocations.objectWillChange) { _ in
+                selectedTrip = tripLocations.getSelectedTrip() ?? selectedTrip  // Set the selected trip
+                contentType = .info                                             // Change the displayed content back to info
             }
         }
-        .onReceive(tripLocations.objectWillChange) { _ in
-            selectedTrip = tripLocations.getSelectedTrip() ?? selectedTrip  // Set the selected trip
-            contentType = .info                                             // Change the displayed content back to info
+        else {
+            EmptyView()
         }
     }
 }

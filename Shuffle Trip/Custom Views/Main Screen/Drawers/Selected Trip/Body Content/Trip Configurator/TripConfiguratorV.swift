@@ -11,22 +11,27 @@ struct TripConfiguratorV: View {
     }
     
     var body: some View {
-        VStack {
-            TextField("Name of trip", text: $controller.selectedTrip.name)
-            
-            HStack {
-                Text("Radius: \(String(format: "%g", controller.metersToUnit(controller.sliderValToMeters()))) \(controller.unitLabel)")
-                    .frame(minWidth: 125, alignment: .leading)
-                Spacer()
-                Slider(value: $controller.distanceSlider, in: 0...100, step: 0.1, onEditingChanged: { started in
-                    if !started {
-                        controller.updateTripRadius()
-                    }
-                })
+        if controller.selectedTrip != nil {
+            VStack {
+                TextField("Name of trip", text: $controller.selectedTrip.name)
+                
+                HStack {
+                    Text("Radius: \(String(format: "%g", controller.metersToUnit(controller.sliderValToMeters()))) \(controller.unitLabel)")
+                        .frame(minWidth: 125, alignment: .leading)
+                    Spacer()
+                    Slider(value: $controller.distanceSlider, in: 0...100, step: 0.1, onEditingChanged: { started in
+                        if !started {
+                            controller.updateTripRadius()
+                        }
+                    })
+                }
+            }
+            .onReceive(controller.tripLocations.objectWillChange) { _ in
+                controller.selectedTrip = controller.tripLocations.getSelectedTrip() ?? controller.selectedTrip
             }
         }
-        .onReceive(controller.tripLocations.objectWillChange) { _ in
-            controller.selectedTrip = controller.tripLocations.getSelectedTrip() ?? controller.selectedTrip
+        else {
+            EmptyView()
         }
     }
 }
