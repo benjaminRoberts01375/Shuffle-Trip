@@ -13,12 +13,22 @@ struct TermGroup: Decodable {
 struct Topic: Decodable {
     let symbol: String
     let name: String
-    let categories: [String]
+    let tags: [Tag]
 
     enum CodingKeys: String, CodingKey {
         case symbol
         case name = "category"
-        case categories = "data"
+        case tags = "data"
+    }
+}
+
+class Tag: Decodable {
+    var id: UUID = UUID()
+    let name: String
+    
+    required init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        self.name = try container.decode(String.self)
     }
 }
 
