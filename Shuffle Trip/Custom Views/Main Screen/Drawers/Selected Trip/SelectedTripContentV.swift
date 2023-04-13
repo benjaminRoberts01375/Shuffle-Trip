@@ -36,9 +36,12 @@ struct SelectedTripContentV: View {
             case .info:
                 EmptyView()
             case .settings:
-                TripConfiguratorV(tripLocation: selectedTrip)
+                TripConfiguratorV(tripLocations: tripLocations)
             }
         }
+        .onReceive(tripLocations.objectWillChange) { _ in
+            selectedTrip = tripLocations.getSelectedTrip() ?? selectedTrip  // Set the selected trip
+            contentType = .info                                             // Change the displayed content back to info
         }
     }
 }

@@ -6,13 +6,13 @@ import SwiftUI
 struct TripConfiguratorV: View {
     @StateObject var controller: TripConfiguratorVM
     
-    init(tripLocation: TripLocation) {
-        self._controller = StateObject(wrappedValue: TripConfiguratorVM(tripLocation: tripLocation))
+    init(tripLocations: TripLocations) {
+        self._controller = StateObject(wrappedValue: TripConfiguratorVM(tripLocations: tripLocations))
     }
     
     var body: some View {
         VStack {
-            TextField("Name of trip", text: $controller.tripLocation.name)
+            TextField("Name of trip", text: $controller.selectedTrip.name)
             
             HStack {
                 Text("Radius: \(String(format: "%g", controller.metersToUnit(controller.sliderValToMeters()))) \(controller.unitLabel)")
@@ -24,6 +24,9 @@ struct TripConfiguratorV: View {
                     }
                 })
             }
+        }
+        .onReceive(controller.tripLocations.objectWillChange) { _ in
+            controller.selectedTrip = controller.tripLocations.getSelectedTrip() ?? controller.selectedTrip
         }
     }
 }

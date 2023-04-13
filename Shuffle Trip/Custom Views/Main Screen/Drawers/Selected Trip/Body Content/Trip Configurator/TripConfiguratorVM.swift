@@ -4,8 +4,10 @@
 import SwiftUI
 
 final class TripConfiguratorVM: ObservableObject {
+    /// Available trip locations
+    var tripLocations: TripLocations
     /// The trip location to edit
-    var tripLocation: TripLocation
+    var selectedTrip: TripLocation!
     /// Distance presented on the distance slider
     @Published var distanceSlider: Double
     /// Maximum value for distance slider
@@ -19,8 +21,8 @@ final class TripConfiguratorVM: ObservableObject {
     
     /// Setup units and trip location for the trip configurator
     /// - Parameter tripLocation: Trip to edit
-    init(tripLocation: TripLocation) {
-        self.tripLocation = tripLocation            // Assign the trip location to edit
+    init(tripLocations: TripLocations) {
+        self.tripLocations = tripLocations          // Assign the trip location to edit
         switch Locale.current.measurementSystem {   // Set units and ranges for distance slider
         case .metric, .uk:                              // UK also uses metric, I decided
             self.sliderMin = 2                              // Min of 2 kilometers to give small but reasonable range
@@ -33,13 +35,14 @@ final class TripConfiguratorVM: ObservableObject {
             self.unitLabel = "mi"
             self.isMetric = false
         }
+        self.selectedTrip = tripLocations.getSelectedTrip()
         self.distanceSlider = 0
-        self.distanceSlider = metersToSliderVal(tripLocation.radius)
+        self.distanceSlider = metersToSliderVal(selectedTrip.radius)
     }
     
     /// Set the trip's radius based on the slider's value
     internal func updateTripRadius() {
-        tripLocation.radius = sliderValToMeters()
+        selectedTrip.radius = sliderValToMeters()
     }
     
     /// Convert the value of the slider to meters based on a curve
