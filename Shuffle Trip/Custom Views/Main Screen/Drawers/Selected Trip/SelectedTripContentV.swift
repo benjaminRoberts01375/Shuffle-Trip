@@ -21,7 +21,7 @@ struct SelectedTripContentV: View {
     enum ContentType {
         /// Display information about the trip
         case info
-        /// Trip configuration
+        /// Display the trip configurator
         case settings
     }
     
