@@ -31,11 +31,14 @@ struct SelectedTripContentV: View {
     }
     
     var body: some View {
-        switch contentType {
-        case .info:
-            EmptyView()
-        case .settings:
-            EmptyView()
+        VStack {
+            switch contentType {
+            case .info:
+                EmptyView()
+            case .settings:
+                TripConfiguratorV(tripLocation: selectedTrip)
+            }
+        }
         }
     }
 }
