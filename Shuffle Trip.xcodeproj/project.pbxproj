@@ -41,6 +41,8 @@
 		07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74629A0BC0900168218 /* SelectedTripDV.swift */; };
 		07E3D74929A0BC2D00168218 /* SelectedTripVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */; };
 		07E4F5EA29E8BA92007F2C8D /* SelectedTripContentVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4F5E929E8BA92007F2C8D /* SelectedTripContentVM.swift */; };
+		07E4F5EC29E90DB4007F2C8D /* AddActivityButtonV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4F5EB29E90DB4007F2C8D /* AddActivityButtonV.swift */; };
+		07E4F5EF29E910B9007F2C8D /* AddActivityButtonVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07E4F5EE29E910B9007F2C8D /* AddActivityButtonVM.swift */; };
 		07EB143929C51D1E00A81847 /* TripErrorDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EB143829C51D1E00A81847 /* TripErrorDV.swift */; };
 		07EBE63729E687C6007A6235 /* SelectedTripContentV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */; };
 		07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F71A3829808773007C7AE6 /* RegionSelector.swift */; };
@@ -113,6 +115,8 @@
 		07E3D74629A0BC0900168218 /* SelectedTripDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripDV.swift; sourceTree = "<group>"; };
 		07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripVM.swift; sourceTree = "<group>"; };
 		07E4F5E929E8BA92007F2C8D /* SelectedTripContentVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripContentVM.swift; sourceTree = "<group>"; };
+		07E4F5EB29E90DB4007F2C8D /* AddActivityButtonV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityButtonV.swift; sourceTree = "<group>"; };
+		07E4F5EE29E910B9007F2C8D /* AddActivityButtonVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddActivityButtonVM.swift; sourceTree = "<group>"; };
 		07EB143829C51D1E00A81847 /* TripErrorDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorDV.swift; sourceTree = "<group>"; };
 		07EBE63629E687C6007A6235 /* SelectedTripContentV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripContentV.swift; sourceTree = "<group>"; };
 		07F71A3829808773007C7AE6 /* RegionSelector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionSelector.swift; sourceTree = "<group>"; };
@@ -350,9 +354,19 @@
 			path = "Selected Trip";
 			sourceTree = "<group>";
 		};
+		07E4F5ED29E910A8007F2C8D /* Add Activity Button */ = {
+			isa = PBXGroup;
+			children = (
+				07E4F5EB29E90DB4007F2C8D /* AddActivityButtonV.swift */,
+				07E4F5EE29E910B9007F2C8D /* AddActivityButtonVM.swift */,
+			);
+			path = "Add Activity Button";
+			sourceTree = "<group>";
+		};
 		07EBE63829E688B0007A6235 /* Body Content */ = {
 			isa = PBXGroup;
 			children = (
+				07E4F5ED29E910A8007F2C8D /* Add Activity Button */,
 				074947C329E52A730024630D /* Trip Configurator */,
 			);
 			path = "Body Content";
@@ -674,6 +688,8 @@
 				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
 				077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */,
 				074947C029E5221A0024630D /* TermSelectionVM.swift in Sources */,
+				07E4F5EF29E910B9007F2C8D /* AddActivityButtonVM.swift in Sources */,
+				07E4F5EC29E90DB4007F2C8D /* AddActivityButtonV.swift in Sources */,
 				074947C529E52A900024630D /* TripConfiguratorV.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
