@@ -4,13 +4,13 @@
 import SwiftUI
 
 /// Allows for simple interaction with the term groups,
-final class TermSelection: ObservableObject {
-    @Published private(set) var termGroups: [TopicGroup]
+final class TagManager: ObservableObject {
+    @Published private(set) var topicGroups: [TopicGroup]
     
-    public var shared: TermSelection = TermSelection()  // Singleton
+    public static var shared: TagManager = TagManager()  // Singleton
     
     private init() {
-        self.termGroups = []
+        self.topicGroups = []
         loadData()
     }
     
@@ -22,7 +22,7 @@ final class TermSelection: ObservableObject {
         }
         do {
             let data = try Data(contentsOf: fileURL)                                                            // Load data into memory
-            self.termGroups = try JSONDecoder().decode([TopicGroup].self, from: data)                            // Decode loaded data and store it
+            self.topicGroups = try JSONDecoder().decode([TopicGroup].self, from: data)                            // Decode loaded data and store it
             
         } catch let error {                                                                                     // Catch-all for loading/decoding errors
             fatalError("Unable to parse categories JSON:\n\(error)")
@@ -33,7 +33,7 @@ final class TermSelection: ObservableObject {
     /// - Parameter id: UUID of the tag to search for
     /// - Returns: An optional Tag if found
     private func searchID(id: UUID) -> Tag? {
-        for group in termGroups {                   // Search each group
+        for group in topicGroups {                   // Search each group
             for topic in group.topics {                 // Search each topic
                 for tag in topic.tags where tag.id == id {  // For the correct tag
                     return tag                                  // And return it
@@ -47,7 +47,7 @@ final class TermSelection: ObservableObject {
     /// - Parameter tag: Tag to search for
     /// - Returns: An optional Topic if found
     private func locateTagParent(tag: Tag) -> Topic? {
-        for group in termGroups {
+        for group in topicGroups {
             for topic in group.topics where topic.tags.contains(where: { $0 == tag }) {
                 return topic
             }
