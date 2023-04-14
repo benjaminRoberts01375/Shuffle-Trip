@@ -73,7 +73,7 @@ public class TripLocation: ObservableObject, Identifiable {
     }
     
     private func generateActivities() {
-        var params: [String] = ["Breakfast", "Lunch", "Dinner"]
+        var params: [[String]] = [["Breakfast"], ["Lunch"], ["Dinner"]]
         print("Params: \(params)")
         
         // Encode the TripRequest instance into JSON data

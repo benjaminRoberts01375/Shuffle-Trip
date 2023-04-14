@@ -157,7 +157,7 @@ struct Messaging: Codable {
 }
 
 struct TripRequest: Encodable {
-    let terms: [String]
+    let terms: [[String]]
     let latitude: Double
     let longitude: Double
     let radius: Int
