@@ -4,5 +4,12 @@
 import SwiftUI
 
 final class TagSelectorVM: ObservableObject {
+    let group: TopicGroup
+    let selected: [UUID]
+    
+    init(group: TopicGroup) {
+        self.group = group
+        self.selected = []
+    }
     
 }
