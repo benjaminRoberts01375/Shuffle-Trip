@@ -16,6 +16,7 @@ public struct Activity: Decodable, Hashable {
     let total: Int
     let region: Region
     let id = UUID()
+    var tagIDs: [UUID] = []
     
     enum CodingKeys: String, CodingKey {
         case businesses
