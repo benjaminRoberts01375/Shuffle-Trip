@@ -61,7 +61,7 @@ struct ActivityPaneV: View {
                     Text(label)
                         .font(.caption2)
                 }
-                .frame(width: 75, height: 55)
+                .frame(width: 65, height: 55)
                 .foregroundColor(.white)
                 .background(highlighted ? .blue : Color.secondary)
                 .cornerRadius(10)
