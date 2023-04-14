@@ -3,11 +3,12 @@
 
 import SwiftUI
 
-struct TermGroup: Decodable {
+struct TopicGroup: Decodable {
     let name: String
     let symbol: String
     let color: Color
     let topics: [Topic]
+    let id: UUID = UUID()
 }
 
 struct Topic: Decodable {

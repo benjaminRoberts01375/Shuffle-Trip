@@ -3,10 +3,13 @@
 
 import SwiftUI
 
+/// Allows for simple interaction with the term groups,
 final class TermSelection: ObservableObject {
-    @Published private(set) var termGroups: [TermGroup]
+    @Published private(set) var termGroups: [TopicGroup]
     
-    init() {
+    public var shared: TermSelection = TermSelection()  // Singleton
+    
+    private init() {
         self.termGroups = []
         loadData()
     }
@@ -19,7 +22,7 @@ final class TermSelection: ObservableObject {
         }
         do {
             let data = try Data(contentsOf: fileURL)                                                            // Load data into memory
-            self.termGroups = try JSONDecoder().decode([TermGroup].self, from: data)                            // Decode loaded data and store it
+            self.termGroups = try JSONDecoder().decode([TopicGroup].self, from: data)                            // Decode loaded data and store it
             
         } catch let error {                                                                                     // Catch-all for loading/decoding errors
             fatalError("Unable to parse categories JSON:\n\(error)")
