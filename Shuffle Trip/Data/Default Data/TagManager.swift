@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-final class TermSelectionVM: ObservableObject {
+final class TermSelection: ObservableObject {
     @Published private(set) var termGroups: [TermGroup]
     
     init() {
