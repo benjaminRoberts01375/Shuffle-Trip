@@ -4,16 +4,11 @@
 import SwiftUI
 
 final class SelectedTripContentVM: ObservableObject {
-    var tripLocations: TripLocations
+    @ObservedObject var tripLocations: TripLocations
+    @Published var showSettings: Bool
     
     init(tripLocations: TripLocations) {
         self.tripLocations = tripLocations
-    }
-    
-    enum ContentType {
-        /// Display information about the trip
-        case info
-        /// Display the trip configurator
-        case settings
+        self.showSettings = false
     }
 }
