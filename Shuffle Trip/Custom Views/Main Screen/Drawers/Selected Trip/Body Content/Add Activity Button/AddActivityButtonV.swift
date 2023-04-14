@@ -5,8 +5,8 @@ import SwiftUI
 
 struct AddActivityButtonV: View {
     @StateObject var controller: AddActivityButtomVM
-    init(index: Int) {
-        self._controller = StateObject(wrappedValue: AddActivityButtomVM(index: index))
+    init(tripLocations: TripLocations, index: Int) {
+        self._controller = StateObject(wrappedValue: AddActivityButtomVM(tripLocations: tripLocations, index: index))
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct AddActivityButtonV: View {
             }
             .padding(5)
             .foregroundColor(Color.primary)
-            .background(.tertiary)
+            .background(.quaternary)
             .cornerRadius(10)
         })
     }
@@ -28,6 +28,6 @@ struct AddActivityButtonV: View {
 
 struct AddActivityButtonV_Previews: PreviewProvider {
     static var previews: some View {
-        AddActivityButtonV(index: 0)
+        AddActivityButtonV(tripLocations: TripLocations(), index: 0)
     }
 }
