@@ -38,12 +38,26 @@ struct APIHandler {
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
-        guard let httpResponse = response as? HTTPURLResponse else { throw Errors.hostConnectionError }
-        guard (200...299).contains(httpResponse.statusCode) else { throw Errors.sendPOSTError }
-        guard !data.isEmpty else { throw Errors.emptyResponse }
+        print(String(decoding: data, as: UTF8.self))
         
-        // Decode the response data
-        guard let decodedData = try? JSONDecoder().decode(decodeType, from: data) else { throw Errors.decodeError }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            print("Host connection error")
+            throw Errors.hostConnectionError
+        }
+        guard (200...299).contains(httpResponse.statusCode) else {
+            print("POST error")
+            throw Errors.sendPOSTError
+        }
+        guard !data.isEmpty else {
+            print("Empty response")
+            throw Errors.emptyResponse
+        }
+        
+        // Decode the response data-
+        guard let decodedData = try? JSONDecoder().decode(decodeType, from: data) else {
+            print("Decode error")
+            throw Errors.decodeError
+        }
         
         return decodedData
     }
