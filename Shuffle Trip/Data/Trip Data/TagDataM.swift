@@ -3,12 +3,20 @@
 
 import SwiftUI
 
-struct TopicGroup: Decodable {
+struct TopicGroup: Decodable, Hashable {
     let name: String
     let symbol: String
     let color: Color
     let topics: [Topic]
     let id: UUID = UUID()
+    
+    public static func == (lhs: TopicGroup, rhs: TopicGroup) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
 }
 
 struct Topic: Decodable {
