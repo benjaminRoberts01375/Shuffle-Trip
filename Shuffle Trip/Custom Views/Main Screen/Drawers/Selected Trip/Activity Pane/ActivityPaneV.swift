@@ -36,7 +36,7 @@ struct ActivityPaneV: View {
                 HStack {
                     Image(systemName: "\(controller.index).circle.fill")            // Index of the activity
                         .symbolRenderingMode(.hierarchical)
-                    Text("\(controller.activity.businesses?[0].name ?? "")")               // Name of the business
+                    Text("\(controller.activity.businesses?[0].name ?? "")")        // Name of the business
                         .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
@@ -75,6 +75,12 @@ struct ActivityPaneV: View {
             HStack {
                 Spacer()
                 Spacer()
+                BigButton(                                  // Look around button
+                    action: {  },
+                    image: Image(systemName: "binoculars.fill"),
+                    label: "Look Around",
+                    highlighted: false
+                )
                 BigButton(                                  // Navigate button
                     action: {  },
                     image: Image(systemName: "map.fill"),
