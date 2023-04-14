@@ -12,9 +12,9 @@ public struct Activity: Decodable, Hashable {
         hasher.combine(id)
     }
     
-    let businesses: [Business]
-    let total: Int
-    let region: Region
+    let businesses: [Business]?
+    let total: Int?
+    let region: Region?
     let id = UUID()
     var tagIDs: [UUID] = []
     
