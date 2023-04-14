@@ -16,7 +16,7 @@ struct AddActivityButtonV: View {
             HStack {
                 Image(systemName: "plus.circle.fill")
                     .symbolRenderingMode(.multicolor)
-                Text("Add Activity - \(controller.index)")
+                Text("Add Activity")
             }
             .padding(5)
             .foregroundColor(Color.primary)
