@@ -23,7 +23,7 @@ struct ActivityPaneV: View {
                         .opacity(0)
                         .disabled(true)
                         .allowsHitTesting(false)
-                    Text("\(controller.activity.businesses[0].location.city ?? ""), \(controller.activity.businesses[0].location.state ?? "")") // Show city and state of activity
+                    Text("\(controller.activity.businesses?[0].location.city ?? ""), \(controller.activity.businesses?[0].location.state ?? "")") // Show city and state of activity
                         .font(.caption)
                         .padding(0)
                     Spacer()
@@ -36,7 +36,7 @@ struct ActivityPaneV: View {
                 HStack {
                     Image(systemName: "\(controller.index).circle.fill")            // Index of the activity
                         .symbolRenderingMode(.hierarchical)
-                    Text("\(controller.activity.businesses[0].name)")               // Name of the business
+                    Text("\(controller.activity.businesses?[0].name ?? "")")               // Name of the business
                         .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
