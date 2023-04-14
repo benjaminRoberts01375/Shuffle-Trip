@@ -5,8 +5,10 @@ import SwiftUI
 
 /// A custom view for handling bluring and unbluring backgrounds
 struct BlurView: UIViewRepresentable {
-    let style: UIBlurEffect.Style   // The type of blur effect
-    var opacity: CGFloat            // How much of the blur is shown
+    // The type of blur effect
+    let style: UIBlurEffect.Style
+    /// Amount of blur shown. 1 = No blur, 2 = Max blur
+    var opacity: CGFloat
     
     /// Initial blur appearance
     /// - Parameter context: Provided by system
