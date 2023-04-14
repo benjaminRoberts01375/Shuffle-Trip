@@ -19,6 +19,7 @@ struct SelectedTripContentV: View {
                     .padding(.vertical)
 
                 ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations.indices ?? 1..<2, id: \.self) { index in
+                    ActivityPaneV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[index] ?? Activity(), index: index + 1)
                     AddActivityButtonV(tripLocations: controller.tripLocations, index: index + 1)
                         .padding(.vertical)
                 }
