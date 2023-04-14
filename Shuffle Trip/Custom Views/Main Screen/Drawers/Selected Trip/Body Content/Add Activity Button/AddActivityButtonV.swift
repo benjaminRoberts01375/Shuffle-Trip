@@ -19,6 +19,7 @@ struct AddActivityButtonV: View {
                 Text("Add Activity - \(controller.index)")
             }
             .padding(5)
+            .foregroundColor(Color.primary)
             .background(.tertiary)
             .cornerRadius(10)
         })
