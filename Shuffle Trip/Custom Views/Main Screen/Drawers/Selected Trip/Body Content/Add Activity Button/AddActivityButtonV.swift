@@ -11,7 +11,7 @@ struct AddActivityButtonV: View {
     
     var body: some View {
         Button(action: {
-            
+            controller.addActivity()
         }, label: {
             HStack {
                 Image(systemName: "plus.circle.fill")
