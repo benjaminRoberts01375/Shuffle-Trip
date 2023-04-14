@@ -87,6 +87,7 @@ public class TripLocation: ObservableObject, Identifiable {
                     for i in newActivityLocations.indices {
                         newActivityLocations[i].tagIDs = activityLocations[i].tagIDs
                     }
+                    self.activityLocations = newActivityLocations
                     self.status = .successful
                 }
                 else {
