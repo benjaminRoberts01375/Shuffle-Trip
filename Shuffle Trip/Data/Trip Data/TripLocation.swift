@@ -18,7 +18,12 @@ public class TripLocation: ObservableObject, Identifiable {
         }
     }
     /// Activities to be had at the trip
-    var activityLocations: [Activity]
+    @Published var activityLocations: [Activity] {
+        didSet {
+            print("Set activityLocations!")
+            objectWillChange.send()
+        }
+    }
     /// User has selected this trip for editing/viewing
     @Published private(set) var isSelected: Bool {
         didSet {
@@ -76,10 +81,18 @@ public class TripLocation: ObservableObject, Identifiable {
         let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: Int(3))
         Task {
             do {
-                self.activityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
-                self.status = .successful
+                var newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
+                print("New activities count: \(newActivityLocations.count), activities count: \(activityLocations.count)")
+                if newActivityLocations.count == activityLocations.count {
+                    for i in newActivityLocations.indices {
+                        newActivityLocations[i].tagIDs = activityLocations[i].tagIDs
+                    }
+                    self.status = .successful
+                }
+                else {
+                    self.status = .error
+                }
             }
-            catch { self.status = .error }
         }
     }
     
