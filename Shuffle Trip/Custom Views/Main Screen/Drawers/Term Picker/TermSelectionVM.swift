@@ -25,4 +25,30 @@ final class TermSelectionVM: ObservableObject {
             fatalError("Unable to parse categories JSON:\n\(error)")
         }
     }
+        
+    /// Searches for the tag ID specified
+    /// - Parameter id: UUID of the tag to search for
+    /// - Returns: An optional Tag if found
+    private func searchID(id: UUID) -> Tag? {
+        for group in termGroups {                   // Search each group
+            for topic in group.topics {                 // Search each topic
+                for tag in topic.tags where tag.id == id {  // For the correct tag
+                    return tag                                  // And return it
+                }
+            }
+        }
+        return nil
+    }
+    
+    /// Provides the topic to a provided tag
+    /// - Parameter tag: Tag to search for
+    /// - Returns: An optional Topic if found
+    private func locateTagParent(tag: Tag) -> Topic? {
+        for group in termGroups {
+            for topic in group.topics where topic.tags.contains(where: { $0 == tag }) {
+                return topic
+            }
+        }
+        return nil
+    }
 }
