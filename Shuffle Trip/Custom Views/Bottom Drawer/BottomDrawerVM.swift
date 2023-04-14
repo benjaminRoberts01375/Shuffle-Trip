@@ -29,7 +29,7 @@ import SwiftUI
     
     @Published var content: Content
     
-    public let minimumShortCardSize: CGFloat = 275
+    public let minimumShortCardSize: CGFloat = 300
     public let minimumMapSpace: CGFloat = 200
     
     init(content: Content, snapPoints: [CGFloat]) {
