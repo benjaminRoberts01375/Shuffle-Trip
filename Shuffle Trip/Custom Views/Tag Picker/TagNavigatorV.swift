@@ -5,7 +5,7 @@ import SwiftUI
 
 struct TagNavigatorV: View {
     @StateObject var controller: TagNavigatorVM
-    @State var selection: Int?
+    @State var selection: TopicGroup?
     
     init() {
         self._controller = StateObject(wrappedValue: TagNavigatorVM())
@@ -14,12 +14,23 @@ struct TagNavigatorV: View {
     var body: some View {
         VStack {
             NavigationSplitView {
-                List(0..<10, selection: $selection) { number in
-//                    Text("Number: \(number)")
+                List(
+                    TagManager.shared.topicGroups.sorted(
+                        by: { (lhs, rhs) -> Bool in
+                            lhs.name < rhs.name
+                        }
+                    ),
+                    id: \.id,
+                    selection: $selection
+                ) { group in
                     NavigationLink {
-                        TagSelectorV(num: number)
+                        //                        TagSelectorV(num: group)
+                        EmptyView()
                     } label: {
-                        Text(String(number))
+                        HStack {
+                            Image(systemName: group.symbol)
+                            Text("\(group.name)")
+                        }
                     }
                 }
                 .navigationTitle("Categories")
