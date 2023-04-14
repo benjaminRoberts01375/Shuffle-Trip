@@ -22,8 +22,12 @@ struct Topic: Decodable {
     }
 }
 
-class Tag: Decodable {
-    var id: UUID = UUID()
+class Tag: Decodable, Equatable {
+    static func == (lhs: Tag, rhs: Tag) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    let id: UUID = UUID()
     let name: String
     
     required init(from decoder: Decoder) throws {
