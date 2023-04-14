@@ -12,13 +12,23 @@ struct SelectedTripContentV: View {
         self._controller = StateObject(wrappedValue: SelectedTripContentVM(tripLocations: tripLocations))
     }
     
-    
     var body: some View {
         if controller.tripLocations.getSelectedTrip() != nil {
-            
+            VStack {
+                AddActivityButtonV(tripLocations: controller.tripLocations, index: 0)
+                    .padding(.vertical)
+
+                ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations.indices ?? 1..<2, id: \.self) { index in
+                    AddActivityButtonV(tripLocations: controller.tripLocations, index: index + 1)
+                        .padding(.vertical)
+                }
+            }
+            .onReceive(controller.tripLocations.objectWillChange) { _ in
+                controller.showSettings = true
+            }
         }
         else {
-            EmptyView()
+            Text("No selected trip.")
         }
     }
 }
