@@ -35,10 +35,10 @@ final class TagSelectorVM: ObservableObject {
     /// - Parameter tag: Tag to add or remove
     internal func toggleTagSelection(tag: Tag) {
         if tagIsSelected(tag: tag) {
-            activity.tagIDs.removeAll(where: { $0 == tag.id })
+            activity.removeTag(tagID: tag.id)
         }
         else {
-            activity.tagIDs.append(tag.id)
+            activity.addTag(tagID: tag.id)
         }
     }
 }

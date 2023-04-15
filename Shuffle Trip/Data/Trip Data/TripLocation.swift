@@ -85,7 +85,7 @@ public class TripLocation: ObservableObject, Identifiable {
                 print("New activities count: \(newActivityLocations.count), activities count: \(activityLocations.count)")
                 if newActivityLocations.count == activityLocations.count {
                     for i in newActivityLocations.indices {
-                        newActivityLocations[i].tagIDs = activityLocations[i].tagIDs
+                        newActivityLocations[i].overwriteAllTags(oldActivity: activityLocations[i])
                     }
                     self.activityLocations = newActivityLocations
                     self.status = .successful

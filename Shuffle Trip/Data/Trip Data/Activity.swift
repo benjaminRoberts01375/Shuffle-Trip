@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-public struct Activity: Decodable, Hashable {
+final class Activity: Decodable, Hashable, ObservableObject {
     public static func == (lhs: Activity, rhs: Activity) -> Bool {
         return lhs.id == rhs.id
     }
@@ -12,16 +12,32 @@ public struct Activity: Decodable, Hashable {
         hasher.combine(id)
     }
     
-    var businesses: [Business]? = nil
-    var total: Int? = nil
-    var region: Region? = nil
+    var businesses: [Business]?
+    var total: Int?
+    var region: Region?
     let id = UUID()
-    var tagIDs: [UUID] = []
+    @Published private(set) var tagIDs: Set<UUID> = []
     
     enum CodingKeys: String, CodingKey {
         case businesses
         case total
         case region
+    }
+    
+    /// Handles adding tags to the activity
+    /// - Parameter tagID: ID of the tag to add
+    public func addTag(tagID: UUID) {
+        tagIDs.insert(tagID)
+    }
+    
+    /// Handles removing tags from the activity
+    /// - Parameter tagID: ID of the tag to remove
+    public func removeTag(tagID: UUID) {
+        tagIDs.remove(tagID)
+    }
+    
+    public func overwriteAllTags(oldActivity: Activity) {
+        tagIDs = oldActivity.tagIDs
     }
 }
 
