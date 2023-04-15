@@ -24,6 +24,18 @@ struct TripInteractionButtonsV: View {
             })
             .disabled(controller.preventShuffle)
             .opacity(controller.preventShuffle ? 0.5 : 1.0)
+
+            Button(action: {                            // Trip settings
+                withAnimation {
+                    controller.toggleEditMode()
+                }
+            }, label: {
+                Image(systemName: "gear.circle.fill")
+                    .symbolRenderingMode(.hierarchical)
+                    .foregroundColor(controller.editMode ? Color.green : Color.secondary)
+                    .font(Font.title.weight(.bold))
+            })
+
             Button(action: {                            // Close card button
                 controller.tripLocations.SelectTrip()
             }, label: {

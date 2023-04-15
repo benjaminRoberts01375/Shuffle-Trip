@@ -25,6 +25,8 @@ struct SelectedTripButtonsV: View {
         case confirmShuffle
         /// Buttons to show before user interaction
         case normal
+        /// Show specific button changes when a trip is being edited
+        case editTrip
     }
     
     var body: some View {
@@ -34,7 +36,7 @@ struct SelectedTripButtonsV: View {
                 tripLocations: tripLocations,
                 buttonState: $buttonState
             )
-        case .normal:                           // If showing the normal buttons
+        case .normal, .editTrip:                // If showing the normal buttons
             TripInteractionButtonsV(                // Show the buttons for potential trip interaction
                 tripLocations: tripLocations,
                 buttonState: $buttonState

@@ -12,6 +12,8 @@ final class TripInteractionButtonsVM: ObservableObject {
     @Published var tripLocations: TripLocations
     /// Current buttons to show
     @Binding var buttonState: SelectedTripButtonsV.DisplayButtons
+    /// Checks to see if we're currently editing the trip
+    @Published var editMode: Bool
     
     /// Initializer for ConfirmShuffleButtons's view model
     /// - Parameters:
@@ -22,10 +24,18 @@ final class TripInteractionButtonsVM: ObservableObject {
         self.preventShuffle = true
         self.tripLocations = tripLocations
         self._buttonState = buttonState
+        self.editMode = true
+        checkActivities()
     }
     
     /// Check the trip locations to ensure that the activities are properlly setup
     internal func checkActivities() {
         preventShuffle = tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true
+    }
+    
+    /// Switches betweene editing and view the current trip
+    internal func toggleEditMode() {
+        editMode.toggle()
+        buttonState = editMode ? .editTrip : .normal
     }
 }
