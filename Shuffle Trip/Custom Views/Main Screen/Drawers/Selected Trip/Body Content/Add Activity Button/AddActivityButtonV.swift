@@ -25,7 +25,7 @@ struct AddActivityButtonV: View {
             .cornerRadius(10)
         })
         .sheet(isPresented: $controller.termSelectorEnabled) {
-            TagNavigatorV()
+            TagNavigatorV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[controller.index] ?? Activity())
         }
     }
 }

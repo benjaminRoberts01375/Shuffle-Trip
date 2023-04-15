@@ -7,8 +7,8 @@ struct TagNavigatorV: View {
     @StateObject var controller: TagNavigatorVM
     @State var selection: TopicGroup?
     
-    init() {
-        self._controller = StateObject(wrappedValue: TagNavigatorVM())
+    init(activity: Activity) {
+        self._controller = StateObject(wrappedValue: TagNavigatorVM(activity: activity))
     }
     
     var body: some View {
@@ -24,7 +24,7 @@ struct TagNavigatorV: View {
                     selection: $selection
                 ) { group in
                     NavigationLink {
-                        TagSelectorV(group: group)
+                        TagSelectorV(group: group, activity: controller.activity)
                     } label: {
                         HStack {
                             Image(systemName: group.symbol)
@@ -38,11 +38,5 @@ struct TagNavigatorV: View {
             }
             .navigationSplitViewStyle(.balanced)
         }
-    }
-}
-
-struct TagNavigatorV_Previews: PreviewProvider {
-    static var previews: some View {
-        TagNavigatorV()
     }
 }
