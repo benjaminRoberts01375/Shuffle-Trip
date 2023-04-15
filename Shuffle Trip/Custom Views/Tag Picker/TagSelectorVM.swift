@@ -6,7 +6,7 @@ import SwiftUI
 final class TagSelectorVM: ObservableObject {
     let group: TopicGroup
     @Published var search: String
-    var activity: Activity
+    @Published var activity: Activity
     
     init(group: TopicGroup, activity: Activity) {
         self.group = group
@@ -40,5 +40,6 @@ final class TagSelectorVM: ObservableObject {
         else {
             activity.addTag(tagID: tag.id)
         }
+        self.objectWillChange.send()
     }
 }
