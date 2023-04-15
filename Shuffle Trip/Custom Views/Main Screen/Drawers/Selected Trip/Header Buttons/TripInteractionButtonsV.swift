@@ -34,6 +34,8 @@ struct TripInteractionButtonsV: View {
                     .symbolRenderingMode(.hierarchical)
                     .foregroundColor(controller.editMode ? Color.green : Color.secondary)
                     .font(Font.title.weight(.bold))
+                    .disabled(controller.preventShuffle)
+                    .opacity(controller.preventShuffle ? 0.5 : 1.0)
             })
 
             Button(action: {                            // Close card button

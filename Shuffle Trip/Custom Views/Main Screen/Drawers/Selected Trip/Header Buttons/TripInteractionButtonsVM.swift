@@ -31,11 +31,22 @@ final class TripInteractionButtonsVM: ObservableObject {
     /// Check the trip locations to ensure that the activities are properlly setup
     internal func checkActivities() {
         preventShuffle = tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true
+        if preventShuffle {
+            editMode = true
+            buttonState = .editTrip
+            print("Set to edit mode")
+        }
     }
     
     /// Switches betweene editing and view the current trip
     internal func toggleEditMode() {
-        editMode.toggle()
-        buttonState = editMode ? .editTrip : .normal
+        if preventShuffle {
+            editMode = true
+            buttonState = .editTrip
+        }
+        else {
+            editMode.toggle()
+            buttonState = editMode ? .editTrip : .normal
+        }
     }
 }
