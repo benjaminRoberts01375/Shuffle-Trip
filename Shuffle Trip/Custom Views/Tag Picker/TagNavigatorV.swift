@@ -24,8 +24,7 @@ struct TagNavigatorV: View {
                     selection: $selection
                 ) { group in
                     NavigationLink {
-                        //                        TagSelectorV(num: group)
-                        EmptyView()
+                        TagSelectorV(group: group)
                     } label: {
                         HStack {
                             Image(systemName: group.symbol)
@@ -35,7 +34,7 @@ struct TagNavigatorV: View {
                 }
                 .navigationTitle("Categories")
             } detail: {
-                Text("Choose a recipe")
+                EmptyView()
             }
             .navigationSplitViewStyle(.balanced)
         }
