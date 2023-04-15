@@ -5,12 +5,19 @@ import SwiftUI
 
 /// Coordinator for the Search Bar
 class SearchCoordinator: NSObject, UISearchBarDelegate {
+    @Binding var search: String
+    
+    init(search: Binding<String>) {
+        self._search = search
+    }
+    
     /// Called every time the user types into the search bar
     /// - Parameters:
     ///   - searchBar: The search bar being updated
     ///   - searchText: The text that the search bar is storing internally
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchBar.text = searchText
+        search = searchText
     }
     
     /// Called when the search bar is tapped on

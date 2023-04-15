@@ -100,9 +100,7 @@ struct BottomDrawer_Previews: PreviewProvider {
     
     struct Preview: DrawerView {
         var header: some View {
-            VStack {
-                SearchBar()
-            }
+            EmptyView()
         }
         
         var body: some View {

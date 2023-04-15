@@ -13,7 +13,7 @@ struct HomeDV: DrawerView {
     
     var header: some View {
         HStack {
-            SearchBar()
+//            SearchBar()
             Button(
                 action: {
                     controller.TripButton()
