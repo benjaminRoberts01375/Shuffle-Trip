@@ -25,7 +25,6 @@ final class TripInteractionButtonsVM: ObservableObject {
         self.tripLocations = tripLocations
         self._buttonState = buttonState
         self.editMode = true
-        checkActivities()
     }
     
     /// Check the trip locations to ensure that the activities are properlly setup

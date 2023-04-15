@@ -62,5 +62,8 @@ struct TripInteractionButtonsV: View {
         .onReceive(controller.tripLocations.getSelectedTrip()?.objectWillChange ?? TripLocation(coordinate: MapDetails.location2).objectWillChange) { _ in
             controller.checkActivities()
         }
+        .onAppear {
+            controller.checkActivities()
+        }
     }
 }
