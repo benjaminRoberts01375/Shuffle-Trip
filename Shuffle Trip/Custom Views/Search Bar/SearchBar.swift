@@ -5,17 +5,19 @@ import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
     @Binding var text: String
+    var placeholder = "Search..."
+    var autoCorrection = false
     /// Creates the search bar when `SearchBar()` is called.
     /// - Parameter context: Automatically filled
     /// - Returns: The completed search bar
     func makeUIView(context: UIViewRepresentableContext<SearchBar>) -> UISearchBar {
         let searchBar: UISearchBar = UISearchBar()
-        searchBar.placeholder = "Find your next day trip..."    // Text when no user text is entered
-        searchBar.searchBarStyle = .minimal                     // Typical search bar appearance
-        searchBar.keyboardType = .asciiCapable                  // Show traditional keyboard minus emojis
-        searchBar.autocorrectionType = .no                      // Remove predictive text
+        searchBar.placeholder = placeholder                         // Text when no user text is entered
+        searchBar.searchBarStyle = .minimal                         // Typical search bar appearance
+        searchBar.keyboardType = .asciiCapable                      // Show traditional keyboard minus emojis
+        searchBar.autocorrectionType = autoCorrection ? .yes : .no  // Remove predictive text
         
-        searchBar.delegate = context.coordinator                // Assugn coordinator
+        searchBar.delegate = context.coordinator                    // Assign coordinator
         
         return searchBar
     }
