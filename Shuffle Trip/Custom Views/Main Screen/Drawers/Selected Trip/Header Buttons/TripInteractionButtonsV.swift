@@ -22,8 +22,8 @@ struct TripInteractionButtonsV: View {
                     .foregroundStyle(Color.secondary)
                     .font(Font.title.weight(.bold))
             })
-            .disabled(controller.tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true)
-            .opacity((controller.tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true) ? 0.5 : 1.0)
+            .disabled(controller.preventShuffle)
+            .opacity(controller.preventShuffle ? 0.5 : 1.0)
             Button(action: {                            // Close card button
                 controller.tripLocations.SelectTrip()
             }, label: {
@@ -44,6 +44,9 @@ struct TripInteractionButtonsV: View {
             withAnimation {
                 controller.disableCloseButton = false
             }
+        }
+        .onReceive(controller.tripLocations.getSelectedTrip()!.objectWillChange) { _ in
+            controller.checkActivities()
         }
     }
 }
