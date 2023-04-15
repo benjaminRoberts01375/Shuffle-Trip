@@ -5,18 +5,20 @@ import SwiftUI
 
 final class TagSelectorVM: ObservableObject {
     let group: TopicGroup
-    let selected: [UUID]
+    @Published var search: String
+    var activity: Activity
     
-    init(group: TopicGroup) {
+    init(group: TopicGroup, activity: Activity) {
         self.group = group
-        self.selected = []
+        self.search = ""
+        self.activity = activity
     }
     
     /// Checks each ID from a given topic to see if each topic is selected
     /// - Parameter topic: Topic to check against
     /// - Returns: Boolean value if each topic is selected
     internal func topicIsSelected(topic: Topic) -> Bool {
-        for tag in topic.tags where !selected.contains(tag.id) {
+        for tag in topic.tags where !activity.tagIDs.contains(tag.id) {
             return false
         }
         return true
@@ -26,6 +28,17 @@ final class TagSelectorVM: ObservableObject {
     /// - Parameter tag: Tag to check
     /// - Returns: Bool of if the tag is selected
     internal func tagIsSelected(tag: Tag) -> Bool {
-        return selected.contains(tag.id)
+        return activity.tagIDs.contains(tag.id)
+    }
+    
+    /// Add or remove a tag from the selection
+    /// - Parameter tag: Tag to add or remove
+    internal func toggleTagSelection(tag: Tag) {
+        if tagIsSelected(tag: tag) {
+            activity.tagIDs.removeAll(where: { $0 == tag.id })
+        }
+        else {
+            activity.tagIDs.append(tag.id)
+        }
     }
 }

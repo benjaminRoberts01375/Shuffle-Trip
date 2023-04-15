@@ -4,15 +4,54 @@
 import SwiftUI
 
 struct TagSelectorV: View {
-    let num: Int
+    @StateObject var controller: TagSelectorVM
+    @State var searchText: String
+    
+    init(group: TopicGroup, activity: Activity) {
+        self._controller = StateObject(wrappedValue: TagSelectorVM(group: group, activity: activity))
+        searchText = ""
+    }
     
     var body: some View {
-        Text("Your number is \(num)")
-    }
-}
-
-struct TagSelector_Previews: PreviewProvider {
-    static var previews: some View {
-        TagSelectorV(num: 0)
+        NavigationStack {
+            ScrollViewReader { _ in
+                List {
+                    ForEach(controller.group.topics.sorted(by: { (lhs, rhs) -> Bool in  // List all topics and sort alphabetically
+                        lhs.name < rhs.name
+                    }), id: \.name) { topic in
+                        Section {
+                            Button(action: {
+                                print("test")
+                            }, label: {
+                                HStack {
+                                    Text(topic.name)
+                                        .font(.title2.bold())
+                                        .foregroundColor(Color.primary)
+                                    Image(systemName: topic.symbol)
+                                        .foregroundColor(controller.topicIsSelected(topic: topic) ? .blue : .primary)
+                                }
+                            })
+                            ForEach(topic.tags.sorted(by: { (lhs, rhs) -> Bool in           // List all tags and sort alphabetically
+                                lhs.name < rhs.name
+                            }), id: \.name) { tag in
+                                HStack {
+                                    Image(systemName: "checkmark")
+                                        .opacity(controller.tagIsSelected(tag: tag) ? 1 : 0)
+                                        .foregroundColor(.blue)
+                                    Button(action: {
+                                        controller.toggleTagSelection(tag: tag)
+                                    }, label: {
+                                        Text(tag.name)
+                                            .foregroundColor(Color.primary)
+                                    })
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .searchable(text: $searchText, prompt: "Search \(controller.group.name.lowercased()) tags")
+        }
+        .navigationTitle("\(controller.group.name) Tags")
     }
 }
