@@ -72,8 +72,9 @@ public class TripLocation: ObservableObject, Identifiable {
         case error
     }
     
+    /// Generates activities based on user selection
     private func generateActivities() {
-        var params: [[String]] = [["Breakfast"], ["Lunch"], ["Dinner"]]
+        let params: [[String]] = generateParamList()
         print("Params: \(params)")
         
         // Encode the TripRequest instance into JSON data
@@ -81,7 +82,7 @@ public class TripLocation: ObservableObject, Identifiable {
         let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: Int(3))
         Task {
             do {
-                var newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
+                let newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
                 print("New activities count: \(newActivityLocations.count), activities count: \(activityLocations.count)")
                 if newActivityLocations.count == activityLocations.count {
                     for i in newActivityLocations.indices {
@@ -101,6 +102,21 @@ public class TripLocation: ObservableObject, Identifiable {
     /// - Parameter activityTypes: List of activities to go on
     public func ShuffleTrip() {
         generateActivities()
+    }
+    
+    /// Generates the list of parameter names based on the trip location's activities
+    /// - Returns: A list of lists. Each internal list represents an activity, while the individual items internally are tags the user's willing to do for that activity
+    private func generateParamList() -> [[String]] {
+        var params: [[String]] = []
+        for activity in activityLocations {
+            var tagNames: Set<String> = []
+            for tagID in activity.tagIDs {
+                guard let tagName = TagManager.shared.searchID(id: tagID)?.name else { continue }
+                tagNames.insert(tagName)
+            }
+            params.append(Array(tagNames))
+        }
+        return params
     }
 }
 
