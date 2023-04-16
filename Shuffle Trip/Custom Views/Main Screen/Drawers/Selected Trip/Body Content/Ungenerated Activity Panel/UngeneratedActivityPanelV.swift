@@ -16,7 +16,7 @@ struct UngeneratedActivityPanelV: View {
                 Text("Planned")
                     .font(.caption)
                     .foregroundColor(.secondary)
-                Text("Group names")
+                Text(controller.label)
             }
             Spacer()
             Button(action: {
@@ -39,6 +39,9 @@ struct UngeneratedActivityPanelV: View {
         .padding()
         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
         .cornerRadius(7)
+        .onReceive(controller.activity.objectWillChange) {
+            controller.generateLabel()
+        }
         .sheet(isPresented: $controller.showTagPicker) {
             TagNavigatorV(activity: controller.activity)
         }
