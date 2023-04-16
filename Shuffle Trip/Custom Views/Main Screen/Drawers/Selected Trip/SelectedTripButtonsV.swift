@@ -34,7 +34,8 @@ struct SelectedTripButtonsV: View {
         case .confirmShuffle:                   // If showing the confirmation to shuffle an entire trip
             ConfirmShuffleButtonsV(                 // Show the Confirm Shuffle Buttons view
                 tripLocations: tripLocations,
-                buttonState: $buttonState
+                buttonState: $buttonState,
+                editingTracker: editingTracker
             )
         case .normal:                           // If showing the normal buttons
             TripInteractionButtonsV(                // Show the buttons for potential trip interaction

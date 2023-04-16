@@ -4,6 +4,7 @@
 import SwiftUI
 
 final class TripInteractionButtonsVM: ObservableObject {
+    /// Tracks the current status of editing a trip
     @ObservedObject var editingTracker: EditingTrackerM
     /// Prevents the drawer from being closed
     @Published var disableCloseButton: Bool

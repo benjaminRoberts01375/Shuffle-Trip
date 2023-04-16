@@ -6,8 +6,8 @@ import SwiftUI
 struct ConfirmShuffleButtonsV: View {
     @StateObject var controller: ConfirmShuffleButtonsVM
     
-    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>) {
-        self._controller = StateObject(wrappedValue: ConfirmShuffleButtonsVM(tripLocations: tripLocations, buttonState: buttonState))
+    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>, editingTracker: EditingTrackerM) {
+        self._controller = StateObject(wrappedValue: ConfirmShuffleButtonsVM(tripLocations: tripLocations, buttonState: buttonState, editingTracker: editingTracker))
     }
     var body: some View {
         HStack {
@@ -15,8 +15,8 @@ struct ConfirmShuffleButtonsV: View {
                 .font(Font.headline.weight(.bold))
             Button(action: {                            // Confirm shuffle - No
                 withAnimation {
+                    controller.editingTracker.isEditingTrip = true
                     controller.buttonState = .normal
-
                 }
             }, label: {
                 Image(systemName: "arrow.uturn.backward.circle.fill")
@@ -27,6 +27,7 @@ struct ConfirmShuffleButtonsV: View {
             Button(action: {                            // Confirm shuffle - Yes
                 controller.tripLocations.getSelectedTrip()?.ShuffleTrip()
                 withAnimation {
+                    controller.editingTracker.isEditingTrip = false
                     controller.buttonState = .normal
                 }
             }, label: {
