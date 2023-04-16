@@ -44,6 +44,31 @@ final class Activity: Decodable, Hashable, ObservableObject {
         tagIDs.remove(tagID)
     }
     
+    /// Checks to see if every tag is selected within a topic
+    /// - Parameter topic: Topic to check for
+    /// - Returns: Bool of if every tag is selected
+    public func topicIsSelected(topic: Topic) -> Bool {
+        return topic.tags.allSatisfy { tag in
+            tagIDs.contains(tag.id)
+        }
+    }
+    
+    /// Adds every tag from a topic
+    /// - Parameter topic: Topic to add
+    public func selectTopic(topic: Topic) {
+        for tag in topic.tags {
+            tagIDs.insert(tag.id)
+        }
+    }
+    
+    /// Removes every tag from a topic
+    /// - Parameter topic: Topic to remove
+    public func deselectTopic(topic: Topic) {
+        for tag in topic.tags {
+            tagIDs.remove(tag.id)
+        }
+    }
+    
     /// Overwrites the tag of this activity with another activity's tags
     /// - Parameter oldActivity: Activity to copy tags from
     public func overwriteAllTags(oldActivity: Activity) {

@@ -69,4 +69,16 @@ final class TagSelectorVM: ObservableObject {
             topicName.lowercased().contains(search.lowercased())
         )
     }
+    
+    /// Selects or deselects all tags for a topic
+    /// - Parameter topic: Topic to (de)select
+    internal func toggleTopicSelection(topic: Topic) {
+        if activity.topicIsSelected(topic: topic) {
+            activity.deselectTopic(topic: topic)
+        }
+        else {
+            activity.selectTopic(topic: topic)
+        }
+        self.objectWillChange.send()
+    }
 }

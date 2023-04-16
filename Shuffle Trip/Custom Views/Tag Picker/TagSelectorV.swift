@@ -22,7 +22,7 @@ struct TagSelectorV: View {
                         if controller.displayTopic(search: searchText, topic: topic) {
                             Section {
                                 Button(action: {
-                                    print("test")
+                                    controller.toggleTopicSelection(topic: topic)
                                 }, label: {
                                     HStack {
                                         Text(topic.name)
