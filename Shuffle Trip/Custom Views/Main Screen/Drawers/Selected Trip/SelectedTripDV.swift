@@ -45,7 +45,7 @@ struct SelectedTripDV: DrawerView {
                 switch controller.displayPhase {
                 case .info:
                     VStack {
-                        SelectedTripContentV(tripLocations: controller.tripLocations)
+                        SelectedTripContentV(tripLocations: controller.tripLocations, editingTracker: controller.editingTracker)
                     }
                     .transition(.slide)
                 default:

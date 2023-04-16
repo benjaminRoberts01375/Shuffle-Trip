@@ -8,15 +8,17 @@ struct SelectedTripContentV: View {
 
     /// The initializer for the selected trip content manager
     /// - Parameter tripLocations: Locations of each trip
-    init(tripLocations: TripLocations) {
-        self._controller = StateObject(wrappedValue: SelectedTripContentVM(tripLocations: tripLocations))
+    init(tripLocations: TripLocations, editingTracker: EditingTrackerM) {
+        self._controller = StateObject(wrappedValue: SelectedTripContentVM(tripLocations: tripLocations, editingTracker: editingTracker))
     }
     
     var body: some View {
         if controller.tripLocations.getSelectedTrip() != nil {
             VStack {
-                AddActivityButtonV(tripLocations: controller.tripLocations, index: 0)
-                    .padding(.vertical)
+                if controller.editingTracker.isEditingTrip {
+                    AddActivityButtonV(tripLocations: controller.tripLocations, index: 0)
+                        .padding(.vertical)
+                }
 
                 ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations.indices ?? 1..<2, id: \.self) { index in
                     if controller.tripLocations.getSelectedTrip()?.activityLocations[index].businesses != nil {
@@ -29,12 +31,17 @@ struct SelectedTripContentV: View {
                     else {
                         Text("Planned")
                     }
-                    AddActivityButtonV(tripLocations: controller.tripLocations, index: index + 1)
-                        .padding(.vertical)
+                    if controller.editingTracker.isEditingTrip {
+                        AddActivityButtonV(tripLocations: controller.tripLocations, index: index + 1)
+                            .padding(.vertical)
+                    }
                 }
             }
             .onReceive(controller.tripLocations.objectWillChange) { _ in
                 controller.showSettings = true
+            }
+            .onReceive(controller.editingTracker.objectWillChange) { _ in
+                controller.checkEditing()
             }
         }
         else {
@@ -45,6 +52,6 @@ struct SelectedTripContentV: View {
 
 struct SelectedTripContent_Previews: PreviewProvider {
     static var previews: some View {
-        SelectedTripContentV(tripLocations: TripLocations())
+        SelectedTripContentV(tripLocations: TripLocations(), editingTracker: EditingTrackerM())
     }
 }
