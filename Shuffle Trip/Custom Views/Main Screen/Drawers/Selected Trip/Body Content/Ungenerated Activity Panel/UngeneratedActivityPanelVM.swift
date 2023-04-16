@@ -18,6 +18,7 @@ final class UngeneratedActivityPaneVM: ObservableObject {
         self.showTagPicker = false
         self.label = ""
         self.editingTracker = editingTracker
+        generateLabel()
     }
     
     /// Generates the label for the UngeneratedActivityPane
