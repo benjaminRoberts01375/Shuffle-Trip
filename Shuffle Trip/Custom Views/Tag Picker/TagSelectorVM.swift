@@ -5,12 +5,10 @@ import SwiftUI
 
 final class TagSelectorVM: ObservableObject {
     let group: TopicGroup
-    @Published var search: String
     @Published var activity: Activity
     
     init(group: TopicGroup, activity: Activity) {
         self.group = group
-        self.search = ""
         self.activity = activity
     }
     
