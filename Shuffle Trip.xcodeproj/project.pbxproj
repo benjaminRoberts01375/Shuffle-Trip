@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		07095A2529EB8F0900DD22E8 /* EditingTrackerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07095A2429EB8F0900DD22E8 /* EditingTrackerM.swift */; };
+		07095A2A29EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07095A2929EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift */; };
+		07095A2C29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07095A2B29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift */; };
 		0715071229C3BD0800AA0959 /* DrawerViewP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0715071129C3BD0800AA0959 /* DrawerViewP.swift */; };
 		0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725951D29BBCECB00AACAAA /* RegionDetails.swift */; };
 		073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A03299DD82200C65BFD /* HomeDV.swift */; };
@@ -84,6 +86,8 @@
 
 /* Begin PBXFileReference section */
 		07095A2429EB8F0900DD22E8 /* EditingTrackerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTrackerM.swift; sourceTree = "<group>"; };
+		07095A2929EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UngeneratedActivityPanelV.swift; sourceTree = "<group>"; };
+		07095A2B29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UngeneratedActivityPanelVM.swift; sourceTree = "<group>"; };
 		0715071129C3BD0800AA0959 /* DrawerViewP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewP.swift; sourceTree = "<group>"; };
 		0725951D29BBCECB00AACAAA /* RegionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetails.swift; sourceTree = "<group>"; };
 		073C5A03299DD82200C65BFD /* HomeDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDV.swift; sourceTree = "<group>"; };
@@ -179,6 +183,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07095A2829EBB42D00DD22E8 /* Ungenerated Activity Panel */ = {
+			isa = PBXGroup;
+			children = (
+				07095A2929EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift */,
+				07095A2B29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift */,
+			);
+			path = "Ungenerated Activity Panel";
+			sourceTree = "<group>";
+		};
 		073C5A02299DD81400C65BFD /* Drawers */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +392,7 @@
 		07EBE63829E688B0007A6235 /* Body Content */ = {
 			isa = PBXGroup;
 			children = (
+				07095A2829EBB42D00DD22E8 /* Ungenerated Activity Panel */,
 				07F9D05929C95CA200D9791A /* Activity Pane */,
 				07E4F5ED29E910A8007F2C8D /* Add Activity Button */,
 				074947C329E52A730024630D /* Trip Configurator */,
@@ -701,6 +715,7 @@
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
 				07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */,
 				07B87B7929E9EABF0097EA05 /* TagNavigatorV.swift in Sources */,
+				07095A2C29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift in Sources */,
 				0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */,
 				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
 				077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */,
@@ -710,6 +725,7 @@
 				074947C529E52A900024630D /* TripConfiguratorV.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
+				07095A2A29EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07F9D05C29C95CA200D9791A /* ActivityPaneVM.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,
