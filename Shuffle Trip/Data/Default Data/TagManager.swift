@@ -56,4 +56,14 @@ final class TagManager: ObservableObject {
         }
         return nil
     }
+    
+    /// Provides the group to a provided topic
+    /// - Parameter topic: Topic to search for
+    /// - Returns: An optional TopicGroup if found
+    public func locateTopicGroup(topic: Topic) -> TopicGroup? {
+        for group in topicGroups where group.topics.contains(where: { $0 == topic }) {
+            return group
+        }
+        return nil
+    }
 }
