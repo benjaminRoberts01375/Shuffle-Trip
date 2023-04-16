@@ -361,7 +361,6 @@
 				07E4F5E929E8BA92007F2C8D /* SelectedTripContentVM.swift */,
 				0758377529E08AA30030ECC3 /* Header Buttons */,
 				07EBE63829E688B0007A6235 /* Body Content */,
-				07F9D05929C95CA200D9791A /* Activity Pane */,
 				073CB9B029C51921008259A8 /* LoadingTripDV.swift */,
 				078558DB29C6255D00650C1F /* Trip Error */,
 			);
@@ -380,6 +379,7 @@
 		07EBE63829E688B0007A6235 /* Body Content */ = {
 			isa = PBXGroup;
 			children = (
+				07F9D05929C95CA200D9791A /* Activity Pane */,
 				07E4F5ED29E910A8007F2C8D /* Add Activity Button */,
 				074947C329E52A730024630D /* Trip Configurator */,
 			);
