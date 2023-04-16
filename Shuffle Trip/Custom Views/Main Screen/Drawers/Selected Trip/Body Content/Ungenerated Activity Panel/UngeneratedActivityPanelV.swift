@@ -6,8 +6,8 @@ import SwiftUI
 struct UngeneratedActivityPanelV: View {
     @StateObject var controller: UngeneratedActivityPaneVM
     
-    init(activity: Activity) {
-        self._controller = StateObject(wrappedValue: UngeneratedActivityPaneVM(activity: activity))
+    init(activity: Activity, editingTracker: EditingTrackerM) {
+        self._controller = StateObject(wrappedValue: UngeneratedActivityPaneVM(activity: activity, editingTracker: editingTracker))
     }
     
     var body: some View {

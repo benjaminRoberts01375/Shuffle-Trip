@@ -35,7 +35,7 @@ struct SelectedTripContentV: View {
                             .shadow(color: .primary.opacity(0.1), radius: 20)
                     }
                     else {
-                        UngeneratedActivityPanelV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[index] ?? Activity())
+                        UngeneratedActivityPanelV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[index] ?? Activity(), editingTracker: controller.editingTracker)
                     }
                     if controller.editingTracker.isEditingTrip {
                         AddActivityButtonV(tripLocations: controller.tripLocations, index: index + 1)

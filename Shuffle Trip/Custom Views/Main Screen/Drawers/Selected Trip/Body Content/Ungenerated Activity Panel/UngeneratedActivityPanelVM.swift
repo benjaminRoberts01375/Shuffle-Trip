@@ -10,11 +10,14 @@ final class UngeneratedActivityPaneVM: ObservableObject {
     @Published var showTagPicker: Bool
     /// Label to display in pane
     @Published var label: String
+    /// Tracks the current status of editing a trip
+    @ObservedObject var editingTracker: EditingTrackerM
     
-    init(activity: Activity) {
+    init(activity: Activity, editingTracker: EditingTrackerM) {
         self.activity = activity
         self.showTagPicker = false
         self.label = ""
+        self.editingTracker = editingTracker
     }
     
     /// Generates the label for the UngeneratedActivityPane
