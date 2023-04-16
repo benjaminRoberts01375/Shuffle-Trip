@@ -10,10 +10,10 @@ struct ContentView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            let cardSnapPositions: [CGFloat] = [controller.cardMinimumHeight, 1 / 2, 0.97]
+            let cardSnapPositions: [CGFloat] = [controller.drawerMinimumHeight, 1 / 2, 0.97]
             ZStack {                                                                                // Main View
                 RegionSelector(                                                                     // Map
-                    logoPosition: controller.cardMinimumHeight - geometry.safeAreaInsets.bottom,
+                    logoPosition: controller.drawerMinimumHeight - geometry.safeAreaInsets.bottom,
                     region: controller.region,
                     tripLocations: controller.tripLocations
                 )

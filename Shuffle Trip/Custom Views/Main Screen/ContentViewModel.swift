@@ -6,14 +6,20 @@ import MapKit
 import SwiftUI
 
 class ContentViewModel: ObservableObject {
+    /// All trip locations
     @Published var tripLocations: TripLocations
+    /// Trips that friends have gone on
     @Published var friendTripLocations: FriendTripProfiles
+    /// Location to show on the map
     @Published var region: RegionDetails
+    /// Current state of the application
     @Published var interactionPhase: InteractionPhase
-    public let cardMinimumHeight: CGFloat
+    /// Shortest allowed height of the drawer
+    public let drawerMinimumHeight: CGFloat
     /// For dealing with observers
     private var cancellables = Set<AnyCancellable>()
     
+    /// Datatype of the current state of the program
     enum InteractionPhase {
         case start
         case selectedTrip
@@ -23,10 +29,11 @@ class ContentViewModel: ObservableObject {
         self.tripLocations = TripLocations()
         self.friendTripLocations = FriendTripProfiles()
         self.region = RegionDetails()
-        self.cardMinimumHeight = 100
+        self.drawerMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
     }
     
+    /// Handles determining the current state of the program
     internal func updateInteractionPhase() {
         withAnimation {
             if tripLocations.tripLocations.contains(where: { $0.isSelected }) {
