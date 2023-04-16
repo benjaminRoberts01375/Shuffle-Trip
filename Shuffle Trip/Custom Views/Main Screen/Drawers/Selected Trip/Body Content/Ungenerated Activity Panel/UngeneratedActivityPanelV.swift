@@ -19,28 +19,33 @@ struct UngeneratedActivityPanelV: View {
                 Text(controller.label)
             }
             Spacer()
-            Button(action: {
-                controller.showTagPicker = true
-            }, label: {
-                Image(systemName: "pencil.circle.fill")
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.orange)
-                    .font(Font.title.weight(.bold))
-            })
-            Button(action: {
-                print("Delete")
-            }, label: {
-                Image(systemName: "trash.circle.fill")
-                    .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(.red)
-                    .font(Font.title.weight(.bold))
-            })
+            if controller.editingTracker.isEditingTrip {
+                Button(action: {
+                    controller.showTagPicker = true
+                }, label: {
+                    Image(systemName: "pencil.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.orange)
+                        .font(Font.title.weight(.bold))
+                })
+                Button(action: {
+                    print("Delete")
+                }, label: {
+                    Image(systemName: "trash.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(.red)
+                        .font(Font.title.weight(.bold))
+                })
+            }
         }
         .padding()
         .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
         .cornerRadius(7)
         .onReceive(controller.activity.objectWillChange) {
             controller.generateLabel()
+        }
+        .onReceive(controller.editingTracker.objectWillChange) {
+            controller.checkEditing()
         }
         .sheet(isPresented: $controller.showTagPicker) {
             TagNavigatorV(activity: controller.activity)

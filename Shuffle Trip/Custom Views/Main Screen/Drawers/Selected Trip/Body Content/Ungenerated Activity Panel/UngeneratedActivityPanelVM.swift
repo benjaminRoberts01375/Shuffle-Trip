@@ -40,4 +40,9 @@ final class UngeneratedActivityPaneVM: ObservableObject {
         }
         self.label = String(label.dropLast(2))  // Remove last ", "             // Then set the temp label to the real one
     }
+    
+    // Check editing status
+    internal func checkEditing() {
+        self.objectWillChange.send()
+    }
 }
