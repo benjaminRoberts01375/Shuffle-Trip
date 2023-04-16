@@ -48,7 +48,7 @@ final class TagManager: ObservableObject {
     /// Provides the topic to a provided tag
     /// - Parameter tag: Tag to search for
     /// - Returns: An optional Topic if found
-    public func locateTagParent(tag: Tag) -> Topic? {
+    public func locateTagTopic(tag: Tag) -> Topic? {
         for group in topicGroups {
             for topic in group.topics where topic.tags.contains(where: { $0 == tag }) {
                 return topic
