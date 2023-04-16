@@ -19,7 +19,7 @@ class HomeVM: ObservableObject {
     public func TripButton() {
         guard let trip = tripLocations.getSelectedTrip()                                    // Ensure that there is a selected trip
         else {
-            tripLocations.AddTrip(trip: TripLocation(coordinate: region.region.center));    // Otherwise create a new trip at the current location...
+            tripLocations.AddTrip(trip: TripLocation(coordinate: region.region.center))    // Otherwise create a new trip at the current location...
             return                                                                              // ...and return
         }
         
