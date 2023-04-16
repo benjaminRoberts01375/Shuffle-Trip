@@ -4,8 +4,11 @@
 import SwiftUI
 
 struct SearchBar: UIViewRepresentable {
+    /// Text currently displayed in the search bar
     @Binding var text: String
+    /// Hint text to show when no text is in the search bar
     var placeholder = "Search..."
+    /// Handles setting the auto-correction for the search bar
     var autoCorrection = false
     /// Creates the search bar when `SearchBar()` is called.
     /// - Parameter context: Automatically filled
