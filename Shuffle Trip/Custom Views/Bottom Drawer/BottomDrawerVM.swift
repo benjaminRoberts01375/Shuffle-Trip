@@ -110,7 +110,7 @@ import SwiftUI
     private func SetForegroundOpacity() {
         let finishAtPercent: CGFloat = 0.2
         guard let minValue = snapPointsY.min() else { return }
-        foregroundFadePercent = isShortCard ? 1.0 : ((offset.height / minValue) - 1) * (1 / finishAtPercent)
+        foregroundFadePercent = ((offset.height / minValue) - 1) * (1 / finishAtPercent)
     }
     
     /// Used for calculating if the card should render as a "short card" or the full width of the screen.
