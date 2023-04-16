@@ -34,16 +34,18 @@ struct TagSelectorV: View {
                             ForEach(topic.tags.sorted(by: { (lhs, rhs) -> Bool in           // List all tags and sort alphabetically
                                 lhs.name < rhs.name
                             }), id: \.name) { tag in
-                                HStack {
-                                    Image(systemName: "checkmark")
-                                        .opacity(controller.tagIsSelected(tag: tag) ? 1 : 0)
-                                        .foregroundColor(.blue)
-                                    Button(action: {
-                                        controller.toggleTagSelection(tag: tag)
-                                    }, label: {
-                                        Text(tag.name)
-                                            .foregroundColor(Color.primary)
-                                    })
+                                if controller.displayTag(search: searchText, tagName: tag.name, topicName: topic.name) {
+                                    HStack {
+                                        Image(systemName: "checkmark")
+                                            .opacity(controller.tagIsSelected(tag: tag) ? 1 : 0)
+                                            .foregroundColor(.blue)
+                                        Button(action: {
+                                            controller.toggleTagSelection(tag: tag)
+                                        }, label: {
+                                            Text(tag.name)
+                                                .foregroundColor(Color.primary)
+                                        })
+                                    }
                                 }
                             }
                         }

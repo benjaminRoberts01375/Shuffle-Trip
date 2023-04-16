@@ -42,4 +42,19 @@ final class TagSelectorVM: ObservableObject {
         }
         self.objectWillChange.send()
     }
+    
+    /// Logic for checking if a tag should be shown in the search results
+    /// - Parameters:
+    ///   - search: Search phrase
+    ///   - tagName: Name of a given tag
+    ///   - topicName: Name of a given topic
+    /// - Returns: Bool of if the tag should be displayed
+    internal func displayTag(search: String, tagName: String, topicName: String) -> Bool {
+        return
+        (
+            search == "" ||
+            tagName.lowercased().contains(search.lowercased()) ||
+            topicName.lowercased().contains(search.lowercased())
+        )
+    }
 }
