@@ -4,14 +4,17 @@
 import SwiftUI
 
 final class AddActivityButtomVM: ObservableObject {
+    /// Index of the activity within a trip
     let index: Int
+    /// All available trip locations for the user
     let tripLocations: TripLocations
-    @Published var termSelectorEnabled: Bool
+    /// Determines when to show the tag selector
+    @Published var tagSelectorEnabled: Bool
     
     init(tripLocations: TripLocations, index: Int) {
         self.tripLocations = tripLocations
         self.index = index
-        self.termSelectorEnabled = false
+        self.tagSelectorEnabled = false
     }
     
     /// Adds an activity to trip locations based on the index of the button

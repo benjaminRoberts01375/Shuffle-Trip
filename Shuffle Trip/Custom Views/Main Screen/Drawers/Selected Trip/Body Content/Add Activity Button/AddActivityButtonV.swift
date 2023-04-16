@@ -12,7 +12,7 @@ struct AddActivityButtonV: View {
     var body: some View {
         Button(action: {
             controller.addActivity()
-            controller.termSelectorEnabled = true
+            controller.tagSelectorEnabled = true
         }, label: {
             HStack {
                 Image(systemName: "plus.circle.fill")
@@ -24,7 +24,7 @@ struct AddActivityButtonV: View {
             .background(.quaternary)
             .cornerRadius(10)
         })
-        .sheet(isPresented: $controller.termSelectorEnabled) {
+        .sheet(isPresented: $controller.tagSelectorEnabled) {
             TagNavigatorV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[controller.index] ?? Activity())
         }
     }
