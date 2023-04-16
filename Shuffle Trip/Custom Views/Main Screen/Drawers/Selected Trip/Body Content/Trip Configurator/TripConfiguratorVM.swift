@@ -72,4 +72,12 @@ final class TripConfiguratorVM: ObservableObject {
             .converted(to: isMetric ? UnitLength.kilometers : UnitLength.miles)         // Convert it to either mi or km
             .value * 10) / 10                                                       // ...to the nearest decimal
     }
+    
+    /// Set the slider's value when there's a change to the seleted trip
+    internal func setSlider() {
+        if tripLocations.getSelectedTrip() != selectedTrip {
+            selectedTrip = tripLocations.getSelectedTrip() ?? selectedTrip
+            distanceSlider = metersToSliderVal(selectedTrip.radius)
+        }
+    }
 }

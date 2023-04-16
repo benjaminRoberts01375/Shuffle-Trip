@@ -23,7 +23,7 @@ struct TripConfiguratorV: View {
                 })
             }
             .onReceive(controller.tripLocations.objectWillChange) { _ in
-                controller.selectedTrip = controller.tripLocations.getSelectedTrip() ?? controller.selectedTrip
+                controller.setSlider()
             }
         }
         else {
