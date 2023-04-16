@@ -4,6 +4,12 @@
 import SwiftUI
 
 final class Activity: Decodable, Hashable, ObservableObject {
+    
+    /// Allows for comparing two Activities
+    /// - Parameters:
+    ///   - lhs: Activity on the left hand side of double equals
+    ///   - rhs: Activity on the right hand side of double equals
+    /// - Returns: If the two are the same Activity
     public static func == (lhs: Activity, rhs: Activity) -> Bool {
         return lhs.id == rhs.id
     }
@@ -15,7 +21,9 @@ final class Activity: Decodable, Hashable, ObservableObject {
     var businesses: [Business]?
     var total: Int?
     var region: Region?
+    /// Unique ID of the activity
     let id = UUID()
+    /// Tags that determine what can go into this trip
     @Published private(set) var tagIDs: Set<UUID> = []
     
     enum CodingKeys: String, CodingKey {
@@ -36,6 +44,8 @@ final class Activity: Decodable, Hashable, ObservableObject {
         tagIDs.remove(tagID)
     }
     
+    /// Overwrites the tag of this activity with another activity's tags
+    /// - Parameter oldActivity: Activity to copy tags from
     public func overwriteAllTags(oldActivity: Activity) {
         tagIDs = oldActivity.tagIDs
     }
