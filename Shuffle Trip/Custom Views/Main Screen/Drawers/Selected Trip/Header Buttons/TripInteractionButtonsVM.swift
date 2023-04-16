@@ -29,10 +29,26 @@ final class TripInteractionButtonsVM: ObservableObject {
     
     /// Check the trip locations to ensure that the activities are properlly setup
     internal func checkActivities() {
-        preventShuffle = tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true
-        if preventShuffle {
+        guard let selectedTrip = tripLocations.getSelectedTrip()                        // No selected trip
+        else {
+            preventShuffle = true
             editingTracker.isEditingTrip = true
+            return
         }
+
+        if selectedTrip.activityLocations.isEmpty {                                     // No activities within a trip
+            preventShuffle = true
+            editingTracker.isEditingTrip = true
+            return
+        }
+        
+        for activity in selectedTrip.activityLocations where activity.tagIDs.isEmpty {  // An activity has no tags
+            preventShuffle = true
+            editingTracker.isEditingTrip = true
+            return
+        }
+        
+        preventShuffle = false
     }
     
     // Check editing status
