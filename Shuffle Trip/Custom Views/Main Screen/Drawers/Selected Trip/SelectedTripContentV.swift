@@ -16,6 +16,12 @@ struct SelectedTripContentV: View {
         if controller.tripLocations.getSelectedTrip() != nil {
             VStack {
                 if controller.editingTracker.isEditingTrip {
+                    TripConfiguratorV(tripLocations: controller.tripLocations)
+                        .padding(3)
+                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
+                        .cornerRadius(8)
+                        .padding(.top)
+                    
                     AddActivityButtonV(tripLocations: controller.tripLocations, index: 0)
                         .padding(.vertical)
                 }
