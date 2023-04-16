@@ -3,6 +3,7 @@
 
 import SwiftUI
 
+/// Acts as an intermediary for managing the currently displayed header buttons
 struct SelectedTripButtonsV: View {
     /// Locations of each trip
     var tripLocations: TripLocations
@@ -10,6 +11,7 @@ struct SelectedTripButtonsV: View {
     @State var buttonState: DisplayButtons
     /// Disallow the user to close the current drawer
     @State var disableCloseButton: Bool
+    /// Keeps track of the current editing status of the trip
     @ObservedObject var editingTracker: EditingTrackerM
     
     /// The initializer for the selected trip button manager
