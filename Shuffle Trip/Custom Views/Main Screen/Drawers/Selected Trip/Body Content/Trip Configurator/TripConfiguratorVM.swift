@@ -58,8 +58,7 @@ final class TripConfiguratorVM: ObservableObject {
     /// - Parameter meters: Meters to convert
     /// - Returns: Value of the slider (0 to 100)
     internal func metersToSliderVal(_ meters: Double) -> Double {
-        // The original equation is (x^2)/100, so undo it
-        return round(pow(meters, 0.5) * 10) / 10  // Undoes the original equation and rounds it to one decimal place
+        return pow((meters - sliderMin) * (sliderMax - sliderMin) / 10000, 0.5) * 10
     }
     
     /// Converts meters to either imperial or metric units based on the "isMetric" variable
