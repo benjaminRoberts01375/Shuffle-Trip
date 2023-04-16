@@ -34,7 +34,7 @@ final class TagManager: ObservableObject {
     /// Searches for the tag ID specified
     /// - Parameter id: UUID of the tag to search for
     /// - Returns: An optional Tag if found
-    private func searchID(id: UUID) -> Tag? {
+    public func searchID(id: UUID) -> Tag? {
         for group in topicGroups {                   // Search each group
             for topic in group.topics {                 // Search each topic
                 for tag in topic.tags where tag.id == id {  // For the correct tag
@@ -48,7 +48,7 @@ final class TagManager: ObservableObject {
     /// Provides the topic to a provided tag
     /// - Parameter tag: Tag to search for
     /// - Returns: An optional Topic if found
-    private func locateTagParent(tag: Tag) -> Topic? {
+    public func locateTagParent(tag: Tag) -> Topic? {
         for group in topicGroups {
             for topic in group.topics where topic.tags.contains(where: { $0 == tag }) {
                 return topic
