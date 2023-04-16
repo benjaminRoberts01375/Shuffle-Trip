@@ -6,10 +6,16 @@ import SwiftUI
 
 /// Renders a map and shows icons/annotations
 struct RegionSelector: UIViewRepresentable {
-    var userLocation: UserLocation = UserLocation() // This needs to be outside teh makeUIView function for... reasons? idk it doesn't work unless it is
+    /// Keeps track of the user's location
+    /// - important: Needs to be outside of the makeUIView because of a callback from the UserLocation class
+    var userLocation: UserLocation = UserLocation()
+    /// Define safe areas of the map to nudge the legal information
     let logoPosition: CGFloat
+    /// Map to display
     let mapView = MKMapView()
+    /// Where the map is currently displaying
     var region: RegionDetails
+    /// All available trips from the user
     @ObservedObject var tripLocations: TripLocations
     
     /// Configure map
