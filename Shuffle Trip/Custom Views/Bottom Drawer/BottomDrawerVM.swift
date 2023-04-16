@@ -4,34 +4,50 @@
 import SwiftUI
 
 @MainActor class BottomDrawerVM<Content: DrawerView>: ObservableObject {
+    /// Keeps track of if the drawer is operating in full width or partial width of the screen
     @Published var isShortCard: Bool = false
-    
+    /// A constatnt to determine the drawer's size
     private let defaultCardSize: CGFloat = 500
-    @Published var snapPointsX: [CGFloat] { didSet {
-        if snapPointsX.isEmpty {
-            snapPointsX = [defaultCardSize]
-        }
-    }}
+    /// Sets the horizontal snap points when in short card mode. There will always be one available.
+    @Published var snapPointsX: [CGFloat] {
+        didSet {
+            if snapPointsX.isEmpty {
+                snapPointsX = [defaultCardSize]
+            }
+        }}
+    /// The raw snap points as passed in by other structs and classes. Some may be decimals/fractions for arbitrary measurements, or specific values
     private let rawSnapPointsY: [CGFloat]
+    /// The snap points actually used by the drawer
     @Published var snapPointsY: [CGFloat] {
         didSet {
             if snapPointsY.isEmpty {
                 snapPointsY = [defaultCardSize]
             }
         }}
-    
+    /// Height of the drawer, and horizontal position
     @Published var offset: CGSize
+    /// Cache for the drawer's height in the event it must be temporarily resized
     private var offsetCache: CGFloat = 0
+    /// The previous height of a drag gesture for keeping track of distance/velocity
     private var previousDrag: CGSize = CGSize(width: 0, height: 0)
+    /// How much the background behind the drawer should fade as a percent
     @Published var backgroundFadePercent: Double = 0.0
+    /// How much the body of the drawer should fade as a percent
     @Published var foregroundFadePercent: Double = 0.0
+    /// Keep track if the drawer is supposed to be at full height
     private var isFull: Bool = false
-    
+    /// Content to show on the drawer
     @Published var content: Content
     
+    /// Minimum width of the card when in the thinner mode
     public let minimumShortCardSize: CGFloat = 300
+    /// How much of the map behind the drawer MUST be visible
     public let minimumMapSpace: CGFloat = 200
     
+    /// A drawer that is capable of being dragged around by the user
+    /// - Parameters:
+    ///   - content: Content to display on the drawer (header and body via the DrawerView protocol)
+    ///   - snapPoints: Positions to snap to. Values less than 1 are interpreted as percentages
     init(content: Content, snapPoints: [CGFloat]) {
         let ensuredSnapPoints = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
         self.snapPointsY = snapPoints.isEmpty ? [defaultCardSize] : snapPoints
@@ -76,6 +92,7 @@ import SwiftUI
         }
     }
     
+    /// A one-stop-shop function for determining the background and foreground opacities
     private func SetOpacities() {
         SetBackgroundOpacity()
         SetForegroundOpacity()
@@ -89,6 +106,7 @@ import SwiftUI
         backgroundFadePercent = isShortCard ? 0.0 : (offset.height - maxValue * fadeAtPercent) / (maxValue * (1 - fadeAtPercent))
     }
     
+    /// Determines the foregroup opacity for when the drawer reaches the min height
     private func SetForegroundOpacity() {
         let finishAtPercent: CGFloat = 0.2
         guard let minValue = snapPointsY.min() else { return }
