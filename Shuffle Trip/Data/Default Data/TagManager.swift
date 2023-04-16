@@ -5,9 +5,11 @@ import SwiftUI
 
 /// Allows for simple interaction with the term groups,
 final class TagManager: ObservableObject {
-    @Published private(set) var topicGroups: [TopicGroup]
+    /// Accessor for singleton object
+    public static var shared: TagManager = TagManager()
     
-    public static var shared: TagManager = TagManager()  // Singleton
+    /// All the groups of topics from JSON
+    @Published private(set) var topicGroups: [TopicGroup]
     
     private init() {
         self.topicGroups = []
