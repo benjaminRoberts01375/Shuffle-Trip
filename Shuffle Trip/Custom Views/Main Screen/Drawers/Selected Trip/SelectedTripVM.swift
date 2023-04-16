@@ -5,6 +5,7 @@ import SwiftUI
 
 @MainActor class SelectedTripVM: ObservableObject {
     @ObservedObject var tripLocations: TripLocations
+    @ObservedObject var editingTracker: EditingTrackerM
     @Published var displayPhase: DisplayPhase
     @Published var selectedTrip: TripLocation!
     @Published var disableCloseButton: Bool
@@ -17,6 +18,7 @@ import SwiftUI
     
     init(tripLocations: TripLocations) {
         self.tripLocations = tripLocations
+        self.editingTracker = EditingTrackerM()
         self.displayPhase = .info
         self.disableCloseButton = false
     }

@@ -4,6 +4,7 @@
 import SwiftUI
 
 final class TripInteractionButtonsVM: ObservableObject {
+    @ObservedObject var editingTracker: EditingTrackerM
     /// Prevents the drawer from being closed
     @Published var disableCloseButton: Bool
     /// Prevents the trip from being shuffled
@@ -12,40 +13,39 @@ final class TripInteractionButtonsVM: ObservableObject {
     @Published var tripLocations: TripLocations
     /// Current buttons to show
     @Binding var buttonState: SelectedTripButtonsV.DisplayButtons
-    /// Checks to see if we're currently editing the trip
-    @Published var editMode: Bool
     
     /// Initializer for ConfirmShuffleButtons's view model
     /// - Parameters:
     ///   - tripLocations: Locations of all the trips
     ///   - buttonState: State of the buttons as a binding, passed in by a parent view
-    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>) {
+    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>, editingTracker: EditingTrackerM) {
         self.disableCloseButton = false
         self.preventShuffle = true
         self.tripLocations = tripLocations
         self._buttonState = buttonState
-        self.editMode = true
+        self.editingTracker = editingTracker
     }
     
     /// Check the trip locations to ensure that the activities are properlly setup
     internal func checkActivities() {
         preventShuffle = tripLocations.getSelectedTrip()?.activityLocations.isEmpty ?? true
         if preventShuffle {
-            editMode = true
-            buttonState = .editTrip
-            print("Set to edit mode")
+            editingTracker.isEditingTrip = true
         }
+    }
+    
+    // Check editing status
+    internal func checkEditing() {
+        self.objectWillChange.send()
     }
     
     /// Switches betweene editing and view the current trip
     internal func toggleEditMode() {
         if preventShuffle {
-            editMode = true
-            buttonState = .editTrip
+            editingTracker.isEditingTrip = true
         }
         else {
-            editMode.toggle()
-            buttonState = editMode ? .editTrip : .normal
+            editingTracker.isEditingTrip.toggle()
         }
     }
 }

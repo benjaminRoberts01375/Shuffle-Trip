@@ -6,8 +6,8 @@ import SwiftUI
 struct TripInteractionButtonsV: View {
     @StateObject var controller: TripInteractionButtonsVM
     
-    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>) {
-        self._controller = StateObject(wrappedValue: TripInteractionButtonsVM(tripLocations: tripLocations, buttonState: buttonState))
+    init(tripLocations: TripLocations, buttonState: Binding<SelectedTripButtonsV.DisplayButtons>, editingTracker: EditingTrackerM) {
+        self._controller = StateObject(wrappedValue: TripInteractionButtonsVM(tripLocations: tripLocations, buttonState: buttonState, editingTracker: editingTracker))
     }
     
     var body: some View {
@@ -32,7 +32,7 @@ struct TripInteractionButtonsV: View {
             }, label: {
                 Image(systemName: "gear.circle.fill")
                     .symbolRenderingMode(.hierarchical)
-                    .foregroundColor(controller.editMode ? Color.green : Color.secondary)
+                    .foregroundColor(controller.editingTracker.isEditingTrip ? Color.green : Color.secondary)
                     .font(Font.title.weight(.bold))
                     .disabled(controller.preventShuffle)
                     .opacity(controller.preventShuffle ? 0.5 : 1.0)
@@ -61,6 +61,9 @@ struct TripInteractionButtonsV: View {
         }
         .onReceive(controller.tripLocations.getSelectedTrip()?.objectWillChange ?? TripLocation(coordinate: MapDetails.location2).objectWillChange) { _ in
             controller.checkActivities()
+        }
+        .onReceive(controller.editingTracker.objectWillChange) { _ in
+            controller.checkEditing()
         }
         .onAppear {
             controller.checkActivities()

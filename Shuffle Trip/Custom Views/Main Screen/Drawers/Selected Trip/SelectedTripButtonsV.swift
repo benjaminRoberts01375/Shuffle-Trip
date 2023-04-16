@@ -10,13 +10,15 @@ struct SelectedTripButtonsV: View {
     @State var buttonState: DisplayButtons
     /// Disallow the user to close the current drawer
     @State var disableCloseButton: Bool
+    @ObservedObject var editingTracker: EditingTrackerM
     
     /// The initializer for the selected trip button manager
     /// - Parameter tripLocations: Locations of each trip
-    init(tripLocations: TripLocations) {
+    init(tripLocations: TripLocations, editingTracker: EditingTrackerM) {
         self._disableCloseButton = State(initialValue: false)
         self._buttonState = State(initialValue: .normal)
         self.tripLocations = tripLocations
+        self.editingTracker = editingTracker
     }
     
     /// Available arrangements for button layouts
@@ -25,8 +27,6 @@ struct SelectedTripButtonsV: View {
         case confirmShuffle
         /// Buttons to show before user interaction
         case normal
-        /// Show specific button changes when a trip is being edited
-        case editTrip
     }
     
     var body: some View {
@@ -36,10 +36,11 @@ struct SelectedTripButtonsV: View {
                 tripLocations: tripLocations,
                 buttonState: $buttonState
             )
-        case .normal, .editTrip:                // If showing the normal buttons
+        case .normal:                           // If showing the normal buttons
             TripInteractionButtonsV(                // Show the buttons for potential trip interaction
                 tripLocations: tripLocations,
-                buttonState: $buttonState
+                buttonState: $buttonState,
+                editingTracker: editingTracker
             )
         }
     }

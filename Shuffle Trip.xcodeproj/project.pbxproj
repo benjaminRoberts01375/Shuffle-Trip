@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07095A2529EB8F0900DD22E8 /* EditingTrackerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07095A2429EB8F0900DD22E8 /* EditingTrackerM.swift */; };
 		0715071229C3BD0800AA0959 /* DrawerViewP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0715071129C3BD0800AA0959 /* DrawerViewP.swift */; };
 		0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0725951D29BBCECB00AACAAA /* RegionDetails.swift */; };
 		073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073C5A03299DD82200C65BFD /* HomeDV.swift */; };
@@ -82,6 +83,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		07095A2429EB8F0900DD22E8 /* EditingTrackerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditingTrackerM.swift; sourceTree = "<group>"; };
 		0715071129C3BD0800AA0959 /* DrawerViewP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawerViewP.swift; sourceTree = "<group>"; };
 		0725951D29BBCECB00AACAAA /* RegionDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionDetails.swift; sourceTree = "<group>"; };
 		073C5A03299DD82200C65BFD /* HomeDV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDV.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 		07E3D74529A0BB8F00168218 /* Selected Trip */ = {
 			isa = PBXGroup;
 			children = (
+				07095A2429EB8F0900DD22E8 /* EditingTrackerM.swift */,
 				07E3D74629A0BC0900168218 /* SelectedTripDV.swift */,
 				07E3D74829A0BC2D00168218 /* SelectedTripVM.swift */,
 				077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */,
@@ -713,6 +716,7 @@
 				07B87B7D29EA0B260097EA05 /* TagSelectorVM.swift in Sources */,
 				07F9D05829C95BC700D9791A /* Activity.swift in Sources */,
 				074947C229E522400024630D /* TagDataM.swift in Sources */,
+				07095A2529EB8F0900DD22E8 /* EditingTrackerM.swift in Sources */,
 				07E4F5EA29E8BA92007F2C8D /* SelectedTripContentVM.swift in Sources */,
 				0715071229C3BD0800AA0959 /* DrawerViewP.swift in Sources */,
 				073C5A04299DD82200C65BFD /* HomeDV.swift in Sources */,

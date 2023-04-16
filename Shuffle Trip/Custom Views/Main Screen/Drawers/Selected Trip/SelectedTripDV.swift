@@ -19,7 +19,7 @@ struct SelectedTripDV: DrawerView {
                         TextField("Name of trip", text: $controller.selectedTrip.name)
                             .font(.title2.weight(.bold))
                         Spacer()
-                        SelectedTripButtonsV(tripLocations: controller.tripLocations)
+                        SelectedTripButtonsV(tripLocations: controller.tripLocations, editingTracker: controller.editingTracker)
                     }
                 case .loading:                                                                  // loading screen
                     LoadingTripDV().header
