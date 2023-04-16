@@ -181,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				0715071129C3BD0800AA0959 /* DrawerViewP.swift */,
-				074947B229E500240024630D /* Term Picker */,
 				07E3D74429A0BB8000168218 /* Home */,
 				07E3D74529A0BB8F00168218 /* Selected Trip */,
 			);
@@ -259,13 +258,6 @@
 				07B87B7529E9EA970097EA05 /* Tag Picker */,
 			);
 			path = "Custom Views";
-			sourceTree = "<group>";
-		};
-		074947B229E500240024630D /* Term Picker */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Term Picker";
 			sourceTree = "<group>";
 		};
 		074947C329E52A730024630D /* Trip Configurator */ = {
