@@ -9,6 +9,10 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     var region: RegionDetails
     @ObservedObject var tripLocations: TripLocations
     
+    /// Coordinator for the map, allowing for interaction without freezing
+    /// - Parameters:
+    ///   - region: Where the map is currently displaying
+    ///   - tripLocations: All available trip locations for the user
     init(region: RegionDetails, tripLocations: TripLocations) {
         self.region = region
         self.tripLocations = tripLocations
