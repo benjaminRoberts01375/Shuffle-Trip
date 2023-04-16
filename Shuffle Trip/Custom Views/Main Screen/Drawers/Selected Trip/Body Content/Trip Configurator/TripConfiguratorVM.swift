@@ -7,7 +7,7 @@ final class TripConfiguratorVM: ObservableObject {
     /// Available trip locations
     var tripLocations: TripLocations
     /// The trip location to edit
-    var selectedTrip: TripLocation!
+    @Published var selectedTrip: TripLocation!
     /// Distance presented on the distance slider
     @Published var distanceSlider: Double
     /// Maximum value for distance slider
