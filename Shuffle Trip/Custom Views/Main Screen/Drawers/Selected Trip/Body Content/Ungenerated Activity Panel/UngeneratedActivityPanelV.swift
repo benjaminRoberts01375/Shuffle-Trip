@@ -38,9 +38,6 @@ struct UngeneratedActivityPanelV: View {
                 })
             }
         }
-        .padding()
-        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
-        .cornerRadius(7)
         .onReceive(controller.activity.objectWillChange) {
             controller.generateLabel()
         }

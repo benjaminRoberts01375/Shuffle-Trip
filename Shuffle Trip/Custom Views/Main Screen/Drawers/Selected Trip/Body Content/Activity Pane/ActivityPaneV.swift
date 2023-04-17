@@ -40,7 +40,6 @@ struct ActivityPaneV: View {
                         .multilineTextAlignment(.leading)
                 }
                 .foregroundColor(.primary)
-                .padding(.top, 12)
             })
         }
     }
