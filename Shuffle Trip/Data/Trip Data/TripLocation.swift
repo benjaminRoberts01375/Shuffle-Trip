@@ -12,30 +12,15 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Location of the trip
     var coordinate: CLLocationCoordinate2D
     /// How far fro the location does teh trip span
-    @Published var radius: Double {
-        didSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var radius: Double
     /// Activities to be had at the trip
     @Published var activityLocations: [Activity] {
         didSet {
-            print("Set activityLocations!")
-            objectWillChange.send()
+            self.objectWillChange.send()
         }
     }
     /// User has selected this trip for editing/viewing
-    @Published private(set) var isSelected: Bool {
-        didSet {
-            objectWillChange.send()
-        }
-    }
-    /// Marks the trip as being visible with friends
-    @Published public var isShared: Bool {
-        didSet {
-            objectWillChange.send()
-        }
-    }
+    @Published private(set) var isSelected: Bool
     /// An unique identifier for each trip
     public let id: UUID
     /// ID for polygon
@@ -43,18 +28,13 @@ public class TripLocation: ObservableObject, Identifiable {
     /// Name of the trip to be displayed to the user
     var name: String
     /// Status of the trip being downloaded
-    var status: Status {
-        didSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var status: Status
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
         self.radius = MapDetails.defaultRadius
         self.activityLocations = []
         self.isSelected = true
-        self.isShared = false
         self.id = UUID()
         self.polyID = 0
         self.name = "Your New Trip"
@@ -88,7 +68,9 @@ public class TripLocation: ObservableObject, Identifiable {
                     for i in newActivityLocations.indices {
                         newActivityLocations[i].overwriteAllTags(oldActivity: activityLocations[i])
                     }
-                    self.activityLocations = newActivityLocations
+                    DispatchQueue.main.async {
+                        self.activityLocations = newActivityLocations
+                    }
                     self.status = .successful
                 }
                 else {
