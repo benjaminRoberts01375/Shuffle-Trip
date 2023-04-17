@@ -56,17 +56,21 @@ final class Activity: Decodable, Hashable, ObservableObject {
     /// Adds every tag from a topic
     /// - Parameter topic: Topic to add
     public func selectTopic(topic: Topic) {
+        var idCache: Set<UUID> = tagIDs
         for tag in topic.tags {
-            tagIDs.insert(tag.id)
+            idCache.insert(tag.id)
         }
+        tagIDs = idCache
     }
     
     /// Removes every tag from a topic
     /// - Parameter topic: Topic to remove
     public func deselectTopic(topic: Topic) {
+        var idCache: Set<UUID> = tagIDs
         for tag in topic.tags {
-            tagIDs.remove(tag.id)
+            idCache.remove(tag.id)
         }
+        tagIDs = idCache
     }
     
     /// Overwrites the tag of this activity with another activity's tags
