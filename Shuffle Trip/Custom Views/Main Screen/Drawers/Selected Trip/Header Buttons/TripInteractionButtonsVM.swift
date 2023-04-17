@@ -11,7 +11,7 @@ final class TripInteractionButtonsVM: ObservableObject {
     /// Prevents the trip from being shuffled
     @Published var preventShuffle: Bool
     /// Locations of each trip
-    @Published var tripLocations: TripLocations
+    @ObservedObject var tripLocations: TripLocations
     /// Current buttons to show
     @Binding var buttonState: SelectedTripButtonsV.DisplayButtons
     
@@ -47,7 +47,6 @@ final class TripInteractionButtonsVM: ObservableObject {
             editingTracker.isEditingTrip = true
             return
         }
-        
         preventShuffle = false
     }
     

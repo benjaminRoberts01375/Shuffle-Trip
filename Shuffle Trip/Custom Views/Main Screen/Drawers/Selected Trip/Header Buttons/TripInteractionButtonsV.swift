@@ -59,7 +59,7 @@ struct TripInteractionButtonsV: View {
                 controller.disableCloseButton = false
             }
         }
-        .onReceive(controller.tripLocations.getSelectedTrip()?.objectWillChange ?? TripLocation(coordinate: MapDetails.location2).objectWillChange) { _ in
+        .onReceive(controller.tripLocations.objectWillChange) { _ in
             controller.checkActivities()
         }
         .onReceive(controller.editingTracker.objectWillChange) { _ in
