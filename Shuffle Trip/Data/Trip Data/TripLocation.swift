@@ -14,11 +14,7 @@ public class TripLocation: ObservableObject, Identifiable {
     /// How far fro the location does teh trip span
     @Published var radius: Double
     /// Activities to be had at the trip
-    @Published var activityLocations: [Activity] {
-        didSet {
-            self.objectWillChange.send()
-        }
-    }
+    @Published var activityLocations: [Activity]
     /// User has selected this trip for editing/viewing
     @Published private(set) var isSelected: Bool
     /// An unique identifier for each trip
@@ -70,8 +66,8 @@ public class TripLocation: ObservableObject, Identifiable {
                     }
                     DispatchQueue.main.async {
                         self.activityLocations = newActivityLocations
+                        self.status = .successful
                     }
-                    self.status = .successful
                 }
                 else {
                     self.status = .error
