@@ -11,8 +11,8 @@ struct ActivityPaneV: View {
     /// - Parameters:
     ///   - activity: Activity to display information for
     ///   - index: Index of the activity within the trip
-    init(activity: Activity, index: Int) {
-        self._controller = StateObject(wrappedValue: ActivityPaneVM(activity: activity, index: index))
+    init(activity: Activity, tripLocations: TripLocations) {
+        self._controller = StateObject(wrappedValue: ActivityPaneVM(activity: activity, tripLocations: tripLocations))
     }
     
     var body: some View {
@@ -41,6 +41,9 @@ struct ActivityPaneV: View {
                 }
                 .foregroundColor(.primary)
             })
+        }
+        .onReceive(controller.tripLocations.objectWillChange) {
+            controller.generateIndex()
         }
     }
     
