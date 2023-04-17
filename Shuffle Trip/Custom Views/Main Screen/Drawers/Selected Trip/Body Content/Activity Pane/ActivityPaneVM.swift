@@ -24,6 +24,6 @@ final class ActivityPaneVM: ObservableObject {
     /// Determines the index of the activity within the selected trip
     public func generateIndex() {
         guard let selectedTrip = tripLocations.getSelectedTrip() else { return }
-        self.index = selectedTrip.activityLocations.firstIndex(of: activity) ?? 0
+        self.index = (selectedTrip.activityLocations.firstIndex(of: activity) ?? 0) + 1
     }
 }
