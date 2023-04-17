@@ -75,27 +75,35 @@ struct ActivityPaneV: View {
                 Spacer()
                 Spacer()
                 BigButton(                                  // Look around button
-                    action: {  },
+                    action: {
+                        print("Look around")
+                    },
                     image: Image(systemName: "binoculars.fill"),
                     label: "Look Around",
                     highlighted: false
                 )
                 BigButton(                                  // Navigate button
-                    action: {  },
+                    action: {
+                        print("Open maps app")
+                    },
                     image: Image(systemName: "map.fill"),
                     label: "Navigate",
                     highlighted: true
                 )
                 Spacer()
                 BigButton(                                  // Shuffle activity button
-                    action: {  },
+                    action: {
+                        print("Shuffle activity")
+                    },
                     image: Image(systemName: "shuffle"),
                     label: "Shuffle",
                     highlighted: false
                 )
                 Spacer()
                 BigButton(                                  // Remove activity button
-                    action: {  },
+                    action: {
+                        print("Remove activity")
+                    },
                     image: Image(systemName: "trash.fill"),
                     label: "Remove",
                     highlighted: false
