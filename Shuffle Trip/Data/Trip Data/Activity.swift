@@ -24,7 +24,11 @@ public class Activity: Decodable, Hashable, ObservableObject {
     /// Unique ID of the activity
     let id = UUID()
     /// Tags that determine what can go into this trip
-    @Published private(set) var tagIDs: Set<UUID> = []
+    @Published private(set) var tagIDs: Set<UUID> = [] {
+        didSet {
+            self.objectWillChange.send()
+        }
+    }
     
     enum CodingKeys: String, CodingKey {
         case businesses

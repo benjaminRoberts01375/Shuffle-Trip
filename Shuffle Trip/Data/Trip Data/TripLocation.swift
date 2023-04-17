@@ -1,6 +1,7 @@
 // Feb 12, 2022
 // Ben Roberts
 
+import Combine
 import MapKit
 import SwiftUI
 #if canImport(FoundationNetworking)
@@ -14,7 +15,11 @@ public class TripLocation: ObservableObject, Identifiable {
     /// How far fro the location does teh trip span
     @Published var radius: Double
     /// Activities to be had at the trip
-    @Published var activityLocations: [Activity]
+    @Published private(set) var activityLocations: [Activity] {
+        didSet {
+            self.objectWillChange.send()
+        }
+    }
     /// User has selected this trip for editing/viewing
     @Published private(set) var isSelected: Bool
     /// An unique identifier for each trip
@@ -25,6 +30,8 @@ public class TripLocation: ObservableObject, Identifiable {
     var name: String
     /// Status of the trip being downloaded
     @Published var status: Status
+    /// For dealing with observers
+    private var cancellables: Set<AnyCancellable>
     
     init(coordinate: CLLocationCoordinate2D) {
         self.coordinate = coordinate
@@ -35,6 +42,7 @@ public class TripLocation: ObservableObject, Identifiable {
         self.polyID = 0
         self.name = "Your New Trip"
         self.status = .unknown
+        self.cancellables = []
     }
     
     func selectTrip(_ selected: Bool) {
@@ -46,6 +54,27 @@ public class TripLocation: ObservableObject, Identifiable {
         case generating
         case successful
         case error
+    }
+    
+    /// Handles inserting an activity to the list of activities, as well as configuring the state changes
+    /// - Parameters:
+    ///   - activity: Activity to add
+    ///   - index: Index to add it to
+    public func insertActivity(activity: Activity, at index: Int = -1) {
+        let insertIndex = index == -1 ? activityLocations.count : index
+        activityLocations.insert(activity, at: insertIndex)
+        activity.objectWillChange.sink { _ in
+            DispatchQueue.main.async {
+                self.objectWillChange.send()
+            }
+        }
+        .store(in: &cancellables)
+    }
+    
+    /// Removes a specified activity from the trip
+    /// - Parameter activity: Activity to remove
+    public func removeActivity(activity: Activity) {
+        activityLocations.removeAll(where: { $0.id == activity.id })
     }
     
     /// Generates activities based on user selection

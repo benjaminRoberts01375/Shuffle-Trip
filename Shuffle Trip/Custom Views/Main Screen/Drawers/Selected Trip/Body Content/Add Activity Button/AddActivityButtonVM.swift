@@ -19,6 +19,7 @@ final class AddActivityButtomVM: ObservableObject {
     
     /// Adds an activity to trip locations based on the index of the button
     internal func addActivity() {
-        tripLocations.getSelectedTrip()!.activityLocations.insert(Activity(), at: index)
+        guard let selectedTrip = tripLocations.getSelectedTrip() else { return }
+        selectedTrip.insertActivity(activity: Activity(), at: index)
     }
 }
