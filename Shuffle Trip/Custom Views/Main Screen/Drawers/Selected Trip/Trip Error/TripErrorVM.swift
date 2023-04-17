@@ -19,7 +19,6 @@ import SwiftUI
         }
     }
     
-    
     /// Handles reshuffling the current trip
     internal func reshuffleTrip() {
         for trip in tripLocations.tripLocations where trip.isSelected {
