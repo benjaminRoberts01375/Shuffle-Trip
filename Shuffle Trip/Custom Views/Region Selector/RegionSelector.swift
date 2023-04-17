@@ -96,8 +96,11 @@ struct RegionSelector: UIViewRepresentable {
             for activity in trip.activityLocations {
                 index += 1
                 let annotation = MKPointAnnotation()
-                annotation.coordinate = CLLocationCoordinate2D(latitude: activity.businesses?[0].coordinates.latitude ?? MapDetails.location1.latitude, longitude: activity.businesses?[0].coordinates.longitude ?? MapDetails.location1.longitude)
-                annotation.title = "\(activity.businesses?[0].name ?? "")"
+                guard let latitude = activity.businesses?[0].coordinates.latitude,
+                      let longitude = activity.businesses?[0].coordinates.longitude,
+                      let title = activity.businesses?[0].name else { continue }
+                annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+                annotation.title = title
                 mapView.addAnnotation(annotation)
             }
         }
