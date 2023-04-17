@@ -3,7 +3,7 @@
 
 import SwiftUI
 
-final class Activity: Decodable, Hashable, ObservableObject {
+public class Activity: Decodable, Hashable, ObservableObject {
     
     /// Allows for comparing two Activities
     /// - Parameters:

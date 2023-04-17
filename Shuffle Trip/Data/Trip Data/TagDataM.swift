@@ -19,7 +19,7 @@ struct TopicGroup: Decodable, Hashable {
     }
 }
 
-struct Topic: Decodable, Equatable {
+public struct Topic: Decodable, Equatable {
     let symbol: String
     let name: String
     let tags: [Tag]
