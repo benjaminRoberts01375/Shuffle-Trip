@@ -37,7 +37,7 @@ struct UngeneratedActivityPanelV: View {
                         .font(Font.title.weight(.bold))
                 })
                 Button(action: {
-                    print("Delete")
+                    controller.deleteActivity()
                 }, label: {
                     Image(systemName: "trash.circle.fill")
                         .symbolRenderingMode(.hierarchical)

@@ -54,4 +54,9 @@ final class UngeneratedActivityPaneVM: ObservableObject {
     internal func shuffleActivity() {
         tripLocations.locateActivityTrip(activity: activity)?.shuffleActivity(activity: activity)
     }
+    
+    /// Removes an activity
+    internal func deleteActivity() {
+        tripLocations.locateActivityTrip(activity: activity)?.removeActivity(activity: activity)
+    }
 }
