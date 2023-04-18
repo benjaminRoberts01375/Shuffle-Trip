@@ -23,7 +23,6 @@ struct SelectedTripContentV: View {
                         .padding(.top)
                     
                     AddActivityButtonV(tripLocations: controller.tripLocations, activity: nil)
-                        .padding(.vertical)
                         .shadow(color: .black.opacity(0.1), radius: 20)
                 }
                 
