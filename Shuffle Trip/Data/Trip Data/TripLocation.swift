@@ -79,27 +79,27 @@ public class TripLocation: ObservableObject, Identifiable {
     
     /// Generates activities based on user selection
     private func generateActivities() {
-        let params: [[String]] = generateParamList()
+        let params: [[String]] = generateParamList()                                                                                                                // Generate parameters
         print("Params: \(params)")
         
         // Encode the TripRequest instance into JSON data
-        status = .generating
-        let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: Int(3))
-        Task {
-            do {
-                let newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)
+        status = .generating                                                                                                                                        // Mark the trip as being generated
+        let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: params.count)      // Move details of request into TripRequest
+        Task {                                                                                                                                                      // With async...
+            do {                                                                                                                                                        // ...do...
+                let newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)                        // ...Make the request for all activities
                 print("New activities count: \(newActivityLocations.count), activities count: \(activityLocations.count)")
-                if newActivityLocations.count == activityLocations.count {
-                    for i in newActivityLocations.indices {
-                        newActivityLocations[i].overwriteAllTags(oldActivity: activityLocations[i])
+                if newActivityLocations.count == activityLocations.count {                                                                                              // Ensure the correct number of responses
+                    for i in newActivityLocations.indices {                                                                                                                 // For each response
+                        newActivityLocations[i].overwriteAllTags(oldActivity: activityLocations[i])                                                                             // Overwrite the previous activity
                     }
                     DispatchQueue.main.async {
-                        self.activityLocations = newActivityLocations
-                        self.status = .successful
+                        self.activityLocations = newActivityLocations                                                                                                       // Save the activities
+                        self.status = .successful                                                                                                                           // Mark trip as successfully generated
                     }
                 }
                 else {
-                    self.status = .error
+                    self.status = .error                                                                                                                                // Otherwise there's an issu
                 }
             }
         }
