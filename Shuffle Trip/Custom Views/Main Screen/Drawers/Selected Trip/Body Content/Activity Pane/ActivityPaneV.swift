@@ -32,7 +32,8 @@ struct ActivityPaneV: View {
                 BigButtonList(
                     openMapsAction: { controller.openMaps() },
                     shuffleAction: { controller.shuffleActivity() },
-                    removeActivityAction: { controller.removeActivity() }
+                    removeActivityAction: { controller.removeActivity() },
+                    allowShuffle: $controller.allowShuffle
                 )  // Large buttons for almost any activity
                 if controller.lookAroundPossible {
                     LookAroundV(location: $controller.lookAroundLocation, showLookAroundView: $controller.showLookAround)
@@ -53,6 +54,7 @@ struct ActivityPaneV: View {
         }
         .onReceive(controller.tripLocations.objectWillChange) {
             controller.generateIndex()
+            controller.checkValidActivity()
             controller.checkLookAround()
         }
     }
@@ -62,6 +64,7 @@ struct ActivityPaneV: View {
         var image: Image
         var label: String
         var highlighted: Bool
+        @Binding var enabled: Bool
         
         var body: some View {
             Button(action: {
@@ -86,6 +89,7 @@ struct ActivityPaneV: View {
         var openMapsAction: () -> Void
         var shuffleAction: () -> Void
         var removeActivityAction: () -> Void
+        @Binding var allowShuffle: Bool
         
         var body: some View {
             HStack {
@@ -95,21 +99,24 @@ struct ActivityPaneV: View {
                     action: openMapsAction,
                     image: Image(systemName: "map.fill"),
                     label: "Navigate",
-                    highlighted: true
+                    highlighted: true,
+                    enabled: .constant(true)
                 )
                 Spacer()
                 BigButton(                                  // Shuffle activity button
                     action: shuffleAction,
                     image: Image(systemName: "shuffle"),
                     label: "Shuffle",
-                    highlighted: false
+                    highlighted: false,
+                    enabled: $allowShuffle
                 )
                 Spacer()
                 BigButton(                                  // Remove activity button
                     action: removeActivityAction,
                     image: Image(systemName: "trash.fill"),
                     label: "Remove",
-                    highlighted: false
+                    highlighted: false,
+                    enabled: .constant(true)
                 )
                 Spacer()
                 Spacer()

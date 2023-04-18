@@ -17,6 +17,8 @@ final class ActivityPaneVM: ObservableObject {
     @Published var showLookAround: Bool
     /// Location of the look around experience
     @Published var lookAroundLocation: CLLocationCoordinate2D
+    /// Determines if the user is allowed to shuffle this activity
+    @Published var allowShuffle: Bool
     
     /// Init function for the Activity Pane view model
     /// - Parameters:
@@ -28,6 +30,7 @@ final class ActivityPaneVM: ObservableObject {
         self.index = 0
         self.lookAroundPossible = false
         self.showLookAround = false
+        self.allowShuffle = false
         self.lookAroundLocation = MapDetails.location1
         checkLookAround()
     }
@@ -102,5 +105,12 @@ final class ActivityPaneVM: ObservableObject {
                 }
             }
         }
+    }
+    
+    public func checkValidActivity() {
+        if activity.tagIDs.isEmpty {
+            allowShuffle = false
+        }
+        allowShuffle = true
     }
 }
