@@ -85,6 +85,8 @@ struct ActivityPaneV: View {
                 .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
                 .cornerRadius(10)
             })
+            .disabled(!enabled)
+            .opacity(enabled ? 1 : 0.5)
         }
     }
     

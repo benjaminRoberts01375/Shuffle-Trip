@@ -113,6 +113,7 @@ final class ActivityPaneVM: ObservableObject {
     public func checkValidActivity() {
         if activity.tagIDs.isEmpty {
             allowShuffle = false
+            return
         }
         allowShuffle = true
     }
