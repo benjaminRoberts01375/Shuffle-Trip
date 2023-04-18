@@ -119,6 +119,7 @@
 		077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripButtonsV.swift; sourceTree = "<group>"; };
 		07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsVM.swift; sourceTree = "<group>"; };
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
+		0785AA2729EF2B7C00854B96 /* Shuffle TripRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shuffle TripRelease.entitlements"; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		07402D572980816E00F1F046 /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
+				0785AA2729EF2B7C00854B96 /* Shuffle TripRelease.entitlements */,
 				07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */,
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
 				07402D822980832C00F1F046 /* Custom Views */,
@@ -941,10 +943,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shuffle Trip/Shuffle TripRelease.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shuffle Trip/Preview Content\"";
-				DEVELOPMENT_TEAM = 6US573XH9R;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Shuffle-Trip-Info.plist";
@@ -963,8 +967,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Shuffle-Trip.Shuffle-Trip";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.BenRoberts.Shuffle-Trip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
