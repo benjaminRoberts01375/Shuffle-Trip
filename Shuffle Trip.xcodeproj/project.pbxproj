@@ -318,6 +318,7 @@
 		077C16EF2988B84F005993A8 /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
+				07FEB23D29EE26730034ED50 /* Login Screen */,
 				07F71A3A29808788007C7AE6 /* ContentView.swift */,
 				07C0D2CD299DDF7A00E001A8 /* ContentViewModel.swift */,
 				073C5A02299DD81400C65BFD /* Drawers */,
@@ -440,6 +441,13 @@
 				07F9D05A29C95CA200D9791A /* ActivityPaneVM.swift */,
 			);
 			path = "Activity Pane";
+			sourceTree = "<group>";
+		};
+		07FEB23D29EE26730034ED50 /* Login Screen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Login Screen";
 			sourceTree = "<group>";
 		};
 		2CBE24606A46710E87293517 /* Frameworks */ = {
