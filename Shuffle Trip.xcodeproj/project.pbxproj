@@ -38,6 +38,7 @@
 		07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */; };
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
+		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
 		07B87B7929E9EABF0097EA05 /* TagNavigatorV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7829E9EABF0097EA05 /* TagNavigatorV.swift */; };
 		07B87B7B29EA0A110097EA05 /* TagSelectorV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7A29EA0A110097EA05 /* TagSelectorV.swift */; };
@@ -119,6 +120,7 @@
 		07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsVM.swift; sourceTree = "<group>"; };
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
+		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
 		07B87B7829E9EABF0097EA05 /* TagNavigatorV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorV.swift; sourceTree = "<group>"; };
 		07B87B7A29EA0A110097EA05 /* TagSelectorV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagSelectorV.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 				075C8FF62982109400BA3D12 /* Search Bar */,
 				07F71A432980EABD007C7AE6 /* Region Selector */,
 				07402D852980837A00F1F046 /* Blur.swift */,
+				07B5C03D29EE5803003BE480 /* LookAroundV.swift */,
 				07B87B7529E9EA970097EA05 /* Tag Picker */,
 			);
 			path = "Custom Views";
@@ -723,6 +726,7 @@
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
 				07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */,
 				07B87B7929E9EABF0097EA05 /* TagNavigatorV.swift in Sources */,
+				07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */,
 				07095A2C29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift in Sources */,
 				0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */,
 				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
