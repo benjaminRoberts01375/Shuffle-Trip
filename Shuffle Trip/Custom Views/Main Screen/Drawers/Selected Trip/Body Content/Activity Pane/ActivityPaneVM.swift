@@ -31,4 +31,9 @@ final class ActivityPaneVM: ObservableObject {
     public func removeActivity() {
         tripLocations.locateActivityTrip(activity: activity)?.removeActivity(activity: activity)
     }
+    
+    /// Shuffles a specific activity
+    public func shuffleActivity() {
+        tripLocations.locateActivityTrip(activity: activity)?.shuffleActivity(activity: activity)
+    }
 }
