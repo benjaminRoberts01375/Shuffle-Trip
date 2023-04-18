@@ -26,4 +26,9 @@ final class ActivityPaneVM: ObservableObject {
         guard let selectedTrip = tripLocations.getSelectedTrip() else { return }
         self.index = (selectedTrip.activityLocations.firstIndex(of: activity) ?? 0) + 1
     }
+    
+    /// Removes an activity from the tripLocations
+    public func removeActivity() {
+        tripLocations.locateActivityTrip(activity: activity)?.removeActivity(activity: activity)
+    }
 }
