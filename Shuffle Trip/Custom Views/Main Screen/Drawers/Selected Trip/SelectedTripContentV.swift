@@ -22,7 +22,7 @@ struct SelectedTripContentV: View {
                         .cornerRadius(7)
                         .padding(.top)
                     
-                    AddActivityButtonV(tripLocations: controller.tripLocations, index: 0)
+                    AddActivityButtonV(tripLocations: controller.tripLocations, activity: nil)
                         .padding(.vertical)
                         .shadow(color: .black.opacity(0.1), radius: 20)
                 }
@@ -44,7 +44,7 @@ struct SelectedTripContentV: View {
                     }
                     
                     if controller.editingTracker.isEditingTrip {
-                        AddActivityButtonV(tripLocations: controller.tripLocations, index: (controller.tripLocations.getSelectedTrip()?.activityLocations.firstIndex(of: activity) ?? 0) + 1)
+                        AddActivityButtonV(tripLocations: controller.tripLocations, activity: activity)
                     }
                 }
             }

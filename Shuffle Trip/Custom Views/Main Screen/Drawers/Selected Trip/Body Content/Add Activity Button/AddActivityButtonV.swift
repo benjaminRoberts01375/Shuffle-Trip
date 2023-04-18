@@ -5,8 +5,8 @@ import SwiftUI
 
 struct AddActivityButtonV: View {
     @StateObject var controller: AddActivityButtomVM
-    init(tripLocations: TripLocations, index: Int) {
-        self._controller = StateObject(wrappedValue: AddActivityButtomVM(tripLocations: tripLocations, index: index))
+    init(tripLocations: TripLocations, activity: Activity?) {
+        self._controller = StateObject(wrappedValue: AddActivityButtomVM(tripLocations: tripLocations, activity: activity))
     }
     
     var body: some View {
@@ -24,14 +24,11 @@ struct AddActivityButtonV: View {
             .background(.quaternary)
             .cornerRadius(10)
         })
+        .onReceive(controller.tripLocations.objectWillChange) { _ in
+            controller.calculateIndex()
+        }
         .sheet(isPresented: $controller.tagSelectorEnabled) {
             TagNavigatorV(activity: controller.tripLocations.getSelectedTrip()?.activityLocations[controller.index] ?? Activity())
         }
-    }
-}
-
-struct AddActivityButtonV_Previews: PreviewProvider {
-    static var previews: some View {
-        AddActivityButtonV(tripLocations: TripLocations(), index: 0)
     }
 }
