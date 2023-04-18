@@ -19,6 +19,8 @@ final class ActivityPaneVM: ObservableObject {
     @Published var lookAroundLocation: CLLocationCoordinate2D
     /// Determines if the user is allowed to shuffle this activity
     @Published var allowShuffle: Bool
+    /// Determines if the tag picker sheet is shown
+    @Published var showTagSelector: Bool
     
     /// Init function for the Activity Pane view model
     /// - Parameters:
@@ -31,6 +33,7 @@ final class ActivityPaneVM: ObservableObject {
         self.lookAroundPossible = false
         self.showLookAround = false
         self.allowShuffle = false
+        self.showTagSelector = false
         self.lookAroundLocation = MapDetails.location1
         checkLookAround()
     }

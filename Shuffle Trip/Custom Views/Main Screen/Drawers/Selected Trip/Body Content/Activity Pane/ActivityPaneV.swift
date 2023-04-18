@@ -32,6 +32,7 @@ struct ActivityPaneV: View {
                 BigButtonList(
                     openMapsAction: { controller.openMaps() },
                     shuffleAction: { controller.shuffleActivity() },
+                    editTagsAction: { controller.showTagSelector = true },
                     removeActivityAction: { controller.removeActivity() },
                     allowShuffle: $controller.allowShuffle
                 )  // Large buttons for almost any activity
@@ -51,6 +52,9 @@ struct ActivityPaneV: View {
                 }
                 .foregroundColor(.primary)
             })
+        }
+        .sheet(isPresented: $controller.showTagSelector) {
+            TagNavigatorV(activity: controller.activity)
         }
         .onReceive(controller.tripLocations.objectWillChange) {
             controller.generateIndex()
@@ -76,7 +80,7 @@ struct ActivityPaneV: View {
                     Text(label)
                         .font(.caption2)
                 }
-                .frame(width: 80, height: 55)
+                .frame(width: 65, height: 55)
                 .foregroundColor(highlighted ? .white : .blue)
                 .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
                 .cornerRadius(10)
@@ -88,6 +92,7 @@ struct ActivityPaneV: View {
     struct BigButtonList: View {
         var openMapsAction: () -> Void
         var shuffleAction: () -> Void
+        var editTagsAction: () -> Void
         var removeActivityAction: () -> Void
         @Binding var allowShuffle: Bool
         
@@ -111,6 +116,13 @@ struct ActivityPaneV: View {
                     enabled: $allowShuffle
                 )
                 Spacer()
+                BigButton(
+                    action: editTagsAction,
+                    image: Image(systemName: "tag.fill"),
+                    label: "Edit tags",
+                    highlighted: false,
+                    enabled: .constant(true)
+                )
                 BigButton(                                  // Remove activity button
                     action: removeActivityAction,
                     image: Image(systemName: "trash.fill"),
