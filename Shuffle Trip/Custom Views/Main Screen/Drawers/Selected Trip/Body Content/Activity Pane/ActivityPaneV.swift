@@ -29,7 +29,12 @@ struct ActivityPaneV: View {
                     Spacer()
                 }
                 Divider()
-                BigButtonList(lookAroundAction: { print("look around") }, openMapsAction: { print("open maps") }, shuffleAction: { print("Shuffle activity") }, removeActivityAction: { print("remove") })                                                     // Large buttons for almost any activity
+                BigButtonList(
+                    lookAroundAction: { print("look around") },
+                    openMapsAction: { print("open maps") },
+                    shuffleAction: { controller.shuffleActivity() },
+                    removeActivityAction: { controller.removeActivity() }
+                )  // Large buttons for almost any activity
                 Divider()
                     .padding(.top, 18)
             }, label: {
