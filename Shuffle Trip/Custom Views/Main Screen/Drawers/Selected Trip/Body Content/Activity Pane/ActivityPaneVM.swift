@@ -12,6 +12,12 @@ final class ActivityPaneVM: ObservableObject {
     /// Trip locations for the current user
     @ObservedObject var tripLocations: TripLocations
     
+    @Published var lookAroundPossible: Bool
+    
+    @Published var showLookAround: Bool
+    
+    @Published var lookAroundLocation: CLLocationCoordinate2D
+    
     /// Init function for the Activity Pane view model
     /// - Parameters:
     ///   - activity: Activity to display
@@ -20,6 +26,10 @@ final class ActivityPaneVM: ObservableObject {
         self.activity = activity
         self.tripLocations = tripLocations
         self.index = 0
+        self.lookAroundPossible = false
+        self.showLookAround = false
+        self.lookAroundLocation = MapDetails.location1
+        checkLookAround()
     }
     
     /// Determines the index of the activity within the selected trip
@@ -44,7 +54,7 @@ final class ActivityPaneVM: ObservableObject {
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(activityDetails.location.displayAddress.joined(separator: ", ")) { placemarks, error in   // Turn the display address into a set of coordinates. Had issues with longitude/latitude
-            if let error = error {
+            if error != nil {
                 print("Not able to geocode address")
                 return
             }
@@ -54,6 +64,43 @@ final class ActivityPaneVM: ObservableObject {
             destination.phoneNumber = activityDetails.phone                                                                     // Set the phone number
             let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]                        // Use user default directions
             MKMapItem.openMaps(with: [destination], launchOptions: launchOptions)                                               // Open maps with directions
+        }
+    }
+    
+    public func openLookAround() {
+        guard let activityDetails = activity.businesses?[0] else { return }
+        
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(activityDetails.location.displayAddress.joined(separator: ", ")) { placemarks, error in   // Turn the display address into a set of coordinates. Had issues with longitude/latitude
+            if error != nil {
+                print("Not able to geocode address")
+                return
+            }
+            guard let placemark = placemarks?.first,
+                  let location = placemark.location?.coordinate
+            else { return }
+            self.lookAroundLocation = location
+            
+        }
+        showLookAround = true
+    }
+    
+    public func checkLookAround() {
+        guard let location = tripLocations.locateActivityTrip(activity: activity)?.coordinate else { return }
+        Task {
+            do {
+                let possible = await LookAroundV.lookAroundPossible(location: location)
+                DispatchQueue.main.async {
+                    self.lookAroundPossible = possible
+                    if possible {
+                        guard let location = self.tripLocations.locateActivityTrip(activity: self.activity)?.coordinate else { return }
+                        print("Old loc:   \(self.lookAroundLocation.latitude), \(self.lookAroundLocation.longitude)")
+                        self.lookAroundLocation = location
+                        print("New loc:   \(self.lookAroundLocation.latitude), \(self.lookAroundLocation.longitude)")
+                        print("Should be: \(location.latitude), \(location.longitude)")
+                    }
+                }
+            }
         }
     }
 }
