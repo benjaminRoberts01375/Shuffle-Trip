@@ -18,12 +18,13 @@ struct SelectedTripContentV: View {
                 if controller.editingTracker.isEditingTrip {
                     TripConfiguratorV(tripLocations: controller.tripLocations)
                         .padding(3)
-                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0.5))
+                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
                         .cornerRadius(7)
+                        .shadow(color: .secondary.opacity(0.15), radius: 20)
                         .padding(.top)
                     
                     AddActivityButtonV(tripLocations: controller.tripLocations, activity: nil)
-                        .shadow(color: .black.opacity(0.1), radius: 20)
+                        .shadow(color: .secondary.opacity(0.15), radius: 20)
                 }
                 
                 ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations ?? [], id: \.id) { activity in
@@ -32,14 +33,14 @@ struct SelectedTripContentV: View {
                             .padding(6)
                             .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
                             .cornerRadius(7)
-                            .shadow(color: .black.opacity(0.1), radius: 20)
+                            .shadow(color: .secondary.opacity(0.15), radius: 20)
                     }
                     else {
                         UngeneratedActivityPanelV(tripLocations: controller.tripLocations, activity: activity, editingTracker: controller.editingTracker)
                             .padding(6)
                             .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
                             .cornerRadius(7)
-                            .shadow(color: .black.opacity(0.1), radius: 20)
+                            .shadow(color: .secondary.opacity(0.15), radius: 20)
                     }
                     
                     if controller.editingTracker.isEditingTrip {
