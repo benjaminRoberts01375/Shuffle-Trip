@@ -50,7 +50,7 @@ final class TripInteractionButtonsVM: ObservableObject {
         preventShuffle = false
     }
     
-    // Check editing status
+    /// Check editing status
     internal func checkEditing() {
         self.objectWillChange.send()
     }
