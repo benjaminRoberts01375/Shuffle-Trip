@@ -36,7 +36,7 @@ struct SelectedTripContentV: View {
                             .shadow(color: .black.opacity(0.1), radius: 20)
                     }
                     else {
-                        UngeneratedActivityPanelV(activity: activity, editingTracker: controller.editingTracker)
+                        UngeneratedActivityPanelV(tripLocations: controller.tripLocations, activity: activity, editingTracker: controller.editingTracker)
                             .padding(6)
                             .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
                             .cornerRadius(7)

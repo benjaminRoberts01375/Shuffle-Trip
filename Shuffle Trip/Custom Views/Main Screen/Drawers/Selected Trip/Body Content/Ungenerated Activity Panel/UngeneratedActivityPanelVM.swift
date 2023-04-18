@@ -12,12 +12,15 @@ final class UngeneratedActivityPaneVM: ObservableObject {
     @Published var label: String
     /// Tracks the current status of editing a trip
     @ObservedObject var editingTracker: EditingTrackerM
+    /// Trip locations specified by the user
+    @ObservedObject var tripLocations: TripLocations
     
-    init(activity: Activity, editingTracker: EditingTrackerM) {
+    init(tripLocations: TripLocations, activity: Activity, editingTracker: EditingTrackerM) {
         self.activity = activity
         self.showTagPicker = false
         self.label = ""
         self.editingTracker = editingTracker
+        self.tripLocations = tripLocations
         generateLabel()
     }
     

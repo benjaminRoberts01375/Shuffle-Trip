@@ -6,8 +6,8 @@ import SwiftUI
 struct UngeneratedActivityPanelV: View {
     @StateObject var controller: UngeneratedActivityPaneVM
     
-    init(activity: Activity, editingTracker: EditingTrackerM) {
-        self._controller = StateObject(wrappedValue: UngeneratedActivityPaneVM(activity: activity, editingTracker: editingTracker))
+    init(tripLocations: TripLocations, activity: Activity, editingTracker: EditingTrackerM) {
+        self._controller = StateObject(wrappedValue: UngeneratedActivityPaneVM(tripLocations: tripLocations, activity: activity, editingTracker: editingTracker))
     }
     
     var body: some View {
@@ -20,6 +20,13 @@ struct UngeneratedActivityPanelV: View {
             }
             Spacer()
             if controller.editingTracker.isEditingTrip {
+                Button(action: {
+                }, label: {
+                    Image(systemName: "shuffle.circle.fill")
+                        .symbolRenderingMode(.hierarchical)
+                        .foregroundColor(Color(UIColor.systemBlue))
+                        .font(Font.title.weight(.bold))
+                })
                 Button(action: {
                     controller.showTagPicker = true
                 }, label: {
