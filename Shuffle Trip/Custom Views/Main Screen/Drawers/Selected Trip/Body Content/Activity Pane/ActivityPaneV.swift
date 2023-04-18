@@ -31,7 +31,7 @@ struct ActivityPaneV: View {
                 Divider()
                 BigButtonList(
                     lookAroundAction: { print("look around") },
-                    openMapsAction: { print("open maps") },
+                    openMapsAction: { controller.openMaps() },
                     shuffleAction: { controller.shuffleActivity() },
                     removeActivityAction: { controller.removeActivity() }
                 )  // Large buttons for almost any activity
