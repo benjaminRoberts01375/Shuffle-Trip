@@ -11,11 +11,11 @@ final class ActivityPaneVM: ObservableObject {
     @Published var index: Int
     /// Trip locations for the current user
     @ObservedObject var tripLocations: TripLocations
-    
+    /// Determines if it's possible to show look around at the location
     @Published var lookAroundPossible: Bool
-    
+    /// Tracks if the look around experience is currently open
     @Published var showLookAround: Bool
-    
+    /// Location of the look around experience
     @Published var lookAroundLocation: CLLocationCoordinate2D
     
     /// Init function for the Activity Pane view model
