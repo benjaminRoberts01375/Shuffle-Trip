@@ -52,8 +52,6 @@ final class UngeneratedActivityPaneVM: ObservableObject {
     
     /// Logic for shuffling an activity
     internal func shuffleActivity() {
-//        guard let tripLocation = tripLocations.locateActivityTrip(activity: activity) else { return }
-//        tripLocation.shuffleActivity(activity: activity)
         tripLocations.locateActivityTrip(activity: activity)?.shuffleActivity(activity: activity)
     }
 }
