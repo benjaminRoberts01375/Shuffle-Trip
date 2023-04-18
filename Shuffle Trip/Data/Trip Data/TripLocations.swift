@@ -82,4 +82,17 @@ final class TripLocations: ObservableObject, Equatable {
     public func getSelectedTrip() -> TripLocation? {
         return tripLocations.first(where: { $0.isSelected })
     }
+    
+    /// Provides the parent trip for an activity
+    /// - Parameter query: Activity to search for
+    /// - Returns: The parent trip location if found
+    public func locateActivityTrip(activity query: Activity) -> TripLocation? {
+        for trip in tripLocations {
+            for activity in trip.activityLocations where activity == query {
+                print("Found trip/activity")
+                return trip
+            }
+        }
+        return nil
+    }
 }
