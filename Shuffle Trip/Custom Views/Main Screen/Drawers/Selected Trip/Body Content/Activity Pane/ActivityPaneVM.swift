@@ -73,48 +73,45 @@ final class ActivityPaneVM: ObservableObject {
         }
     }
     
+    /// Opens the look around experience at a given location
     public func openLookAround() {
         guard let activityDetails = activity.businesses?[0] else { return }
         
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString(activityDetails.location.displayAddress.joined(separator: ", ")) { placemarks, error in   // Turn the display address into a set of coordinates. Had issues with longitude/latitude
-            if error != nil {
-                print("Not able to geocode address")
-                return
+            if error != nil {                                                                                                       // If not able to generate a placemark...
+                return                                                                                                                  // Don't do anything
             }
-            guard let placemark = placemarks?.first,
-                  let location = placemark.location?.coordinate
-            else { return }
-            self.lookAroundLocation = location
-            
+            guard let placemark = placemarks?.first,                                                                                // Get the first placemark (there may be several locations)
+                  let location = placemark.location?.coordinate                                                                     // Get the location of the first placemark
+            else { return }                                                                                                         // If not able to, don't do anything
+            self.lookAroundLocation = location                                                                                      // Set the look around coordinates
         }
-        showLookAround = true
+        showLookAround = true                                                                                                   // Display the lookaround
     }
     
+    /// Checks to see if look around is possible at the given location
     public func checkLookAround() {
-        guard let location = tripLocations.locateActivityTrip(activity: activity)?.coordinate else { return }
+        guard let location = tripLocations.locateActivityTrip(activity: activity)?.coordinate else { return }                           // Get the current activity's location
         Task {
             do {
-                let possible = await LookAroundV.lookAroundPossible(location: location)
-                DispatchQueue.main.async {
-                    self.lookAroundPossible = possible
-                    if possible {
-                        guard let location = self.tripLocations.locateActivityTrip(activity: self.activity)?.coordinate else { return }
-                        print("Old loc:   \(self.lookAroundLocation.latitude), \(self.lookAroundLocation.longitude)")
-                        self.lookAroundLocation = location
-                        print("New loc:   \(self.lookAroundLocation.latitude), \(self.lookAroundLocation.longitude)")
-                        print("Should be: \(location.latitude), \(location.longitude)")
+                let possible = await LookAroundV.lookAroundPossible(location: location)                                                         // Determine if it's possible to show a look around experience
+                DispatchQueue.main.async {                                                                                                      // On the main thread...
+                    self.lookAroundPossible = possible                                                                                              // Track the possibility
+                    if possible {                                                                                                                   // If it is possible...
+                        self.lookAroundLocation = location                                                                                              // Store the location for lookaround
                     }
                 }
             }
         }
     }
     
+    /// Checks to see if an activity is valid for shuffling
     public func checkValidActivity() {
-        if activity.tagIDs.isEmpty {
-            allowShuffle = false
+        if activity.tagIDs.isEmpty {    // If the tag is empty...
+            allowShuffle = false            // ...Disallow shuffling
             return
         }
-        allowShuffle = true
+        allowShuffle = true             // Allow shuffling
     }
 }
