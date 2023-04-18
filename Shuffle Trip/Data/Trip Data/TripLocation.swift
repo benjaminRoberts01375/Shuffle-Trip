@@ -110,6 +110,27 @@ public class TripLocation: ObservableObject, Identifiable {
     public func ShuffleTrip() {
         generateActivities()
     }
+
+    /// Shuffles a provided activity
+    /// - Parameter oldActivity: Activity to shuffle
+    public func shuffleActivity(activity oldActivity: Activity) {
+        var params: [String] = oldActivity.tagIDs.map({ TagManager.shared.searchID(id: $0)?.name ?? "" })                                                               // Generate parameters from IDs
+        params.removeAll(where: { $0 == "" })                                                                                                                           // Remove any unfound/invalid tags
+        let activityRequest = TripRequest(terms: [params], latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: params.count)    // Move details of request into TripRequest
+        Task {                                                                                                                                                          // With async...
+            do {                                                                                                                                                            // ...do...
+                let newActivity = try await APIHandler.request(url: .shuffleTrip, dataToSend: activityRequest, decodeType: [Activity].self)                                     // ...Make the request for a new activity
+                guard newActivity.count == 1,                                                                                                                                   // Make sure there's only one response
+                      let activity = newActivity.first,                                                                                                                         // Get the first response
+                      let index = activityLocations.firstIndex(of: oldActivity)                                                                                                 // Figure out where in the lineup of trips the activity is
+                else { return }
+                DispatchQueue.main.async {
+                    self.removeActivity(activity: oldActivity)                                                                                                                  // Remove the placeholder activity
+                    self.insertActivity(activity: activity, at: index)                                                                                                          // Add the new activity
+                }
+            }
+        }
+    }
     
     /// Generates the list of parameter names based on the trip location's activities
     /// - Returns: A list of lists. Each internal list represents an activity, while the individual items internally are tags the user's willing to do for that activity
