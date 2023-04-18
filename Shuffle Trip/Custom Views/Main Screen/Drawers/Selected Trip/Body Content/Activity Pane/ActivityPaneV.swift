@@ -29,7 +29,7 @@ struct ActivityPaneV: View {
                     Spacer()
                 }
                 Divider()
-                BigButtonList()                                                     // Large buttons for almost any activity
+                BigButtonList(lookAroundAction: { print("look around") }, openMapsAction: { print("open maps") }, shuffleAction: { print("Shuffle activity") }, removeActivityAction: { print("remove") })                                                     // Large buttons for almost any activity
                 Divider()
                     .padding(.top, 18)
             }, label: {
@@ -64,8 +64,8 @@ struct ActivityPaneV: View {
                         .font(.caption2)
                 }
                 .frame(width: 65, height: 55)
-                .foregroundColor(.white)
-                .background(highlighted ? .blue : Color.secondary)
+                .foregroundColor(highlighted ? .white : .blue)
+                .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
                 .cornerRadius(10)
             })
         }
@@ -73,40 +73,37 @@ struct ActivityPaneV: View {
     
     /// A list of large buttons shared between activities
     struct BigButtonList: View {
+        var lookAroundAction: () -> Void
+        var openMapsAction: () -> Void
+        var shuffleAction: () -> Void
+        var removeActivityAction: () -> Void
+        
         var body: some View {
             HStack {
                 Spacer()
                 Spacer()
                 BigButton(                                  // Look around button
-                    action: {
-                        print("Look around")
-                    },
+                    action: lookAroundAction,
                     image: Image(systemName: "binoculars.fill"),
                     label: "Look Around",
                     highlighted: false
                 )
                 BigButton(                                  // Navigate button
-                    action: {
-                        print("Open maps app")
-                    },
+                    action: openMapsAction,
                     image: Image(systemName: "map.fill"),
                     label: "Navigate",
                     highlighted: true
                 )
                 Spacer()
                 BigButton(                                  // Shuffle activity button
-                    action: {
-                        print("Shuffle activity")
-                    },
+                    action: shuffleAction,
                     image: Image(systemName: "shuffle"),
                     label: "Shuffle",
                     highlighted: false
                 )
                 Spacer()
                 BigButton(                                  // Remove activity button
-                    action: {
-                        print("Remove activity")
-                    },
+                    action: removeActivityAction,
                     image: Image(systemName: "trash.fill"),
                     label: "Remove",
                     highlighted: false
