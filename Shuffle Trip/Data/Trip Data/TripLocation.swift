@@ -124,6 +124,7 @@ public class TripLocation: ObservableObject, Identifiable {
                       let activity = newActivity.first,                                                                                                                         // Get the first response
                       let index = activityLocations.firstIndex(of: oldActivity)                                                                                                 // Figure out where in the lineup of trips the activity is
                 else { return }
+                activity.overwriteAllTags(oldActivity: oldActivity)                                                                                                             // Save the old tags
                 DispatchQueue.main.async {
                     self.removeActivity(activity: oldActivity)                                                                                                                  // Remove the placeholder activity
                     self.insertActivity(activity: activity, at: index)                                                                                                          // Add the new activity
