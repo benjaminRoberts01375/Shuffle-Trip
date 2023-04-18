@@ -30,7 +30,6 @@ struct ActivityPaneV: View {
                 }
                 Divider()
                 BigButtonList(
-                    lookAroundAction: { print("look around") },
                     openMapsAction: { controller.openMaps() },
                     shuffleAction: { controller.shuffleActivity() },
                     removeActivityAction: { controller.removeActivity() }
@@ -49,6 +48,7 @@ struct ActivityPaneV: View {
         }
         .onReceive(controller.tripLocations.objectWillChange) {
             controller.generateIndex()
+            controller.checkLookAround()
         }
     }
     
@@ -68,7 +68,7 @@ struct ActivityPaneV: View {
                     Text(label)
                         .font(.caption2)
                 }
-                .frame(width: 65, height: 55)
+                .frame(width: 80, height: 55)
                 .foregroundColor(highlighted ? .white : .blue)
                 .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
                 .cornerRadius(10)
@@ -78,7 +78,6 @@ struct ActivityPaneV: View {
     
     /// A list of large buttons shared between activities
     struct BigButtonList: View {
-        var lookAroundAction: () -> Void
         var openMapsAction: () -> Void
         var shuffleAction: () -> Void
         var removeActivityAction: () -> Void
@@ -87,12 +86,6 @@ struct ActivityPaneV: View {
             HStack {
                 Spacer()
                 Spacer()
-                BigButton(                                  // Look around button
-                    action: lookAroundAction,
-                    image: Image(systemName: "binoculars.fill"),
-                    label: "Look Around",
-                    highlighted: false
-                )
                 BigButton(                                  // Navigate button
                     action: openMapsAction,
                     image: Image(systemName: "map.fill"),
