@@ -41,8 +41,7 @@ struct ActivityPaneV: View {
                     .frame(minHeight: 150)
                     .cornerRadius(7)
                 }
-                Divider()
-                    .padding(.top, 18)
+                
             }, label: {
                 HStack {
                     Image(systemName: "\(controller.index).circle.fill")            // Index of the activity
