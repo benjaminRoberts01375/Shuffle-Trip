@@ -21,6 +21,7 @@ struct UngeneratedActivityPanelV: View {
             Spacer()
             if controller.editingTracker.isEditingTrip {
                 Button(action: {
+                    controller.shuffleActivity()
                 }, label: {
                     Image(systemName: "shuffle.circle.fill")
                         .symbolRenderingMode(.hierarchical)
