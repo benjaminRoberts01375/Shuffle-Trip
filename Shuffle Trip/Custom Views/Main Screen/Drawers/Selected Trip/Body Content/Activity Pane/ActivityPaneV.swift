@@ -34,6 +34,11 @@ struct ActivityPaneV: View {
                     shuffleAction: { controller.shuffleActivity() },
                     removeActivityAction: { controller.removeActivity() }
                 )  // Large buttons for almost any activity
+                if controller.lookAroundPossible {
+                    LookAroundV(location: $controller.lookAroundLocation, showLookAroundView: $controller.showLookAround)
+                    .frame(minHeight: 150)
+                    .cornerRadius(7)
+                }
                 Divider()
                     .padding(.top, 18)
             }, label: {
