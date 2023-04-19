@@ -1,8 +1,8 @@
 // April 18 2023
 // Joseph Marchesini
 
-import SwiftUI
 import AuthenticationServices
+import SwiftUI
 
 struct SignInWithAppleButton: UIViewRepresentable {
     @Environment(\.colorScheme) var colorScheme

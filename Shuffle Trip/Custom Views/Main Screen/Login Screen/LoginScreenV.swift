@@ -1,15 +1,15 @@
 // April 17 2023
 // Joseph Marchesini
 
-import SwiftUI
 import AuthenticationServices
+import SwiftUI
 
 struct LoginScreenV: View {
     @StateObject var contoller: LoginScreenVM
     @Environment(\.dismiss) var dismiss
     var signInWithAppleButtonVM: SignInWithAppleButtonVM
     
-    init(){
+    init() {
         self._contoller = StateObject(wrappedValue: LoginScreenVM())
         signInWithAppleButtonVM = SignInWithAppleButtonVM()
     }
@@ -19,6 +19,7 @@ struct LoginScreenV: View {
             .frame(width: 280, height: 60, alignment: .center)
             .onTapGesture(perform: showAppleLoginView)
             .cornerRadius(50)
+            .accessibilityAddTraits(.isButton)
             .onReceive(UserLoginM.shared.objectWillChange) { _ in
                 if UserLoginM.shared.userID != nil {
                     dismiss()

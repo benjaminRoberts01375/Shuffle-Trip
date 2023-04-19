@@ -6,18 +6,18 @@ import AuthenticationServices
 class SignInWithAppleButtonVM: NSObject, ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         switch authorization.credential {
-            case let appleIdCredential as ASAuthorizationAppleIDCredential:
-                if let _ = appleIdCredential.email, let _ = appleIdCredential.fullName {
-                    // Apple has autherized the use with Apple ID and password
-                    registerNewUser(credential: appleIdCredential)
-                } else {
-                    // User has been already exist with Apple Identity Provider
-                    signInExistingUser(credential: appleIdCredential)
-                }
-                break
-                
-            default:
-                break
+        case let appleIdCredential as ASAuthorizationAppleIDCredential:
+            if appleIdCredential.email != nil && appleIdCredential.fullName != nil {
+                // Apple has autherized the use with Apple ID and password
+                registerNewUser(credential: appleIdCredential)
+            } else {
+                // User has been already exist with Apple Identity Provider
+                signInExistingUser(credential: appleIdCredential)
+            }
+            return
+            
+        default:
+            break
         }
     }
     
@@ -36,7 +36,7 @@ extension SignInWithAppleButtonVM {
         UserLoginM.shared.lName = credential.fullName?.familyName
         UserLoginM.shared.email = credential.email
     }
-      
+    
     private func signInExistingUser(credential: ASAuthorizationAppleIDCredential) {
         // API Call - Pass the user identity, authorizationCode and identity token
         UserLoginM.shared.userID = credential.user
