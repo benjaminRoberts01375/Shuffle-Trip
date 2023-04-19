@@ -9,7 +9,7 @@ struct APIHandler {
     enum APIUrl: String {
         case shuffleTrip = "filteredApi"
         case friendDetauls = "getFriendsTrips"
-        case sendUserData = "receiveUserData??????"
+        case sendUserData = "user"
     }
     
     /// Errors available to throw

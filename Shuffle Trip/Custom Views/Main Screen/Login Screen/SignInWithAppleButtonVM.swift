@@ -30,11 +30,21 @@ class SignInWithAppleButtonVM: NSObject, ASAuthorizationControllerDelegate {
 extension SignInWithAppleButtonVM {
     private func registerNewUser(credential: ASAuthorizationAppleIDCredential) {
         // API Call - Pass the email, user full name, user identity provided by Apple and other details.
+        var name = credential.fullName?.givenName ?? ""
+        let mname = credential.fullName?.middleName ?? ""
+        let lname = credential.fullName?.familyName ?? ""
+        if mname != "" {
+            name += " " + mname
+        }
+        if lname != "" {
+            name += " " + lname
+        }
+        
         UserLoginM.shared.userID = credential.user
-        UserLoginM.shared.fName = credential.fullName?.givenName
-        UserLoginM.shared.mName = credential.fullName?.middleName
-        UserLoginM.shared.lName = credential.fullName?.familyName
+        UserLoginM.shared.name = name
         UserLoginM.shared.email = credential.email
+        UserLoginM.shared.interests = []
+        UserLoginM.shared.preferences = []
         Task {
             do {
                 let successful = try await APIHandler.request(url: .sendUserData, dataToSend: UserLoginM.shared, decodeType: UserLoginM.self)

@@ -12,17 +12,17 @@ final class UserLoginM: Codable, ObservableObject {
             self.objectWillChange.send()
         }
     }
-    public var fName: String?       
-    public var mName: String?
-    public var lName: String?
     public var email: String?
+    public var name: String?
+    public var interests: [String]?
+    public var preferences: [String]?
     
     enum CodingKeys: String, CodingKey {
         case userID
-        case fName
-        case mName
-        case lName
         case email
+        case name
+        case interests
+        case preferences
     }
     
     private init() {
