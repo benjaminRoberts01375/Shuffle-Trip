@@ -18,6 +18,8 @@ class ContentViewModel: ObservableObject {
     public let drawerMinimumHeight: CGFloat
     /// For dealing with observers
     private var cancellables = Set<AnyCancellable>()
+    /// Login screen shown or not
+    @Published var loginScreenConver: Bool
     
     /// Datatype of the current state of the program
     enum InteractionPhase {
@@ -31,6 +33,7 @@ class ContentViewModel: ObservableObject {
         self.region = RegionDetails()
         self.drawerMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
+        self.loginScreenConver = true
     }
     
     /// Handles determining the current state of the program

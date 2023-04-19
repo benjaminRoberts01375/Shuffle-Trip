@@ -66,6 +66,11 @@
 		2FE1DE9AAEA9C720DECB3697 /* Pods_Shuffle_Trip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCAF5C322DE425916C5FBE8 /* Pods_Shuffle_Trip.framework */; };
 		31C640E273DE9B72D428A695 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F408DEE5225C040D8FD9140 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework */; };
 		54CF7950409FBF3B0F20EE65 /* Pods_Shuffle_TripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D86BA779505ECA81D4D98A /* Pods_Shuffle_TripTests.framework */; };
+		7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551229EF412500636AEA /* LoginScreenVM.swift */; };
+		7479551729EF412500636AEA /* LoginScreenV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551429EF412500636AEA /* LoginScreenV.swift */; };
+		7479551A29EF4FB100636AEA /* SignInWithAppleButtonV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551929EF4FB100636AEA /* SignInWithAppleButtonV.swift */; };
+		7479551C29EF53AD00636AEA /* SignInWithAppleButtonVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551B29EF53AD00636AEA /* SignInWithAppleButtonVM.swift */; };
+		7479551E29EF634600636AEA /* UserLoginM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551D29EF634600636AEA /* UserLoginM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -151,6 +156,12 @@
 		568A11EFBE9407F27FC8B5A9 /* Pods-Shuffle TripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.release.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E3DD6E0B66F2AEFC005DE64 /* Pods-Shuffle TripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.debug.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F408DEE5225C040D8FD9140 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shuffle_Trip_Shuffle_TripUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7479551229EF412500636AEA /* LoginScreenVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenVM.swift; sourceTree = "<group>"; };
+		7479551429EF412500636AEA /* LoginScreenV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenV.swift; sourceTree = "<group>"; };
+		7479551829EF463B00636AEA /* Shuffle Trip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shuffle Trip.entitlements"; sourceTree = "<group>"; };
+		7479551929EF4FB100636AEA /* SignInWithAppleButtonV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonV.swift; sourceTree = "<group>"; };
+		7479551B29EF53AD00636AEA /* SignInWithAppleButtonVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInWithAppleButtonVM.swift; sourceTree = "<group>"; };
+		7479551D29EF634600636AEA /* UserLoginM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLoginM.swift; sourceTree = "<group>"; };
 		75D52DD6FDEFBBE5754EDB02 /* Pods-Shuffle Trip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle Trip.debug.xcconfig"; path = "Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip.debug.xcconfig"; sourceTree = "<group>"; };
 		819ACD92A7A912CD8353F8B2 /* Pods-Shuffle Trip-Shuffle TripUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle Trip-Shuffle TripUITests.release.xcconfig"; path = "Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests.release.xcconfig"; sourceTree = "<group>"; };
 		99D86BA779505ECA81D4D98A /* Pods_Shuffle_TripTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shuffle_TripTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -231,6 +242,7 @@
 		07402D572980816E00F1F046 /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
+				7479551829EF463B00636AEA /* Shuffle Trip.entitlements */,
 				0785AA2729EF2B7C00854B96 /* Shuffle TripRelease.entitlements */,
 				07F71A4229808E10007C7AE6 /* Shuffle-Trip-Info.plist */,
 				07402D582980816E00F1F046 /* Shuffle_TripApp.swift */,
@@ -413,6 +425,7 @@
 				07F71A3D29808961007C7AE6 /* Default Data */,
 				07612C9F2999760C00C5CE6B /* Trip Data */,
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
+				7479551D29EF634600636AEA /* UserLoginM.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -451,6 +464,10 @@
 		07FEB23D29EE26730034ED50 /* Login Screen */ = {
 			isa = PBXGroup;
 			children = (
+				7479551429EF412500636AEA /* LoginScreenV.swift */,
+				7479551229EF412500636AEA /* LoginScreenVM.swift */,
+				7479551929EF4FB100636AEA /* SignInWithAppleButtonV.swift */,
+				7479551B29EF53AD00636AEA /* SignInWithAppleButtonVM.swift */,
 			);
 			path = "Login Screen";
 			sourceTree = "<group>";
@@ -490,6 +507,7 @@
 				07402D512980816E00F1F046 /* Sources */,
 				07402D522980816E00F1F046 /* Frameworks */,
 				07402D532980816E00F1F046 /* Resources */,
+				947F630C20C076C63E99160A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -527,6 +545,7 @@
 				07402D6B2980817000F1F046 /* Sources */,
 				07402D6C2980817000F1F046 /* Frameworks */,
 				07402D6D2980817000F1F046 /* Resources */,
+				D6E0B3F847BD5B5770495E00 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -673,6 +692,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		947F630C20C076C63E99160A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip/Pods-Shuffle Trip-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		98C098D52E0BE6D0EE265868 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -695,6 +731,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D6E0B3F847BD5B5770495E00 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Shuffle Trip-Shuffle TripUITests/Pods-Shuffle Trip-Shuffle TripUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -713,13 +766,18 @@
 				073CB9B129C51921008259A8 /* LoadingTripDV.swift in Sources */,
 				07EBE63729E687C6007A6235 /* SelectedTripContentV.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
+				7479551C29EF53AD00636AEA /* SignInWithAppleButtonVM.swift in Sources */,
 				07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07B87B7B29EA0A110097EA05 /* TagSelectorV.swift in Sources */,
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
+				7479551A29EF4FB100636AEA /* SignInWithAppleButtonV.swift in Sources */,
 				07F9D05D29C95CA200D9791A /* ActivityPaneV.swift in Sources */,
+				7479551E29EF634600636AEA /* UserLoginM.swift in Sources */,
+				7479551729EF412500636AEA /* LoginScreenV.swift in Sources */,
 				073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */,
 				076FC70B29CC330200648BB7 /* FriendTrips.swift in Sources */,
+				7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,
 				075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */,
 				07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */,
@@ -907,6 +965,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Shuffle Trip/Shuffle Trip.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Shuffle Trip/Preview Content\"";

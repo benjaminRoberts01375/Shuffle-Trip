@@ -5,6 +5,8 @@ target 'Shuffle Trip' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
   pod 'SwiftLint'
+  pod 'GoogleSignIn'
+  pod 'GoogleSignInSwiftSupport'
 
   # Pods for Shuffle Trip
 

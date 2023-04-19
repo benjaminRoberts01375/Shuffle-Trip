@@ -49,6 +49,9 @@ struct ContentView: View {
             .onReceive(controller.tripLocations.objectWillChange) { _ in
                 controller.updateInteractionPhase()
             }
+            .fullScreenCover(isPresented: $controller.loginScreenConver) {
+                LoginScreenV()
+            }
         }
     }
 }
