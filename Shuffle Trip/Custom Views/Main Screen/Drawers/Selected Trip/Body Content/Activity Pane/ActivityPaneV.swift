@@ -23,9 +23,41 @@ struct ActivityPaneV: View {
                         .opacity(0)
                         .disabled(true)
                         .allowsHitTesting(false)
-                    Text("\(controller.activity.businesses?[0].location.city ?? ""), \(controller.activity.businesses?[0].location.state ?? "")") // Show city and state of activity
-                        .font(.caption)
-                        .padding(0)
+                    Spacer()
+                    VStack {
+                        HStack {
+                            Text("\(controller.activity.businesses?[0].location.city ?? ""), \(controller.activity.businesses?[0].location.state ?? "")") // Show city and state of activity
+                                .font(.caption)
+                                .padding(0)
+                            Spacer()
+                        }
+                        HStack {
+                            Image(String(format: "%g", controller.activity.businesses?[0].rating ?? 0))
+                                .resizable()
+                                .scaledToFit()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(minHeight: 5, maxHeight: 20)
+                                .accessibilityLabel("Ratings: \(String(format: "%g", controller.activity.businesses?[0].rating ?? 0))")
+                            Text("/\(String(controller.activity.businesses?[0].reviewCount ?? 0))")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                            if controller.activity.businesses?[0].price != nil {
+                                Spacer()
+                                Text("\(controller.activity.businesses?[0].price ?? "")")
+                            }
+                            Spacer()
+                            if controller.activity.businesses?[0] != nil {
+                                Link(destination: URL(string: controller.activity.businesses?[0].url ?? "")!) {
+                                    Image("yelp_logo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxHeight: 20)
+                                        .accessibilityLabel("Yelp Logo")
+                                }
+                            }
+                            
+                        }
+                    }
                     Spacer()
                 }
                 Divider()
@@ -135,11 +167,5 @@ struct ActivityPaneV: View {
                 Spacer()
             }
         }
-    }
-}
-
-struct ActivityPaneV_Previews: PreviewProvider {
-    static var previews: some View {
-        EmptyView()
     }
 }
