@@ -3,19 +3,27 @@
 
 import SwiftUI
 
-final class UserLoginM: ObservableObject {
+final class UserLoginM: Codable, ObservableObject {
     
     public static var shared: UserLoginM = UserLoginM()
     
-    @Published public var userID: String? {
+    public var userID: String? {
         didSet {
             self.objectWillChange.send()
         }
     }
-    public var fName: String?
+    public var fName: String?       
     public var mName: String?
     public var lName: String?
     public var email: String?
+    
+    enum CodingKeys: String, CodingKey {
+        case userID
+        case fName
+        case mName
+        case lName
+        case email
+    }
     
     private init() {
     }
