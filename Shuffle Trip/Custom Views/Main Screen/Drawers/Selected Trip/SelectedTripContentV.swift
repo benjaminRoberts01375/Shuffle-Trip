@@ -15,37 +15,40 @@ struct SelectedTripContentV: View {
     var body: some View {
         if controller.tripLocations.getSelectedTrip() != nil {
             VStack {
+                Color.clear
+                    .frame(width: 0, height: 10)
                 if controller.editingTracker.isEditingTrip {
                     TripConfiguratorV(tripLocations: controller.tripLocations)
                         .padding(3)
-                        .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
+                        .background(BlurView(style: .systemThinMaterial, opacity: 0))
                         .cornerRadius(7)
-                        .shadow(color: .secondary.opacity(0.15), radius: 20)
-                        .padding(.top)
+                        .shadow(color: .secondary.opacity(0.3), radius: 2)
                     
                     AddActivityButtonV(tripLocations: controller.tripLocations, activity: nil)
-                        .shadow(color: .secondary.opacity(0.15), radius: 20)
+                        .shadow(color: .secondary.opacity(0.3), radius: 2)
                 }
                 
                 ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations ?? [], id: \.id) { activity in
                     if activity.businesses != nil {
                         ActivityPaneV(activity: activity, tripLocations: controller.tripLocations)
                             .padding(6)
-                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
+                            .background(BlurView(style: .systemThinMaterial, opacity: 0))
                             .cornerRadius(7)
-                            .shadow(color: .secondary.opacity(0.15), radius: 20)
+                            .shadow(color: .secondary.opacity(0.3), radius: 2)
                     }
                     else {
                         UngeneratedActivityPanelV(tripLocations: controller.tripLocations, activity: activity, editingTracker: controller.editingTracker)
                             .padding(6)
-                            .background(BlurView(style: .systemUltraThinMaterial, opacity: 0))
+                            .background(BlurView(style: .systemThinMaterial, opacity: 0))
                             .cornerRadius(7)
-                            .shadow(color: .secondary.opacity(0.15), radius: 20)
+                            .shadow(color: .secondary.opacity(0.3), radius: 2)
                     }
                     
                     if controller.editingTracker.isEditingTrip {
                         AddActivityButtonV(tripLocations: controller.tripLocations, activity: activity)
                     }
+                    Color.clear
+                        .frame(width: 0, height: 10)
                 }
             }
             .onReceive(controller.tripLocations.objectWillChange) { _ in
