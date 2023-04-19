@@ -222,3 +222,5 @@ struct TripRequest: Encodable {
     let radius: Int
     let count: Int
 }
+
+// swiftlint:enable discouraged_optional_boolean

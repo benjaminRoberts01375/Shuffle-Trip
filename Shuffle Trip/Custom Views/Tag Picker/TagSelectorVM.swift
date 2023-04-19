@@ -63,11 +63,9 @@ final class TagSelectorVM: ObservableObject {
     /// - Returns: Bool of if the tag should be displayed
     internal func displayTag(search: String, tagName: String, topicName: String) -> Bool {
         return
-        (
             search == "" ||
             tagName.lowercased().contains(search.lowercased()) ||
             topicName.lowercased().contains(search.lowercased())
-        )
     }
     
     /// Selects or deselects all tags for a topic

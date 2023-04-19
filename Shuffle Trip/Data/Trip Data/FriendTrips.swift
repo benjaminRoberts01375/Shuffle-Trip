@@ -65,4 +65,5 @@ final class FriendTripProfiles: ObservableObject {
     struct FriendTripRequest: Encodable {
         let username: String
     }
+    // swiftlint:enable nesting
 }
