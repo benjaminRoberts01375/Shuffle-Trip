@@ -47,9 +47,9 @@ struct SelectedTripContentV: View {
                     if controller.editingTracker.isEditingTrip {
                         AddActivityButtonV(tripLocations: controller.tripLocations, activity: activity)
                     }
-                    Color.clear
-                        .frame(width: 0, height: 10)
                 }
+                Color.clear
+                    .frame(width: 0, height: 10)
             }
             .onReceive(controller.tripLocations.objectWillChange) { _ in
                 controller.showSettings = true
