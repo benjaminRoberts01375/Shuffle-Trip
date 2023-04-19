@@ -36,6 +36,7 @@ final class ActivityPaneVM: ObservableObject {
         self.showTagSelector = false
         self.lookAroundLocation = MapDetails.location1
         checkLookAround()
+        generateIndex()
     }
     
     /// Determines the index of the activity within the selected trip
