@@ -23,9 +23,12 @@ struct SelectedTripContentV: View {
                         .background(BlurView(style: .systemThinMaterial, opacity: 0))
                         .cornerRadius(7)
                         .shadow(color: .secondary.opacity(0.3), radius: 2)
+                        .padding(.horizontal, 4)
                     
                     AddActivityButtonV(tripLocations: controller.tripLocations, activity: nil)
                         .shadow(color: .secondary.opacity(0.3), radius: 2)
+                        .padding(6)
+                        .padding(.horizontal, 4)
                 }
                 
                 ForEach(controller.tripLocations.getSelectedTrip()?.activityLocations ?? [], id: \.id) { activity in
@@ -35,6 +38,7 @@ struct SelectedTripContentV: View {
                             .background(BlurView(style: .systemThinMaterial, opacity: 0))
                             .cornerRadius(7)
                             .shadow(color: .secondary.opacity(0.3), radius: 2)
+                            .padding(.horizontal, 4)
                     }
                     else {
                         UngeneratedActivityPanelV(tripLocations: controller.tripLocations, activity: activity, editingTracker: controller.editingTracker)
@@ -42,10 +46,12 @@ struct SelectedTripContentV: View {
                             .background(BlurView(style: .systemThinMaterial, opacity: 0))
                             .cornerRadius(7)
                             .shadow(color: .secondary.opacity(0.3), radius: 2)
+                            .padding(.horizontal, 4)
                     }
                     
                     if controller.editingTracker.isEditingTrip {
                         AddActivityButtonV(tripLocations: controller.tripLocations, activity: activity)
+                            .padding(6)
                     }
                 }
                 Color.clear
