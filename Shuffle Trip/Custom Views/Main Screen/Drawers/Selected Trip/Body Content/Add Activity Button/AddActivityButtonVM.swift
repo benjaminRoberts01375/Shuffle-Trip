@@ -18,6 +18,7 @@ final class AddActivityButtomVM: ObservableObject {
         self.activity = activity
         self.index = 0
         self.tagSelectorEnabled = false
+        calculateIndex()
     }
     
     /// Adds an activity to trip locations based on the index of the button
@@ -26,13 +27,14 @@ final class AddActivityButtomVM: ObservableObject {
         selectedTrip.insertActivity(activity: Activity(), at: index)
     }
     
+    /// Calculate the index for where this activity slots into with other activities
     internal func calculateIndex() {
-        guard let activity = activity,
-              let index = tripLocations.locateActivityTrip(activity: activity)?.activityLocations.firstIndex(of: activity)
+        guard let activity = activity,                                                                                      // Ensure activity is valid
+              let index = tripLocations.locateActivityTrip(activity: activity)?.activityLocations.firstIndex(of: activity)  // Determine index of activity within the trip
         else {
-            self.index = 0
+            self.index = 0                                                                                                  // Activity wasn't found, default to 0
             return
         }
-        self.index = index
+        self.index = index + 1                                                                                              // Off by 1 to ensure that activity is placed AFTER the Add Activity button
     }
 }
