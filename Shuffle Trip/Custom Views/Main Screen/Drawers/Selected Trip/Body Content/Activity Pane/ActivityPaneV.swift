@@ -38,7 +38,7 @@ struct ActivityPaneV: View {
                                 .aspectRatio(contentMode: .fit)
                                 .frame(minHeight: 5, maxHeight: 20)
                                 .accessibilityLabel("Ratings: \(String(format: "%g", controller.activity.businesses?[0].rating ?? 0))")
-                            Text("/\(String(controller.activity.businesses?[0].reviewCount ?? 0))")
+                            Text("/ \(String(controller.activity.businesses?[0].reviewCount == 0 ? "No" : String((controller.activity.businesses?[0].reviewCount ?? 0)))) \(controller.activity.businesses?[0].reviewCount == 1 ? "review" : "reviews")")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             if controller.activity.businesses?[0].price != nil {
@@ -55,12 +55,12 @@ struct ActivityPaneV: View {
                                         .accessibilityLabel("Yelp Logo")
                                 }
                             }
-                            
                         }
                     }
                     Spacer()
                 }
                 Divider()
+                
                 BigButtonList(
                     openMapsAction: { controller.openMaps() },
                     shuffleAction: { controller.shuffleActivity() },
@@ -68,12 +68,107 @@ struct ActivityPaneV: View {
                     removeActivityAction: { controller.removeActivity() },
                     allowShuffle: $controller.allowShuffle
                 )  // Large buttons for almost any activity
+                .padding(6)
+                .background(BlurView(style: .systemThinMaterial, opacity: 0.2))
+                .cornerRadius(6)
+                .shadow(color: .primary.opacity(0.2), radius: 2)
+                .padding(.vertical, 3)
+                
                 if controller.lookAroundPossible {
                     LookAroundV(location: $controller.lookAroundLocation, showLookAroundView: $controller.showLookAround)
-                    .frame(minHeight: 150)
-                    .cornerRadius(7)
+                        .frame(minHeight: 150)
+                        .cornerRadius(7)
+                        .padding(.vertical, 3)
+                }
+                else {
+                    if controller.activity.businesses?[0].imageUrl ?? "" != "" {
+                        VStack {
+                            AsyncImage(
+                                url: URL(string: controller.activity.businesses?[0].imageUrl ?? ""),
+                                content: { image in
+                                    image.resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(maxHeight: 150)
+                                },
+                                placeholder: {
+                                    HStack {
+                                        Text("Loading image ")
+                                            .foregroundColor(.secondary)
+                                        ProgressView()
+                                    }
+                                }
+                            )
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(6)
+                        .background(BlurView(style: .systemThinMaterial, opacity: 0.2))
+                        .cornerRadius(6)
+                        .shadow(color: .primary.opacity(0.2), radius: 2)
+                        .padding(.vertical, 3)
+                    }
                 }
                 
+                VStack(alignment: .leading) {
+                    Text("Address")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    if  controller.activity.businesses?[0].location.address1 ?? "" != "" &&
+                            controller.activity.businesses?[0].location.city ?? "" != "" &&
+                            controller.activity.businesses?[0].location.zipCode ?? "" != "" &&
+                            controller.activity.businesses?[0].location.state ?? "" != "" &&
+                            controller.activity.businesses?[0].location.country ?? "" != "" {
+                        Button(action: {
+                            controller.openMaps()
+                        }, label: {
+                            VStack(alignment: .leading) {
+                                Text("\(controller.activity.businesses?[0].location.address1 ?? "")")
+                                    .foregroundColor(.blue)
+                                Text("\(controller.activity.businesses?[0].location.city ?? ""), \(controller.activity.businesses?[0].location.state ?? "") \(controller.activity.businesses?[0].location.zipCode ?? "")")
+                                    .foregroundColor(.blue)
+                                Text("\(controller.activity.businesses?[0].location.country ?? "")")
+                                    .foregroundColor(.blue)
+                            }
+                        })
+                    }
+                    else {
+                        Text("None provided.")
+                    }
+                    Divider()
+                    Text("Phone")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    if controller.activity.businesses?[0].phone ?? "" != "" {
+                        Button(action: {
+                            guard let url = URL(string: "tel://\((controller.activity.businesses?[0].phone)!)") else { return }
+                            UIApplication.shared.open(url)
+                        }, label: {
+                            Text(controller.activity.businesses?[0].displayPhone ?? "")
+                        })
+                    }
+                    else {
+                        Text("None provided.")
+                    }
+                    Divider()
+                    Text("Website")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    if controller.activity.businesses?[0].url ?? "" != "" {
+                        Link(destination: URL(string: controller.activity.businesses?[0].url ?? "")!) {
+                            Text(((controller.activity.businesses?[0].url ?? "").split(separator: "?").first ?? ""))
+                                .foregroundColor(.blue)
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                    else {
+                        Text("None provided")
+                    }
+                }
+                .frame(maxWidth: .infinity)
+                .padding(6)
+                .background(BlurView(style: .systemThinMaterial, opacity: 0.2))
+                .cornerRadius(6)
+                .shadow(color: .primary.opacity(0.2), radius: 2)
+                .padding(.vertical, 3)
             }, label: {
                 HStack {
                     Image(systemName: "\(controller.index).circle.fill")            // Index of the activity
