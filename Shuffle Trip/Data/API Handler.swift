@@ -10,6 +10,7 @@ struct APIHandler {
         case shuffleTrip = "filteredApi"
         case friendDetauls = "getFriendsTrips"
         case sendUserData = "user"
+        case getUserData = "user/????"
     }
     
     /// Errors available to throw

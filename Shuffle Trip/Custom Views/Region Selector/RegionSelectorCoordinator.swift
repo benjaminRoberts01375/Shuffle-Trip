@@ -83,6 +83,9 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             return
         }
         
+        let generator = UIImpactFeedbackGenerator(style: .medium)
+        generator.impactOccurred()
+        
         // Getting the mapView and position of long press on map
         guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                // Get the mapView from the gestureRecognizer
         let location = gestureRecognizer.location(in: mapView)                                                  // Get the location on screen of the tap
@@ -101,6 +104,10 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Check for any trips being short tapped on.
     /// - Parameter gestureRecognizer: Handles tap coordinates
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
+        
+        let generator = UIImpactFeedbackGenerator(style: .light)
+        generator.impactOccurred()
+        
         /// The mapView to interact with
         guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                                                    // Get access to the mapView
         /// Location in screen space that was tapped on
