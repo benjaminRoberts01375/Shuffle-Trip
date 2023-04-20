@@ -23,6 +23,9 @@ final class TripLocations: ObservableObject, Equatable {
     /// Categories for trips as specified by the user
     var categories: [String] = []
     
+    /// Tells RegionSelectorCoordinator if a trip is currently selected or not
+    public var isSelected: Bool = false
+    
     init(tripLocations: [TripLocation] = [], cancellables: Set<AnyCancellable> = Set<AnyCancellable>()) {
         self.tripLocations = tripLocations
         self.cancellables = cancellables
@@ -32,7 +35,11 @@ final class TripLocations: ObservableObject, Equatable {
     /// - Parameter trip: Trip to set as selected
     private func SetSelectedTrip(trip: TripLocation?) {
         for tripLocation in tripLocations {
+            isSelected = true
             tripLocation.selectTrip(tripLocation == trip)
+        }
+        if trip == nil {
+            isSelected = false
         }
     }
     

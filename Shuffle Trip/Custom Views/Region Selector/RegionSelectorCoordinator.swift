@@ -83,8 +83,9 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             return
         }
         
-        let generator = UIImpactFeedbackGenerator(style: .medium)
-        generator.impactOccurred()
+        // Haptic Feedback on Trip creation and deletion
+        let generator = UINotificationFeedbackGenerator()
+        generator.notificationOccurred(.success)
         
         // Getting the mapView and position of long press on map
         guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                // Get the mapView from the gestureRecognizer
@@ -104,16 +105,14 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
     /// Check for any trips being short tapped on.
     /// - Parameter gestureRecognizer: Handles tap coordinates
     @objc func handleTap(gestureRecognizer: UITapGestureRecognizer) {
-        
-        let generator = UIImpactFeedbackGenerator(style: .light)
-        generator.impactOccurred()
-        
         /// The mapView to interact with
         guard let mapView = gestureRecognizer.view as? MKMapView else { return }                                                                    // Get access to the mapView
         /// Location in screen space that was tapped on
         let location = gestureRecognizer.location(in: mapView)                                                                                      // Get the location on screen of the tap
         /// Coordinate of where the user tapped mapped to coordinates on the mapView
         let touchCoordinate = mapView.convert(location, toCoordinateFrom: mapView)                                                                  // Convert the screen location to the map location
+        /// Haptic Feedback style
+        let generator = UIImpactFeedbackGenerator(style: .light)
         
         if tripLocations.tripLocations.isEmpty {                                                                                                    // There are no trips available to tap on, exit
             tripLocations.SelectTrip()
@@ -123,11 +122,19 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         let tappedTrips = tripLocations.tripLocations.filter({ MKMapPoint(touchCoordinate).distance(to: MKMapPoint($0.coordinate)) < $0.radius })   // List of trips that were tapped on
         
         if tappedTrips.isEmpty {                                                                                                                    // No trips were tapped on
+            /// Haptic Feedback when trip is deselected
+            if tripLocations.isSelected {
+                generator.impactOccurred()
+            }
+            
             tripLocations.SelectTrip()
             return
         }
         
         if tappedTrips.count == 1 {                                                                                                                 // Check if only one was tapped, and manually set it
+            /// Haptic Feedback when trip is selected / deselected
+            generator.impactOccurred()
+            
             if tappedTrips[0].isSelected {
                 tripLocations.SelectTrip()
             }
