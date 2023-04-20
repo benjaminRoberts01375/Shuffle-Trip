@@ -154,7 +154,7 @@ struct ActivityPaneV: View {
                         .foregroundColor(.secondary)
                     if controller.activity.businesses?[0].url ?? "" != "" {
                         Link(destination: URL(string: controller.activity.businesses?[0].url ?? "")!) {
-                            Text(((controller.activity.businesses?[0].url ?? "").split(separator: "?").first ?? ""))
+                            Text(((controller.activity.businesses?[0].url ?? "").split(separator: "www.").last?.split(separator: "?").first ?? ""))
                                 .foregroundColor(.blue)
                                 .multilineTextAlignment(.leading)
                         }
