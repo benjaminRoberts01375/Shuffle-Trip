@@ -37,6 +37,8 @@
 		077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */; };
 		07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */; };
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
+		07A038E629F1ABA20036EC14 /* HomeHeaderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */; };
+		07A038E829F1AC110036EC14 /* HomeHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -125,6 +127,8 @@
 		07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsVM.swift; sourceTree = "<group>"; };
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
 		0785AA2729EF2B7C00854B96 /* Shuffle TripRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shuffle TripRelease.entitlements"; sourceTree = "<group>"; };
+		07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderV.swift; sourceTree = "<group>"; };
+		07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderVM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -377,6 +381,8 @@
 			children = (
 				073C5A03299DD82200C65BFD /* HomeDV.swift */,
 				073C5A05299DD9BE00C65BFD /* HomeVM.swift */,
+				07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */,
+				07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -731,6 +737,7 @@
 				07EBE63729E687C6007A6235 /* SelectedTripContentV.swift in Sources */,
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				7479551C29EF53AD00636AEA /* SignInWithAppleButtonVM.swift in Sources */,
+				07A038E629F1ABA20036EC14 /* HomeHeaderV.swift in Sources */,
 				07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07B87B7B29EA0A110097EA05 /* TagSelectorV.swift in Sources */,
@@ -744,6 +751,7 @@
 				7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,
 				075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */,
+				07A038E829F1AC110036EC14 /* HomeHeaderVM.swift in Sources */,
 				07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */,
 				07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */,
 				0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */,

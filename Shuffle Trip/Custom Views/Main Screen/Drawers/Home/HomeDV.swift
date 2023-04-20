@@ -12,20 +12,7 @@ struct HomeDV: DrawerView {
     }
     
     var header: some View {
-        HStack {
-//            SearchBar()
-            Button(
-                action: {
-                    controller.TripButton()
-                },
-                label: {
-                    Image(systemName: "scope")
-                        .font(Font.title2.weight(.regular))
-                        .cornerRadius(5)
-                }
-            )
-            Spacer()
-        }
+        HomeHeaderV(tripLocations: controller.tripLocations, region: controller.region)
     }
     
     var body: some View {
