@@ -5,8 +5,8 @@ import SwiftUI
 
 struct HomeHeaderV: View {
     @StateObject var controller: HomeHeaderVM
-    init(tripLocations: TripLocations, region: RegionDetails) {
-        self._controller = StateObject(wrappedValue: HomeHeaderVM(tripLocations: tripLocations, region: region))
+    init(tripLocations: TripLocations, region: RegionDetails, searchText: Binding<String>) {
+        self._controller = StateObject(wrappedValue: HomeHeaderVM(tripLocations: tripLocations, region: region, searchText: searchText))
     }
     
     var body: some View {

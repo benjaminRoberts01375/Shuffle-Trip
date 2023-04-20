@@ -10,12 +10,12 @@ final class HomeHeaderVM: ObservableObject {
     /// The current region the user's looking at on the map
     var region: RegionDetails
     /// The user's current search
-    var searchText: String
+    @Binding var searchText: String
     
-    init(tripLocations: TripLocations, region: RegionDetails) {
+    init(tripLocations: TripLocations, region: RegionDetails, searchText: Binding<String>) {
         self.tripLocations = tripLocations
         self.region = region
-        self.searchText = ""
+        self._searchText = searchText
     }
     
     /// Handles logic for the add/remove trip button that is on the bottom drawer
