@@ -15,7 +15,10 @@ struct TripSearchV: View {
             EmptyView()
         }
         .onReceive(controller.searchTracker.$searchText) { searchQuery in
-            controller.searchTracker.searchLocation(searchQuery)
+            controller.search(searchQuery)
+        }
+        .onReceive(controller.searchTracker.$searchResults) { _ in
+            self.controller.objectWillChange.send()
         }
     }
 }
