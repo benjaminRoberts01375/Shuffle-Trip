@@ -408,7 +408,6 @@
 		07E3D74429A0BB8000168218 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				07A038E929F25AEC0036EC14 /* LocationSearchTrackerM.swift */,
 				073C5A03299DD82200C65BFD /* HomeDV.swift */,
 				073C5A05299DD9BE00C65BFD /* HomeVM.swift */,
 				07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */,
@@ -463,6 +462,7 @@
 				07612C9F2999760C00C5CE6B /* Trip Data */,
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
 				7479551D29EF634600636AEA /* UserLoginM.swift */,
+				07A038E929F25AEC0036EC14 /* LocationSearchTrackerM.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
