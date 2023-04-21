@@ -56,7 +56,7 @@ extension SignInWithAppleButtonVM {
         /// API receive user data
         UserLoginM.shared.userID = credential.user
         
-        let userRequestData = UserLoginM.userRequest(username: UserLoginM.shared.userID)
+        let userRequestData = UserLoginM.UserRequest(username: UserLoginM.shared.userID)
         Task {
             do {
                 let userData = try await APIHandler.request(url: .getUserData, dataToSend: userRequestData, decodeType: UserLoginM.self)

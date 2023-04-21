@@ -25,7 +25,7 @@ final class UserLoginM: Codable, ObservableObject {
         case preferences
     }
     
-    struct userRequest: Encodable {
+    struct UserRequest: Encodable {
         let username: String?
     }
     
