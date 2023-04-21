@@ -4,7 +4,7 @@
 import MapKit
 import SwiftUI
 
-final class TripSearchVM: ObservableObject {
+final class SearchVM: ObservableObject {
     /// Keep track of what is being searched for
     @Published var searchTracker: LocationSearchTrackerM
     

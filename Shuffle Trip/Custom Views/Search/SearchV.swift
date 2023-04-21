@@ -3,11 +3,11 @@
 
 import SwiftUI
 
-struct TripSearchV: View {
-    @StateObject var controller: TripSearchVM
+struct SearchV: View {
+    @StateObject var controller: SearchVM
     
     init(searchTracker: LocationSearchTrackerM) {
-        self._controller = StateObject(wrappedValue: TripSearchVM(searchTracker: searchTracker))
+        self._controller = StateObject(wrappedValue: SearchVM(searchTracker: searchTracker))
     }
     
     var body: some View {
