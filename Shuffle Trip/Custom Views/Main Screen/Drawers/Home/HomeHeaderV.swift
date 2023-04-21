@@ -5,13 +5,13 @@ import SwiftUI
 
 struct HomeHeaderV: View {
     @StateObject var controller: HomeHeaderVM
-    init(tripLocations: TripLocations, region: RegionDetails, searchText: Binding<String>) {
-        self._controller = StateObject(wrappedValue: HomeHeaderVM(tripLocations: tripLocations, region: region, searchText: searchText))
+    init(tripLocations: TripLocations, region: RegionDetails, searchTracker: SearchTrackerM) {
+        self._controller = StateObject(wrappedValue: HomeHeaderVM(tripLocations: tripLocations, region: region, searchTracker: searchTracker))
     }
     
     var body: some View {
         HStack {
-            SearchBar(text: $controller.searchText, placeholder: "Find your next day trip...")
+            SearchBar(text: $controller.searchTracker.searchText, placeholder: "Find your next day trip...")
             Button(
                 action: {
                     controller.TripButton()

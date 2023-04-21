@@ -39,6 +39,7 @@
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
 		07A038E629F1ABA20036EC14 /* HomeHeaderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */; };
 		07A038E829F1AC110036EC14 /* HomeHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */; };
+		07A038EA29F25AEC0036EC14 /* SearchTrackerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E929F25AEC0036EC14 /* SearchTrackerM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -129,6 +130,7 @@
 		0785AA2729EF2B7C00854B96 /* Shuffle TripRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Shuffle TripRelease.entitlements"; sourceTree = "<group>"; };
 		07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderV.swift; sourceTree = "<group>"; };
 		07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderVM.swift; sourceTree = "<group>"; };
+		07A038E929F25AEC0036EC14 /* SearchTrackerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackerM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -379,6 +381,7 @@
 		07E3D74429A0BB8000168218 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				07A038E929F25AEC0036EC14 /* SearchTrackerM.swift */,
 				073C5A03299DD82200C65BFD /* HomeDV.swift */,
 				073C5A05299DD9BE00C65BFD /* HomeVM.swift */,
 				07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */,
@@ -744,6 +747,7 @@
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				7479551A29EF4FB100636AEA /* SignInWithAppleButtonV.swift in Sources */,
 				07F9D05D29C95CA200D9791A /* ActivityPaneV.swift in Sources */,
+				07A038EA29F25AEC0036EC14 /* SearchTrackerM.swift in Sources */,
 				7479551E29EF634600636AEA /* UserLoginM.swift in Sources */,
 				7479551729EF412500636AEA /* LoginScreenV.swift in Sources */,
 				073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */,
