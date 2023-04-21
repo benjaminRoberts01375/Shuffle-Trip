@@ -12,10 +12,10 @@ struct HomeDV: DrawerView {
     }
     
     var header: some View {
-        HomeHeaderV(tripLocations: controller.tripLocations, region: controller.region, searchText: $controller.searchText)
+        HomeHeaderV(tripLocations: controller.tripLocations, region: controller.region, searchTracker: controller.searchTracker)
     }
     
     var body: some View {
-        EmptyView()
+        HomeBodySwitcherV(tripLocations: controller.tripLocations, searchTracker: controller.searchTracker)
     }
 }

@@ -40,6 +40,8 @@
 		07A038E629F1ABA20036EC14 /* HomeHeaderV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */; };
 		07A038E829F1AC110036EC14 /* HomeHeaderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */; };
 		07A038EA29F25AEC0036EC14 /* SearchTrackerM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038E929F25AEC0036EC14 /* SearchTrackerM.swift */; };
+		07A038EC29F269D70036EC14 /* HomeBodySwitcherV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038EB29F269D70036EC14 /* HomeBodySwitcherV.swift */; };
+		07A038EF29F26AD30036EC14 /* HomeBodySwitcherVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038EE29F26AD30036EC14 /* HomeBodySwitcherVM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -131,6 +133,8 @@
 		07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderV.swift; sourceTree = "<group>"; };
 		07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeHeaderVM.swift; sourceTree = "<group>"; };
 		07A038E929F25AEC0036EC14 /* SearchTrackerM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTrackerM.swift; sourceTree = "<group>"; };
+		07A038EB29F269D70036EC14 /* HomeBodySwitcherV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBodySwitcherV.swift; sourceTree = "<group>"; };
+		07A038EE29F26AD30036EC14 /* HomeBodySwitcherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBodySwitcherVM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -358,6 +362,15 @@
 			path = "Trip Error";
 			sourceTree = "<group>";
 		};
+		07A038ED29F26A100036EC14 /* Home Body Content */ = {
+			isa = PBXGroup;
+			children = (
+				07A038EB29F269D70036EC14 /* HomeBodySwitcherV.swift */,
+				07A038EE29F26AD30036EC14 /* HomeBodySwitcherVM.swift */,
+			);
+			path = "Home Body Content";
+			sourceTree = "<group>";
+		};
 		07B38F482984707900EA765F /* Bottom Drawer */ = {
 			isa = PBXGroup;
 			children = (
@@ -386,6 +399,7 @@
 				073C5A05299DD9BE00C65BFD /* HomeVM.swift */,
 				07A038E529F1ABA20036EC14 /* HomeHeaderV.swift */,
 				07A038E729F1AC110036EC14 /* HomeHeaderVM.swift */,
+				07A038ED29F26A100036EC14 /* Home Body Content */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -766,6 +780,7 @@
 				07095A2C29EBB46400DD22E8 /* UngeneratedActivityPanelVM.swift in Sources */,
 				0758377929E08C710030ECC3 /* TripInteractionButtonsV.swift in Sources */,
 				07F71A452980EAE0007C7AE6 /* RegionSelectorCoordinator.swift in Sources */,
+				07A038EF29F26AD30036EC14 /* HomeBodySwitcherVM.swift in Sources */,
 				077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */,
 				074947C029E5221A0024630D /* TagManager.swift in Sources */,
 				07E4F5EF29E910B9007F2C8D /* AddActivityButtonVM.swift in Sources */,
@@ -774,6 +789,7 @@
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07095A2A29EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift in Sources */,
+				07A038EC29F269D70036EC14 /* HomeBodySwitcherV.swift in Sources */,
 				07F71A4129808A3F007C7AE6 /* UserLocation.swift in Sources */,
 				07F9D05C29C95CA200D9791A /* ActivityPaneVM.swift in Sources */,
 				07402D842980833B00F1F046 /* BottomDrawerV.swift in Sources */,

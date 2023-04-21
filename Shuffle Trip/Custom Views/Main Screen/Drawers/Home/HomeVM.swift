@@ -4,17 +4,17 @@
 import MapKit
 import SwiftUI
 
-class HomeVM: ObservableObject {
+@MainActor class HomeVM: ObservableObject {
     /// All user locations for the current user
     var tripLocations: TripLocations
     /// Current position of the map
     var region: RegionDetails
-    /// Location the user's searching for
-    @Published var searchText: String
-
+    /// Tracker for what the user is searching for
+    var searchTracker: SearchTrackerM
+    
     init(tripLocations: TripLocations, region: RegionDetails) {
         self.tripLocations = tripLocations
         self.region = region
-        self.searchText = ""
+        self.searchTracker = SearchTrackerM()
     }
 }
