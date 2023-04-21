@@ -12,7 +12,14 @@ struct TripSearchV: View {
     
     var body: some View {
         VStack {
-            EmptyView()
+            ForEach(controller.searchTracker.searchResults, id: \.self) { result in
+                SearchResultV(locationResult: result)
+            }
+            .padding(5)
+            .background(BlurView(style: .systemThinMaterial, opacity: 0))
+            .cornerRadius(7)
+            .padding(.horizontal)
+            .padding(.vertical, 10)
         }
         .onReceive(controller.searchTracker.$searchText) { searchQuery in
             controller.search(searchQuery)
