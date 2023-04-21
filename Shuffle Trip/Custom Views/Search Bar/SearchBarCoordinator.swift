@@ -30,6 +30,7 @@ class SearchCoordinator: NSObject, UISearchBarDelegate {
     /// - Parameter searchBar: Search bar the was tapped on
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""                                     // Clear displayed text
+        search = ""                                             // Clear stored text
         searchBar.setShowsCancelButton(false, animated: true)   // Hide the cancel button with an animation
         searchBar.endEditing(true)                              // Not sure if actually needed, just in case of weird future changes
     }
