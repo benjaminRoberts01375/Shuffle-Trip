@@ -30,6 +30,12 @@ struct SearchResultV: View {
 
 struct SearchResultV_Previews: PreviewProvider {
     static var previews: some View {
-        SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+        VStack {
+            SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+            SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+            SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+            SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+            SearchResultV(locationResult: MKMapItem(placemark: MKPlacemark(coordinate: MapDetails.location1)))
+        }
     }
 }
