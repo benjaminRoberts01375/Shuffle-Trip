@@ -9,8 +9,8 @@ final class LocationSearchTrackerM: ObservableObject {
     @Published public var searchText: String
     
     /// All MKMapItems from the latest search result
-    public private(set) var searchResults: [MKMapItem] {
-        didSet {
+    @Published public private(set) var searchResults: [MKMapItem] {
+        willSet {
             self.objectWillChange.send()
         }
     }
@@ -44,7 +44,7 @@ final class LocationSearchTrackerM: ObservableObject {
                 print("No items")
                 return
             }
-            print(response.mapItems)
+            
             self.searchResults = response.mapItems
         }
     }
