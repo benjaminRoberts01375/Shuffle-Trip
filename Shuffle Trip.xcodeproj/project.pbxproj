@@ -44,6 +44,8 @@
 		07A038EF29F26AD30036EC14 /* HomeBodySwitcherVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038EE29F26AD30036EC14 /* HomeBodySwitcherVM.swift */; };
 		07A038F229F26ECE0036EC14 /* TripSearchV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F129F26ECE0036EC14 /* TripSearchV.swift */; };
 		07A038F429F26ED50036EC14 /* TripSearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F329F26ED50036EC14 /* TripSearchVM.swift */; };
+		07A038F729F27A880036EC14 /* SearchResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F629F27A880036EC14 /* SearchResultVM.swift */; };
+		07A038F929F27AAA0036EC14 /* SearchResultV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F829F27AAA0036EC14 /* SearchResultV.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -139,6 +141,8 @@
 		07A038EE29F26AD30036EC14 /* HomeBodySwitcherVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBodySwitcherVM.swift; sourceTree = "<group>"; };
 		07A038F129F26ECE0036EC14 /* TripSearchV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSearchV.swift; sourceTree = "<group>"; };
 		07A038F329F26ED50036EC14 /* TripSearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripSearchVM.swift; sourceTree = "<group>"; };
+		07A038F629F27A880036EC14 /* SearchResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVM.swift; sourceTree = "<group>"; };
+		07A038F829F27AAA0036EC14 /* SearchResultV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultV.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -302,6 +306,7 @@
 				07402D852980837A00F1F046 /* Blur.swift */,
 				07B5C03D29EE5803003BE480 /* LookAroundV.swift */,
 				07B87B7529E9EA970097EA05 /* Tag Picker */,
+				07A038F529F27A780036EC14 /* Search Result */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -383,6 +388,15 @@
 				07A038F329F26ED50036EC14 /* TripSearchVM.swift */,
 			);
 			path = "Trip Search";
+			sourceTree = "<group>";
+		};
+		07A038F529F27A780036EC14 /* Search Result */ = {
+			isa = PBXGroup;
+			children = (
+				07A038F829F27AAA0036EC14 /* SearchResultV.swift */,
+				07A038F629F27A880036EC14 /* SearchResultVM.swift */,
+			);
+			path = "Search Result";
 			sourceTree = "<group>";
 		};
 		07B38F482984707900EA765F /* Bottom Drawer */ = {
@@ -769,6 +783,7 @@
 				07F71A4729810133007C7AE6 /* TripLocations.swift in Sources */,
 				7479551C29EF53AD00636AEA /* SignInWithAppleButtonVM.swift in Sources */,
 				07A038E629F1ABA20036EC14 /* HomeHeaderV.swift in Sources */,
+				07A038F929F27AAA0036EC14 /* SearchResultV.swift in Sources */,
 				07DC16E129D16A52003BFF26 /* API Handler.swift in Sources */,
 				0725951E29BBCECB00AACAAA /* RegionDetails.swift in Sources */,
 				07B87B7B29EA0A110097EA05 /* TagSelectorV.swift in Sources */,
@@ -801,6 +816,7 @@
 				07E4F5EF29E910B9007F2C8D /* AddActivityButtonVM.swift in Sources */,
 				07E4F5EC29E90DB4007F2C8D /* AddActivityButtonV.swift in Sources */,
 				074947C529E52A900024630D /* TripConfiguratorV.swift in Sources */,
+				07A038F729F27A880036EC14 /* SearchResultVM.swift in Sources */,
 				07402D592980816E00F1F046 /* Shuffle_TripApp.swift in Sources */,
 				07F71A3F29808980007C7AE6 /* MapDetails.swift in Sources */,
 				07095A2A29EBB44E00DD22E8 /* UngeneratedActivityPanelV.swift in Sources */,
