@@ -83,7 +83,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
             return
         }
         
-        // Haptic Feedback on Trip creation and deletion
+        /// Haptic Feedback on Trip creation and deletion
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.success)
         

@@ -29,7 +29,7 @@ class SignInWithAppleButtonVM: NSObject, ASAuthorizationControllerDelegate {
 
 extension SignInWithAppleButtonVM {
     private func registerNewUser(credential: ASAuthorizationAppleIDCredential) {
-        // API Call - Pass the email, user full name, user identity provided by Apple and other details.
+        /// API send user data
         var name = credential.fullName?.givenName ?? ""
         let mname = credential.fullName?.middleName ?? ""
         let lname = credential.fullName?.familyName ?? ""
@@ -53,20 +53,18 @@ extension SignInWithAppleButtonVM {
     }
     
     private func signInExistingUser(credential: ASAuthorizationAppleIDCredential) {
-        // API Call - Pass the user identity, authorizationCode and identity token
+        /// API receive user data
         UserLoginM.shared.userID = credential.user
-        UserLoginM.shared.name = ""
-        UserLoginM.shared.email = ""
-        UserLoginM.shared.interests = []
-        UserLoginM.shared.preferences = []
-        /*Task {
+        
+        let userRequestData = UserLoginM.userRequest(username: UserLoginM.shared.userID)
+        Task {
             do {
-                let userData = try await APIHandler.request(url: .sendUserData, dataToSend: UserLoginM.shared, decodeType: UserLoginM.self)
+                let userData = try await APIHandler.request(url: .getUserData, dataToSend: userRequestData, decodeType: UserLoginM.self)
                 UserLoginM.shared.name = userData.name
                 UserLoginM.shared.email = userData.email
                 UserLoginM.shared.interests = userData.interests
                 UserLoginM.shared.preferences = userData.preferences
             }
-        }*/ 
+        }
     }
 }
