@@ -6,12 +6,16 @@ import SwiftUI
 
 final class TripSearchVM: ObservableObject {
     /// Keep track of what is being searched for
-    var searchTracker: LocationSearchTrackerM
-    /// A list of placemarks that have been geocoded
-    var results: [MKMapItem]
+    @Published var searchTracker: LocationSearchTrackerM
     
     init(searchTracker: LocationSearchTrackerM) {
         self.searchTracker = searchTracker
-        self.results = []
+    }
+    
+    /// Wrapper for the search tracker's search location function
+    /// - Parameter location: Location to look for
+    internal func search(_ location: String) {
+        searchTracker.searchLocation(location)
+        self.objectWillChange.send()
     }
 }
