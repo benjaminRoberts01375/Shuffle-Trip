@@ -11,17 +11,44 @@ final class SearchResultVM: ObservableObject {
     var symbol: Image
     /// Color for the location
     var color: Color
+    /// Displayed address of the location
+    let address: String
     
     // swiftlint:disable cyclomatic_complexity function_body_length
     init(locationResult: MKMapItem) {
         self.locationResult = locationResult
+        let placemark = locationResult.placemark
+        let houseNum = placemark.subThoroughfare ?? ""
+        let street = placemark.thoroughfare ?? ""
+        var city = placemark.locality ?? ""
+        var state = placemark.administrativeArea ?? ""
+        let country = placemark.country ?? ""
+        
+        var streetInfo = ""
+        if houseNum != "", street != "" {
+            streetInfo = "\(houseNum) \(street), "
+        }
+        if city != "" {
+            city = "\(city) "
+        }
+        if state != "" {
+            state = "\(state), "
+        }
+        var address = "\(streetInfo)\(city)\(state)\(country)"
+        if address == "" {
+            address = "Unknown Address"
+        }
+        
         guard let category = locationResult.pointOfInterestCategory
         else {
             symbol = Image(systemName: "questionmark.circle.fill")
             color = Color.gray
+            self.address = "Unknown Address"
             return
         }
-        
+
+        self.address = address
+
         switch category {
         case .airport:
             symbol = Image(systemName: "airplane.circle.fill")
