@@ -13,7 +13,17 @@ struct SearchResultV: View {
     
     var body: some View {
         HStack {
-            EmptyView()
+            controller.symbol
+                .symbolRenderingMode(.hierarchical)
+                .foregroundColor(controller.color)
+                .font(.title)
+            VStack(alignment: .leading) {
+                Text(controller.locationResult.name ?? "Unknown Location")
+                Text(controller.locationResult.pointOfInterestCategory?.rawValue ?? "Unknown Location")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+            Spacer()
         }
     }
 }
