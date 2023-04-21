@@ -6,13 +6,14 @@ import SwiftUI
 
 final class LocationSearchTrackerM: ObservableObject {
     /// What the user is searching for
-    var searchText: String {
+    public var searchText: String {
         didSet {
             self.objectWillChange.send()
         }
     }
     
-    var searchResults: [MKMapItem] {
+    /// All MKMapItems from the latest search result
+    public private(set) var searchResults: [MKMapItem] {
         didSet {
             self.objectWillChange.send()
         }
