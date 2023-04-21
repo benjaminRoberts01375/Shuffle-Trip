@@ -18,11 +18,11 @@ final class SearchResultVM: ObservableObject {
     init(locationResult: MKMapItem) {
         self.locationResult = locationResult
         let placemark = locationResult.placemark
-        let houseNum = placemark.subThoroughfare ?? ""
-        let street = placemark.thoroughfare ?? ""
-        var city = placemark.locality ?? ""
-        var state = placemark.administrativeArea ?? ""
-        let country = placemark.country ?? ""
+        let houseNum = placemark.subThoroughfare ?? ""  // Street number
+        let street = placemark.thoroughfare ?? ""       // Street name
+        var city = placemark.locality ?? ""             // City
+        var state = placemark.administrativeArea ?? ""  // State
+        let country = placemark.country ?? ""           // Country
         
         var streetInfo = ""
         if houseNum != "", street != "" {
@@ -39,15 +39,14 @@ final class SearchResultVM: ObservableObject {
             address = "Unknown Address"
         }
         
+        self.address = address
+        
         guard let category = locationResult.pointOfInterestCategory
         else {
             symbol = Image(systemName: "questionmark.circle.fill")
             color = Color.gray
-            self.address = "Unknown Address"
             return
         }
-
-        self.address = address
 
         switch category {
         case .airport:
