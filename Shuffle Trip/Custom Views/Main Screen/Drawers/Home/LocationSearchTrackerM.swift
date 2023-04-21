@@ -12,8 +12,15 @@ final class LocationSearchTrackerM: ObservableObject {
         }
     }
     
+    var searchResults: [MKMapItem] {
+        didSet {
+            self.objectWillChange.send()
+        }
+    }
+    
     init() {
         self.searchText = ""
+        self.searchResults = []
     }
     
     /// Searches for locations based on natural language
@@ -26,7 +33,8 @@ final class LocationSearchTrackerM: ObservableObject {
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in
             if error != nil {
-                print("Search error")
+                guard let error = error else { return }
+                print("Search error: \(error)")
                 return
             }
             guard let response = response
@@ -40,8 +48,7 @@ final class LocationSearchTrackerM: ObservableObject {
                 return
             }
             
-            print("Responses: \(response.mapItems)")
-            
+            self.searchResults = response.mapItems
         }
     }
 }
