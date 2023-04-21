@@ -22,11 +22,9 @@ struct HomeBodySwitcherV: View {
             }
         }
         .onReceive(controller.searchTracker.objectWillChange) {
-            print("Received")
             controller.setDisplayPhase()
         }
         .onAppear {
-            print("Appeared")
             controller.setDisplayPhase()
         }
     }
