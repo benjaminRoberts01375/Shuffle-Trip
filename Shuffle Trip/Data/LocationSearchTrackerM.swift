@@ -21,11 +21,11 @@ final class LocationSearchTrackerM: ObservableObject {
     }
     
     /// Searches for locations based on natural language
-    internal func searchLocation() {
-        print("Searching \(searchText)")
+    internal func searchLocation(_ location: String) {
+        print("Searching \(location)")
         let request = MKLocalSearch.Request()
         request.pointOfInterestFilter = MapDetails.defaultFilter
-        request.naturalLanguageQuery = searchText
+        request.naturalLanguageQuery = location
         
         let search = MKLocalSearch(request: request)
         search.start { (response, error) in

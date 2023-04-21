@@ -14,8 +14,8 @@ struct TripSearchV: View {
         VStack {
             EmptyView()
         }
-        .onReceive(controller.searchTracker.$searchText) { _ in
-            controller.searchTracker.searchLocation()
+        .onReceive(controller.searchTracker.$searchText) { searchQuery in
+            controller.searchTracker.searchLocation(searchQuery)
         }
     }
 }
