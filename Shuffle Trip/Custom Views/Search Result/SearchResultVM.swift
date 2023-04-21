@@ -17,7 +17,7 @@ final class SearchResultVM: ObservableObject {
         self.locationResult = locationResult
         guard let category = locationResult.pointOfInterestCategory
         else {
-            symbol = Image(systemName: "circle.fill")
+            symbol = Image(systemName: "questionmark.circle.fill")
             color = Color.gray
             return
         }
@@ -63,7 +63,7 @@ final class SearchResultVM: ObservableObject {
             symbol = Image(systemName: "books.vertical.circle.fill")
             color = Color.brown
         case .nightlife:
-            symbol = Image(systemName: "fire.circle.fill")
+            symbol = Image(systemName: "flame.circle.fill")
             color = Color.orange
         case .park:
             symbol = Image(systemName: "tree.circle.fill")
@@ -87,7 +87,7 @@ final class SearchResultVM: ObservableObject {
             symbol = Image(systemName: "leaf.circle.fill")
             color = Color.green
         default:
-            symbol = Image(systemName: "circle.fill")
+            symbol = Image(systemName: "questionmark.circle.fill")
             color = Color.gray
         }
     }
