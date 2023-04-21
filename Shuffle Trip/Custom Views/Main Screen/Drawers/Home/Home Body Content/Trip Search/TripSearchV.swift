@@ -6,11 +6,16 @@ import SwiftUI
 struct TripSearchV: View {
     @StateObject var controller: TripSearchVM
     
-    init() {
-        self._controller = StateObject(wrappedValue: TripSearchVM())
+    init(searchTracker: LocationSearchTrackerM) {
+        self._controller = StateObject(wrappedValue: TripSearchVM(searchTracker: searchTracker))
     }
     
     var body: some View {
-        EmptyView()
+        VStack {
+            EmptyView()
+        }
+        .onReceive(controller.searchTracker.objectWillChange) { _ in
+            controller.searchLocation()
+        }
     }
 }

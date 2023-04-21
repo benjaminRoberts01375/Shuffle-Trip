@@ -5,7 +5,7 @@ import SwiftUI
 
 struct HomeHeaderV: View {
     @StateObject var controller: HomeHeaderVM
-    init(tripLocations: TripLocations, region: RegionDetails, searchTracker: SearchTrackerM) {
+    init(tripLocations: TripLocations, region: RegionDetails, searchTracker: LocationSearchTrackerM) {
         self._controller = StateObject(wrappedValue: HomeHeaderVM(tripLocations: tripLocations, region: region, searchTracker: searchTracker))
     }
     

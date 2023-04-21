@@ -10,9 +10,9 @@ final class HomeHeaderVM: ObservableObject {
     /// The current region the user's looking at on the map
     var region: RegionDetails
     /// Tracker for what the user's searching for
-    @ObservedObject var searchTracker: SearchTrackerM
+    @ObservedObject var searchTracker: LocationSearchTrackerM
     
-    init(tripLocations: TripLocations, region: RegionDetails, searchTracker: SearchTrackerM) {
+    init(tripLocations: TripLocations, region: RegionDetails, searchTracker: LocationSearchTrackerM) {
         self.tripLocations = tripLocations
         self.region = region
         self.searchTracker = searchTracker

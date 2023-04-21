@@ -6,7 +6,7 @@ import SwiftUI
 struct HomeBodySwitcherV: View {
     @StateObject var controller: HomeBodySwitcherVM
     
-    init(tripLocations: TripLocations, searchTracker: SearchTrackerM) {
+    init(tripLocations: TripLocations, searchTracker: LocationSearchTrackerM) {
         self._controller = StateObject(wrappedValue: HomeBodySwitcherVM(tripLocations: tripLocations, searchTracker: searchTracker))
     }
     
@@ -17,8 +17,7 @@ struct HomeBodySwitcherV: View {
                     .frame(width: 50, height: 50)
             }
             else {
-                Color.green
-                    .frame(width: 50, height: 50)
+                TripSearchV(searchTracker: controller.searchTracker)
             }
         }
         .onReceive(controller.searchTracker.objectWillChange) {

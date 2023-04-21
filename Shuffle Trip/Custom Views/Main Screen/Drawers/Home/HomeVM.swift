@@ -10,11 +10,11 @@ import SwiftUI
     /// Current position of the map
     var region: RegionDetails
     /// Tracker for what the user is searching for
-    var searchTracker: SearchTrackerM
+    var searchTracker: LocationSearchTrackerM
     
     init(tripLocations: TripLocations, region: RegionDetails) {
         self.tripLocations = tripLocations
         self.region = region
-        self.searchTracker = SearchTrackerM()
+        self.searchTracker = LocationSearchTrackerM()
     }
 }

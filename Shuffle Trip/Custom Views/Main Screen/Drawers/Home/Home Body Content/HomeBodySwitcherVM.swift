@@ -7,11 +7,11 @@ final class HomeBodySwitcherVM: ObservableObject {
     /// All user locations for the current user
     var tripLocations: TripLocations
     /// Tracker for what the user is searching for
-    var searchTracker: SearchTrackerM
+    var searchTracker: LocationSearchTrackerM
     /// Determines content to display to the user
     @Published var displayPhase: DisplayPhase
     
-    init(tripLocations: TripLocations, searchTracker: SearchTrackerM) {
+    init(tripLocations: TripLocations, searchTracker: LocationSearchTrackerM) {
         self.tripLocations = tripLocations
         self.searchTracker = searchTracker
         self.displayPhase = .normal
