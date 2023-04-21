@@ -123,7 +123,7 @@ class MapCoordinator: NSObject, MKMapViewDelegate {
         
         if tappedTrips.isEmpty {                                                                                                                    // No trips were tapped on
             /// Haptic Feedback when trip is deselected
-            if tripLocations.isSelected {
+            if tripLocations.getSelectedTrip() != nil {
                 generator.impactOccurred()
             }
             
