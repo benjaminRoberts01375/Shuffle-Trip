@@ -215,4 +215,11 @@ import SwiftUI
         }
         previousDrag = CGSize(width: 0, height: 0)                                          // Reset dragging
     }
+    
+    
+    /// To implement tap to snap from bottom to middle, middle to top and top to bottom
+    /// - Parameter animation: snap animations
+    public func TapSnapToPoint(animation: Animation = Animation.interactiveSpring(response: 0.2, dampingFraction: 1, blendDuration: 0.2)) {
+        print("Drawer Tapped")
+    }
 }
