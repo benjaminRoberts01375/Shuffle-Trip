@@ -7,9 +7,12 @@ import SwiftUI
 final class SearchVM: ObservableObject {
     /// Keep track of what is being searched for
     @Published var searchTracker: LocationSearchTrackerM
+    /// Keeps track if the results should be filtered to be Yelp compatable
+    let filterEnabled: Bool
     
-    init(searchTracker: LocationSearchTrackerM) {
+    init(searchTracker: LocationSearchTrackerM, filter: Bool) {
         self.searchTracker = searchTracker
+        self.filterEnabled = filter
     }
     
     /// Wrapper for the search tracker's search location function

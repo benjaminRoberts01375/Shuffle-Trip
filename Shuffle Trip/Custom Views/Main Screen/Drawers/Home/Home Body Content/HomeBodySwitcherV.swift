@@ -17,7 +17,7 @@ struct HomeBodySwitcherV: View {
                     .frame(width: 50, height: 50)
             }
             else {
-                SearchV(searchTracker: controller.searchTracker)
+                SearchV(searchTracker: controller.searchTracker, filter: false)
             }
         }
         .onReceive(controller.searchTracker.objectWillChange) {

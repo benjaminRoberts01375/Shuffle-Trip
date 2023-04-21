@@ -21,7 +21,7 @@ struct SelectedTripContentV: View {
                     SearchBar(text: $controller.searchTracker.searchText, placeholder: "Find an activity...")
                 }
                 if !controller.searchTracker.searchText.isEmpty {
-                    SearchV(searchTracker: controller.searchTracker)
+                    SearchV(searchTracker: controller.searchTracker, filter: true)
                 }
                 else {
                     if controller.editingTracker.isEditingTrip {
