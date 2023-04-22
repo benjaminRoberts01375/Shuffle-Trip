@@ -16,7 +16,7 @@ final class LocationSearchTrackerM: ObservableObject {
         }
     }
     
-    /// Keep track of time since
+    /// Keep track of time since last search
     private var searchTimer: Timer?
     
     init() {
