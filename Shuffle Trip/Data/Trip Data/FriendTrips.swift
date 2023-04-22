@@ -9,7 +9,7 @@ final class FriendTripProfiles: ObservableObject {
     @Published var friends: [User]
     
     init() {
-        self.myUsername = "Drew"
+        self.myUsername = UserLoginM.shared.userID ?? ""
         self.status = .generating
         self.friends = []
         GenerateFriends()
