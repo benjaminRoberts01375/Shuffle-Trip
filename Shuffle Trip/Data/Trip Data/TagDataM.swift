@@ -19,11 +19,11 @@ struct TopicGroup: Decodable, Hashable {
     }
 }
 
-public struct Topic: Decodable, Equatable {
+public struct Topic: Decodable, Equatable, Identifiable {
     let symbol: String
     let name: String
     let tags: [Tag]
-    let id: UUID = UUID()
+    public let id: UUID = UUID()
 
     enum CodingKeys: String, CodingKey {
         case symbol
