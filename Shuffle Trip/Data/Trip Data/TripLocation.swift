@@ -181,3 +181,20 @@ struct TripRequest: Encodable {
     let userID: String
     let chance: Int
 }
+
+struct SaveTrip: Encodable {
+    let rating: Float
+    let owner: String
+    let name: String
+    let description: String
+    let tripID: String
+    let latitude: Double
+    let longitude: Double
+    let radius: Double
+    let activities: [String]
+    let ratings: [Float]
+}
+
+struct DeleteTrip: Encodable {
+    let tripID: String
+}

@@ -49,12 +49,18 @@ final class TripLocations: ObservableObject, Equatable {
             }
             .store(in: &cancellables)
             SelectTrip(trip: trip)
+            
+            // Adds trip to database
+            AddTripDB(trip: trip)
         }
     }
     
     /// Remove specified trip
     /// - Parameter trip: Trip to remove
     public func RemoveTrip(trip: TripLocation) {
+        // Deletes trip from database
+        DeleteTripDB(trip: trip)
+        
         tripLocations.removeAll(where: { tripLocation in
             return tripLocation == trip
         })
@@ -94,5 +100,30 @@ final class TripLocations: ObservableObject, Equatable {
             }
         }
         return nil
+    }
+    
+    public func AddTripDB(trip: TripLocation) {
+        var activityIDs: [String] = []
+        var actRatings: [Float] = []
+        for activity in trip.activityLocations {
+            activityIDs.append(activity.businesses?[0].id ?? "")
+            actRatings.append(0)
+            
+        }
+        let saveTrip = SaveTrip(rating: -1, owner: UserLoginM.shared.userID!, name: trip.name, description: "This is a test prompt.  Needs implementation.", tripID: trip.id.uuidString, latitude: trip.coordinate.latitude, longitude: trip.coordinate.longitude, radius: trip.radius, activities: activityIDs, ratings: actRatings)
+        Task {
+            do {
+                _ = try await APIHandler.request(url: .saveTrip, dataToSend: saveTrip, decodeType: RequestResultList.self)
+            }
+        }
+    }
+    
+    public func DeleteTripDB(trip: TripLocation) {
+        let deleteTrip = DeleteTrip(tripID: trip.id.uuidString)
+        Task {
+            do {
+                _ = try await APIHandler.request(url: .deleteTrip, dataToSend: deleteTrip, decodeType: RequestResult.self)
+            }
+        }
     }
 }

@@ -68,9 +68,9 @@ struct SelectedTripContentV: View {
                     }
                     if !controller.editingTracker.isEditingTrip {
                         BigButtonListTripActions(
-                            openAllMapsAction: { print("NAV ALL") },
-                            saveTripAction: { print("Save Trip") },
-                            finishTripAction: { print("Finish Trip") }
+                            openAllMapsAction: { controller.navAll() },
+                            deleteTripAction: { controller.deleteTrip(trip: controller.tripLocations.getSelectedTrip()!) },
+                            finishTripAction: { controller.finishTrip() }
                         )  // Large buttons for almost any activity
                         .padding(6)
                         .padding(.vertical, 3)
@@ -140,14 +140,14 @@ struct BigButton: View {
 /// A list of large buttons for each Trip
 struct BigButtonListTripActions: View {
     var openAllMapsAction: () -> Void
-    var saveTripAction: () -> Void
+    var deleteTripAction: () -> Void
     var finishTripAction: () -> Void
     
     var body: some View {
         HStack {
             Spacer()
             Spacer()
-            BigButton(                                  // Navigate button
+            BigButton(
                 action: openAllMapsAction,
                 image: Image(systemName: "map.fill"),
                 label: "Navigate All",
@@ -155,8 +155,16 @@ struct BigButtonListTripActions: View {
                 enabled: .constant(true)
             )
             Spacer()
-            BigButton(                                  // Shuffle activity button
-                action: saveTripAction,
+            /*BigButton(
+                action: deleteTripAction,
+                image: Image(systemName: "trash.fill"),
+                label: "Delete Trip",
+                highlighted: false,
+                enabled: .constant(true)
+            )*/
+            //================================== DEMO TEMP ====================================
+            BigButton(
+                action: deleteTripAction,
                 image: Image(systemName: "square.and.arrow.down.fill"),
                 label: "Save Trip",
                 highlighted: false,

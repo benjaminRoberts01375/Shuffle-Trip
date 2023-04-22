@@ -26,7 +26,7 @@ final class UserLoginM: Codable, ObservableObject {
     }
     
     struct UserRequest: Encodable {
-        let username: String?
+        let userID: String?
     }
     
     private init() {

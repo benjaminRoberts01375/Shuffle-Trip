@@ -47,7 +47,7 @@ extension SignInWithAppleButtonVM {
         UserLoginM.shared.preferences = []
         Task {
             do {
-                _ = try await APIHandler.request(url: .sendUserData, dataToSend: UserLoginM.shared, decodeType: UserLoginM.self)
+                _ = try await APIHandler.request(url: .sendUserData, dataToSend: UserLoginM.shared, decodeType: RequestResult.self)
             }
         }
     }
@@ -56,7 +56,7 @@ extension SignInWithAppleButtonVM {
         /// API receive user data
         UserLoginM.shared.userID = credential.user
         
-        let userRequestData = UserLoginM.UserRequest(username: UserLoginM.shared.userID)
+        let userRequestData = UserLoginM.UserRequest(userID: UserLoginM.shared.userID)
         Task {
             do {
                 let userData = try await APIHandler.request(url: .getUserData, dataToSend: userRequestData, decodeType: UserLoginM.self)

@@ -69,4 +69,19 @@ final class SelectedTripContentVM: ObservableObject {
             }
         }
     }
+    
+    internal func navAll() {
+        
+    }
+    
+    internal func deleteTrip(trip: TripLocation) {
+        //================================== DEMO TEMP ====================================
+        tripLocations.AddTripDB(trip: trip)
+        
+        //tripLocations.RemoveTrip(trip: trip)
+    }
+    
+    internal func finishTrip() {
+        
+    }
 }
