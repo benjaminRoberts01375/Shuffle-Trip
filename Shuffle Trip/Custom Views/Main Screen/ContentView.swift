@@ -52,6 +52,12 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $controller.loginScreenConver) {
                 LoginScreenV()
             }
+            .onReceive(UserLoginM.shared.objectWillChange) { _ in
+                controller.generateFriends()
+            }
+            .onReceive(controller.friendTripLocations.objectWillChange) { _ in
+                print("Generated friend locations")
+            }
         }
     }
 }

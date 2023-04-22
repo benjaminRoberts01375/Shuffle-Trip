@@ -47,4 +47,11 @@ class ContentViewModel: ObservableObject {
             }
         }
     }
+    
+    /// If there's a userID, generate friends
+    internal func generateFriends() {
+        if UserLoginM.shared.userID != nil {
+            friendTripLocations.GenerateFriends()
+        }
+    }
 }
