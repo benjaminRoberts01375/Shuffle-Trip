@@ -15,20 +15,42 @@ struct LoginScreenV: View {
     }
     
     var body: some View {
-        SignInWithAppleButton()
-            .frame(width: 280, height: 60, alignment: .center)
-            .onTapGesture(perform: showAppleLoginView)
-            .cornerRadius(50)
-            .accessibilityAddTraits(.isButton)
-            .onReceive(UserLoginM.shared.objectWillChange) { _ in
-                if UserLoginM.shared.userID != nil {
-                    dismiss()
+            ZStack(alignment: .top) {
+                Image("Background")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .accessibilityLabel("Decorative background photo")
+                VStack {
+                    Spacer()
+                    Text("Shuffle Trip")
+                        .font(.system(size: 50))
+                        .fontWeight(.semibold)
+                        .padding()
+                        .background(BlurView(style: .systemThinMaterialLight, opacity: 0))
+                        .foregroundColor(.black)
+                        .cornerRadius(20)
+                        .shadow(radius: 3, y: 3)
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    SignInWithAppleButton()
+                        .frame(width: 200, height: 60, alignment: .center)
+                        .onTapGesture(perform: showAppleLoginView)
+                        .cornerRadius(50)
+                        .accessibilityAddTraits(.isButton)
+                        .onReceive(UserLoginM.shared.objectWillChange) { _ in
+                            if UserLoginM.shared.userID != nil {
+                                dismiss()
+                            }
+                        }
+                    Spacer()
                 }
             }
     }
     
     private func showAppleLoginView() {
-
+        
         let provider = ASAuthorizationAppleIDProvider()
         let request = provider.createRequest()
         request.requestedScopes = [.fullName, .email]
