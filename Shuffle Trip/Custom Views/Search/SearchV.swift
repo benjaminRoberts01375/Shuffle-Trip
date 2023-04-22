@@ -18,12 +18,16 @@ struct SearchV: View {
                     result.placemark.country != nil &&                  // Check for the country,
                     result.placemark.administrativeArea != nil &&       // State,
                     result.placemark.subThoroughfare != nil {           // and house number
-                    SearchResultV(locationResult: result)
-                        .padding(5)
-                        .background(BlurView(style: .systemThinMaterial, opacity: 0))
-                        .cornerRadius(7)
-                        .padding(.horizontal)
-                        .padding(.vertical, 5)
+                    Button(action: {
+                        controller.selectionAction(result)
+                    }, label: {
+                        SearchResultV(locationResult: result)
+                            .padding(5)
+                            .background(BlurView(style: .systemThinMaterial, opacity: 0))
+                            .cornerRadius(7)
+                            .padding(.horizontal)
+                            .padding(.vertical, 5)
+                    })
                     Divider()
                 }
             }
