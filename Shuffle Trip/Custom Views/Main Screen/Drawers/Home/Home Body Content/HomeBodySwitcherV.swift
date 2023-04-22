@@ -17,26 +17,37 @@ struct HomeBodySwitcherV: View {
         switch controller.displayPhase {
         case .normal:
             VStack {
-                Menu {
-                    Button(action: {
-                        controller.displayPhase = .presentQRCode
-                    }, label: {
-                        HStack {
-                            Image(systemName: "qrcode")
-                            Text("Present Code")
-                        }
-                    })
-                    Button(action: {
-                        controller.displayPhase = .readQRCode
-                    }, label: {
-                        HStack {
-                            Image(systemName: "qrcode.viewfinder")
-                            Text("Scan Code")
-                        }
-                    })
-                } label: {
-                    Image(systemName: "person.2.circle.fill")
+                HStack {
+                    Text("Hello, \(UserLoginM.shared.name ?? "")")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Spacer()
+                    Menu {
+                        Button(action: {
+                            controller.displayPhase = .presentQRCode
+                        }, label: {
+                            HStack {
+                                Image(systemName: "qrcode")
+                                Text("Present Code")
+                            }
+                        })
+                        Button(action: {
+                            controller.displayPhase = .readQRCode
+                        }, label: {
+                            HStack {
+                                Image(systemName: "qrcode.viewfinder")
+                                Text("Scan Code")
+                            }
+                        })
+                    } label: {
+                        Image(systemName: "person.2.circle.fill")
+                            .font(.title2)
+                    }
                 }
+                .padding(.top)
+                .padding(.horizontal)
+                Divider()
+                    .padding(.bottom)
             }
         case .tripSearch:
             VStack {
