@@ -14,6 +14,7 @@ struct APIHandler {
         case requestActivity = "businessByAddress"
         case saveTrip = "trip"
         case deleteTrip = "delTrip"
+        case addFriend = "friend"
     }
     
     /// Errors available to throw

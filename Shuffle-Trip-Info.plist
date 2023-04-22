@@ -13,6 +13,19 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.159180985934-neto3f85411pqemumtuoh3ljstoh1290</string>
+			</array>
+		</dict>
+	</array>
+	<key>GIDClientID</key>
+	<string>159180985934-neto3f85411pqemumtuoh3ljstoh1290.apps.googleusercontent.com</string>
+	<key>GIDServerClientID</key>
+	<string>159180985934-neq7qul101jv49j5132qokv0ql4jcc5f.apps.googleusercontent.com</string>
 	<key>MKDirectionsApplicationSupportedModes</key>
 	<array>
 		<string>MKDirectionsModeBike</string>
@@ -28,18 +41,5 @@
 		<string>MKDirectionsModeTaxi</string>
 		<string>MKDirectionsModeTrain</string>
 	</array>
-	<key>GIDClientID</key>
-	<string>159180985934-neto3f85411pqemumtuoh3ljstoh1290.apps.googleusercontent.com</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>com.googleusercontent.apps.159180985934-neto3f85411pqemumtuoh3ljstoh1290</string>
-			</array>
-		</dict>
-	</array>
-	<key>GIDServerClientID</key>
-	<string>159180985934-neq7qul101jv49j5132qokv0ql4jcc5f.apps.googleusercontent.com</string>
 </dict>
 </plist>

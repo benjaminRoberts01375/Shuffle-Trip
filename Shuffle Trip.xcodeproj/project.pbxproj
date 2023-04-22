@@ -75,6 +75,8 @@
 		2FE1DE9AAEA9C720DECB3697 /* Pods_Shuffle_Trip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BCAF5C322DE425916C5FBE8 /* Pods_Shuffle_Trip.framework */; };
 		31C640E273DE9B72D428A695 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F408DEE5225C040D8FD9140 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework */; };
 		54CF7950409FBF3B0F20EE65 /* Pods_Shuffle_TripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D86BA779505ECA81D4D98A /* Pods_Shuffle_TripTests.framework */; };
+		743FA54129F3F126005D5348 /* QRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743FA54029F3F126005D5348 /* QRM.swift */; };
+		743FA54429F3F15B005D5348 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 743FA54329F3F15B005D5348 /* CodeScanner */; };
 		74615A1929F3AC5B00369015 /* RequestResultM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74615A1829F3AC5B00369015 /* RequestResultM.swift */; };
 		7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551229EF412500636AEA /* LoginScreenVM.swift */; };
 		7479551729EF412500636AEA /* LoginScreenV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7479551429EF412500636AEA /* LoginScreenV.swift */; };
@@ -175,6 +177,7 @@
 		568A11EFBE9407F27FC8B5A9 /* Pods-Shuffle TripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.release.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.release.xcconfig"; sourceTree = "<group>"; };
 		6E3DD6E0B66F2AEFC005DE64 /* Pods-Shuffle TripTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shuffle TripTests.debug.xcconfig"; path = "Target Support Files/Pods-Shuffle TripTests/Pods-Shuffle TripTests.debug.xcconfig"; sourceTree = "<group>"; };
 		6F408DEE5225C040D8FD9140 /* Pods_Shuffle_Trip_Shuffle_TripUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shuffle_Trip_Shuffle_TripUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		743FA54029F3F126005D5348 /* QRM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRM.swift; sourceTree = "<group>"; };
 		74615A1829F3AC5B00369015 /* RequestResultM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestResultM.swift; sourceTree = "<group>"; };
 		7479551229EF412500636AEA /* LoginScreenVM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenVM.swift; sourceTree = "<group>"; };
 		7479551429EF412500636AEA /* LoginScreenV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginScreenV.swift; sourceTree = "<group>"; };
@@ -194,6 +197,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				743FA54429F3F15B005D5348 /* CodeScanner in Frameworks */,
 				2FE1DE9AAEA9C720DECB3697 /* Pods_Shuffle_Trip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -479,6 +483,7 @@
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
 				7479551D29EF634600636AEA /* UserLoginM.swift */,
 				07A038E929F25AEC0036EC14 /* LocationSearchTrackerM.swift */,
+				743FA54029F3F126005D5348 /* QRM.swift */,
 				74615A1829F3AC5B00369015 /* RequestResultM.swift */,
 			);
 			path = Data;
@@ -567,6 +572,9 @@
 			dependencies = (
 			);
 			name = "Shuffle Trip";
+			packageProductDependencies = (
+				743FA54329F3F15B005D5348 /* CodeScanner */,
+			);
 			productName = "Shuffle Trip";
 			productReference = 07402D552980816E00F1F046 /* Shuffle Trip.app */;
 			productType = "com.apple.product-type.application";
@@ -641,6 +649,9 @@
 				Base,
 			);
 			mainGroup = 07402D4C2980816E00F1F046;
+			packageReferences = (
+				743FA54229F3F15B005D5348 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 07402D562980816E00F1F046 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -800,6 +811,7 @@
 				076FC70B29CC330200648BB7 /* FriendTrips.swift in Sources */,
 				7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,
+				743FA54129F3F126005D5348 /* QRM.swift in Sources */,
 				075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */,
 				07A038E829F1AC110036EC14 /* HomeHeaderVM.swift in Sources */,
 				07E3D74729A0BC0900168218 /* SelectedTripDV.swift in Sources */,
@@ -1186,6 +1198,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		743FA54229F3F15B005D5348 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		743FA54329F3F15B005D5348 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 743FA54229F3F15B005D5348 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 07402D4D2980816E00F1F046 /* Project object */;
 }
