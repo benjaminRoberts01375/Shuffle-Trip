@@ -9,10 +9,13 @@ final class SearchVM: ObservableObject {
     @Published var searchTracker: LocationSearchTrackerM
     /// Keeps track if the results should be filtered to be Yelp compatable
     let filterEnabled: Bool
+    /// Action to take when a location is selected
+    let selectionAction: (MKMapItem) -> Void
     
-    init(searchTracker: LocationSearchTrackerM, filter: Bool) {
+    init(searchTracker: LocationSearchTrackerM, filter: Bool, selectionAction: @escaping (MKMapItem) -> Void) {
         self.searchTracker = searchTracker
         self.filterEnabled = filter
+        self.selectionAction = selectionAction
     }
     
     /// Wrapper for the search tracker's search location function

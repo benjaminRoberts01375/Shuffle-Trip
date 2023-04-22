@@ -1,10 +1,12 @@
 // Apr 12, 2023
 // Ben Roberts
 
+import MapKit
 import SwiftUI
 
 struct SelectedTripContentV: View {
     @StateObject var controller: SelectedTripContentVM
+    @Environment(\.dismiss) var dismiss
 
     /// The initializer for the selected trip content manager
     /// - Parameter tripLocations: Locations of each trip
@@ -21,7 +23,10 @@ struct SelectedTripContentV: View {
                     SearchBar(text: $controller.searchTracker.searchText, placeholder: "Find an activity...")
                 }
                 if !controller.searchTracker.searchText.isEmpty {
-                    SearchV(searchTracker: controller.searchTracker, filter: true)
+                    SearchV(searchTracker: controller.searchTracker, filter: true, selectionAction: { tripItem in
+                        controller.addActivity(activity: tripItem)
+                        dismiss()
+                    })
                 }
                 else {
                     if controller.editingTracker.isEditingTrip {

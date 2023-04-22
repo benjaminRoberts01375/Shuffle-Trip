@@ -1,13 +1,14 @@
 // Apr 21, 2023
 // Ben Roberts
 
+import MapKit
 import SwiftUI
 
 struct SearchV: View {
     @StateObject var controller: SearchVM
     
-    init(searchTracker: LocationSearchTrackerM, filter: Bool) {
-        self._controller = StateObject(wrappedValue: SearchVM(searchTracker: searchTracker, filter: filter))
+    init(searchTracker: LocationSearchTrackerM, filter: Bool, selectionAction: @escaping (MKMapItem) -> Void) {
+        self._controller = StateObject(wrappedValue: SearchVM(searchTracker: searchTracker, filter: filter, selectionAction: selectionAction))
     }
     
     var body: some View {

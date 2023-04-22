@@ -1,6 +1,7 @@
 // Apr 21, 2023
 // Ben Roberts
 
+import MapKit
 import SwiftUI
 
 final class HomeBodySwitcherVM: ObservableObject {
@@ -27,5 +28,10 @@ final class HomeBodySwitcherVM: ObservableObject {
         if displayPhase != newPhase {
             displayPhase = newPhase
         }
+    }
+    
+    /// Adds a trip based on the location of an MKMapItem
+    /// - Parameter trip: Trip location to add as an MKMapItem
+    internal func addTrip(trip: MKMapItem) {
     }
 }

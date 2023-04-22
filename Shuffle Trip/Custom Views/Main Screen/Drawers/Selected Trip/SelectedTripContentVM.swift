@@ -1,6 +1,7 @@
 // Apr 13, 2023
 // Ben Roberts
 
+import MapKit
 import SwiftUI
 
 final class SelectedTripContentVM: ObservableObject {
@@ -23,5 +24,8 @@ final class SelectedTripContentVM: ObservableObject {
     // Check editing status
     internal func checkState() {
         self.objectWillChange.send()
+    }
+    
+    internal func addActivity(activity: MKMapItem) {
     }
 }
