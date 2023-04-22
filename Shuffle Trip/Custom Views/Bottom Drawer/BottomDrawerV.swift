@@ -98,14 +98,12 @@ struct BottomDrawer<Content: DrawerView>: View {
         }
         .edgesIgnoringSafeArea([.bottom])
         .onAppear {
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
-                guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
-                    return
-                }
-                self.keyboardHeight = keyboardFrame.height
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in  // Add observer for keeping track of keyboard raising
+                guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else { return }                    // Convert coordinates into a CGRect
+                self.keyboardHeight = keyboardFrame.height                                                                                              // Save keyboard height
             }
-            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
-                self.keyboardHeight = 0
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in             // Add observer for keeping track of keyboard hiding
+                self.keyboardHeight = 0                                                                                                                 // Keyboard hid, set back to zero
             }
         }
     }
