@@ -18,7 +18,7 @@ struct SearchV: View {
                     result.placemark.country != nil &&                  // Check for the country,
                     result.placemark.administrativeArea != nil &&       // State,
                     result.placemark.subThoroughfare != nil {           // and house number
-                    if !controller.pointOfInterestBlacklist.contains(result.pointOfInterestCategory ?? .university) {
+                    if !controller.filterEnabled || !controller.pointOfInterestBlacklist.contains(result.pointOfInterestCategory ?? .university) {
                         Button(action: {
                             controller.selectionAction(result)
                         }, label: {
