@@ -105,6 +105,7 @@ struct BottomDrawer<Content: DrawerView>: View {
             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in             // Add observer for keeping track of keyboard hiding
                 self.keyboardHeight = 0                                                                                                                 // Keyboard hid, set back to zero
             }
+            controller.SnapToPoint()
         }
     }
 }

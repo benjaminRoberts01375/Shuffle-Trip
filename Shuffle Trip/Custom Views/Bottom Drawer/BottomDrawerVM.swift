@@ -25,7 +25,13 @@ import SwiftUI
             }
         }}
     /// Height of the drawer, and horizontal position
-    @Published var offset: CGSize
+    @Published var offset: CGSize {
+        didSet {
+            if offset.height == 0 {
+                SnapToPoint()
+            }
+        }
+    }
     /// Cache for the drawer's height in the event it must be temporarily resized
     private var offsetCache: CGFloat = 0
     /// The previous height of a drag gesture for keeping track of distance/velocity
@@ -70,7 +76,6 @@ import SwiftUI
                 snapPointsY.remove(at: snapPointIndex)
             }
         }
-        
         SnapToPoint(animation: Animation.linear)
         snapPointsX = [0, -dimensions.width + minimumShortCardSize]
     }
