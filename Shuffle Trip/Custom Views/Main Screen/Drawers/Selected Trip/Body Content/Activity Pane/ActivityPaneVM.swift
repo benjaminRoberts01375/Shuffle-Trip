@@ -35,8 +35,9 @@ final class ActivityPaneVM: ObservableObject {
         self.allowShuffle = false
         self.showTagSelector = false
         self.lookAroundLocation = MapDetails.location1
-        checkLookAround()
         generateIndex()
+        checkValidActivity()
+        checkLookAround()
     }
     
     /// Determines the index of the activity within the selected trip
