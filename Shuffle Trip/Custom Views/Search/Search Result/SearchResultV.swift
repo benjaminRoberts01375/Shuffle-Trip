@@ -19,6 +19,7 @@ struct SearchResultV: View {
                 .font(.title)
             VStack(alignment: .leading) {
                 Text(controller.locationResult.name ?? "Unknown Location")
+                    .foregroundColor(Color.primary)
                 Text(controller.address)
                     .font(.caption)
                     .foregroundColor(.secondary)
