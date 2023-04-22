@@ -46,6 +46,7 @@
 		07A038F429F26ED50036EC14 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F329F26ED50036EC14 /* SearchVM.swift */; };
 		07A038F729F27A880036EC14 /* SearchResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F629F27A880036EC14 /* SearchResultVM.swift */; };
 		07A038F929F27AAA0036EC14 /* SearchResultV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F829F27AAA0036EC14 /* SearchResultV.swift */; };
+		07A0390929F3FD8A0036EC14 /* MapIconV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A0390829F3FD8A0036EC14 /* MapIconV.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -146,6 +147,7 @@
 		07A038F329F26ED50036EC14 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		07A038F629F27A880036EC14 /* SearchResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVM.swift; sourceTree = "<group>"; };
 		07A038F829F27AAA0036EC14 /* SearchResultV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultV.swift; sourceTree = "<group>"; };
+		07A0390829F3FD8A0036EC14 /* MapIconV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapIconV.swift; path = "Shuffle Trip/Custom Views/MapIconV.swift"; sourceTree = SOURCE_ROOT; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -311,6 +313,7 @@
 				07F71A432980EABD007C7AE6 /* Region Selector */,
 				07402D852980837A00F1F046 /* Blur.swift */,
 				07B5C03D29EE5803003BE480 /* LookAroundV.swift */,
+				07A0390829F3FD8A0036EC14 /* MapIconV.swift */,
 				07B87B7529E9EA970097EA05 /* Tag Picker */,
 				07A038F029F26E790036EC14 /* Search */,
 			);
@@ -818,6 +821,7 @@
 				07F71A3B29808788007C7AE6 /* ContentView.swift in Sources */,
 				07A038F429F26ED50036EC14 /* SearchVM.swift in Sources */,
 				0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */,
+				07A0390929F3FD8A0036EC14 /* MapIconV.swift in Sources */,
 				07402D862980837A00F1F046 /* Blur.swift in Sources */,
 				07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */,
 				07B87B7929E9EABF0097EA05 /* TagNavigatorV.swift in Sources */,

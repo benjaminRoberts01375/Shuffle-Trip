@@ -48,6 +48,27 @@ struct HomeBodySwitcherV: View {
                 .padding(.horizontal)
                 Divider()
                     .padding(.bottom)
+                
+                if !FriendTripProfiles.shared.friends.isEmpty {
+                    VStack(alignment: .leading) {
+                        HStack {
+                            Text("Friend's Trips")
+                                .font(.title2)
+                                .fontWeight(.bold)
+                                .multilineTextAlignment(.leading)
+                                .padding(.leading)
+                        }
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(FriendTripProfiles.shared.friends) { friend in
+                                    ForEach(friend.trips) { trip in
+                                        
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             }
         case .tripSearch:
             VStack {
