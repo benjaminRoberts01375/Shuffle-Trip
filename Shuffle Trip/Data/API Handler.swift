@@ -8,7 +8,7 @@ struct APIHandler {
     
     enum APIUrl: String {
         case shuffleTrip = "filteredApi"
-        case friendDetauls = "getFriendsTrips"
+        case friendDetails = "getFriendsTrips"
         case sendUserData = "user"
         case getUserData = "getUser"
         case requestActivity = "businessByAddress"
