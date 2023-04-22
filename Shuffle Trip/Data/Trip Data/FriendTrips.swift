@@ -4,12 +4,10 @@
 import SwiftUI
 
 final class FriendTripProfiles: ObservableObject {
-    let myUsername: String
     @Published var status: Status
     @Published var friends: [User]
     
     init() {
-        self.myUsername = UserLoginM.shared.userID ?? ""
         self.status = .generating
         self.friends = []
         GenerateFriends()
@@ -19,10 +17,10 @@ final class FriendTripProfiles: ObservableObject {
     private func GenerateFriends() {
         // Encode FriendTripRequest instance into JSON data
         status = .generating
-        let tripRequest = FriendTripRequest(username: myUsername)
+        let tripRequest = FriendTripRequest(userID: UserLoginM.shared.userID ?? "")
         Task {
             do {
-                self.friends = try await APIHandler.request(url: .friendDetauls, dataToSend: tripRequest, decodeType: [User].self)
+                self.friends = try await APIHandler.request(url: .friendDetails, dataToSend: tripRequest, decodeType: [User].self)
                 self.status = .successful
             }
             catch { self.status = .error }
@@ -37,11 +35,11 @@ final class FriendTripProfiles: ObservableObject {
 
     // swiftlint:disable nesting
     struct User: Decodable {
-        let username: String
+        let userID: String
         let trips: [Trip]
         
         enum CodingKeys: String, CodingKey {
-            case username
+            case userID
             case trips
         }
     }
@@ -63,7 +61,7 @@ final class FriendTripProfiles: ObservableObject {
     }
     
     struct FriendTripRequest: Encodable {
-        let username: String
+        let userID: String
     }
     // swiftlint:enable nesting
 }
