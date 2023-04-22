@@ -23,8 +23,8 @@ struct SelectedTripContentV: View {
                     SearchBar(text: $controller.searchTracker.searchText, placeholder: "Find an activity...")
                 }
                 if !controller.searchTracker.searchText.isEmpty {
-                    SearchV(searchTracker: controller.searchTracker, filter: true, selectionAction: { tripItem in
-                        controller.addActivity(activity: tripItem)
+                    SearchV(searchTracker: controller.searchTracker, filter: true, selectionAction: { activityItem in
+                        controller.addActivity(activity: activityItem)
                         dismiss()
                     })
                 }
