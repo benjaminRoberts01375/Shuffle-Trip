@@ -13,12 +13,15 @@ final class SelectedTripContentVM: ObservableObject {
     @Published var showSettings: Bool
     /// Tracking details about search in regards to location
     @ObservedObject var searchTracker: LocationSearchTrackerM
+    /// Keeps track of if an error should be displayed on the screen
+    @Published var alertTracker: Bool
     
     init(tripLocations: TripLocations, editingTracker: EditingTrackerM) {
         self.tripLocations = tripLocations
         self.editingTracker = editingTracker
         self.showSettings = false
         self.searchTracker = LocationSearchTrackerM()
+        self.alertTracker = false
     }
     
     // Check editing status

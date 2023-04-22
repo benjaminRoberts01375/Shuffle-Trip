@@ -89,6 +89,12 @@ struct SelectedTripContentV: View {
             .onReceive(controller.searchTracker.$searchText) { _ in
                 controller.checkState()
             }
+            .alert(isPresented: $controller.alertTracker) {
+                 Alert(
+                    title: Text("Error Finding Activity"),
+                    message: Text("Doesn't look like we were able to find the activity you wanted. We use Yelp to gather details about a location, and things don't always line-up with Apple Maps."),
+                    dismissButton: .default(Text("Got it!")))
+             }
         }
         else {
             Text("No selected trip.")
