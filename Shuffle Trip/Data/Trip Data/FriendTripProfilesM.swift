@@ -63,6 +63,9 @@ final class FriendTripProfiles: ObservableObject {
         let owner: String
         let description: String
         let activities: [Business]
+        let latitude: Double
+        let longitude: Double
+        let radius: Int
         var id: UUID = UUID()
         
         enum CodingKeys: String, CodingKey {
@@ -71,6 +74,9 @@ final class FriendTripProfiles: ObservableObject {
             case owner
             case description
             case activities
+            case latitude
+            case longitude
+            case radius
         }
     }
     
