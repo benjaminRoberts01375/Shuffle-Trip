@@ -44,10 +44,17 @@ final class SelectedTripContentVM: ObservableObject {
         
         Task {
             do {
-                let newActivity = try await APIHandler.request(url: .requestActivity, dataToSend: request, decodeType: Activity.self)
+                let newBusiness = try await APIHandler.request(url: .requestActivity, dataToSend: request, decodeType: Business.self)
+                let newActivity = Activity()
+                for category in newBusiness.categories {
+                    _ = newActivity.addTag(tagName: category.title)
+                }
+                newActivity.businesses = [newBusiness]
                 selectedTrip.insertActivity(activity: newActivity)
             }
+            catch APIHandler.Errors.decodeError {
+                alertTracker = true
+            }
         }
-        //        selectedTrip.insertActivity(activity: )
     }
 }
