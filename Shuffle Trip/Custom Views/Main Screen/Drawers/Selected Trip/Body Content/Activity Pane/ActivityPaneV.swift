@@ -197,22 +197,26 @@ struct ActivityPaneV: View {
         @Binding var enabled: Bool
         
         var body: some View {
-            Button(action: {
-                action()
-            }, label: {
-                VStack {
-                    image
-                        .font(.title3)
-                    Text(label)
-                        .font(.caption2)
-                }
-                .frame(width: 65, height: 55)
-                .foregroundColor(highlighted ? .white : .blue)
-                .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
-                .cornerRadius(10)
-            })
-            .disabled(!enabled)
-            .opacity(enabled ? 1 : 0.5)
+            Spacer()
+                .overlay(
+                    Button(action: {
+                        action()
+                    }, label: {
+                        VStack {
+                            image
+                                .font(.title3)
+                            Text(label)
+                                .font(.caption2)
+                        }
+                        .frame(minWidth: 55, maxWidth: .infinity, minHeight: 55, maxHeight: 55)
+                        .foregroundColor(highlighted ? .white : .blue)
+                        .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
+                        .cornerRadius(10)
+                    })
+                    .disabled(!enabled)
+                    .opacity(enabled ? 1 : 0.5)
+                )
+                .frame(height: 55)
         }
     }
     
@@ -226,8 +230,6 @@ struct ActivityPaneV: View {
         
         var body: some View {
             HStack {
-                Spacer()
-                Spacer()
                 BigButton(                                  // Navigate button
                     action: openMapsAction,
                     image: Image(systemName: "map.fill"),
@@ -251,6 +253,7 @@ struct ActivityPaneV: View {
                     highlighted: false,
                     enabled: .constant(true)
                 )
+                Spacer()
                 BigButton(                                  // Remove activity button
                     action: removeActivityAction,
                     image: Image(systemName: "trash.fill"),
@@ -258,8 +261,6 @@ struct ActivityPaneV: View {
                     highlighted: false,
                     enabled: .constant(true)
                 )
-                Spacer()
-                Spacer()
             }
         }
     }

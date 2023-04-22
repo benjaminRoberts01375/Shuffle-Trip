@@ -61,6 +61,15 @@ struct SelectedTripContentV: View {
                                 .padding(6)
                         }
                     }
+                    if !controller.editingTracker.isEditingTrip {
+                        BigButtonListTripActions(
+                            openAllMapsAction: { print("NAV ALL") },
+                            saveTripAction: { print("Save Trip") },
+                            finishTripAction: { print("Finish Trip") }
+                        )  // Large buttons for almost any activity
+                        .padding(6)
+                        .padding(.vertical, 3)
+                    }
                     Color.clear
                         .frame(width: 0, height: 10)
                 }
@@ -85,5 +94,73 @@ struct SelectedTripContentV: View {
 struct SelectedTripContent_Previews: PreviewProvider {
     static var previews: some View {
         SelectedTripContentV(tripLocations: TripLocations(), editingTracker: EditingTrackerM())
+    }
+}
+
+struct BigButton: View {
+    var action: () -> Void
+    var image: Image
+    var label: String
+    var highlighted: Bool
+    @Binding var enabled: Bool
+    
+    var body: some View {
+        Spacer()
+            .overlay(
+                Button(action: {
+                    action()
+                }, label: {
+                    VStack {
+                        image
+                            .font(.title3)
+                        Text(label)
+                            .font(.caption2)
+                    }
+                    .frame(minWidth: 80, maxWidth: .infinity, minHeight: 55, maxHeight: 55)
+                    .foregroundColor(highlighted ? .white : .blue)
+                    .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
+                    .cornerRadius(10)
+                })
+            )
+            .frame(height: 55)
+    }
+}
+
+/// A list of large buttons for each Trip
+struct BigButtonListTripActions: View {
+    var openAllMapsAction: () -> Void
+    var saveTripAction: () -> Void
+    var finishTripAction: () -> Void
+    
+    var body: some View {
+        HStack {
+            Spacer()
+            Spacer()
+            BigButton(                                  // Navigate button
+                action: openAllMapsAction,
+                image: Image(systemName: "map.fill"),
+                label: "Navigate All",
+                highlighted: true,
+                enabled: .constant(true)
+            )
+            Spacer()
+            BigButton(                                  // Shuffle activity button
+                action: saveTripAction,
+                image: Image(systemName: "square.and.arrow.down.fill"),
+                label: "Save Trip",
+                highlighted: false,
+                enabled: .constant(true)
+            )
+            Spacer()
+            BigButton(
+                action: finishTripAction,
+                image: Image(systemName: "flag.checkered.2.crossed"),
+                label: "Finish Trip",
+                highlighted: false,
+                enabled: .constant(true)
+            )
+            Spacer()
+            Spacer()
+        }
     }
 }
