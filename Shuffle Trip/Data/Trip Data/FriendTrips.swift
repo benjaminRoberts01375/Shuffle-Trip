@@ -20,8 +20,16 @@ final class FriendTripProfiles: ObservableObject {
         let tripRequest = FriendTripRequest(userID: UserLoginM.shared.userID ?? "")
         Task {
             do {
-                self.friends = try await APIHandler.request(url: .friendDetails, dataToSend: tripRequest, decodeType: [User].self)
-                self.status = .successful
+                let newFriends = try await APIHandler.request(url: .friendDetails, dataToSend: tripRequest, decodeType: [User].self)
+                DispatchQueue.main.async {
+                    self.friends = newFriends
+                    self.status = .successful
+                }
+            }
+            catch {
+                DispatchQueue.main.async {
+                    self.status = .error
+                }
             }
             catch { self.status = .error }
         }
