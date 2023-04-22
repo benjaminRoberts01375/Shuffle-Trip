@@ -8,8 +8,6 @@ import SwiftUI
 class ContentViewModel: ObservableObject {
     /// All trip locations
     @Published var tripLocations: TripLocations
-    /// Trips that friends have gone on
-    @Published var friendTripLocations: FriendTripProfiles
     /// Location to show on the map
     @Published var region: RegionDetails
     /// Current state of the application
@@ -29,7 +27,6 @@ class ContentViewModel: ObservableObject {
     
     init() {
         self.tripLocations = TripLocations()
-        self.friendTripLocations = FriendTripProfiles()
         self.region = RegionDetails()
         self.drawerMinimumHeight = 100
         self.interactionPhase = InteractionPhase.start
@@ -51,7 +48,7 @@ class ContentViewModel: ObservableObject {
     /// If there's a userID, generate friends
     internal func generateFriends() {
         if UserLoginM.shared.userID != nil {
-            friendTripLocations.GenerateFriends()
+            FriendTripProfiles.shared.GenerateFriends()
         }
     }
 }

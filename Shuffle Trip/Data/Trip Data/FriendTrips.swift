@@ -11,7 +11,9 @@ final class FriendTripProfiles: ObservableObject {
     }
     @Published var friends: [User]
     
-    init() {
+    public static var shared: FriendTripProfiles = FriendTripProfiles()
+    
+    private init() {
         self.status = .uninit
         self.friends = []
     }
