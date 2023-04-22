@@ -20,9 +20,11 @@ struct SearchResultV: View {
             VStack(alignment: .leading) {
                 Text(controller.locationResult.name ?? "Unknown Location")
                     .foregroundColor(Color.primary)
+                    .multilineTextAlignment(.leading)
                 Text(controller.address)
                     .font(.caption)
                     .foregroundColor(.secondary)
+                    .multilineTextAlignment(.leading)
             }
             Spacer()
         }
