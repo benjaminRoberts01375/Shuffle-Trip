@@ -215,6 +215,18 @@ struct Messaging: Codable {
     }
 }
 
+/// Struct for handling the required params for requesting a specific activity
+struct ActivityRequest: Encodable {
+    /// Name of the business
+    let name: String
+    /// Ex. 123 Summit ln
+    let address: String
+    /// Town or city
+    let city: String
+    /// State
+    let state: String
+    /// Country
+    let country: String
 }
 
 // swiftlint:enable discouraged_optional_boolean
