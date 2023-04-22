@@ -46,6 +46,8 @@ struct APIHandler {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")                        // Add request header
         request.httpBody = jsonData                                                                     // Add JSON to request
         
+        print(String(decoding: jsonData, as: UTF8.self))
+        
         let (data, response) = try await URLSession.shared.data(for: request)                           // Send JSON and wait for response
         
         print(String(decoding: data, as: UTF8.self))
