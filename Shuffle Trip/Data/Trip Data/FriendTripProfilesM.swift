@@ -57,12 +57,13 @@ final class FriendTripProfiles: ObservableObject {
         }
     }
 
-    struct Trip: Decodable {
+    struct Trip: Decodable, Identifiable {
         let name: String
         let rating: String
         let owner: String
         let description: String
         let activities: [Business]
+        var id: UUID = UUID()
         
         enum CodingKeys: String, CodingKey {
             case name
