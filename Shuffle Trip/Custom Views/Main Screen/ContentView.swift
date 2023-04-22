@@ -29,15 +29,15 @@ struct ContentView: View {
                 .zIndex(2)
                 .edgesIgnoringSafeArea(.all)
                 
-                if controller.interactionPhase == .start {
+                switch controller.interactionPhase {
+                case .start:
                     BottomDrawer(                                                                   // Home drawer
                         content: HomeDV(tripLocations: controller.tripLocations, region: controller.region),
                         snapPoints: cardSnapPositions
                     )
                     .transition(.move(edge: .bottom))
                     .zIndex(100)
-                }
-                else if controller.interactionPhase == .selectedTrip {
+                case .selectedTrip:
                     BottomDrawer(                                                                   // Selected trip drawer
                         content: SelectedTripDV(tripLocations: controller.tripLocations),
                         snapPoints: cardSnapPositions
