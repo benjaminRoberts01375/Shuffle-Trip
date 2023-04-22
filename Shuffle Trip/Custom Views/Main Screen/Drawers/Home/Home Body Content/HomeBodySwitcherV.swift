@@ -52,7 +52,7 @@ struct HomeBodySwitcherV: View {
                 if !FriendTripProfiles.shared.friends.isEmpty {
                     VStack(alignment: .leading) {
                         HStack {
-                            Text("Friend's Trips")
+                            Text("Friend Trips")
                                 .font(.title2)
                                 .fontWeight(.bold)
                                 .multilineTextAlignment(.leading)
@@ -62,12 +62,34 @@ struct HomeBodySwitcherV: View {
                             HStack {
                                 ForEach(FriendTripProfiles.shared.friends) { friend in
                                     ForEach(friend.trips) { trip in
-                                        
+                                        VStack {
+                                            MapIconV(
+                                                region: MKCoordinateRegion(
+                                                    center: CLLocationCoordinate2D(
+                                                        latitude: trip.latitude,
+                                                        longitude: trip.longitude
+                                                    ),
+                                                    latitudinalMeters: Double(trip.radius) * 1.2,
+                                                    longitudinalMeters: Double(trip.radius) * 1.2
+                                                ),
+                                                activities: trip.activities,
+                                                
+                                                title: "Burlington"
+                                            )
+                                            .frame(width: 250, height: 250)
+                                            .edgesIgnoringSafeArea(.all)
+                                            .cornerRadius(16)
+                                            .padding(.horizontal, 10)
+                                            .shadow(radius: 5)
+                                            .padding(.vertical, 10)
+                                            Text(trip.name)
+                                        }
                                     }
                                 }
                             }
                         }
                     }
+                    Divider()
                 }
             }
         case .tripSearch:
@@ -115,11 +137,14 @@ struct HomeBodySwitcherV: View {
         }
         
         EmptyView()
-        .onReceive(controller.searchTracker.objectWillChange) {
-            controller.setDisplayPhase()
-        }
-        .onAppear {
-            controller.setDisplayPhase()
-        }
+            .onReceive(controller.searchTracker.objectWillChange) {
+                controller.setDisplayPhase()
+            }
+            .onAppear {
+                controller.setDisplayPhase()
+            }
+            .onReceive(FriendTripProfiles.shared.objectWillChange) { _ in
+                controller.objectWillChange.send()
+            }
     }
 }
