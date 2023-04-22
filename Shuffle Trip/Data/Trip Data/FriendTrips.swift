@@ -17,7 +17,7 @@ final class FriendTripProfiles: ObservableObject {
     }
     
     /// Generates a list of friends
-    private func GenerateFriends() {
+    public func GenerateFriends() {
         // Encode FriendTripRequest instance into JSON data
         status = .generating
         let tripRequest = FriendTripRequest(userID: UserLoginM.shared.userID ?? "")
@@ -34,7 +34,6 @@ final class FriendTripProfiles: ObservableObject {
                     self.status = .error
                 }
             }
-            catch { self.status = .error }
         }
     }
     
