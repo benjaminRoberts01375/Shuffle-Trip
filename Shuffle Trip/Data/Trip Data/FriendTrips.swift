@@ -4,11 +4,15 @@
 import SwiftUI
 
 final class FriendTripProfiles: ObservableObject {
-    @Published var status: Status
+    @Published var status: Status {
+        didSet {
+            self.objectWillChange.send()
+        }
+    }
     @Published var friends: [User]
     
     init() {
-        self.status = .generating
+        self.status = .uninit
         self.friends = []
         GenerateFriends()
     }
@@ -36,6 +40,7 @@ final class FriendTripProfiles: ObservableObject {
     }
     
     enum Status {
+        case uninit
         case generating
         case error
         case successful
