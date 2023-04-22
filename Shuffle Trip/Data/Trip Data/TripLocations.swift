@@ -42,13 +42,13 @@ final class TripLocations: ObservableObject, Equatable {
     public func AddTrip(trip: TripLocation) {
         if !tripLocations.contains(where: { $0.coordinate == trip.coordinate }) {
             tripLocations.append(trip)
-            SelectTrip(trip: trip)
             trip.objectWillChange.sink { _ in
                 DispatchQueue.main.async {
                     self.objectWillChange.send()
                 }
             }
             .store(in: &cancellables)
+            SelectTrip(trip: trip)
         }
     }
     
