@@ -14,7 +14,6 @@ final class FriendTripProfiles: ObservableObject {
     init() {
         self.status = .uninit
         self.friends = []
-        GenerateFriends()
     }
     
     /// Generates a list of friends
