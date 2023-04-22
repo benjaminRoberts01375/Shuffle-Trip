@@ -7,7 +7,7 @@ import SwiftUI
 struct MapIconV: UIViewRepresentable, Identifiable {
     let id = UUID()
     let region: MKCoordinateRegion
-    let pinImage: UIImage
+    let activities: [Business]
     let title: String
     
     func makeUIView(context: Context) -> some UIView {
@@ -27,42 +27,35 @@ struct MapIconV: UIViewRepresentable, Identifiable {
         annotation.title = title
         mapView.addAnnotation(annotation)
 
+        var index = 0
+        for activity in activities {
+            index += 1
+            let annotation = MKPointAnnotation()
+            let latitude = activity.coordinates.latitude
+            let longitude = activity.coordinates.longitude
+            let title = activity.name
+            annotation.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+            annotation.title = title
+            mapView.addAnnotation(annotation)
+            print("adding index \(index)")
+        }
+        
         return mapView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) { }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, pinImage)
+        Coordinator(self, activities)
     }
     
     class Coordinator: NSObject, MKMapViewDelegate {
         var parent: MapIconV
-        let pinImage: UIImage
+        var activityLocations: [Business]
         
-        init(_ parent: MapIconV, _ pinImage: UIImage) {
+        init(_ parent: MapIconV, _ activityLocations: [Business]) {
             self.parent = parent
-            self.pinImage = pinImage
-        }
-        
-        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-            // Return nil if the annotation is not of type MKPointAnnotation (we only want to customize the appearance of MKPointAnnotation)
-            if let annotation = annotation as? MKPointAnnotation {
-                var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "genericAnnotationView") as? MKMarkerAnnotationView
-
-                if annotationView == nil {
-                    // Create a new annotation view if one cannot be dequeued
-                    annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "genericAnnotationView")
-                } else {
-                    // Update the annotation view's annotation and other properties
-                    annotationView?.annotation = annotation
-                }
-
-                annotationView?.glyphImage = pinImage // Set the image of the annotation view to the "scooter" image
-                annotationView?.isEnabled = false // Prevent interactions with pin
-                return annotationView
-            }
-            return nil
+            self.activityLocations = activityLocations
         }
     }
 }
