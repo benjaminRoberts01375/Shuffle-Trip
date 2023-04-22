@@ -154,3 +154,14 @@ extension TripLocation: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+/// Struct for handling the required params for requesting trip activities
+struct TripRequest: Encodable {
+    let terms: [[String]]
+    let latitude: Double
+    let longitude: Double
+    let radius: Int
+    let count: Int
+    let userID: String
+    let chance: Int
+}

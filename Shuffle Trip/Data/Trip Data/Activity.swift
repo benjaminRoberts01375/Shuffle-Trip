@@ -215,14 +215,6 @@ struct Messaging: Codable {
     }
 }
 
-struct TripRequest: Encodable {
-    let terms: [[String]]
-    let latitude: Double
-    let longitude: Double
-    let radius: Int
-    let count: Int
-    let userID: String
-    let chance: Int
 }
 
 // swiftlint:enable discouraged_optional_boolean
