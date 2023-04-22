@@ -46,6 +46,7 @@
 		07A038F429F26ED50036EC14 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F329F26ED50036EC14 /* SearchVM.swift */; };
 		07A038F729F27A880036EC14 /* SearchResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F629F27A880036EC14 /* SearchResultVM.swift */; };
 		07A038F929F27AAA0036EC14 /* SearchResultV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F829F27AAA0036EC14 /* SearchResultV.swift */; };
+		07A038FF29F3D21B0036EC14 /* QRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038FE29F3D21B0036EC14 /* QRM.swift */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -143,6 +144,7 @@
 		07A038F329F26ED50036EC14 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		07A038F629F27A880036EC14 /* SearchResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultVM.swift; sourceTree = "<group>"; };
 		07A038F829F27AAA0036EC14 /* SearchResultV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultV.swift; sourceTree = "<group>"; };
+		07A038FE29F3D21B0036EC14 /* QRM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRM.swift; sourceTree = "<group>"; };
 		07B38F492984709D00EA765F /* BottomDrawerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomDrawerVM.swift; sourceTree = "<group>"; };
 		07B5C03D29EE5803003BE480 /* LookAroundV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookAroundV.swift; sourceTree = "<group>"; };
 		07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagNavigatorVM.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				07F71A4029808A3F007C7AE6 /* UserLocation.swift */,
 				7479551D29EF634600636AEA /* UserLoginM.swift */,
 				07A038E929F25AEC0036EC14 /* LocationSearchTrackerM.swift */,
+				07A038FE29F3D21B0036EC14 /* QRM.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -790,6 +793,7 @@
 				07F71A3929808773007C7AE6 /* RegionSelector.swift in Sources */,
 				7479551A29EF4FB100636AEA /* SignInWithAppleButtonV.swift in Sources */,
 				07F9D05D29C95CA200D9791A /* ActivityPaneV.swift in Sources */,
+				07A038FF29F3D21B0036EC14 /* QRM.swift in Sources */,
 				07A038EA29F25AEC0036EC14 /* LocationSearchTrackerM.swift in Sources */,
 				7479551E29EF634600636AEA /* UserLoginM.swift in Sources */,
 				7479551729EF412500636AEA /* LoginScreenV.swift in Sources */,
