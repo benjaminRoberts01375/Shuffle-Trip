@@ -42,6 +42,16 @@ public class Activity: Decodable, Hashable, ObservableObject {
         tagIDs.insert(tagID)
     }
     
+    
+    /// Checks the name of a tag before adding it to the activity
+    /// - Parameter tagName: Name of the tag to add
+    /// - Returns: A boolean for if the tag was able to be added to the activity's trip ids
+    public func addTag(tagName: String) -> Bool {
+        guard let tagID = TagManager.shared.tagNameToID(tagName: tagName) else { return false }
+        addTag(tagID: tagID)
+        return true
+    }
+    
     /// Handles removing tags from the activity
     /// - Parameter tagID: ID of the tag to remove
     public func removeTag(tagID: UUID) {
