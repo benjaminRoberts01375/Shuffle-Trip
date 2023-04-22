@@ -68,7 +68,7 @@ struct SelectedTripContentV: View {
                     }
                     if !controller.editingTracker.isEditingTrip {
                         BigButtonListTripActions(
-                            openAllMapsAction: { controller.navAll() },
+                            openAllMapsAction: { controller.openMaps() },
                             deleteTripAction: { controller.deleteTrip(trip: controller.tripLocations.getSelectedTrip()!) },
                             finishTripAction: { controller.finishTrip() }
                         )  // Large buttons for almost any activity

@@ -70,10 +70,6 @@ final class SelectedTripContentVM: ObservableObject {
         }
     }
     
-    internal func navAll() {
-        
-    }
-    
     internal func deleteTrip(trip: TripLocation) {
         //================================== DEMO TEMP ====================================
         tripLocations.AddTripDB(trip: trip)
@@ -83,5 +79,28 @@ final class SelectedTripContentVM: ObservableObject {
     
     internal func finishTrip() {
         
+    }
+    /// Launch maps application for this activity
+    public func openMaps() {
+        guard let selectedTrip = tripLocations.getSelectedTrip() else { return }
+        var destinations: [MKMapItem] = []
+        
+        for activity in selectedTrip.activityLocations {
+            guard let address = activity.businesses?[0].location.displayAddress.joined(separator: ", ") else { continue }
+            let geocoder = CLGeocoder()
+            geocoder.geocodeAddressString(address) { placemarks, error in   // Turn the display address into a set of coordinates. Had issues with longitude/latitude
+                if error != nil {
+                    print("Not able to geocode address")
+                    return
+                }
+                guard let placemark = placemarks?.first else { return }                                                             // Get the placemark
+                let destination = MKMapItem(placemark: MKPlacemark(placemark: placemark))                                           // Create the destination
+                destination.name = activity.businesses?[0].name                                                                             // Set the name
+                destination.phoneNumber = activity.businesses?[0].phone                                                                     // Set the phone number
+                destinations.append(destination)
+            }
+        }
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]                        // Use user default directions
+        MKMapItem.openMaps(with: destinations, launchOptions: launchOptions)                                               // Open maps with directions
     }
 }
