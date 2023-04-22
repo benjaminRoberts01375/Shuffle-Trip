@@ -66,4 +66,20 @@ final class TagManager: ObservableObject {
         }
         return nil
     }
+    
+    /// Search through every topicGroup, topic, and tag to validate the existance of a tag
+    /// - Parameter tagName: Name of the
+    /// - Returns: The UUID of the tag name if it was found, otherwise nil
+    public func tagNameToID(tagName: String) -> UUID? {
+        for group in topicGroups {
+            for topic in group.topics {
+                for tag in topic.tags {
+                    if tag.name.lowercased() == tagName.lowercased() {
+                        return tag.id
+                    }
+                }
+            }
+        }
+        return nil
+    }
 }
