@@ -11,6 +11,7 @@ struct APIHandler {
         case friendDetauls = "getFriendsTrips"
         case sendUserData = "user"
         case getUserData = "getUser"
+        case requestActivity = "businessByAddress"
     }
     
     /// Errors available to throw
