@@ -51,7 +51,7 @@ final class TripLocations: ObservableObject, Equatable {
             SelectTrip(trip: trip)
             
             // Adds trip to database
-            AddTripDB(trip: trip)
+            //AddTripDB(trip: trip)
         }
     }
     

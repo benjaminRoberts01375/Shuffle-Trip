@@ -15,6 +15,8 @@ final class SelectedTripContentVM: ObservableObject {
     @ObservedObject var searchTracker: LocationSearchTrackerM
     /// Keeps track of if an error should be displayed on the screen
     @Published var alertTracker: Bool
+    /// Keeps track of trips to see if you can save or not
+    @Published var allowSave: Bool
     
     init(tripLocations: TripLocations, editingTracker: EditingTrackerM) {
         self.tripLocations = tripLocations
@@ -22,6 +24,7 @@ final class SelectedTripContentVM: ObservableObject {
         self.showSettings = false
         self.searchTracker = LocationSearchTrackerM()
         self.alertTracker = false
+        self.allowSave = false
     }
     
     // Check editing status
@@ -71,15 +74,16 @@ final class SelectedTripContentVM: ObservableObject {
     }
     
     internal func deleteTrip(trip: TripLocation) {
-        //================================== DEMO TEMP ====================================
-        tripLocations.AddTripDB(trip: trip)
-        
-        //tripLocations.RemoveTrip(trip: trip)
+        tripLocations.RemoveTrip(trip: trip)
     }
     
-    internal func finishTrip() {
-        
+    internal func finishTrip(trip: TripLocation) {
+        //================================== DEMO TEMP ====================================
+        tripLocations.DeleteTripDB(trip: trip)
+        sleep(2)
+        tripLocations.AddTripDB(trip: trip)
     }
+    
     /// Launch maps application for this activity
     public func openMaps() {
         guard let selectedTrip = tripLocations.getSelectedTrip() else { return }
@@ -102,5 +106,18 @@ final class SelectedTripContentVM: ObservableObject {
         }
         let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault]                        // Use user default directions
         MKMapItem.openMaps(with: destinations, launchOptions: launchOptions)                                               // Open maps with directions
+    }
+    
+    internal func checkActivitiesFilled(trip: TripLocation) {
+        for activity in trip.activityLocations {
+            if activity.businesses?[0] == nil {
+                allowSave = false
+                self.objectWillChange.send()
+                return
+            }
+        }
+        
+        allowSave = true
+        self.objectWillChange.send()
     }
 }

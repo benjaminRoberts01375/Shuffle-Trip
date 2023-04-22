@@ -70,7 +70,8 @@ struct SelectedTripContentV: View {
                         BigButtonListTripActions(
                             openAllMapsAction: { controller.openMaps() },
                             deleteTripAction: { controller.deleteTrip(trip: controller.tripLocations.getSelectedTrip()!) },
-                            finishTripAction: { controller.finishTrip() }
+                            finishTripAction: { controller.finishTrip(trip: controller.tripLocations.getSelectedTrip()!) },
+                            allowSave: $controller.allowSave
                         )  // Large buttons for almost any activity
                         .padding(6)
                         .padding(.vertical, 3)
@@ -80,6 +81,9 @@ struct SelectedTripContentV: View {
                 }
             }
             .onReceive(controller.tripLocations.objectWillChange) { _ in
+                if controller.tripLocations.getSelectedTrip() != nil {
+                    controller.checkActivitiesFilled(trip: controller.tripLocations.getSelectedTrip()!)
+                }
                 controller.showSettings = true
                 self.controller.objectWillChange.send()
             }
@@ -133,6 +137,8 @@ struct BigButton: View {
                     .background(highlighted ? .blue : Color(UIColor.quaternarySystemFill))
                     .cornerRadius(10)
                 })
+                .disabled(!enabled)
+                .opacity(enabled ? 1 : 0.5)
             )
             .frame(height: 55)
     }
@@ -143,6 +149,7 @@ struct BigButtonListTripActions: View {
     var openAllMapsAction: () -> Void
     var deleteTripAction: () -> Void
     var finishTripAction: () -> Void
+    @Binding var allowSave: Bool
     
     var body: some View {
         HStack {
@@ -156,28 +163,28 @@ struct BigButtonListTripActions: View {
                 enabled: .constant(true)
             )
             Spacer()
-            /*BigButton(
+            BigButton(
                 action: deleteTripAction,
                 image: Image(systemName: "trash.fill"),
                 label: "Delete Trip",
                 highlighted: false,
                 enabled: .constant(true)
-            )*/
-            //================================== DEMO TEMP ====================================
-            BigButton(
-                action: deleteTripAction,
-                image: Image(systemName: "square.and.arrow.down.fill"),
-                label: "Save Trip",
-                highlighted: false,
-                enabled: .constant(true)
             )
             Spacer()
-            BigButton(
+            /*BigButton(
                 action: finishTripAction,
                 image: Image(systemName: "flag.checkered.2.crossed"),
                 label: "Finish Trip",
                 highlighted: false,
-                enabled: .constant(true)
+                enabled: $allowSave
+            )*/
+            //================================== DEMO TEMP ====================================
+            BigButton(
+                action: finishTripAction,
+                image: Image(systemName: "square.and.arrow.down.fill"),
+                label: "Save Trip",
+                highlighted: false,
+                enabled: $allowSave
             )
             Spacer()
             Spacer()
