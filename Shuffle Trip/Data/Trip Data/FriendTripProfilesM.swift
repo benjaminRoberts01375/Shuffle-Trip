@@ -47,12 +47,12 @@ final class FriendTripProfiles: ObservableObject {
     }
 
     // swiftlint:disable nesting
-    struct User: Decodable {
-        let userID: String
+    struct User: Decodable, Identifiable {
+        let id: String
         let trips: [Trip]
         
         enum CodingKeys: String, CodingKey {
-            case userID
+            case id = "userID"
             case trips
         }
     }
