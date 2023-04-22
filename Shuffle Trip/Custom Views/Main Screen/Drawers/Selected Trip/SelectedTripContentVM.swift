@@ -29,31 +29,43 @@ final class SelectedTripContentVM: ObservableObject {
         self.objectWillChange.send()
     }
     
+    /// Add an activity from a search result
+    /// - Parameter activity: The result of the search
     internal func addActivity(activity: MKMapItem) {
-        let placemark = activity.placemark
-        guard let selectedTrip = tripLocations.getSelectedTrip(),
-              let name = placemark.name,
-              let number = placemark.subThoroughfare,
-              let street = placemark.thoroughfare,
-              let city = placemark.locality,
-              let stateCode = placemark.administrativeArea,
-              let countryCode = placemark.isoCountryCode
+        let placemark = activity.placemark                          // Store the placemark of the search result
+        guard let selectedTrip = tripLocations.getSelectedTrip(),   // Get the selected trip
+              let name = placemark.name,                            // Name of the placemark
+              let number = placemark.subThoroughfare,               // House number of the placemark
+              let street = placemark.thoroughfare,                  // Street of the placemark
+              let city = placemark.locality,                        // City of the placemark
+              let stateCode = placemark.administrativeArea,         // State code of the placemark
+              let countryCode = placemark.isoCountryCode            // Country code of the placemark
         else { return }
         
-        let request: ActivityRequest = ActivityRequest(name: name, address: "\(number) \(street)", city: city, state: stateCode, country: countryCode)
+        let request: ActivityRequest = ActivityRequest(             // Create a request for getting Yelp information
+            name: name,                                                 // Name of the business
+            address: "\(number) \(street)",                             // Street address of the business
+            city: city,                                                 // City of the business
+            state: stateCode,                                           // State code (initials) of the business
+            country: countryCode                                        // Country code (initials) of the business
+        )
         
-        Task {
+        Task {                                                      // With async...
             do {
-                let newBusiness = try await APIHandler.request(url: .requestActivity, dataToSend: request, decodeType: Business.self)
-                let newActivity = Activity()
-                for category in newBusiness.categories {
-                    _ = newActivity.addTag(tagName: category.title)
+                let newBusiness = try await APIHandler.request(             // Store a business
+                    url: .requestActivity,                                  // Use the requested URL
+                    dataToSend: request,                                    // Use the pre-made request
+                    decodeType: Business.self                               // Store in a Business struct, we don't get a full activity
+                )
+                let newActivity = Activity()                                // Create a new Activity
+                for category in newBusiness.categories {                    // For each of the categories in the activity
+                    _ = newActivity.addTag(tagName: category.title)             // Add the tagID to the activity
                 }
-                newActivity.businesses = [newBusiness]
-                selectedTrip.insertActivity(activity: newActivity)
+                newActivity.businesses = [newBusiness]                      // Format the business into an array for the activity
+                selectedTrip.insertActivity(activity: newActivity)          // Insert the activity into the tripLocations
             }
-            catch APIHandler.Errors.decodeError {
-                alertTracker = true
+            catch APIHandler.Errors.decodeError {                       // Catch any decode errors...
+                alertTracker = true                                         // And display a warning
             }
         }
     }
