@@ -51,7 +51,7 @@ final class HomeBodySwitcherVM: ObservableObject {
             let friendCode = result.string
             Task {
                 do {
-                    let _ = try await APIHandler.request(url: .addFriend, dataToSend: makeFriend(sender: friendCode, receiver: UserLoginM.shared.userID ?? ""), decodeType: String.self)
+                    _ = try await APIHandler.request(url: .addFriend, dataToSend: MakeFriend(sender: friendCode, receiver: UserLoginM.shared.userID ?? ""), decodeType: String.self)
                 }
             }
             displayPhase = .normal
@@ -61,8 +61,7 @@ final class HomeBodySwitcherVM: ObservableObject {
     }
 }
 
-
-struct makeFriend: Codable {
+struct MakeFriend: Codable {
     let sender: String
     let receiver: String
     

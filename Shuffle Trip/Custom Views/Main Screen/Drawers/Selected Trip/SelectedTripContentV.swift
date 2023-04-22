@@ -7,7 +7,7 @@ import SwiftUI
 struct SelectedTripContentV: View {
     @StateObject var controller: SelectedTripContentVM
     @Environment(\.dismiss) var dismiss
-
+    
     /// The initializer for the selected trip content manager
     /// - Parameter tripLocations: Locations of each trip
     init(tripLocations: TripLocations, editingTracker: EditingTrackerM) {
@@ -90,11 +90,12 @@ struct SelectedTripContentV: View {
                 controller.checkState()
             }
             .alert(isPresented: $controller.alertTracker) {
-                 Alert(
+                Alert(
                     title: Text("Error Finding Activity"),
                     message: Text("Doesn't look like we were able to find the activity you wanted. We use Yelp to gather details about a location, and things don't always line-up with Apple Maps."),
-                    dismissButton: .default(Text("Got it!")))
-             }
+                    dismissButton: .default(Text("Got it!"))
+                )
+            }
         }
         else {
             Text("No selected trip.")
