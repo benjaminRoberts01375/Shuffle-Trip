@@ -27,5 +27,24 @@ final class SelectedTripContentVM: ObservableObject {
     }
     
     internal func addActivity(activity: MKMapItem) {
+        let placemark = activity.placemark
+        guard let selectedTrip = tripLocations.getSelectedTrip(),
+              let name = placemark.name,
+              let number = placemark.subThoroughfare,
+              let street = placemark.thoroughfare,
+              let city = placemark.locality,
+              let stateCode = placemark.administrativeArea,
+              let countryCode = placemark.isoCountryCode
+        else { return }
+        
+        let request: ActivityRequest = ActivityRequest(name: name, address: "\(number) \(street)", city: city, state: stateCode, country: countryCode)
+        
+        Task {
+            do {
+                let newActivity = try await APIHandler.request(url: .requestActivity, dataToSend: request, decodeType: Activity.self)
+                selectedTrip.insertActivity(activity: newActivity)
+            }
+        }
+        //        selectedTrip.insertActivity(activity: )
     }
 }
