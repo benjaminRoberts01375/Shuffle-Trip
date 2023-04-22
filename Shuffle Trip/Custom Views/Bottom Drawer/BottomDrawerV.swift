@@ -6,10 +6,12 @@ import SwiftUI
 // Content: Generic type that conforms to view
 struct BottomDrawer<Content: DrawerView>: View {
     @StateObject var controller: BottomDrawerVM<Content>
+    @State var keyboardHeight: CGFloat
     @Environment(\.colorScheme) var colorScheme
     
     init(content: Content, snapPoints: [CGFloat]) {
         self._controller = StateObject(wrappedValue: BottomDrawerVM(content: content, snapPoints: snapPoints))
+        self._keyboardHeight = State(initialValue: 0)
     }
     
     /// Default values for the capsule shown at the top of the drawer
@@ -49,6 +51,8 @@ struct BottomDrawer<Content: DrawerView>: View {
                             controller.content.body                                                         // Content passed in to show
                                 .padding(.horizontal, 7)
                                 .frame(width: controller.isShortCard ? controller.minimumShortCardSize : geometry.size.width)
+                            Color.clear
+                                .frame(height: keyboardHeight)
                         }
                     }
                     .scrollDisabled(controller.offset.height < geometry.size.height / 4)
@@ -93,6 +97,17 @@ struct BottomDrawer<Content: DrawerView>: View {
             }
         }
         .edgesIgnoringSafeArea([.bottom])
+        .onAppear {
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
+                    return
+                }
+                self.keyboardHeight = keyboardFrame.height
+            }
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                self.keyboardHeight = 0
+            }
+        }
     }
 }
 
