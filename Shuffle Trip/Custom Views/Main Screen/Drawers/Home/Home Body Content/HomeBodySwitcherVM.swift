@@ -49,9 +49,25 @@ final class HomeBodySwitcherVM: ObservableObject {
         switch result {
         case .success(let result):
             let friendCode = result.string
+            Task {
+                do {
+                    let _ = try await APIHandler.request(url: .addFriend, dataToSend: makeFriend(sender: friendCode, receiver: UserLoginM.shared.userID ?? ""), decodeType: String.self)
+                }
+            }
             displayPhase = .normal
         case .failure(let error):
             print("Unable to read QR code. \(error)")
         }
+    }
+}
+
+
+struct makeFriend: Codable {
+    let sender: String
+    let receiver: String
+    
+    enum CodingKeys: String, CodingKey {
+        case sender = "user1"
+        case receiver = "user2"
     }
 }
