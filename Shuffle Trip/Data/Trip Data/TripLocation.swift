@@ -84,7 +84,15 @@ public class TripLocation: ObservableObject, Identifiable {
         
         // Encode the TripRequest instance into JSON data
         status = .generating                                                                                                                                        // Mark the trip as being generated
-        let tripRequest = TripRequest(terms: params, latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: params.count, userID: UserLoginM.shared.userID ?? "", chance: 0)      // Move details of request into TripRequest
+        let tripRequest = TripRequest(
+            terms: params,
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
+            radius: Int(radius),
+            count: params.count,
+            userID: UserLoginM.shared.userID ?? "",
+            chance: 0
+        )      // Move details of request into TripRequest
         Task {                                                                                                                                                      // With async...
             do {                                                                                                                                                        // ...do...
                 let newActivityLocations = try await APIHandler.request(url: .shuffleTrip, dataToSend: tripRequest, decodeType: [Activity].self)                        // ...Make the request for all activities
@@ -116,7 +124,15 @@ public class TripLocation: ObservableObject, Identifiable {
     public func shuffleActivity(activity oldActivity: Activity) {
         var params: [String] = oldActivity.tagIDs.map({ TagManager.shared.searchID(id: $0)?.name ?? "" })                                                               // Generate parameters from IDs
         params.removeAll(where: { $0 == "" })                                                                                                                           // Remove any unfound/invalid tags
-        let activityRequest = TripRequest(terms: [params], latitude: coordinate.latitude, longitude: coordinate.longitude, radius: Int(radius), count: params.count, userID: UserLoginM.shared.userID ?? "", chance: 0)    // Move details of request into TripRequest
+        let activityRequest = TripRequest(
+            terms: [params],
+            latitude: coordinate.latitude,
+            longitude: coordinate.longitude,
+            radius: Int(radius),
+            count: params.count,
+            userID: UserLoginM.shared.userID ?? "",
+            chance: 0
+        )    // Move details of request into TripRequest
         Task {                                                                                                                                                          // With async...
             do {                                                                                                                                                            // ...do...
                 let newActivity = try await APIHandler.request(url: .shuffleTrip, dataToSend: activityRequest, decodeType: [Activity].self)                                     // ...Make the request for a new activity
