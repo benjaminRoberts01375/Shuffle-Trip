@@ -33,7 +33,7 @@
 		0758377B29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */; };
 		075C8FF82982141E00BA3D12 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075C8FF72982141E00BA3D12 /* SearchBar.swift */; };
 		07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07612C9D299974FA00C5CE6B /* TripLocation.swift */; };
-		076FC70B29CC330200648BB7 /* FriendTrips.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FC70A29CC330200648BB7 /* FriendTrips.swift */; };
+		076FC70B29CC330200648BB7 /* FriendTripProfilesM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 076FC70A29CC330200648BB7 /* FriendTripProfilesM.swift */; };
 		077503B029DD24E000379F69 /* SelectedTripButtonsV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */; };
 		07782A0229E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */; };
 		078558DD29C6257C00650C1F /* TripErrorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078558DC29C6257C00650C1F /* TripErrorVM.swift */; };
@@ -132,7 +132,7 @@
 		0758377A29E08CEF0030ECC3 /* TripInteractionButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInteractionButtonsVM.swift; sourceTree = "<group>"; };
 		075C8FF72982141E00BA3D12 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		07612C9D299974FA00C5CE6B /* TripLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLocation.swift; sourceTree = "<group>"; };
-		076FC70A29CC330200648BB7 /* FriendTrips.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTrips.swift; path = "Shuffle Trip/Data/Trip Data/FriendTrips.swift"; sourceTree = SOURCE_ROOT; };
+		076FC70A29CC330200648BB7 /* FriendTripProfilesM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTripProfilesM.swift; path = "Shuffle Trip/Data/Trip Data/FriendTripProfilesM.swift"; sourceTree = SOURCE_ROOT; };
 		077503AF29DD24E000379F69 /* SelectedTripButtonsV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedTripButtonsV.swift; sourceTree = "<group>"; };
 		07782A0129E234D90009CAE2 /* ConfirmShuffleButtonsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShuffleButtonsVM.swift; sourceTree = "<group>"; };
 		078558DC29C6257C00650C1F /* TripErrorVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripErrorVM.swift; sourceTree = "<group>"; };
@@ -349,7 +349,7 @@
 		07612C9F2999760C00C5CE6B /* Trip Data */ = {
 			isa = PBXGroup;
 			children = (
-				076FC70A29CC330200648BB7 /* FriendTrips.swift */,
+				076FC70A29CC330200648BB7 /* FriendTripProfilesM.swift */,
 				07F71A4629810133007C7AE6 /* TripLocations.swift */,
 				07612C9D299974FA00C5CE6B /* TripLocation.swift */,
 				07F9D05729C95BC700D9791A /* Activity.swift */,
@@ -808,7 +808,7 @@
 				7479551E29EF634600636AEA /* UserLoginM.swift in Sources */,
 				7479551729EF412500636AEA /* LoginScreenV.swift in Sources */,
 				073C5A06299DD9BE00C65BFD /* HomeVM.swift in Sources */,
-				076FC70B29CC330200648BB7 /* FriendTrips.swift in Sources */,
+				076FC70B29CC330200648BB7 /* FriendTripProfilesM.swift in Sources */,
 				7479551529EF412500636AEA /* LoginScreenVM.swift in Sources */,
 				07612C9E299974FA00C5CE6B /* TripLocation.swift in Sources */,
 				743FA54129F3F126005D5348 /* QRM.swift in Sources */,
