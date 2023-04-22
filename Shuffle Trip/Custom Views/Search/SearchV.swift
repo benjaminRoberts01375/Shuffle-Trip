@@ -13,10 +13,10 @@ struct SearchV: View {
     var body: some View {
         VStack {
             ForEach(controller.searchTracker.searchResults, id: \.self) { result in
-                if !controller.filterEnabled ||
-                    result.placemark.country != nil &&
-                    result.placemark.administrativeArea != nil &&
-                    result.placemark.subThoroughfare != nil {
+                if !controller.filterEnabled ||                     // If the filter's enabled...
+                    result.placemark.country != nil &&                  // Check for the country,
+                    result.placemark.administrativeArea != nil &&       // State,
+                    result.placemark.subThoroughfare != nil {           // and house number
                     SearchResultV(locationResult: result)
                         .padding(5)
                         .background(BlurView(style: .systemThinMaterial, opacity: 0))
