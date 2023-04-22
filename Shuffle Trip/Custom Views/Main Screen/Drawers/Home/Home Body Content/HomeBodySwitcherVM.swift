@@ -33,5 +33,6 @@ final class HomeBodySwitcherVM: ObservableObject {
     /// Adds a trip based on the location of an MKMapItem
     /// - Parameter trip: Trip location to add as an MKMapItem
     internal func addTrip(trip: MKMapItem) {
+        tripLocations.AddTrip(trip: TripLocation(coordinate: trip.placemark.coordinate))
     }
 }
