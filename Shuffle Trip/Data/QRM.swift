@@ -1,6 +1,7 @@
 // Apr 22, 2023
 // Ben Roberts
 
+import CodeScanner
 import CoreImage
 import CoreImage.CIFilterBuiltins
 import SwiftUI

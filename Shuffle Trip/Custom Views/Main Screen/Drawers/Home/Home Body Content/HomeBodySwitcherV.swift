@@ -1,6 +1,7 @@
 // Apr 21, 2023
 // Ben Roberts
 
+import CodeScanner
 import MapKit
 import SwiftUI
 
@@ -13,18 +14,75 @@ struct HomeBodySwitcherV: View {
     }
     
     var body: some View {
-        VStack {
-            if controller.displayPhase == .normal {
-                Color.red
-                    .frame(width: 50, height: 50)
+        switch controller.displayPhase {
+        case .normal:
+            VStack {
+                Menu {
+                    Button(action: {
+                        controller.displayPhase = .presentQRCode
+                    }, label: {
+                        HStack {
+                            Image(systemName: "qrcode")
+                            Text("Present Code")
+                        }
+                    })
+                    Button(action: {
+                        controller.displayPhase = .readQRCode
+                    }, label: {
+                        HStack {
+                            Image(systemName: "qrcode.viewfinder")
+                            Text("Scan Code")
+                        }
+                    })
+                } label: {
+                    Image(systemName: "person.2.circle.fill")
+                }
             }
-            else {
+        case .tripSearch:
+            VStack {
                 SearchV(searchTracker: controller.searchTracker, filter: false, selectionAction: { tripItem in
                     controller.addTrip(trip: tripItem)
                     dismiss()
                 })
             }
+        case .presentQRCode:
+            VStack {
+                Text("Your friend code:")
+                    .font(.title)
+                    .fontWeight(.bold)
+                Image(uiImage: QRM.generateQRCode(data: UserLoginM.shared.userID ?? ""))
+                    .resizable()
+                    .interpolation(.none)
+                    .scaledToFit()
+                
+                Button(action: {
+                    controller.displayPhase = .normal
+                }, label: {
+                    Text("Back")
+                        .padding(5)
+                        .foregroundColor(Color.primary)
+                        .background(.quaternary)
+                        .cornerRadius(10)
+                })
+            }
+        case .readQRCode:
+            VStack {
+                Text("Scanning")
+                CodeScannerView(codeTypes: [.qr], isTorchOn: false, completion: controller.scan)
+                Button(action: {
+                    controller.displayPhase = .normal
+                }, label: {
+                    Text("Back")
+                        .padding(5)
+                        .foregroundColor(Color.primary)
+                        .background(.quaternary)
+                        .cornerRadius(10)
+                })
+                
+            }
         }
+        
+        EmptyView()
         .onReceive(controller.searchTracker.objectWillChange) {
             controller.setDisplayPhase()
         }

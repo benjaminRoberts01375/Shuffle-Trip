@@ -47,6 +47,7 @@
 		07A038F729F27A880036EC14 /* SearchResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F629F27A880036EC14 /* SearchResultVM.swift */; };
 		07A038F929F27AAA0036EC14 /* SearchResultV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038F829F27AAA0036EC14 /* SearchResultV.swift */; };
 		07A038FF29F3D21B0036EC14 /* QRM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A038FE29F3D21B0036EC14 /* QRM.swift */; };
+		07A0390229F3D8A70036EC14 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 07A0390129F3D8A70036EC14 /* CodeScanner */; };
 		07B38F4A2984709D00EA765F /* BottomDrawerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B38F492984709D00EA765F /* BottomDrawerVM.swift */; };
 		07B5C03E29EE5803003BE480 /* LookAroundV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B5C03D29EE5803003BE480 /* LookAroundV.swift */; };
 		07B87B7729E9EAA30097EA05 /* TagNavigatorVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B87B7629E9EAA30097EA05 /* TagNavigatorVM.swift */; };
@@ -194,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A0390229F3D8A70036EC14 /* CodeScanner in Frameworks */,
 				2FE1DE9AAEA9C720DECB3697 /* Pods_Shuffle_Trip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,8 +309,8 @@
 				07F71A432980EABD007C7AE6 /* Region Selector */,
 				07402D852980837A00F1F046 /* Blur.swift */,
 				07B5C03D29EE5803003BE480 /* LookAroundV.swift */,
-				07B87B7529E9EA970097EA05 /* Tag Picker */,
 				07A038F029F26E790036EC14 /* Search */,
+				07B87B7529E9EA970097EA05 /* Tag Picker */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -567,6 +569,9 @@
 			dependencies = (
 			);
 			name = "Shuffle Trip";
+			packageProductDependencies = (
+				07A0390129F3D8A70036EC14 /* CodeScanner */,
+			);
 			productName = "Shuffle Trip";
 			productReference = 07402D552980816E00F1F046 /* Shuffle Trip.app */;
 			productType = "com.apple.product-type.application";
@@ -641,6 +646,9 @@
 				Base,
 			);
 			mainGroup = 07402D4C2980816E00F1F046;
+			packageReferences = (
+				07A0390029F3D8A70036EC14 /* XCRemoteSwiftPackageReference "CodeScanner" */,
+			);
 			productRefGroup = 07402D562980816E00F1F046 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1004,6 +1012,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shuffle Trip";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan QR codes.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to orient yourself on the map using your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1042,6 +1051,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = "Shuffle Trip";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.travel";
 				INFOPLIST_KEY_LSSupportsOpeningDocumentsInPlace = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera access to scan QR codes.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "It may be helpful to orient yourself on the map using your location.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1186,6 +1196,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		07A0390029F3D8A70036EC14 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		07A0390129F3D8A70036EC14 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07A0390029F3D8A70036EC14 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 07402D4D2980816E00F1F046 /* Project object */;
 }
