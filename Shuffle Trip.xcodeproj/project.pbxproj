@@ -7,23 +7,64 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		07864D672A17F3500023ECCF /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07864D662A17F3500023ECCF /* Shuffle_TripApp.swift */; };
-		07864D692A17F3500023ECCF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07864D682A17F3500023ECCF /* ContentView.swift */; };
-		07864D6B2A17F3520023ECCF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07864D6A2A17F3520023ECCF /* Assets.xcassets */; };
-		07864D6F2A17F3520023ECCF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07864D6E2A17F3520023ECCF /* Preview Assets.xcassets */; };
+		07FB861F2A2F00D600B084AC /* Shuffle_TripApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB861E2A2F00D600B084AC /* Shuffle_TripApp.swift */; };
+		07FB86212A2F00D600B084AC /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB86202A2F00D600B084AC /* Item.swift */; };
+		07FB86232A2F00D600B084AC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB86222A2F00D600B084AC /* ContentView.swift */; };
+		07FB86252A2F00D800B084AC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FB86242A2F00D800B084AC /* Assets.xcassets */; };
+		07FB86292A2F00D800B084AC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07FB86282A2F00D800B084AC /* Preview Assets.xcassets */; };
+		07FB86332A2F00D900B084AC /* Shuffle_TripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB86322A2F00D900B084AC /* Shuffle_TripTests.swift */; };
+		07FB863D2A2F00D900B084AC /* Shuffle_TripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB863C2A2F00D900B084AC /* Shuffle_TripUITests.swift */; };
+		07FB863F2A2F00D900B084AC /* Shuffle_TripUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FB863E2A2F00D900B084AC /* Shuffle_TripUITestsLaunchTests.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		07FB862F2A2F00D900B084AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FB86132A2F00D600B084AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07FB861A2A2F00D600B084AC;
+			remoteInfo = "Shuffle Trip";
+		};
+		07FB86392A2F00D900B084AC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07FB86132A2F00D600B084AC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07FB861A2A2F00D600B084AC;
+			remoteInfo = "Shuffle Trip";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		07864D632A17F3500023ECCF /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		07864D662A17F3500023ECCF /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
-		07864D682A17F3500023ECCF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		07864D6A2A17F3520023ECCF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		07864D6C2A17F3520023ECCF /* Shuffle_Trip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shuffle_Trip.entitlements; sourceTree = "<group>"; };
-		07864D6E2A17F3520023ECCF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07FB861B2A2F00D600B084AC /* Shuffle Trip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Shuffle Trip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07FB861E2A2F00D600B084AC /* Shuffle_TripApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripApp.swift; sourceTree = "<group>"; };
+		07FB86202A2F00D600B084AC /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		07FB86222A2F00D600B084AC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		07FB86242A2F00D800B084AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07FB86262A2F00D800B084AC /* Shuffle_Trip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Shuffle_Trip.entitlements; sourceTree = "<group>"; };
+		07FB86282A2F00D800B084AC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07FB862E2A2F00D900B084AC /* Shuffle TripTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07FB86322A2F00D900B084AC /* Shuffle_TripTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripTests.swift; sourceTree = "<group>"; };
+		07FB86382A2F00D900B084AC /* Shuffle TripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Shuffle TripUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		07FB863C2A2F00D900B084AC /* Shuffle_TripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITests.swift; sourceTree = "<group>"; };
+		07FB863E2A2F00D900B084AC /* Shuffle_TripUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shuffle_TripUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		07864D602A17F3500023ECCF /* Frameworks */ = {
+		07FB86182A2F00D600B084AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB862B2A2F00D900B084AC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB86352A2F00D900B084AC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,78 +74,145 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07864D5A2A17F3500023ECCF = {
+		07FB86122A2F00D600B084AC = {
 			isa = PBXGroup;
 			children = (
-				07864D652A17F3500023ECCF /* Shuffle Trip */,
-				07864D642A17F3500023ECCF /* Products */,
+				07FB861D2A2F00D600B084AC /* Shuffle Trip */,
+				07FB86312A2F00D900B084AC /* Shuffle TripTests */,
+				07FB863B2A2F00D900B084AC /* Shuffle TripUITests */,
+				07FB861C2A2F00D600B084AC /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		07864D642A17F3500023ECCF /* Products */ = {
+		07FB861C2A2F00D600B084AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				07864D632A17F3500023ECCF /* Shuffle Trip.app */,
+				07FB861B2A2F00D600B084AC /* Shuffle Trip.app */,
+				07FB862E2A2F00D900B084AC /* Shuffle TripTests.xctest */,
+				07FB86382A2F00D900B084AC /* Shuffle TripUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		07864D652A17F3500023ECCF /* Shuffle Trip */ = {
+		07FB861D2A2F00D600B084AC /* Shuffle Trip */ = {
 			isa = PBXGroup;
 			children = (
-				07864D662A17F3500023ECCF /* Shuffle_TripApp.swift */,
-				07864D682A17F3500023ECCF /* ContentView.swift */,
-				07864D6A2A17F3520023ECCF /* Assets.xcassets */,
-				07864D6C2A17F3520023ECCF /* Shuffle_Trip.entitlements */,
-				07864D6D2A17F3520023ECCF /* Preview Content */,
+				07FB861E2A2F00D600B084AC /* Shuffle_TripApp.swift */,
+				07FB86202A2F00D600B084AC /* Item.swift */,
+				07FB86222A2F00D600B084AC /* ContentView.swift */,
+				07FB86242A2F00D800B084AC /* Assets.xcassets */,
+				07FB86262A2F00D800B084AC /* Shuffle_Trip.entitlements */,
+				07FB86272A2F00D800B084AC /* Preview Content */,
 			);
 			path = "Shuffle Trip";
 			sourceTree = "<group>";
 		};
-		07864D6D2A17F3520023ECCF /* Preview Content */ = {
+		07FB86272A2F00D800B084AC /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				07864D6E2A17F3520023ECCF /* Preview Assets.xcassets */,
+				07FB86282A2F00D800B084AC /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07FB86312A2F00D900B084AC /* Shuffle TripTests */ = {
+			isa = PBXGroup;
+			children = (
+				07FB86322A2F00D900B084AC /* Shuffle_TripTests.swift */,
+			);
+			path = "Shuffle TripTests";
+			sourceTree = "<group>";
+		};
+		07FB863B2A2F00D900B084AC /* Shuffle TripUITests */ = {
+			isa = PBXGroup;
+			children = (
+				07FB863C2A2F00D900B084AC /* Shuffle_TripUITests.swift */,
+				07FB863E2A2F00D900B084AC /* Shuffle_TripUITestsLaunchTests.swift */,
+			);
+			path = "Shuffle TripUITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		07864D622A17F3500023ECCF /* Shuffle Trip */ = {
+		07FB861A2A2F00D600B084AC /* Shuffle Trip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 07864D722A17F3520023ECCF /* Build configuration list for PBXNativeTarget "Shuffle Trip" */;
+			buildConfigurationList = 07FB86422A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle Trip" */;
 			buildPhases = (
-				07864D5F2A17F3500023ECCF /* Sources */,
-				07864D602A17F3500023ECCF /* Frameworks */,
-				07864D612A17F3500023ECCF /* Resources */,
+				07FB86172A2F00D600B084AC /* Sources */,
+				07FB86182A2F00D600B084AC /* Frameworks */,
+				07FB86192A2F00D600B084AC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0784308C2A2F079A0029037A /* PBXTargetDependency */,
 			);
 			name = "Shuffle Trip";
 			productName = "Shuffle Trip";
-			productReference = 07864D632A17F3500023ECCF /* Shuffle Trip.app */;
+			productReference = 07FB861B2A2F00D600B084AC /* Shuffle Trip.app */;
 			productType = "com.apple.product-type.application";
+		};
+		07FB862D2A2F00D900B084AC /* Shuffle TripTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07FB86452A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */;
+			buildPhases = (
+				07FB862A2A2F00D900B084AC /* Sources */,
+				07FB862B2A2F00D900B084AC /* Frameworks */,
+				07FB862C2A2F00D900B084AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07FB86302A2F00D900B084AC /* PBXTargetDependency */,
+			);
+			name = "Shuffle TripTests";
+			productName = "Shuffle TripTests";
+			productReference = 07FB862E2A2F00D900B084AC /* Shuffle TripTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		07FB86372A2F00D900B084AC /* Shuffle TripUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07FB86482A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */;
+			buildPhases = (
+				07FB86342A2F00D900B084AC /* Sources */,
+				07FB86352A2F00D900B084AC /* Frameworks */,
+				07FB86362A2F00D900B084AC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07FB863A2A2F00D900B084AC /* PBXTargetDependency */,
+			);
+			name = "Shuffle TripUITests";
+			productName = "Shuffle TripUITests";
+			productReference = 07FB86382A2F00D900B084AC /* Shuffle TripUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		07864D5B2A17F3500023ECCF /* Project object */ = {
+		07FB86132A2F00D600B084AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
-					07864D622A17F3500023ECCF = {
-						CreatedOnToolsVersion = 14.3;
+					07FB861A2A2F00D600B084AC = {
+						CreatedOnToolsVersion = 15.0;
+					};
+					07FB862D2A2F00D900B084AC = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 07FB861A2A2F00D600B084AC;
+					};
+					07FB86372A2F00D900B084AC = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = 07FB861A2A2F00D600B084AC;
 					};
 				};
 			};
-			buildConfigurationList = 07864D5E2A17F3500023ECCF /* Build configuration list for PBXProject "Shuffle Trip" */;
+			buildConfigurationList = 07FB86162A2F00D600B084AC /* Build configuration list for PBXProject "Shuffle Trip" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -112,45 +220,100 @@
 				en,
 				Base,
 			);
-			mainGroup = 07864D5A2A17F3500023ECCF;
-			productRefGroup = 07864D642A17F3500023ECCF /* Products */;
+			mainGroup = 07FB86122A2F00D600B084AC;
+			packageReferences = (
+				078430882A2F06650029037A /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
+			productRefGroup = 07FB861C2A2F00D600B084AC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				07864D622A17F3500023ECCF /* Shuffle Trip */,
+				07FB861A2A2F00D600B084AC /* Shuffle Trip */,
+				07FB862D2A2F00D900B084AC /* Shuffle TripTests */,
+				07FB86372A2F00D900B084AC /* Shuffle TripUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		07864D612A17F3500023ECCF /* Resources */ = {
+		07FB86192A2F00D600B084AC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07864D6F2A17F3520023ECCF /* Preview Assets.xcassets in Resources */,
-				07864D6B2A17F3520023ECCF /* Assets.xcassets in Resources */,
+				07FB86292A2F00D800B084AC /* Preview Assets.xcassets in Resources */,
+				07FB86252A2F00D800B084AC /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB862C2A2F00D900B084AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB86362A2F00D900B084AC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		07864D5F2A17F3500023ECCF /* Sources */ = {
+		07FB86172A2F00D600B084AC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07864D692A17F3500023ECCF /* ContentView.swift in Sources */,
-				07864D672A17F3500023ECCF /* Shuffle_TripApp.swift in Sources */,
+				07FB86212A2F00D600B084AC /* Item.swift in Sources */,
+				07FB861F2A2F00D600B084AC /* Shuffle_TripApp.swift in Sources */,
+				07FB86232A2F00D600B084AC /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB862A2A2F00D900B084AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07FB86332A2F00D900B084AC /* Shuffle_TripTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07FB86342A2F00D900B084AC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07FB863D2A2F00D900B084AC /* Shuffle_TripUITests.swift in Sources */,
+				07FB863F2A2F00D900B084AC /* Shuffle_TripUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0784308C2A2F079A0029037A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 0784308B2A2F079A0029037A /* SwiftLintPlugin */;
+		};
+		07FB86302A2F00D900B084AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07FB861A2A2F00D600B084AC /* Shuffle Trip */;
+			targetProxy = 07FB862F2A2F00D900B084AC /* PBXContainerItemProxy */;
+		};
+		07FB863A2A2F00D900B084AC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07FB861A2A2F00D600B084AC /* Shuffle Trip */;
+			targetProxy = 07FB86392A2F00D900B084AC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		07864D702A17F3520023ECCF /* Debug */ = {
+		07FB86402A2F00D900B084AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -183,7 +346,8 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -197,18 +361,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		07864D712A17F3520023ECCF /* Release */ = {
+		07FB86412A2F00D900B084AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -241,7 +407,8 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -249,14 +416,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
 			name = Release;
 		};
-		07864D732A17F3520023ECCF /* Debug */ = {
+		07FB86432A2F00D900B084AC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -280,12 +447,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Shuffle-Trip.Shuffle-Trip";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-Trip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -295,7 +462,7 @@
 			};
 			name = Debug;
 		};
-		07864D742A17F3520023ECCF /* Release */ = {
+		07FB86442A2F00D900B084AC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -319,12 +486,12 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Shuffle-Trip.Shuffle-Trip";
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-Trip";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -334,28 +501,155 @@
 			};
 			name = Release;
 		};
+		07FB86462A2F00D900B084AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68A766T4GX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-TripTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shuffle Trip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shuffle Trip";
+			};
+			name = Debug;
+		};
+		07FB86472A2F00D900B084AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68A766T4GX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-TripTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shuffle Trip.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Shuffle Trip";
+			};
+			name = Release;
+		};
+		07FB86492A2F00D900B084AC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68A766T4GX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-TripUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Shuffle Trip";
+			};
+			name = Debug;
+		};
+		07FB864A2A2F00D900B084AC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 68A766T4GX;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "Shuffle.Shuffle-TripUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Shuffle Trip";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		07864D5E2A17F3500023ECCF /* Build configuration list for PBXProject "Shuffle Trip" */ = {
+		07FB86162A2F00D600B084AC /* Build configuration list for PBXProject "Shuffle Trip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07864D702A17F3520023ECCF /* Debug */,
-				07864D712A17F3520023ECCF /* Release */,
+				07FB86402A2F00D900B084AC /* Debug */,
+				07FB86412A2F00D900B084AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		07864D722A17F3520023ECCF /* Build configuration list for PBXNativeTarget "Shuffle Trip" */ = {
+		07FB86422A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle Trip" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				07864D732A17F3520023ECCF /* Debug */,
-				07864D742A17F3520023ECCF /* Release */,
+				07FB86432A2F00D900B084AC /* Debug */,
+				07FB86442A2F00D900B084AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07FB86452A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle TripTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07FB86462A2F00D900B084AC /* Debug */,
+				07FB86472A2F00D900B084AC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07FB86482A2F00D900B084AC /* Build configuration list for PBXNativeTarget "Shuffle TripUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07FB86492A2F00D900B084AC /* Debug */,
+				07FB864A2A2F00D900B084AC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		078430882A2F06650029037A /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.52.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0784308B2A2F079A0029037A /* SwiftLintPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 078430882A2F06650029037A /* XCRemoteSwiftPackageReference "SwiftLint" */;
+			productName = "plugin:SwiftLintPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = 07864D5B2A17F3500023ECCF /* Project object */;
+	rootObject = 07FB86132A2F00D600B084AC /* Project object */;
 }
