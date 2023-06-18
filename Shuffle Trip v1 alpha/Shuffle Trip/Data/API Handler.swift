@@ -4,20 +4,25 @@
 import SwiftUI
 
 struct APIHandler {
-    static let baseURL: String = "https://shuffle-trip-backend.herokuapp.com/"
-    
-    enum APIUrl: String {
-        case shuffleTrip = "filteredApi"
-        case friendDetails = "getFriendsTrips"
-        case sendUserData = "user"
-        case getUserData = "getUser"
-        case requestActivity = "businessByAddress"
-        case saveTrip = "trip"
-        case deleteTrip = "delTrip"
-        case addFriend = "friend"
+    struct APIConfig: Decodable {
+        let baseURL: String
+        let APIUrls: [String: String]
     }
     
-    /// Errors available to throw
+    // swiftlint:disable redundant_string_enum_value
+    // Disabled as a quick hack to allow for another hack for API calls (we're moving real quick here)
+    enum APIUrl: String {
+        case shuffleTrip = "shuffleTrip"
+        case friendDetails = "friendDetails"
+        case sendUserData = "sendUserData"
+        case getUserData = "getUserData"
+        case requestActivity = "requestActivity"
+        case saveTrip = "saveTrip"
+        case deleteTrip = "deleteTrip"
+        case addFriend = "addFriend"
+    }
+    // swiftlint:enable redundant_string_enum_value
+    
     enum Errors: String, Error {
         /// Unable to decode data from the server.
         case decodeError = "Unable to decode data from the server."
@@ -31,23 +36,40 @@ struct APIHandler {
         case sendPOSTError = "Unknown error."
         /// Not able to generate server URL.
         case urlError = "Not able to generate server URL."
+        static let configLoadError = "Unable to load API configuration."
     }
     
-    /// A one-stop-shop for sending and receiving JSON data from the backend
-    /// - Parameters:
-    ///   - url: Request being made.
-    ///   - dataToSend: Data to send to the server
-    ///   - decodeType: Type of data that the responding JSON should be decoded into
-    /// - Returns: The decoded data
-    /// - Throws: An error from the errors enum that is a part of this struct
-    static func request<D: Decodable, E: Encodable>(url addition: APIUrl, dataToSend: E, decodeType: D.Type) async throws -> D {
-        guard let requestUrl = URL(string: baseURL + addition.rawValue) else { throw Errors.urlError }  // Build URL to send POST request to
-        guard let jsonData = try? JSONEncoder().encode(dataToSend) else { throw Errors.encodeError }    // Encode JSON
+    private static let config: APIConfig = {
+        guard let fileURL = Bundle.main.url(forResource: "URLs", withExtension: "json") else {
+            fatalError("Missing 'apiConfig.json' file.")
+        }
         
-        var request = URLRequest(url: requestUrl)                                                       // Create request
-        request.httpMethod = "POST"                                                                     // Set request to POST
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")                        // Add request header
-        request.httpBody = jsonData                                                                     // Add JSON to request
+        do {
+            let data = try Data(contentsOf: fileURL)
+            return try JSONDecoder().decode(APIConfig.self, from: data)
+        } catch {
+            fatalError("Error loading API configuration: \(error)")
+        }
+    }()
+    
+    static let baseURL: String = config.baseURL
+    
+    static func request<D: Decodable, E: Encodable>(url addition: APIUrl, dataToSend: E, decodeType: D.Type) async throws -> D {
+        guard let apiUrl = config.APIUrls[addition.rawValue] else {
+            throw Errors.urlError
+        }
+        guard let requestUrl = URL(string: baseURL + apiUrl) else {
+            throw Errors.urlError
+        }
+        
+        guard let jsonData = try? JSONEncoder().encode(dataToSend) else {
+            throw Errors.encodeError
+        }
+        
+        var request = URLRequest(url: requestUrl)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData
         
         print(String(decoding: jsonData, as: UTF8.self))
         
