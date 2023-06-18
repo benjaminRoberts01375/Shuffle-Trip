@@ -1,7 +1,9 @@
-// Created on 6/6/23 by Ben Roberts
-// Created for Shuffle Trip
 //
-// Swift 5.0
+//  Shuffle_TripUITestsLaunchTests.swift
+//  Shuffle TripUITests
+//
+//  Created by Ben Roberts on 1/24/23.
+//
 
 import XCTest
 

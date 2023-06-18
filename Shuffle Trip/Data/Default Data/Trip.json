@@ -1,0 +1,165 @@
+[
+	{
+	"businesses":[
+		{
+		"id":"zRe8CoZy_LAl5tgKxU3NeA",
+		"alias":"jr-s-original-winooski",
+		"name":"Jr’s Original",
+		"image_url":"https://s3-media3.fl.yelpcdn.com/bphoto/kLoDn8WUbxVURQBTSkstqw/o.jpg",
+		"is_closed":false,
+		"url":"https://www.yelp.com/biz/jr-s-original-winooski?adjust_creative=-AcpSK_X-Amsa1dL84Cx9Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=-AcpSK_X-Amsa1dL84Cx9Q",
+		"review_count":40,
+		"categories":[
+			{
+			"alias":"pizza",
+			"title":"Pizza"
+			},
+			{
+			"alias":"italian",
+			"title":"Italian"
+			}
+		],
+		"rating":4,
+		"coordinates":{
+			"latitude":44.49925,
+			"longitude":-73.18416
+		},
+		"transactions":[
+			"delivery",
+			"pickup"
+		],
+		"location":{
+			"address1":"348 Main St",
+			"address2":"",
+			"address3":null,
+			"city":"Winooski",
+			"zip_code":"05404",
+			"country":"US",
+			"state":"VT",
+			"display_address":[
+				"348 Main St",
+				"Winooski, VT 05404"
+			]
+		},
+		"phone":"+18028001513",
+		"display_phone":"(802) 800-1513",
+		"distance":3499.0734357686297
+		}
+	],
+	"total":171,
+	"region":{
+		"center":{
+			"longitude":-73.2121,
+			"latitude":44.4749
+		}
+	}
+	},
+	{
+	"businesses":[
+		{
+		"id":"EyyfzA0bjLodQHgZhk3GpQ",
+		"alias":"crescent-beach-burlington",
+		"name":"Crescent Beach",
+		"image_url":"https://s3-media1.fl.yelpcdn.com/bphoto/5E1ooDe5tSRJL_X1cCxlGg/o.jpg",
+		"is_closed":false,
+		"url":"https://www.yelp.com/biz/crescent-beach-burlington?adjust_creative=-AcpSK_X-Amsa1dL84Cx9Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=-AcpSK_X-Amsa1dL84Cx9Q",
+		"review_count":1,
+		"categories":[
+			{
+			"alias":"beaches",
+			"title":"Beaches"
+			},
+			{
+			"alias":"parks",
+			"title":"Parks"
+			}
+		],
+		"rating":5,
+		"coordinates":{
+			"latitude":44.5033427327871,
+			"longitude":-73.2564912736416
+		},
+		"transactions":[],
+		"location":{
+			"address1":"2 Crescent Beach Dr",
+			"address2":"",
+			"address3":"",
+			"city":"Burlington",
+			"zip_code":"05401",
+			"country":"US",
+			"state":"VT",
+			"display_address":[
+				"2 Crescent Beach Dr",
+				"Burlington, VT 05401"
+			]
+		},
+		"phone":"+18026609041",
+		"display_phone":"(802) 660-9041",
+		"distance":4725.438569611267
+		}
+	],
+	"total":17,
+	"region":{
+		"center":{
+			"longitude":-73.2121,
+			"latitude":44.4749
+		}
+	}
+	},
+	{
+	"businesses":[
+		{
+		"id":"rHTJH26flRyS_i7UHni41Q",
+		"alias":"moes-southwest-grill-burlington-2",
+		"name":"Moe's Southwest Grill",
+		"image_url":"https://s3-media2.fl.yelpcdn.com/bphoto/NxLN3AFSgNvg1KKVts1KBg/o.jpg",
+		"is_closed":false,
+		"url":"https://www.yelp.com/biz/moes-southwest-grill-burlington-2?adjust_creative=-AcpSK_X-Amsa1dL84Cx9Q&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=-AcpSK_X-Amsa1dL84Cx9Q",
+		"review_count":122,
+		"categories":[
+			{
+			"alias":"mexican",
+			"title":"Mexican"
+			},
+			{
+			"alias":"tex-mex",
+			"title":"Tex-Mex"
+			}
+		],
+		"rating":2,
+		"coordinates":{
+			"latitude":44.4688657,
+			"longitude":-73.17814448977536
+		},
+		"transactions":[
+			"pickup",
+			"delivery"
+		],
+		"price":"$",
+		"location":{
+			"address1":"1150 Williston Rd",
+			"address2":null,
+			"address3":null,
+			"city":"Burlington",
+			"zip_code":"05403",
+			"country":"US",
+			"state":"VT",
+			"display_address":[
+				"1150 Williston Rd",
+				"Burlington, VT 05403"
+			]
+		},
+		"phone":"+18026604900",
+		"display_phone":"(802) 660-4900",
+		"distance":2776.594420207707
+		}
+	],
+	"total":194,
+	"region":{
+		"center":{
+			"longitude":-73.2121,
+			"latitude":44.4749
+		}
+	}
+	}
+]

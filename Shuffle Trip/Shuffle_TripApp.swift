@@ -1,18 +1,24 @@
-// Created on 6/6/23 by Ben Roberts
-// Created for Shuffle Trip
 //
-// Swift 5.0
+//  Shuffle_TripApp.swift
+//  Shuffle Trip
+//
+//  Created by Ben Roberts on 1/24/23.
+//
 
-import SwiftData
+import MapKit
 import SwiftUI
 
 @main
-struct Shuffle_TripApp: App {
-
+struct ShuffleTripApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: Item.self)
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }

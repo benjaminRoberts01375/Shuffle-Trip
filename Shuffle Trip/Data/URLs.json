@@ -1,0 +1,13 @@
+{
+  "baseURL": "https://shuffle-trip-backend.herokuapp.com/",
+  "APIUrls": {
+    "shuffleTrip": "filteredApi",
+    "friendDetails": "getFriendsTrips",
+    "sendUserData": "user",
+    "getUserData": "getUser",
+    "requestActivity": "businessByAddress",
+    "saveTrip": "trip",
+    "deleteTrip": "delTrip",
+    "addFriend": "friend"
+  }
+}

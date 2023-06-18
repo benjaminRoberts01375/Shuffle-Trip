@@ -1,9 +1,12 @@
-// Created on 6/6/23 by Ben Roberts
-// Created for Shuffle Trip
 //
-// Swift 5.0
+//  Shuffle_TripTests.swift
+//  Shuffle TripTests
+//
+//  Created by Ben Roberts on 1/24/23.
+//
 
 import XCTest
+@testable import Shuffle_Trip
 
 final class Shuffle_TripTests: XCTestCase {
 
@@ -25,7 +28,7 @@ final class Shuffle_TripTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        measure {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
